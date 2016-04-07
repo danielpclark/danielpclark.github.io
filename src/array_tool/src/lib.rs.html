@@ -314,6 +314,20 @@
 <span id="271">271</span>
 <span id="272">272</span>
 <span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>deny</span>(<span class='ident'>missing_docs</span>,<span class='ident'>trivial_casts</span>,<span class='ident'>trivial_numeric_casts</span>,
         <span class='ident'>missing_debug_implementations</span>, <span class='ident'>missing_copy_implementations</span>,
@@ -327,9 +341,23 @@
 <span class='comment'>// http://opensource.org/licenses/MIT&gt;, at your option. This file may not be</span>
 <span class='comment'>// copied, modified, or distributed except according to those terms.</span>
 
-<span class='doccomment'>//! Array Tool</span>
+<span class='doccomment'>//! # Array Tool</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! Array Tool is a collection of powerful methods for working with collections.</span>
+<span class='doccomment'>//! is a collection of powerful methods for working with collections.</span>
+<span class='doccomment'>//! Some of the most common methods you would use on Arrays made available</span>
+<span class='doccomment'>//! on Vectors. Polymorphic implementations for handling most of your use cases.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! In your rust files where you plan to use it put this at the top</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! extern crate array_tool;</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! And if you plan to use all of the Vector helper methods available:</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ```</span>
+<span class='doccomment'>//! use array_tool::vec::*;</span>
+<span class='doccomment'>//! ```</span>
 
 <span class='doccomment'>/// Array Tool provides many useful methods for vectors</span>
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>vec</span> {
