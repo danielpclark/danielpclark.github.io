@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["uniques","Get `uniques` from two vectors"]],"mod":[["vec","Array Tool provides many useful methods for vectors"]]});
