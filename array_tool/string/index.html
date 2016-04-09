@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `array_tool` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, array_tool">
+    <meta name="description" content="API documentation for the Rust `string` mod in crate `array_tool`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, string">
 
-    <title>array_tool - Rust</title>
+    <title>array_tool::string - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
 
     
     
@@ -27,7 +27,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'array_tool', ty: 'mod', relpath: '../'};</script>
+        <p class='location'><a href='../index.html'>array_tool</a></p><script>window.sidebarCurrent = {name: 'string', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -42,51 +42,33 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>array_tool</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>array_tool</a>::<wbr><a class='mod' href=''>string</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-0' class='srclink' href='../src/array_tool/src/lib.rs.html#1-36' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'>
-<h1 id='array-tool' class='section-header'><a href='#array-tool'>Array Tool</a></h1>
-<p>is a collection of powerful methods for working with collections.
-Some of the most common methods you would use on Arrays made available
-on Vectors. Polymorphic implementations for handling most of your use cases.</p>
-
-<p>In your rust files where you plan to use it put this at the top</p>
-
-<pre class='rust rust-example-rendered'>
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>array_tool</span>;</pre>
-
-<p>And if you plan to use all of the Vector helper methods available:</p>
-
-<pre class='rust rust-example-rendered'>
-<span class='kw'>use</span> <span class='ident'>array_tool</span>::<span class='ident'>vec</span>::<span class='op'>*</span>;</pre>
-
-<p>This crate is not limited to just Vector methods and has some helpful
-string methods as well.</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+               </span><a id='src-116' class='srclink' href='../../src/array_tool/src/string.rs.html#9-135' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A string is a collection so we should have more methods for handling strings.</p>
+</div><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='string/index.html'
-                                  title='array_tool::string'>string</a></td>
+                           <td><a class='trait' href='trait.Justify.html'
+                                  title='array_tool::string::Justify'>Justify</a></td>
                            <td class='docblock short'>
-                                <p>A string is a collection so we should have more methods for handling strings.</p>
+                                <p>Justify - expand line to given width</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='vec/index.html'
-                                  title='array_tool::vec'>vec</a></td>
+                           <td><a class='trait' href='trait.SubstMarks.html'
+                                  title='array_tool::string::SubstMarks'>SubstMarks</a></td>
                            <td class='docblock short'>
-                                <p>Array Tool provides many useful methods for vectors</p>
+                                <p>Substitute string character for each index given</p>
                            </td>
-                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
-<table>
+                       </tr>
                        <tr class=' module-item'>
-                           <td><a class='fn' href='fn.uniques.html'
-                                  title='array_tool::uniques'>uniques</a></td>
+                           <td><a class='trait' href='trait.WordWrap.html'
+                                  title='array_tool::string::WordWrap'>WordWrap</a></td>
                            <td class='docblock short'>
-                                <p>Get <code>uniques</code> from two vectors</p>
+                                <p>Word wrapping</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -140,13 +122,13 @@ string methods as well.</p>
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "array_tool";
         window.playgroundUrl = "";
     </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
     
-    <script defer src="../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>

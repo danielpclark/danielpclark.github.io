@@ -1,5 +1,5 @@
 (function() {var implementors = {};
-implementors['array_tool'] = [];implementors['array_tool'] = [];implementors['array_tool'] = [];implementors['array_tool'] = [];implementors['array_tool'] = [];
+implementors['array_tool'] = [];
 
             if (window.register_implementors) {
                 window.register_implementors(implementors);
