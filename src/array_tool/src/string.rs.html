@@ -176,6 +176,74 @@
 <span id="133">133</span>
 <span id="134">134</span>
 <span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright 2015-2016 Daniel P. Clark &amp; array_tool Developers</span>
 <span class='comment'>// </span>
@@ -270,8 +338,52 @@
     }
   }
 
+  <span class='doccomment'>/// After whitespace</span>
+  <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>AfterWhitespace</span> {
+    <span class='doccomment'>/// Given offset method will seek from there to end of string to find the first</span>
+    <span class='doccomment'>/// non white space.  Resulting value is counted from offset.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// ```</span>
+    <span class='doccomment'>/// use array_tool::string::AfterWhitespace;</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// assert_eq!(</span>
+    <span class='doccomment'>///   &quot;asdf           asdf asdf&quot;.seek_end_of_whitespace(6),</span>
+    <span class='doccomment'>///   Some(9)</span>
+    <span class='doccomment'>/// );</span>
+    <span class='doccomment'>/// ```</span>
+    <span class='kw'>fn</span> <span class='ident'>seek_end_of_whitespace</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>offset</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>usize</span><span class='op'>&gt;</span>;
+  }
+  <span class='kw'>impl</span> <span class='ident'>AfterWhitespace</span> <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> {
+    <span class='kw'>fn</span> <span class='ident'>seek_end_of_whitespace</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>offset</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>usize</span><span class='op'>&gt;</span> {
+      <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>len</span>() <span class='op'>&lt;</span> <span class='ident'>offset</span> { <span class='kw'>return</span> <span class='prelude-val'>None</span>; };
+      <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>seeker</span> <span class='op'>=</span> <span class='self'>self</span>[<span class='ident'>offset</span>..<span class='self'>self</span>.<span class='ident'>len</span>()].<span class='ident'>chars</span>();
+      <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>val</span> <span class='op'>=</span> <span class='prelude-val'>None</span>;
+      <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>indx</span> <span class='op'>=</span> <span class='number'>0</span>;
+      <span class='kw'>loop</span> {
+        <span class='kw'>match</span> <span class='ident'>seeker</span>.<span class='ident'>next</span>() {
+          <span class='prelude-val'>Some</span>(<span class='ident'>x</span>) <span class='op'>=&gt;</span> {
+            <span class='kw'>if</span> <span class='ident'>x</span>.<span class='ident'>ne</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot; &quot;</span>.<span class='ident'>chars</span>().<span class='ident'>next</span>().<span class='ident'>unwrap</span>()) {
+              <span class='ident'>val</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>indx</span>);
+              <span class='kw'>break</span>;
+            }
+            <span class='ident'>indx</span> <span class='op'>+=</span> <span class='number'>1</span>;
+          },
+          <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> { <span class='kw'>break</span>; },
+        }
+      }
+      <span class='ident'>val</span>
+    }
+  }
+
   <span class='doccomment'>/// Word wrapping</span>
   <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>WordWrap</span> {
+    <span class='doccomment'>///  White space is treated as valid content and new lines will only be swapped in for</span>
+    <span class='doccomment'>///  the last white space character at the end of the given width.  White space may reach beyond</span>
+    <span class='doccomment'>///  the width you&#39;ve provided.  You will need to trim end of lines in your own output (e.g.</span>
+    <span class='doccomment'>///  splitting string at each new line and printing the line with trim_right).  Or just trust</span>
+    <span class='doccomment'>///  that lines that are beyond the width are just white space and only print the width -</span>
+    <span class='doccomment'>///  ignoring tailing white space.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// # Example</span>
     <span class='doccomment'>/// ```</span>
@@ -287,28 +399,52 @@
     <span class='kw'>fn</span> <span class='ident'>word_wrap</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>width</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span>;
   }
   <span class='kw'>impl</span> <span class='ident'>WordWrap</span> <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> {
-    <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>unsafe_code</span>)]</span>
     <span class='kw'>fn</span> <span class='ident'>word_wrap</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>width</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
       <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>markers</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
       <span class='kw'>fn</span> <span class='ident'>wordwrap</span>(<span class='ident'>t</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span>, <span class='ident'>chunk</span>: <span class='ident'>usize</span>, <span class='ident'>offset</span>: <span class='ident'>usize</span>, <span class='ident'>mrkrs</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>usize</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-        <span class='kw'>let</span> <span class='ident'>mark</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
-          <span class='ident'>t</span>.<span class='ident'>slice_unchecked</span>(<span class='ident'>offset</span>,<span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span>)
-        }.<span class='ident'>rfind</span>(<span class='string'>&quot; &quot;</span>);
-        <span class='kw'>match</span> <span class='ident'>mark</span> {
-          <span class='prelude-val'>Some</span>(<span class='ident'>x</span>) <span class='op'>=&gt;</span> {
-            <span class='kw'>if</span> <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span> <span class='op'>&lt;</span> <span class='ident'>t</span>.<span class='ident'>len</span>() {
-              <span class='ident'>mrkrs</span>.<span class='ident'>push</span>(<span class='ident'>offset</span> <span class='op'>+</span> <span class='ident'>x</span>)
-            };
-            <span class='ident'>wordwrap</span>(<span class='ident'>t</span>, <span class='ident'>chunk</span>, <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>x</span><span class='op'>+</span><span class='number'>1</span>, <span class='ident'>mrkrs</span>)
-          },
+        <span class='kw'>let</span> <span class='ident'>nl</span> <span class='op'>=</span> <span class='ident'>t</span>[<span class='ident'>offset</span>..<span class='op'>*</span><span class='macro'>vec</span><span class='macro'>!</span>[<span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span>,<span class='ident'>t</span>.<span class='ident'>len</span>()].<span class='ident'>iter</span>().<span class='ident'>min</span>().<span class='ident'>unwrap</span>()].<span class='ident'>rfind</span>(<span class='string'>&quot;\n&quot;</span>);
+        <span class='kw'>match</span> <span class='ident'>nl</span> {
           <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
-            <span class='kw'>use</span> <span class='ident'>string</span>::<span class='ident'>SubstMarks</span>;
+            <span class='kw'>let</span> <span class='ident'>mark</span> <span class='op'>=</span> <span class='ident'>t</span>[<span class='ident'>offset</span>..<span class='op'>*</span><span class='macro'>vec</span><span class='macro'>!</span>[<span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span>,<span class='ident'>t</span>.<span class='ident'>len</span>()].<span class='ident'>iter</span>().<span class='ident'>min</span>().<span class='ident'>unwrap</span>()].<span class='ident'>rfind</span>(<span class='string'>&quot; &quot;</span>);
+            <span class='kw'>match</span> <span class='ident'>mark</span> {
+              <span class='prelude-val'>Some</span>(<span class='ident'>x</span>) <span class='op'>=&gt;</span> {
+                <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>eows</span> <span class='op'>=</span> <span class='ident'>x</span>; <span class='comment'>// end of white space</span>
+                <span class='kw'>if</span> <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span> <span class='op'>&lt;</span> <span class='ident'>t</span>.<span class='ident'>len</span>() { <span class='comment'>// check if white space continues</span>
+                  <span class='kw'>match</span> <span class='ident'>t</span>.<span class='ident'>seek_end_of_whitespace</span>(<span class='ident'>offset</span><span class='op'>+</span><span class='ident'>x</span>) {
+                    <span class='prelude-val'>Some</span>(<span class='ident'>a</span>) <span class='op'>=&gt;</span> {
+                      <span class='kw'>if</span> <span class='ident'>a</span>.<span class='ident'>ne</span>(<span class='kw-2'>&amp;</span><span class='number'>0</span>) {
+                        <span class='ident'>eows</span> <span class='op'>=</span> <span class='ident'>x</span><span class='op'>+</span><span class='ident'>a</span><span class='op'>-</span><span class='number'>1</span>;
+                      }
+                    },
+                    <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {},
+                  }
+                }
+                <span class='kw'>if</span> <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span> <span class='op'>&lt;</span> <span class='ident'>t</span>.<span class='ident'>len</span>() { <span class='comment'>// safe to seek ahead by 1 or not end of string</span>
+                  <span class='kw'>if</span> <span class='op'>!</span>[<span class='string'>&quot;\n&quot;</span>.<span class='ident'>chars</span>().<span class='ident'>next</span>().<span class='ident'>unwrap</span>(), <span class='string'>&quot; &quot;</span>.<span class='ident'>chars</span>().<span class='ident'>next</span>().<span class='ident'>unwrap</span>()].<span class='ident'>contains</span>(
+                    <span class='kw-2'>&amp;</span><span class='ident'>t</span>.<span class='ident'>chars</span>().<span class='ident'>nth</span>(<span class='ident'>offset</span><span class='op'>+</span><span class='ident'>eows</span><span class='op'>+</span><span class='number'>1</span>).<span class='ident'>unwrap</span>()
+                  ) {
+                    <span class='ident'>mrkrs</span>.<span class='ident'>push</span>(<span class='ident'>offset</span><span class='op'>+</span><span class='ident'>eows</span>)
+                  }
+                };
+                <span class='ident'>wordwrap</span>(<span class='ident'>t</span>, <span class='ident'>chunk</span>, <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>eows</span><span class='op'>+</span><span class='number'>1</span>, <span class='ident'>mrkrs</span>)
+              },
+              <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> { 
+                <span class='kw'>if</span> <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>chunk</span> <span class='op'>&lt;</span> <span class='ident'>t</span>.<span class='ident'>len</span>() { <span class='comment'>// String may continue</span>
+                  <span class='ident'>wordwrap</span>(<span class='ident'>t</span>, <span class='ident'>chunk</span>, <span class='ident'>offset</span><span class='op'>+</span><span class='number'>1</span>, <span class='ident'>mrkrs</span>) <span class='comment'>// Recurse + 1 until next space</span>
+                } <span class='kw'>else</span> {
+                  <span class='kw'>use</span> <span class='ident'>string</span>::<span class='ident'>SubstMarks</span>;
 
-            <span class='kw'>return</span> <span class='ident'>t</span>.<span class='ident'>subst_marks</span>(<span class='ident'>mrkrs</span>.<span class='ident'>to_vec</span>(), <span class='string'>&quot;\n&quot;</span>)
+                  <span class='kw'>return</span> <span class='ident'>t</span>.<span class='ident'>subst_marks</span>(<span class='ident'>mrkrs</span>.<span class='ident'>to_vec</span>(), <span class='string'>&quot;\n&quot;</span>)
+                }
+              },
+            }
+          },
+          <span class='prelude-val'>Some</span>(<span class='ident'>x</span>) <span class='op'>=&gt;</span> {
+            <span class='ident'>wordwrap</span>(<span class='ident'>t</span>, <span class='ident'>chunk</span>, <span class='ident'>offset</span><span class='op'>+</span><span class='ident'>x</span><span class='op'>+</span><span class='number'>1</span>, <span class='ident'>mrkrs</span>)
           },
         }
       };
-      <span class='ident'>wordwrap</span>(<span class='self'>self</span>, <span class='ident'>width</span>, <span class='number'>0</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>markers</span>)
+      <span class='ident'>wordwrap</span>(<span class='self'>self</span>, <span class='ident'>width</span><span class='op'>+</span><span class='number'>1</span>, <span class='number'>0</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>markers</span>)
     }
   }
 }
