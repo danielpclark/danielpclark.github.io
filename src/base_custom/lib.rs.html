@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/danielpclark/.cargo/registry/src/github.com-1ecc6299db9ec823/base_custom-0.1.6/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -359,10 +359,6 @@
 <span id="314">314</span>
 <span id="315">315</span>
 <span id="316">316</span>
-<span id="317">317</span>
-<span id="318">318</span>
-<span id="319">319</span>
-<span id="320">320</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; base_custom Developers</span>
 <span class="comment">// </span>
@@ -553,10 +549,6 @@
   }
 
   <span class="doccomment">/// Create a custom numeric base from an ascii range of ordinal values</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// This method currently restricts the ascii character range of the</span>
-  <span class="doccomment">/// 95 typical characters starting from 32 and ending with 127.  If you&#39;d</span>
-  <span class="doccomment">/// like to use characters outside of this range please use the `new` method.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_ordinal_range</span>(<span class="ident">range</span>: <span class="ident">Range</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">min</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">max</span>(<span class="number">32</span>, <span class="ident">range</span>.<span class="ident">start</span>);
     <span class="kw">let</span> <span class="ident">max</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">cmp</span>::<span class="ident">min</span>(<span class="number">127</span>, <span class="ident">range</span>.<span class="ident">end</span>);

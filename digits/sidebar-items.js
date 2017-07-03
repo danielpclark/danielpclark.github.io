@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Digits","struct Digits"]],"trait":[["Into","NODOC"]]});
