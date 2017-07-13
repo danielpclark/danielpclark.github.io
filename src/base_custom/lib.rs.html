@@ -379,6 +379,26 @@
 <span id="334">334</span>
 <span id="335">335</span>
 <span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; base_custom Developers</span>
 <span class="comment">// </span>
@@ -519,6 +539,26 @@
       <span class="ident">number</span> <span class="op">=</span> <span class="ident">number</span><span class="op">/</span><span class="self">self</span>.<span class="ident">base</span>;
     };
     <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">result</span>)
+  }
+
+  <span class="doccomment">/// `char` returns a char straight from the character mapping.</span>
+  <span class="doccomment">/// decimal value must be within character range for a Some result.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Example</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">/// use base_custom::BaseCustom;</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let base10 = BaseCustom::&lt;char&gt;::new(&quot;0123456789&quot;.chars().collect());</span>
+  <span class="doccomment">/// assert_eq!(base10.char(9), Some(&#39;9&#39;));</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Output</span>
+  <span class="doccomment">/// ```text</span>
+  <span class="doccomment">/// &#39;9&#39;</span>
+  <span class="doccomment">/// ```</span>
+  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">char</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">input_val</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span> {
+    <span class="kw">if</span> <span class="ident">input_val</span> <span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">primitives</span>.<span class="ident">len</span>() { <span class="kw">return</span> <span class="prelude-val">None</span> }
+    <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">primitives</span>[<span class="ident">input_val</span>])
   }
 
 
