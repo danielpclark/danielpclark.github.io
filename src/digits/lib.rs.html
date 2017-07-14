@@ -326,6 +326,20 @@
 <span id="281">281</span>
 <span id="282">282</span>
 <span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -510,17 +524,31 @@
     <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
+  <span class="comment">// multiply self by 10^x without using typical multiplication</span>
+  <span class="kw">fn</span> <span class="ident">pow_ten</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">positions</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span>: <span class="ident">Digits</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">clone</span>();
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="number">0</span>..<span class="ident">positions</span> {
+      <span class="kw">let</span> <span class="ident">original</span> <span class="op">=</span> <span class="ident">result</span>;
+      <span class="ident">result</span> <span class="op">=</span> <span class="ident">Digits</span>::<span class="ident">new_zero</span>(<span class="self">self</span>.<span class="ident">mapping</span>);
+      <span class="ident">result</span>.<span class="ident">set_left</span>(<span class="ident">original</span>);
+    }
+    <span class="ident">result</span>
+  }
+
   <span class="doccomment">/// Multiply two Digits instances together.  The one the `mul` method is called on</span>
   <span class="doccomment">/// must be mutable and modifies itself.  The other is consumed.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// Returns a clone of the updated `Self` as well.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mul</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-    <span class="self">self</span>.<span class="ident">multiply</span>(<span class="ident">other</span>, <span class="number">0</span>)
+    <span class="kw">let</span> (<span class="ident">d</span>, <span class="ident">r</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">multiply</span>(<span class="ident">other</span>, <span class="number">0</span>).<span class="ident">head_tail</span>();
+    <span class="self">self</span>.<span class="ident">digit</span> <span class="op">=</span> <span class="ident">d</span>;
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">rest</span>) <span class="op">=</span> <span class="ident">r</span> { <span class="self">self</span>.<span class="ident">set_left</span>(<span class="ident">rest</span>.<span class="ident">replicate</span>()); }
+    <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
-  <span class="kw">fn</span> <span class="ident">multiply</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>, <span class="ident">power_of_ten</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+  <span class="kw">fn</span> <span class="ident">multiply</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>, <span class="ident">power_of_ten</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">additives</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Digits</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">position</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="ident">power_of_ten</span>;
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">position</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">power_of_ten</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">o</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">other</span>));
     <span class="kw">loop</span> {
       <span class="kw">match</span> <span class="ident">o</span>.<span class="ident">clone</span>() {
@@ -528,7 +556,7 @@
           <span class="kw">let</span> (<span class="ident">dgt</span>, <span class="ident">tail</span>) <span class="op">=</span> <span class="ident">thing</span>.<span class="ident">head_tail</span>();
           <span class="ident">o</span> <span class="op">=</span> <span class="ident">tail</span>;
 
-          <span class="kw">let</span> <span class="ident">mltply</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">propagate</span>((<span class="self">self</span>.<span class="ident">digit</span> <span class="op">*</span> <span class="ident">dgt</span> <span class="op">*</span> <span class="number">10_u64</span>.<span class="ident">pow</span>(<span class="ident">position</span>)).<span class="ident">to_string</span>());
+          <span class="kw">let</span> <span class="ident">mltply</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">propagate</span>((<span class="self">self</span>.<span class="ident">digit</span> <span class="op">*</span> <span class="ident">dgt</span>).<span class="ident">to_string</span>()).<span class="ident">pow_ten</span>(<span class="ident">position</span>);
 
           <span class="kw">let</span> <span class="ident">mapping</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">mapping</span>.<span class="ident">clone</span>();
 
