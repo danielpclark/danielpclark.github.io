@@ -340,6 +340,55 @@
 <span id="295">295</span>
 <span id="296">296</span>
 <span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -490,6 +539,15 @@
     <span class="ident">Digits</span> { <span class="ident">mapping</span>: <span class="ident">mapping</span>, <span class="ident">digit</span>: <span class="number">1</span>, <span class="ident">left</span>: <span class="prelude-val">None</span> }
   }
 
+  <span class="doccomment">/// `is_one` returns bool value of if the number is one</span>
+  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">!=</span> <span class="number">1</span> { <span class="kw">return</span> <span class="bool-val">false</span> }
+    <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">left</span> {
+      <span class="kw-2">&amp;</span><span class="prelude-val">None</span> <span class="op">=&gt;</span> { <span class="bool-val">true</span> },
+      <span class="kw-2">&amp;</span><span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">bx</span>) <span class="op">=&gt;</span> { <span class="ident">bx</span>.<span class="ident">is_zero</span>() },
+    }
+  }
+
   <span class="comment">// A non-consuming quick end check.</span>
   <span class="comment">// More efficient than calling `is_zero` when this applies.</span>
   <span class="kw">fn</span> <span class="ident">is_end</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
@@ -521,6 +579,47 @@
     }.<span class="ident">as_ref</span>().<span class="ident">clone</span>();
 
     <span class="self">self</span>.<span class="ident">set_left</span>( <span class="ident">intermediate</span>.<span class="ident">add</span>(<span class="ident">current_left</span>).<span class="ident">clone</span>() );
+    <span class="self">self</span>.<span class="ident">clone</span>()
+  }
+
+  <span class="doccomment">/// `succ` plus one</span>
+  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">succ</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">let</span> <span class="ident">one</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">one</span>();
+    <span class="self">self</span>.<span class="ident">add</span>(<span class="ident">one</span>)
+  }
+
+  <span class="doccomment">/// `pred_till_zero` minus one unless already zero, then zero</span>
+  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pred_till_zero</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">==</span> <span class="number">0</span> {
+      <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_end</span>() { <span class="kw">return</span> <span class="self">self</span>.<span class="ident">clone</span>(); }
+      <span class="self">self</span>.<span class="ident">digit</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">mapping</span>.<span class="ident">base</span> <span class="op">-</span> <span class="number">1</span>;
+      <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">one</span> <span class="op">=</span> <span class="bool-val">false</span>;
+      <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bx</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">left</span> {
+        <span class="kw">if</span> <span class="ident">bx</span>.<span class="ident">is_one</span>() {
+          <span class="ident">one</span> <span class="op">=</span> <span class="bool-val">true</span>;
+        } <span class="kw">else</span> {
+          <span class="ident">bx</span>.<span class="ident">pred_till_zero</span>();
+        }
+      };
+      <span class="kw">if</span> <span class="ident">one</span> { <span class="self">self</span>.<span class="ident">left</span> <span class="op">=</span> <span class="prelude-val">None</span>; }
+    } <span class="kw">else</span> {
+      <span class="self">self</span>.<span class="ident">digit</span> <span class="op">-=</span> <span class="number">1</span>;
+    }
+    <span class="self">self</span>.<span class="ident">clone</span>()
+  }
+
+  <span class="doccomment">/// `pow` multiplies self times the power-of given</span>
+  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pow</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">pwr</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">loop</span> {
+      <span class="kw">match</span> <span class="ident">pwr</span>.<span class="ident">is_one</span>() {
+        <span class="bool-val">true</span> <span class="op">=&gt;</span> <span class="kw">break</span>,
+        <span class="bool-val">false</span> <span class="op">=&gt;</span> {
+          <span class="kw">let</span> <span class="ident">copy</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">clone</span>();
+          <span class="self">self</span>.<span class="ident">mul</span>(<span class="ident">copy</span>);
+        }
+      }
+      <span class="ident">pwr</span>.<span class="ident">pred_till_zero</span>();
+    }
     <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
@@ -585,7 +684,6 @@
     <span class="kw">loop</span> {
       <span class="kw">match</span> <span class="ident">additives</span>.<span class="ident">pop</span>() {
         <span class="prelude-val">Some</span>(<span class="ident">dg</span>) <span class="op">=&gt;</span> {
-          <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Adding: {}&quot;</span>, <span class="ident">dg</span>.<span class="ident">to_s</span>());
           <span class="ident">result</span>.<span class="ident">add</span>(<span class="ident">dg</span>);
         },
         <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="kw">break</span>,
