@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/danielpclark/.cargo/registry/src/github.com-1ecc6299db9ec823/base_custom-0.1.8/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -399,6 +399,7 @@
 <span id="354">354</span>
 <span id="355">355</span>
 <span id="356">356</span>
+<span id="357">357</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; base_custom Developers</span>
 <span class="comment">// </span>
@@ -467,7 +468,8 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
   <span class="ident">primitives</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
   <span class="ident">primitives_hash</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">u8</span><span class="op">&gt;</span>,
-  <span class="ident">base</span>: <span class="ident">u64</span>,
+  <span class="doccomment">/// The size of the base</span>
+  <span class="kw">pub</span> <span class="ident">base</span>: <span class="ident">u64</span>,
   <span class="ident">delim</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>,
 }
 
