@@ -668,14 +668,14 @@
     }
   }
 
-  <span class="doccomment">/// Creates a new Digits instance with value of zero and uses the provided character mapping.</span>
-  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_zero</span>(<span class="ident">mapping</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-    <span class="ident">Digits</span> { <span class="ident">mapping</span>: <span class="ident">mapping</span>, <span class="ident">digit</span>: <span class="number">0</span>, <span class="ident">left</span>: <span class="prelude-val">None</span> }
-  }
-
   <span class="doccomment">/// Creates a new Digits instance with value of one and the provided character mapping.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_one</span>(<span class="ident">mapping</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="ident">Digits</span> { <span class="ident">mapping</span>: <span class="ident">mapping</span>, <span class="ident">digit</span>: <span class="number">1</span>, <span class="ident">left</span>: <span class="prelude-val">None</span> }
+  }
+
+  <span class="doccomment">/// Creates a new Digits instance with value of zero and uses the provided character mapping.</span>
+  <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_zero</span>(<span class="ident">mapping</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="ident">Digits</span> { <span class="ident">mapping</span>: <span class="ident">mapping</span>, <span class="ident">digit</span>: <span class="number">0</span>, <span class="ident">left</span>: <span class="prelude-val">None</span> }
   }
 
   <span class="doccomment">/// Creates a new Digits instance with value of one and uses the current character mapping.</span>
