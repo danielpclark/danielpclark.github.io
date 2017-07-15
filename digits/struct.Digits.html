@@ -54,16 +54,14 @@
 <p>This struct acts similar to a full number with a custom numeric character base.
 But the underlying implementation is a linked list where all the methods recurse
 as far as need to to implement the operations.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#35-377' title='goto source code'>[src]</a></span></h3>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#35-358' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>&lt;S&gt;(mapping: &amp;'a <a class="struct" href="../digits/struct.BaseCustom.html" title="struct digits::BaseCustom">BaseCustom</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>&gt;, number: S) -&gt; <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="../digits/trait.Into.html" title="trait digits::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;,&nbsp;</span></code></span></h4>
 <div class='docblock'><p>Creates a new Digits instance with the provided character set and value.</p>
 
 <p>The first parameter must be a BaseCustom object which defines and maps all values.
 The second parameter is a string value with all valid characters from the BaseCustom set.</p>
 </div><h4 id='method.replicate' class="method"><span id='replicate.v' class='invisible'><code>fn <a href='#method.replicate' class='fnname'>replicate</a>(self) -&gt; Self</code></span></h4>
-<div class='docblock'><p>An alias for <code>clone</code>.</p>
-
-<p>(useful for unboxing)</p>
+<div class='docblock'><p>An alias for <code>clone</code>. <em>Useful for unboxing.</em></p>
 </div><h4 id='method.propagate' class="method"><span id='propagate.v' class='invisible'><code>fn <a href='#method.propagate' class='fnname'>propagate</a>&lt;S&gt;(&amp;self, number: S) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;S: <a class="trait" href="../digits/trait.Into.html" title="trait digits::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;,&nbsp;</span></code></span></h4>
 <div class='docblock'><p>Creates a new Digits instance with the internal character set and given value.</p>
 
@@ -109,20 +107,10 @@ must be mutable and modifies itself.  The other is consumed.</p>
 <h1 id='output' class='section-header'><a href='#output'>Output</a></h1>
 <pre><code class="language-text">&quot;13&quot;
 </code></pre>
-
-<p>Mutates <code>self</code>.</p>
-
-<p>Returns a clone of the updated <code>Self</code> as well.</p>
 </div><h4 id='method.succ' class="method"><span id='succ.v' class='invisible'><code>fn <a href='#method.succ' class='fnname'>succ</a>(&amp;mut self) -&gt; Self</code></span></h4>
 <div class='docblock'><p>Plus one.</p>
-
-<p>Mutates <code>self</code>.</p>
 </div><h4 id='method.pred_till_zero' class="method"><span id='pred_till_zero.v' class='invisible'><code>fn <a href='#method.pred_till_zero' class='fnname'>pred_till_zero</a>(&amp;mut self) -&gt; Self</code></span></h4>
-<div class='docblock'><p>Minus one.</p>
-
-<p>Mutates <code>self</code>.</p>
-
-<p>Minuses one unless it&#39;s zero, then it would return a Digits instance of zero.</p>
+<div class='docblock'><p>Minuses one unless it&#39;s zero, then it just returns a Digits instance of zero.</p>
 </div><h4 id='method.pow' class="method"><span id='pow.v' class='invisible'><code>fn <a href='#method.pow' class='fnname'>pow</a>(&amp;mut self, pwr: Self) -&gt; Self</code></span></h4>
 <div class='docblock'><p>Multiplies self times the power-of given Digits parameter.</p>
 
@@ -140,8 +128,6 @@ must be mutable and modifies itself.  The other is consumed.</p>
 <h1 id='output-1' class='section-header'><a href='#output-1'>Output</a></h1>
 <pre><code class="language-text">&quot;121&quot;
 </code></pre>
-
-<p>Mutates <code>self</code>.</p>
 </div><h4 id='method.mul' class="method"><span id='mul.v' class='invisible'><code>fn <a href='#method.mul' class='fnname'>mul</a>(&amp;mut self, other: Self) -&gt; Self</code></span></h4>
 <div class='docblock'><p>Multiply two Digits instances together.  The one the <code>mul</code> method is called on
 must be mutable and modifies itself.  The other is consumed.</p>
@@ -160,22 +146,18 @@ must be mutable and modifies itself.  The other is consumed.</p>
 <h1 id='output-2' class='section-header'><a href='#output-2'>Output</a></h1>
 <pre><code class="language-text">&quot;22&quot;
 </code></pre>
-
-<p>Mutates <code>self</code>.</p>
-
-<p>Returns a clone of the updated <code>Self</code> as well.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#28' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span></h4>
 <div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
 <div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
-</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../digits/trait.Into.html" title="trait digits::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt; for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#391-395' title='goto source code'>[src]</a></span></h3>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../digits/trait.Into.html" title="trait digits::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt; for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#372-376' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.into' class="method"><span id='into.v' class='invisible'><code>fn <a href='../digits/trait.Into.html#tymethod.into' class='fnname'>into</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a></code></span></h4>
 <div class='docblock'><p>NODOC</p>
-</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#403-414' title='goto source code'>[src]</a></span></h3>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#384-395' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
 <div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt">Read more</a></p>
-</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#416-420' title='goto source code'>[src]</a></span></h3>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#397-401' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.fmt-1' class="method"><span id='fmt.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
 <div class='docblock'><p>Formats the value using the given formatter.</p>
 </div></div></section>

@@ -444,25 +444,6 @@
 <span id="399">399</span>
 <span id="400">400</span>
 <span id="401">401</span>
-<span id="402">402</span>
-<span id="403">403</span>
-<span id="404">404</span>
-<span id="405">405</span>
-<span id="406">406</span>
-<span id="407">407</span>
-<span id="408">408</span>
-<span id="409">409</span>
-<span id="410">410</span>
-<span id="411">411</span>
-<span id="412">412</span>
-<span id="413">413</span>
-<span id="414">414</span>
-<span id="415">415</span>
-<span id="416">416</span>
-<span id="417">417</span>
-<span id="418">418</span>
-<span id="419">419</span>
-<span id="420">420</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -526,9 +507,7 @@
     }
   }
 
-  <span class="doccomment">/// An alias for `clone`.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// (useful for unboxing)</span>
+  <span class="doccomment">/// An alias for `clone`. _Useful for unboxing._</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">replicate</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="self">self</span>.<span class="ident">clone</span>() }
 
   <span class="doccomment">/// Creates a new Digits instance with the internal character set and given value.</span>
@@ -651,10 +630,6 @@
   <span class="doccomment">/// ```text</span>
   <span class="doccomment">/// &quot;13&quot;</span>
   <span class="doccomment">/// ```</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Mutates `self`.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Returns a clone of the updated `Self` as well.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">mapping</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">mapping</span>);
     <span class="kw">if</span> <span class="ident">other</span>.<span class="ident">is_end</span>() { <span class="kw">return</span> <span class="self">self</span>.<span class="ident">clone</span>(); };
@@ -680,18 +655,12 @@
   }
 
   <span class="doccomment">/// Plus one.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Mutates `self`.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">succ</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">let</span> <span class="ident">one</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">one</span>();
     <span class="self">self</span>.<span class="ident">add</span>(<span class="ident">one</span>)
   }
 
-  <span class="doccomment">/// Minus one.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Mutates `self`.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Minuses one unless it&#39;s zero, then it would return a Digits instance of zero.</span>
+  <span class="doccomment">/// Minuses one unless it&#39;s zero, then it just returns a Digits instance of zero.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pred_till_zero</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">==</span> <span class="number">0</span> {
       <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_end</span>() { <span class="kw">return</span> <span class="self">self</span>.<span class="ident">clone</span>(); }
@@ -731,9 +700,6 @@
   <span class="doccomment">/// ```text</span>
   <span class="doccomment">/// &quot;121&quot;</span>
   <span class="doccomment">/// ```</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Mutates `self`.</span>
-  <span class="doccomment">///</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pow</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">pwr</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">loop</span> {
       <span class="kw">match</span> <span class="ident">pwr</span>.<span class="ident">is_one</span>() {
@@ -780,10 +746,6 @@
   <span class="doccomment">/// ```text</span>
   <span class="doccomment">/// &quot;22&quot;</span>
   <span class="doccomment">/// ```</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Mutates `self`.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// Returns a clone of the updated `Self` as well.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mul</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">let</span> (<span class="ident">d</span>, <span class="ident">r</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">multiply</span>(<span class="ident">other</span>, <span class="number">0</span>).<span class="ident">head_tail</span>();
     <span class="self">self</span>.<span class="ident">digit</span> <span class="op">=</span> <span class="ident">d</span>;
