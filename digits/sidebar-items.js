@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Digits","struct Digits"]],"trait":[["Into","NODOC"]]});
+initSidebarItems({"struct":[["BaseCustom","The BaseCustom struct holds the information to perform number conversions via the `gen` and `decimal` methods."],["Digits","struct Digits"]],"trait":[["Into","NODOC"]]});

@@ -389,6 +389,80 @@
 <span id="344">344</span>
 <span id="345">345</span>
 <span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -409,7 +483,7 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! Primary use case would be brute forcing character sequences.</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">base_custom</span>;
-<span class="kw">use</span> <span class="ident">base_custom</span>::<span class="ident">BaseCustom</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">base_custom</span>::<span class="ident">BaseCustom</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
 
 <span class="doccomment">/// # struct Digits</span>
@@ -425,12 +499,10 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-  <span class="doccomment">/// `new` creates a new Digits instance with the provided character set and value.</span>
+  <span class="doccomment">/// Creates a new Digits instance with the provided character set and value.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// The first parameter must be a BaseCustom object which defines and maps all values.</span>
   <span class="doccomment">/// The second parameter is a string value with all valid characters from the BaseCustom set.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// You can view the numbers current value at any time with `to_s()` or `to_string()`.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="ident">mapping</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>, <span class="ident">number</span>: <span class="ident">S</span>) <span class="op">-&gt;</span> <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
   <span class="kw">where</span> <span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">number</span> <span class="op">=</span> <span class="ident">number</span>.<span class="ident">into</span>();
@@ -454,10 +526,14 @@
     }
   }
 
-  <span class="doccomment">/// `replicate` — alias for clone (useful for unboxing)</span>
+  <span class="doccomment">/// An alias for `clone`.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// (useful for unboxing)</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">replicate</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="self">self</span>.<span class="ident">clone</span>() }
 
-  <span class="doccomment">/// `propagate` creates a new number from the same underlying numeric base</span>
+  <span class="doccomment">/// Creates a new Digits instance with the internal character set and given value.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// The parameter is a string value with all valid characters from the BaseCustom set.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">propagate</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">number</span>: <span class="ident">S</span>) <span class="op">-&gt;</span> <span class="self">Self</span>
   <span class="kw">where</span> <span class="ident">S</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="ident">Digits</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="ident">mapping</span>, <span class="ident">number</span>)
@@ -494,7 +570,7 @@
     }
   }
 
-  <span class="doccomment">/// `length` returns a `usize` of the total linked list length.</span>
+  <span class="doccomment">/// Returns a `usize` of the total linked list length.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">left</span> {
       <span class="kw-2">&amp;</span><span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="number">1</span>,
@@ -502,17 +578,17 @@
     }
   }
 
-  <span class="doccomment">/// `zero` returns a Digits instance with value of zero and the current character mapping.</span>
+  <span class="doccomment">/// Creates a new Digits instance with value of zero and the current character mapping.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">zero</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="ident">Digits</span>::<span class="ident">new_zero</span>(<span class="self">self</span>.<span class="ident">mapping</span>)
   }
 
-  <span class="doccomment">/// `new_zero` returns a Digits instance with value of zero and the current character mapping.</span>
+  <span class="doccomment">/// Creates a new Digits instance with value of zero and uses the provided character mapping.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_zero</span>(<span class="ident">mapping</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="ident">Digits</span> { <span class="ident">mapping</span>: <span class="ident">mapping</span>, <span class="ident">digit</span>: <span class="number">0</span>, <span class="ident">left</span>: <span class="prelude-val">None</span> }
   }
 
-  <span class="doccomment">/// `is_zero` returns bool value of if the number is zero</span>
+  <span class="doccomment">/// Returns bool value of if the number is zero.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_zero</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
     <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">!=</span> <span class="number">0</span> { <span class="kw">return</span> <span class="bool-val">false</span> }
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">left</span> {
@@ -521,25 +597,25 @@
     }
   }
 
-  <span class="doccomment">/// `pinky` is the smallest digit.</span>
-  <span class="doccomment">/// a.k.a. current digit in the linked list.</span>
+  <span class="doccomment">/// The “pinky” is the smallest digit</span>
+  <span class="doccomment">/// a.k.a. current digit in the linked list</span>
   <span class="doccomment">/// a.k.a. the right most digit.</span>
-  <span class="doccomment">/// This will be a char value for that digit.</span>
+  <span class="doccomment">/// This will be a `char` value for that digit.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pinky</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">char</span> {
     <span class="self">self</span>.<span class="ident">mapping</span>.<span class="ident">char</span>(<span class="self">self</span>.<span class="ident">digit</span> <span class="kw">as</span> <span class="ident">usize</span>).<span class="ident">unwrap</span>()
   }
 
-  <span class="doccomment">/// `one` returns a Digits instance with value of one and the current character mapping.</span>
+  <span class="doccomment">/// Creates a new Digits instance with value of one and uses the current character mapping.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="ident">Digits</span>::<span class="ident">new_one</span>(<span class="self">self</span>.<span class="ident">mapping</span>)
   }
 
-  <span class="doccomment">/// `new_one` returns a Digits instance with value of one and the current character mapping.</span>
+  <span class="doccomment">/// Creates a new Digits instance with value of one and the provided character mapping.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_one</span>(<span class="ident">mapping</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">BaseCustom</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="ident">Digits</span> { <span class="ident">mapping</span>: <span class="ident">mapping</span>, <span class="ident">digit</span>: <span class="number">1</span>, <span class="ident">left</span>: <span class="prelude-val">None</span> }
   }
 
-  <span class="doccomment">/// `is_one` returns bool value of if the number is one</span>
+  <span class="doccomment">/// Returns bool value of if the number is one.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
     <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">!=</span> <span class="number">1</span> { <span class="kw">return</span> <span class="bool-val">false</span> }
     <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">left</span> {
@@ -556,6 +632,27 @@
 
   <span class="doccomment">/// Add two Digits instances together.  The one the `add` method is called on</span>
   <span class="doccomment">/// must be mutable and modifies itself.  The other is consumed.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Example</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">/// use digits::{BaseCustom,Digits};</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let base10 = BaseCustom::&lt;char&gt;::new(&quot;0123456789&quot;.chars().collect());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let mut eleven = Digits::new(&amp;base10, &quot;11&quot;.to_string());</span>
+  <span class="doccomment">/// let two = Digits::new(&amp;base10, &quot;2&quot;.to_string());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// assert_eq!(eleven.add(two).to_s(), &quot;13&quot;);</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Output</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```text</span>
+  <span class="doccomment">/// &quot;13&quot;</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// Mutates `self`.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// Returns a clone of the updated `Self` as well.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
@@ -582,13 +679,19 @@
     <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
-  <span class="doccomment">/// `succ` plus one</span>
+  <span class="doccomment">/// Plus one.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// Mutates `self`.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">succ</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">let</span> <span class="ident">one</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">one</span>();
     <span class="self">self</span>.<span class="ident">add</span>(<span class="ident">one</span>)
   }
 
-  <span class="doccomment">/// `pred_till_zero` minus one unless already zero, then zero</span>
+  <span class="doccomment">/// Minus one.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// Mutates `self`.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// Minuses one unless it&#39;s zero, then it would return a Digits instance of zero.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pred_till_zero</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">==</span> <span class="number">0</span> {
       <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_end</span>() { <span class="kw">return</span> <span class="self">self</span>.<span class="ident">clone</span>(); }
@@ -608,7 +711,29 @@
     <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
-  <span class="doccomment">/// `pow` multiplies self times the power-of given</span>
+  <span class="doccomment">/// Multiplies self times the power-of given Digits parameter.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Example</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">/// use digits::{BaseCustom,Digits};</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let base10 = BaseCustom::&lt;char&gt;::new(&quot;0123456789&quot;.chars().collect());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let mut eleven = Digits::new(&amp;base10, &quot;11&quot;.to_string());</span>
+  <span class="doccomment">/// let two = Digits::new(&amp;base10, &quot;2&quot;.to_string());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// assert_eq!(eleven.pow(two).to_s(), &quot;121&quot;);</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Output</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```text</span>
+  <span class="doccomment">/// &quot;121&quot;</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// Mutates `self`.</span>
+  <span class="doccomment">///</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pow</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">pwr</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">loop</span> {
       <span class="kw">match</span> <span class="ident">pwr</span>.<span class="ident">is_one</span>() {
@@ -637,6 +762,27 @@
   <span class="doccomment">/// Multiply two Digits instances together.  The one the `mul` method is called on</span>
   <span class="doccomment">/// must be mutable and modifies itself.  The other is consumed.</span>
   <span class="doccomment">///</span>
+  <span class="doccomment">/// # Example</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">/// use digits::{BaseCustom,Digits};</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let base10 = BaseCustom::&lt;char&gt;::new(&quot;0123456789&quot;.chars().collect());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let mut eleven = Digits::new(&amp;base10, &quot;11&quot;.to_string());</span>
+  <span class="doccomment">/// let two = Digits::new(&amp;base10, &quot;2&quot;.to_string());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// assert_eq!(eleven.mul(two).to_s(), &quot;22&quot;);</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Output</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```text</span>
+  <span class="doccomment">/// &quot;22&quot;</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// Mutates `self`.</span>
+  <span class="doccomment">///</span>
   <span class="doccomment">/// Returns a clone of the updated `Self` as well.</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mul</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">let</span> (<span class="ident">d</span>, <span class="ident">r</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">multiply</span>(<span class="ident">other</span>, <span class="number">0</span>).<span class="ident">head_tail</span>();
@@ -645,6 +791,8 @@
     <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
+  <span class="comment">// Internal implementation for multiply. Needs the recursive</span>
+  <span class="comment">// value of powers of ten for addition.</span>
   <span class="kw">fn</span> <span class="ident">multiply</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>, <span class="ident">power_of_ten</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">additives</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Digits</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">position</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">power_of_ten</span>;
