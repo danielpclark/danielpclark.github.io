@@ -616,6 +616,9 @@
 <span id="571">571</span>
 <span id="572">572</span>
 <span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -624,7 +627,7 @@
 <span class="comment">// http://opensource.org/licenses/MIT&gt;, at your option. This file may not be</span>
 <span class="comment">// copied, modified, or distributed except according to those terms.</span>
 <span class="comment">//</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">deny</span>(<span class="ident">missing_docs</span>,<span class="ident">trivial_casts</span>,<span class="ident">trivial_numeric_casts</span>,
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_docs</span>,<span class="ident">trivial_casts</span>,<span class="ident">trivial_numeric_casts</span>,
         <span class="ident">missing_debug_implementations</span>, <span class="ident">missing_copy_implementations</span>,
         <span class="ident">unsafe_code</span>,<span class="ident">unstable_features</span>,<span class="ident">unused_import_braces</span>,<span class="ident">unused_qualifications</span>)
 ]</span>
@@ -655,7 +658,8 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-  <span class="doccomment">/// Add two Digits instances together.</span>
+  <span class="doccomment">/// Add two Digits instances together. This will panic if the two Digits don&#39;t share the same</span>
+  <span class="doccomment">/// numeric base.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// # Example</span>
   <span class="doccomment">///</span>
@@ -739,7 +743,8 @@
     }
   }
 
-  <span class="doccomment">/// Multiply two Digits instances together.</span>
+  <span class="doccomment">/// Multiply two Digits instances together.  This will panic if the two Digits don&#39;t share the same</span>
+  <span class="doccomment">/// numeric base.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// # Example</span>
   <span class="doccomment">///</span>
@@ -766,6 +771,7 @@
   <span class="comment">// Internal implementation for multiply. Needs the recursive</span>
   <span class="comment">// value of powers of ten for addition.</span>
   <span class="kw">fn</span> <span class="ident">multiply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>, <span class="ident">power_of_ten</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">mapping</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">mapping</span>);
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">position</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">power_of_ten</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">o</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">other</span>));
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">zero</span>();
@@ -795,8 +801,8 @@
     <span class="ident">result</span>
   }
 
-  <span class="doccomment">/// Add two Digits instances together.  The one the `mut_add` method is called on</span>
-  <span class="doccomment">/// must be mutable and modifies itself.  The other is consumed.</span>
+  <span class="doccomment">/// Add two Digits instances together.  This will panic if the two Digits don&#39;t share the same</span>
+  <span class="doccomment">/// numeric base.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// # Example</span>
   <span class="doccomment">///</span>
@@ -840,8 +846,8 @@
     <span class="self">self</span>.<span class="ident">clone</span>()
   }
 
-  <span class="doccomment">/// Multiply two Digits instances together.  The one the `mut_mul` method is called on</span>
-  <span class="doccomment">/// must be mutable and modifies itself.  The other is consumed.</span>
+  <span class="doccomment">/// Multiply two Digits instances together.  This will panic if the two Digits don&#39;t share the same</span>
+  <span class="doccomment">/// numeric base.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// # Example</span>
   <span class="doccomment">///</span>
