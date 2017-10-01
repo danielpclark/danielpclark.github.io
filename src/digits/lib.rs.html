@@ -675,6 +675,17 @@
 <span id="630">630</span>
 <span id="631">631</span>
 <span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -736,6 +747,7 @@
   <span class="doccomment">/// &quot;13&quot;</span>
   <span class="doccomment">/// ```</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">let</span> <span class="ident">other</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">into_base</span>(<span class="ident">other</span>);
     <span class="self">self</span>.<span class="ident">clone</span>().<span class="ident">mut_add_internal</span>(<span class="ident">other</span>, <span class="bool-val">false</span>)
   }
 
@@ -764,6 +776,14 @@
     <span class="kw">match</span> <span class="self">self</span>.<span class="ident">left</span> {
       <span class="prelude-val">Some</span>(<span class="ident">bx</span>) <span class="op">=&gt;</span> (<span class="self">self</span>.<span class="ident">digit</span>, <span class="prelude-val">Some</span>(<span class="ident">bx</span>)),
       <span class="prelude-val">None</span> <span class="op">=&gt;</span> (<span class="self">self</span>.<span class="ident">digit</span>, <span class="prelude-val">None</span>),
+    }
+  }
+
+  <span class="kw">fn</span> <span class="ident">into_base</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">if</span> <span class="self">self</span>.<span class="ident">mapping</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">mapping</span> {
+      <span class="ident">other</span>
+    } <span class="kw">else</span> {
+      <span class="self">self</span>.<span class="ident">gen</span>(<span class="ident">other</span>)
     }
   }
 
@@ -844,8 +864,9 @@
 
   <span class="comment">// Internal implementation for multiply. Needs the recursive</span>
   <span class="comment">// value of powers of ten for addition.</span>
-  <span class="kw">fn</span> <span class="ident">multiply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>, <span class="ident">power_of_ten</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-    <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">mapping</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">mapping</span>);
+  <span class="kw">fn</span> <span class="ident">multiply</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">power_of_ten</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">let</span> <span class="ident">other</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">into_base</span>(<span class="ident">other</span>);
+
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">position</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">power_of_ten</span>;
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">o</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">other</span>));
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">zero</span>();
@@ -899,8 +920,9 @@
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mut_add</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
     <span class="self">self</span>.<span class="ident">mut_add_internal</span>(<span class="ident">other</span>, <span class="bool-val">false</span>)
   }
-  <span class="kw">fn</span> <span class="ident">mut_add_internal</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>, <span class="ident">trim</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-    <span class="macro">assert</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">mapping</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">mapping</span>);
+  <span class="kw">fn</span> <span class="ident">mut_add_internal</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">trim</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">let</span> <span class="ident">other</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">into_base</span>(<span class="ident">other</span>);
+
     <span class="kw">if</span> <span class="ident">other</span>.<span class="ident">is_end</span>() { <span class="kw">return</span> <span class="self">self</span>.<span class="ident">clone</span>(); };
     <span class="kw">let</span> (<span class="ident">last</span>, <span class="ident">rest</span>) <span class="op">=</span> <span class="ident">other</span>.<span class="ident">head_tail</span>();
 
