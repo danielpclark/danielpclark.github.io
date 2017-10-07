@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Digits","This struct acts similar to a full number with a custom numeric character base. But the underlying implementation is a linked list where all the methods recurse as far as need to to implement the operations."],["StepMap",""]],"trait":[["Into",""]]});
+initSidebarItems({"struct":[["Digits","This struct acts similar to a full number with a custom numeric character base which is provided and mapped via a BaseCustom instance."],["StepMap",""]],"trait":[["Into",""]]});

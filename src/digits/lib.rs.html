@@ -1015,6 +1015,23 @@
 <span id="970">970</span>
 <span id="971">971</span>
 <span id="972">972</span>
+<span id="973">973</span>
+<span id="974">974</span>
+<span id="975">975</span>
+<span id="976">976</span>
+<span id="977">977</span>
+<span id="978">978</span>
+<span id="979">979</span>
+<span id="980">980</span>
+<span id="981">981</span>
+<span id="982">982</span>
+<span id="983">983</span>
+<span id="984">984</span>
+<span id="985">985</span>
+<span id="986">986</span>
+<span id="987">987</span>
+<span id="988">988</span>
+<span id="989">989</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -1043,8 +1060,10 @@
 };
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>::{<span class="ident">PartialOrd</span>,<span class="ident">Ordering</span>};
 
-<span class="doccomment">/// This struct acts similar to a full number with a custom numeric character base.</span>
-<span class="doccomment">/// But the underlying implementation is a linked list where all the methods recurse</span>
+<span class="doccomment">/// This struct acts similar to a full number with a custom numeric character base</span>
+<span class="doccomment">/// which is provided and mapped via a BaseCustom instance.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The underlying implementation for Digits is a linked list where all the methods recurse</span>
 <span class="doccomment">/// as far as need to to implement the operations.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
@@ -1115,10 +1134,8 @@
     }
   }
 
-  <span class="doccomment">/// Determine if two Digits are compatible for addition or multiplication.</span>
-  <span class="doccomment">///</span>
-  <span class="doccomment">/// _This method is not be required anymore as addition and multiplication</span>
-  <span class="doccomment">/// will perform numeric base conversion if there is a difference._</span>
+  <span class="doccomment">/// Returns whether the two Digits instances have the same numeric base and</span>
+  <span class="doccomment">/// character mapping.</span>
   <span class="doccomment">///</span>
   <span class="doccomment">/// # Example</span>
   <span class="doccomment">///</span>
@@ -1581,6 +1598,23 @@
   <span class="doccomment">///</span>
   <span class="doccomment">/// Returns a `usize` of how many Digits values from the right</span>
   <span class="doccomment">/// match the BaseCustom index given for number.</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Example</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">/// use digits::{BaseCustom,Digits};</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let base10 = BaseCustom::&lt;char&gt;::new(&quot;ABC3456789&quot;.chars().collect());</span>
+  <span class="doccomment">/// let num = Digits::new(&amp;base10, &quot;34BBB&quot;.to_string());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// assert_eq!(num.rcount(1), 3);</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// # Output</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```text</span>
+  <span class="doccomment">/// 3</span>
+  <span class="doccomment">/// ```</span>
   <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rcount</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">character_index</span>: <span class="ident">u8</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">d</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">left</span> {
       <span class="kw">if</span> <span class="self">self</span>.<span class="ident">digit</span> <span class="op">==</span> <span class="ident">character_index</span> <span class="kw">as</span> <span class="ident">u64</span> {
