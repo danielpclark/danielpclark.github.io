@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `abrute` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, abrute">
+    <meta name="description" content="Source to the Rust file `src/validators.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
 
-    <title>abrute - Rust</title>
+    <title>validators.rs.html -- source</title>
 
-    <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
     
 </head>
-<body class="rustdoc mod">
+<body class="rustdoc source">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Crate abrute</p><p class='location'></p><script>window.sidebarCurrent = {name: 'abrute', ty: 'mod', relpath: '../'};</script>
+        
     </nav>
 
     <nav class="sub">
@@ -43,12 +43,26 @@
         </form>
     </nav>
 
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>abrute</a></span><span class='out-of-band'><span id='render-detail'>
-                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                       [<span class='inner'>&#x2212;</span>]
-                   </a>
-               </span><a class='srclink' href='../src/abrute/main.rs.html#8-106' title='goto source code'>[src]</a></span></h1>
+    <section id='main' class="content"><pre class="line-numbers"><span id="1">1</span>
+<span id="2">2</span>
+<span id="3">3</span>
+<span id="4">4</span>
+<span id="5">5</span>
+<span id="6">6</span>
+<span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
+</pre><pre class="rust ">
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_is_digit</span>(<span class="ident">v</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">String</span><span class="op">&gt;</span> {
+  <span class="kw">if</span> <span class="ident">v</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>().<span class="ident">is_ok</span>() { <span class="kw">return</span> <span class="prelude-val">Ok</span>(()); } 
+  <span class="prelude-val">Err</span>(<span class="ident">String</span>::<span class="ident">from</span>(<span class="string">&quot;The value did not contain valid digit from 0 to 255&quot;</span>))
+}
+
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_string_length</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">max</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">String</span><span class="op">&gt;</span> {
+  <span class="kw">if</span> <span class="ident">v</span>.<span class="ident">len</span>() <span class="op">&lt;=</span> <span class="ident">max</span> { <span class="kw">return</span> <span class="prelude-val">Ok</span>(()); } 
+  <span class="prelude-val">Err</span>(<span class="ident">String</span>::<span class="ident">from</span>(<span class="string">&quot;The value did not contain valid digit from 0 to 255&quot;</span>))
+}
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -103,10 +117,10 @@
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "abrute";
     </script>
-    <script src="../main.js"></script>
-    <script defer src="../search-index.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>
