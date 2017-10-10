@@ -149,6 +149,15 @@
 <span id="104">104</span>
 <span id="105">105</span>
 <span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other abrute Developers</span>
 <span class="comment">// </span>
@@ -206,7 +215,7 @@
 -------------------------------------------------------------
            By: {author}
 
-USAGE:\tabrute &lt;RANGE&gt; &lt;CHARACTERS&gt; [OPTIONS] [--] &lt;TARGET&gt;
+USAGE:\tabrute &lt;RANGE&gt; &lt;CHARACTERS&gt; [OPTIONS] -- &lt;TARGET&gt;
 
   &lt;RANGE&gt;         Single digit or a range 4:6 for password length.
   &lt;CHARACTERS&gt;    Characters to use in password attempt. Don&#39;t use quotes unless
@@ -216,7 +225,8 @@ USAGE:\tabrute &lt;RANGE&gt; &lt;CHARACTERS&gt; [OPTIONS] [--] &lt;TARGET&gt;
                   allow any characters of the same kind to neghibor in the
                   attempts.
   -s, --start     Starting character sequence to begin at.
-  &lt;TARGET&gt;        Target file to decrypt.
+  &lt;TARGET&gt;        Target file to decrypt.  The target must be preceeded by a
+                  double dash: -- target.aes
   -h, --help      Prints help information.
   -v, --version   Prints version information.
 
@@ -236,6 +246,14 @@ USE OF THIS BINARY FALLS UNDER THE MIT LICENSE       (c) 2017&quot;</span>).
   <span class="ident">sequencer</span>.<span class="ident">zero_fill</span>(<span class="ident">min</span> <span class="kw">as</span> <span class="ident">usize</span>);
   <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="ident">matches</span>.<span class="ident">value_of</span>(<span class="string">&quot;TARGET&quot;</span>).<span class="ident">unwrap</span>();
   <span class="kw">let</span> <span class="ident">adjacent</span> <span class="op">=</span> <span class="ident">matches</span>.<span class="ident">value_of</span>(<span class="string">&quot;adjacent&quot;</span>);
+
+  <span class="kw">let</span> <span class="ident">seq_base</span> <span class="op">=</span> <span class="ident">sequencer</span>.<span class="ident">base</span>();
+  <span class="kw">if</span> <span class="kw">let</span> <span class="kw-2">&amp;</span><span class="prelude-val">Some</span>(<span class="ident">num</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">adjacent</span> { 
+    <span class="kw">if</span> <span class="ident">seq_base</span> <span class="op">&gt;</span> <span class="number">3</span> {
+      <span class="ident">validate_is_digit</span>(<span class="ident">num</span>.<span class="ident">to_string</span>()).<span class="ident">ok</span>();
+      <span class="ident">sequencer</span>.<span class="ident">prep_non_adjacent</span>(<span class="ident">num</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>()); 
+    }
+  }
 
   <span class="kw">if</span> <span class="op">!</span><span class="ident">Path</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>).<span class="ident">exists</span>() {
     <span class="macro">writeln</span><span class="macro">!</span>(<span class="ident">io</span>::<span class="ident">stderr</span>(), <span class="string">&quot;Error: File {:?} does not exist.&quot;</span>, <span class="ident">target</span>).<span class="ident">err</span>();

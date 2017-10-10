@@ -119,6 +119,7 @@
 <span id="74">74</span>
 <span id="75">75</span>
 <span id="76">76</span>
+<span id="77">77</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Mutex</span>;
 <span class="kw">use</span> <span class="ident">digits</span>::<span class="ident">Digits</span>;
@@ -132,15 +133,16 @@
   <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
   <span class="kw">loop</span> {
     <span class="kw">if</span> <span class="ident">counter</span> <span class="op">&gt;=</span> <span class="ident">qty</span> { <span class="kw">break</span>; }
+
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">a</span>) <span class="op">=</span> <span class="ident">adj</span> { 
       <span class="kw">if</span> <span class="ident">d</span>.<span class="ident">base</span>() <span class="op">&gt;</span> <span class="number">3</span> {
-        <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">d</span>.<span class="ident">next_non_adjacent</span>(<span class="ident">a</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>() <span class="kw">as</span> <span class="ident">usize</span>).<span class="ident">to_s</span>());
-      } <span class="kw">else</span> {
-        <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">d</span>.<span class="ident">succ</span>().<span class="ident">to_s</span>());
+        <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">d</span>.<span class="ident">step_non_adjacent</span>(<span class="ident">a</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>() <span class="kw">as</span> <span class="ident">usize</span>).<span class="ident">to_s</span>());
+        <span class="ident">counter</span> <span class="op">+=</span> <span class="number">1</span>;
+        <span class="kw">continue</span>;
       }
-    } <span class="kw">else</span> {
-      <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">d</span>.<span class="ident">succ</span>().<span class="ident">to_s</span>());
     }
+
+    <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">d</span>.<span class="ident">succ</span>().<span class="ident">to_s</span>());
     <span class="ident">counter</span> <span class="op">+=</span> <span class="number">1</span>;
   }
   <span class="ident">result</span>
