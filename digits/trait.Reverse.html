@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `Into` trait in crate `digits`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, Into">
+    <meta name="description" content="API documentation for the Rust `Reverse` trait in crate `digits`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Reverse">
 
-    <title>digits::Into - Rust</title>
+    <title>digits::Reverse - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Trait Into</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#foreign-impls">Implementations on Foreign Types</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='index.html'>digits</a></p><script>window.sidebarCurrent = {name: 'Into', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait Reverse</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='index.html'>digits</a></p><script>window.sidebarCurrent = {name: 'Reverse', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -44,32 +44,38 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>digits</a>::<wbr><a class="trait" href=''>Into</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>digits</a>::<wbr><a class="trait" href=''>Reverse</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/digits/lib.rs.html#897-899' title='goto source code'>[src]</a></span></h1>
-<pre class='rust trait'>pub trait Into&lt;String&gt; {
-    fn <a href='#tymethod.into' class='fnname'>into</a>(self) -&gt; String;
-}</pre>
+               </span><a class='srclink' href='../src/digits/lib.rs.html#854-868' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Reverse {
+    fn <a href='#tymethod.reverse' class='fnname'>reverse</a>(&amp;mut self);
+}</pre><div class='docblock'><p>Reverse mutates self into a reversed self.</p>
+</div>
             <h2 id='required-methods' class='small-section-header'>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.into' class='method'><span id='into.v' class='invisible'><code>fn <a href='#tymethod.into' class='fnname'>into</a>(self) -&gt; String</code></span></h3></div>
-                <h2 id='foreign-impls' class='section-header'>
-                  Implementations on Foreign Types<a href='#foreign-impls' class='anchor'></a>
-                </h2>
-            <h3 id='impl-Into&lt;String&gt;' class='impl'><span class='in-band'><code>impl <a class="trait" href="../digits/trait.Into.html" title="trait digits::Into">Into</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt; for <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code><a href='#impl-Into&lt;String&gt;' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#958-962' title='goto source code'>[src]</a></span></h3>
-<span class='docblock autohide'><div class='impl-items'><h4 id='method.into' class="method"><span id='into.v-1' class='invisible'><code>fn <a href='#method.into' class='fnname'>into</a>(self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/digits/lib.rs.html#959-961' title='goto source code'>[src]</a></span></h4>
-</div></span>
+        <h3 id='tymethod.reverse' class='method'><span id='reverse.v' class='invisible'><code>fn <a href='#tymethod.reverse' class='fnname'>reverse</a>(&amp;mut self)</code></span></h3><div class='docblock'>
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">digits</span>::{<span class="ident">BaseCustom</span>,<span class="ident">Digits</span>,<span class="ident">Reverse</span>};
+
+<span class="kw">let</span> <span class="ident">base10</span> <span class="op">=</span> <span class="ident">BaseCustom</span>::<span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span>::<span class="ident">new</span>(<span class="string">&quot;0123456789&quot;</span>.<span class="ident">chars</span>().<span class="ident">collect</span>());
+<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">nine</span> <span class="op">=</span> <span class="ident">Digits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">base10</span>, <span class="string">&quot;0009&quot;</span>.<span class="ident">to_string</span>());
+
+<span class="ident">nine</span>.<span class="ident">reverse</span>();
+
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">nine</span>.<span class="ident">to_s</span>(), <span class="string">&quot;9000&quot;</span>);</pre>
+</div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='../src/digits/lib.rs.html#952-956' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Into&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt; for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></li>
+    <li><div class='out-of-band'><a class='srclink' href='../src/digits/lib.rs.html#870-894' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Reverse for <a class="struct" href="../digits/struct.Digits.html" title="struct digits::Digits">Digits</a>&lt;'a&gt;</code></li>
 </ul><script type="text/javascript" async
-                         src="../implementors/digits/trait.Into.js">
+                         src="../implementors/digits/trait.Reverse.js">
                  </script></section>
     <section id='search' class="content hidden"></section>
 

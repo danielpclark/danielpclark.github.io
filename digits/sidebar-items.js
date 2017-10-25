@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Digits","This struct acts similar to a full number with a custom numeric character base which is provided and mapped via a BaseCustom instance."],["StepMap",""]],"trait":[["Into",""]]});
+initSidebarItems({"struct":[["Digits","This struct acts similar to a full number with a custom numeric character base which is provided and mapped via a BaseCustom instance."],["StepMap",""]],"trait":[["Into",""],["Reverse","Reverse mutates self into a reversed self."]]});

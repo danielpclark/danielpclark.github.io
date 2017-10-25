@@ -1181,6 +1181,49 @@
 <span id="1136">1136</span>
 <span id="1137">1137</span>
 <span id="1138">1138</span>
+<span id="1139">1139</span>
+<span id="1140">1140</span>
+<span id="1141">1141</span>
+<span id="1142">1142</span>
+<span id="1143">1143</span>
+<span id="1144">1144</span>
+<span id="1145">1145</span>
+<span id="1146">1146</span>
+<span id="1147">1147</span>
+<span id="1148">1148</span>
+<span id="1149">1149</span>
+<span id="1150">1150</span>
+<span id="1151">1151</span>
+<span id="1152">1152</span>
+<span id="1153">1153</span>
+<span id="1154">1154</span>
+<span id="1155">1155</span>
+<span id="1156">1156</span>
+<span id="1157">1157</span>
+<span id="1158">1158</span>
+<span id="1159">1159</span>
+<span id="1160">1160</span>
+<span id="1161">1161</span>
+<span id="1162">1162</span>
+<span id="1163">1163</span>
+<span id="1164">1164</span>
+<span id="1165">1165</span>
+<span id="1166">1166</span>
+<span id="1167">1167</span>
+<span id="1168">1168</span>
+<span id="1169">1169</span>
+<span id="1170">1170</span>
+<span id="1171">1171</span>
+<span id="1172">1172</span>
+<span id="1173">1173</span>
+<span id="1174">1174</span>
+<span id="1175">1175</span>
+<span id="1176">1176</span>
+<span id="1177">1177</span>
+<span id="1178">1178</span>
+<span id="1179">1179</span>
+<span id="1180">1180</span>
+<span id="1181">1181</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Daniel P. Clark &amp; other digits Developers</span>
 <span class="comment">// </span>
@@ -2031,6 +2074,49 @@
     <span class="ident">lnum</span> <span class="op">=</span> <span class="ident">lnum</span>.<span class="ident">trim_left_matches</span>(<span class="self">self</span>.<span class="ident">mapping</span>.<span class="ident">zero</span>().<span class="ident">clone</span>()).<span class="ident">to_string</span>();
     <span class="kw">let</span> <span class="ident">lval</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">propagate</span>(<span class="ident">lnum</span>);
     <span class="self">self</span>.<span class="ident">set_left</span>(<span class="ident">lval</span>, <span class="bool-val">true</span>);
+  }
+}
+
+<span class="doccomment">/// Reverse mutates self into a reversed self.</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Reverse</span> {
+  <span class="doccomment">/// # Example</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// ```</span>
+  <span class="doccomment">/// use digits::{BaseCustom,Digits,Reverse};</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// let base10 = BaseCustom::&lt;char&gt;::new(&quot;0123456789&quot;.chars().collect());</span>
+  <span class="doccomment">/// let mut nine = Digits::new(&amp;base10, &quot;0009&quot;.to_string());</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// nine.reverse();</span>
+  <span class="doccomment">///</span>
+  <span class="doccomment">/// assert_eq!(nine.to_s(), &quot;9000&quot;);</span>
+  <span class="doccomment">/// ```</span>
+  <span class="kw">fn</span> <span class="ident">reverse</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>);
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Reverse</span> <span class="kw">for</span> <span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+  <span class="kw">fn</span> <span class="ident">reverse</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">curr_node</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">clone</span>());
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">prev_node</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Digits</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> <span class="op">=</span> <span class="prelude-val">None</span>;
+
+    <span class="kw">while</span> <span class="ident">curr_node</span> <span class="op">!=</span> <span class="prelude-val">None</span> {
+      <span class="kw">let</span> <span class="ident">cn</span> <span class="op">=</span> <span class="ident">curr_node</span>.<span class="ident">unwrap</span>();
+      <span class="kw">let</span> <span class="ident">next_node</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">n</span>) <span class="op">=</span> <span class="ident">cn</span>.<span class="ident">clone</span>().<span class="ident">left</span> {
+        <span class="prelude-val">Some</span>(<span class="ident">n</span>.<span class="ident">replicate</span>())
+      } <span class="kw">else</span> { <span class="prelude-val">None</span> };
+      <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">cn</span>;
+      <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">prev</span>) <span class="op">=</span> <span class="ident">prev_node</span> {
+        <span class="ident">c</span>.<span class="ident">set_left</span>(<span class="ident">prev</span>, <span class="bool-val">false</span>);
+      } <span class="kw">else</span> {
+        <span class="ident">c</span>.<span class="ident">left</span> <span class="op">=</span> <span class="prelude-val">None</span>;
+      }
+      <span class="ident">prev_node</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">c</span>);
+      <span class="ident">curr_node</span> <span class="op">=</span> <span class="ident">next_node</span>;
+    }
+
+    <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">prev_node</span>.<span class="ident">unwrap</span>();
+    <span class="self">self</span>.<span class="ident">digit</span> <span class="op">=</span> <span class="ident">p</span>.<span class="ident">digit</span>;
+    <span class="self">self</span>.<span class="ident">left</span> <span class="op">=</span> <span class="ident">p</span>.<span class="ident">left</span>;
   }
 }
 
