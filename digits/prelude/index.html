@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `base_custom` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, base_custom">
+    <meta name="description" content="API documentation for the Rust `prelude` mod in crate `digits`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, prelude">
 
-    <title>base_custom - Rust</title>
+    <title>digits::prelude - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Crate base_custom</p><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'base_custom', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Module prelude</p><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'><a href='../index.html'>digits</a></p><script>window.sidebarCurrent = {name: 'prelude', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -44,46 +44,27 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>base_custom</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>digits</a>::<wbr><a class="mod" href=''>prelude</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/base_custom/lib.rs.html#7-373' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'>
-<h1 id='base_custom' class='section-header'><a href='#base_custom'>base_custom</a></h1>
-<p>allows you to use any set of characters as your own numeric base and convert
-to and from decimal.  This can be taken advantage of in various ways:</p>
-
-<ul>
-<li><p>Mathematics: number conversion</p></li>
-<li><p>Brute force sequencing</p></li>
-<li><p>Rolling ciphers</p></li>
-<li><p>Moderate information concealment</p></li>
-<li><p>Other potential uses such as deriving music or art from numbers</p></li>
-</ul>
-
-<h2 id='to-include-it' class='section-header'><a href='#to-include-it'>To Include It</a></h2>
-<p>Add <code>base_custom</code> to your dependencies section of your <code>Cargo.toml</code> file.</p>
-
-<pre><code class="language-text">[dependencies]
-base_custom = &quot;^0.1&quot;
-</code></pre>
-
-<p>In your rust files where you plan to use it put this at the top</p>
-
-<pre><code class="language-text">extern crate base_custom;
-use base_custom::BaseCustom;
-</code></pre>
-
-<p>This is licensed under MIT or APACHE 2.0 at your option.</p>
-</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+               </span><a class='srclink' href='../../src/digits/lib.rs.html#1128-1133' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.BaseCustom.html"
-                                  title='struct base_custom::BaseCustom'>BaseCustom</a></td>
+                                  title='struct digits::prelude::BaseCustom'>BaseCustom</a></td>
                            <td class='docblock-short'>
                                 <p>The BaseCustom struct holds the information to perform number conversions
 via the <code>gen</code> and <code>decimal</code> methods.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Digits.html"
+                                  title='struct digits::prelude::Digits'>Digits</a></td>
+                           <td class='docblock-short'>
+                                <p>This struct acts similar to a full number with a custom numeric character base
+which is provided and mapped via a BaseCustom instance.</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -139,10 +120,10 @@ via the <code>gen</code> and <code>decimal</code> methods.</p>
     
 
     <script>
-        window.rootPath = "../";
-        window.currentCrate = "base_custom";
+        window.rootPath = "../../";
+        window.currentCrate = "digits";
     </script>
-    <script src="../main.js"></script>
-    <script defer src="../search-index.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>
