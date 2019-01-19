@@ -250,6 +250,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#active-instance_method" title="#active (instance method)">#<strong>active</strong>(owner = username)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Please Note that the naming of this endpoint may be changed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#branch-instance_method" title="#branch (instance method)">#<strong>branch</strong>(name)  &#x21d2; Success, RequestError </a>
     
 
@@ -658,6 +682,54 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#setting-instance_method" title="#setting (instance method)">#<strong>setting</strong>(name, value = nil)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>An individual repository setting.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#settings-instance_method" title="#settings (instance method)">#<strong>settings</strong>  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A list of user settings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#stages-instance_method" title="#stages (instance method)">#<strong>stages</strong>(build_id)  &#x21d2; Success, RequestError </a>
     
 
@@ -771,17 +843,17 @@
       <pre class="lines">
 
 
+34
+35
 36
 37
 38
 39
 40
-41
-42
-43</pre>
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_repo'>repo</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
@@ -847,6 +919,8 @@
       <pre class="lines">
 
 
+24
+25
 26
 27
 28
@@ -2318,10 +2392,217 @@
 1494
 1495
 1496
-1497</pre>
+1497
+1498
+1499
+1500
+1501
+1502
+1503
+1504
+1505
+1506
+1507
+1508
+1509
+1510
+1511
+1512
+1513
+1514
+1515
+1516
+1517
+1518
+1519
+1520
+1521
+1522
+1523
+1524
+1525
+1526
+1527
+1528
+1529
+1530
+1531
+1532
+1533
+1534
+1535
+1536
+1537
+1538
+1539
+1540
+1541
+1542
+1543
+1544
+1545
+1546
+1547
+1548
+1549
+1550
+1551
+1552
+1553
+1554
+1555
+1556
+1557
+1558
+1559
+1560
+1561
+1562
+1563
+1564
+1565
+1566
+1567
+1568
+1569
+1570
+1571
+1572
+1573
+1574
+1575
+1576
+1577
+1578
+1579
+1580
+1581
+1582
+1583
+1584
+1585
+1586
+1587
+1588
+1589
+1590
+1591
+1592
+1593
+1594
+1595
+1596
+1597
+1598
+1599
+1600
+1601
+1602
+1603
+1604
+1605
+1606
+1607
+1608
+1609
+1610
+1611
+1612
+1613
+1614
+1615
+1616
+1617
+1618
+1619
+1620
+1621
+1622
+1623
+1624
+1625
+1626
+1627
+1628
+1629
+1630
+1631
+1632
+1633
+1634
+1635
+1636
+1637
+1638
+1639
+1640
+1641
+1642
+1643
+1644
+1645
+1646
+1647
+1648
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656
+1657
+1658
+1659
+1660
+1661
+1662
+1663
+1664
+1665
+1666
+1667
+1668
+1669
+1670
+1671
+1672
+1673
+1674
+1675
+1676
+1677
+1678
+1679
+1680
+1681
+1682
+1683
+1684
+1685
+1686
+1687
+1688
+1689
+1690
+1691
+1692
+1693
+1694
+1695
+1696
+1697
+1698
+1699
+1700
+1701
+1702
+1703
+1704</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></span>
   <span class='const'><span class='object_link'><a href="#API_ENDPOINT-constant" title="Trav3::Travis::API_ENDPOINT (constant)">API_ENDPOINT</a></span></span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Trav3.html#API_ROOT-constant" title="Trav3::API_ROOT (constant)">API_ROOT</a></span></span>
@@ -2379,6 +2660,67 @@
     <span class='kw'>self</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Please Note that the naming of this endpoint may be changed. Our naming convention for this information is in flux. If you have suggestions for how this information should be presented please leave us feedback by commenting in this issue here or emailing support support@travis-ci.com.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># A list of all the builds in an &quot;active&quot; state, either created or started.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name    Type    Description
+</span>  <span class='comment'>#     builds  Builds  The active builds.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Owner**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Returns a list of &quot;active&quot; builds for the owner.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{owner.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     owner.login        String  User or organization login set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/danielpclark/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{user.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     user.login         String  Login set on Github.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/danielpclark/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{organization.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable   Type    Description
+</span>  <span class='comment'>#     organization.login  String  Login set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/travis-ci/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/github_id/{owner.github_id}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     owner.github_id    Integer  User or organization id set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/github_id/639823/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param owner [String] username, organization name, or github id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
+      <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># The branch of a GitHub repository. Useful for obtaining information about the last build on a given branch.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.**
@@ -2422,7 +2764,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/891/branch/master
+</span>  <span class='comment'>#     Example: GET /repo/891/branch/master
 </span>  <span class='comment'>#
 </span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}&lt;/code&gt;
 </span>  <span class='comment'>#
@@ -2432,7 +2774,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/rails%2Frails/branch/master
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branch/master
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param name [String] the branch name for the current repository
 </span>  <span class='comment'># @return [Success, RequestError]
@@ -2479,7 +2821,7 @@
 </span>  <span class='comment'>#     offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 </span>  <span class='comment'>#     sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/891/branches?limit=5&amp;exists_on_github=true
+</span>  <span class='comment'>#     Example: GET /repo/891/branches?limit=5&amp;exists_on_github=true
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;last_build&lt;/code&gt;, &lt;code&gt;exists_on_github&lt;/code&gt;, &lt;code&gt;default_branch&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'># The default value is &lt;code&gt;default_branch&lt;/code&gt;,&lt;code&gt;exists_on_github&lt;/code&gt;,&lt;code&gt;last_build:desc&lt;/code&gt;.
@@ -2496,7 +2838,7 @@
 </span>  <span class='comment'>#     offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 </span>  <span class='comment'>#     sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;last_build&lt;/code&gt;, &lt;code&gt;exists_on_github&lt;/code&gt;, &lt;code&gt;default_branch&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'># The default value is &lt;code&gt;default_branch&lt;/code&gt;,&lt;code&gt;exists_on_github&lt;/code&gt;,&lt;code&gt;last_build:desc&lt;/code&gt;.
@@ -3002,7 +3344,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># POST &lt;code&gt;/lint&lt;/code&gt;
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:POST /lint
+</span>  <span class='comment'>#     Example: POST /lint
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param yaml_content [String] the contents for the file `.travis.yml`
 </span>  <span class='comment'># @return [Success, RequestError]
@@ -3070,7 +3412,7 @@
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#     log.token        Unknown   Documentation missing.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /job/86601347/log.txt
+</span>  <span class='comment'>#     Example: GET /job/86601347/log.txt
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Delete**
 </span>  <span class='comment'>#
@@ -3148,7 +3490,7 @@
 </span>  <span class='comment'>#     Query Parameter    Type      Description
 </span>  <span class='comment'>#     include            [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /org/87
+</span>  <span class='comment'>#     Example: GET /org/87
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param org_id [String, Integer] the organization id
 </span>  <span class='comment'># @raise [TypeError] if given organization id is not a number
@@ -3197,7 +3539,7 @@
 </span>  <span class='comment'>#     role               Unknown   Alias for organization.role.
 </span>  <span class='comment'>#     sort_by            [String]  Attributes to sort organizations by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /orgs?limit=5
+</span>  <span class='comment'>#     Example: GET /orgs?limit=5
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;login&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
@@ -3280,7 +3622,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#     Example: GET /owner/github_id/639823
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @param owner [String] username or github ID
+</span>  <span class='comment'># @param owner [String] username or github id
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -3426,7 +3768,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;default_branch.last_build&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @param owner [String] username or github ID
+</span>  <span class='comment'># @param owner [String] username or github id
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -3618,7 +3960,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /build/86601346/stages
+</span>  <span class='comment'>#     Example: GET /build/86601346/stages
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param build_id [String, Integer] build id
 </span>  <span class='comment'># @raise [TypeError] if given build id is not a number
@@ -3627,6 +3969,150 @@
     <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
 
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/build/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_build_id'>build_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/stages</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual repository setting. These are settings on a repository that can be adjusted by the user. There are currently five different kinds of settings a user can modify:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># * `builds_only_with_travis_yml` (boolean)
+</span>  <span class='comment'># * `build_pushes` (boolean)
+</span>  <span class='comment'># * `build_pull_requests` (boolean)
+</span>  <span class='comment'># * `maximum_number_of_builds` (integer)
+</span>  <span class='comment'># * `auto_cancel_pushes` (boolean)
+</span>  <span class='comment'># * `auto_cancel_pull_requests` (boolean)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type                Description
+</span>  <span class='comment'>#     name   String              The setting&#39;s name.
+</span>  <span class='comment'>#     value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   Name   Type                Description
+</span>  <span class='comment'>#   name   String              The setting&#39;s name.
+</span>  <span class='comment'>#   value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a single setting. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     setting.name       String   The setting&#39;s name.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     setting.name       String  The setting&#39;s name.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Update**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This updates a single setting. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in the request body to pass the new setting:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X PATCH \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;setting.value&quot;: true }&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1234/setting/{setting.name}
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/repo/{repository.id}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     setting.name       String   The setting&#39;s name.
+</span>  <span class='comment'>#     Accepted Parameter  Type                Description
+</span>  <span class='comment'>#     setting.value       Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/repo/{repository.slug}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     setting.name       String  The setting&#39;s name.
+</span>  <span class='comment'>#     Accepted Parameter  Type                Description
+</span>  <span class='comment'>#     setting.value       Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param name [String] the setting name for the current repository
+</span>  <span class='comment'># @param value [String] optional argument for setting a value for the setting name
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+    <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>setting.value</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of user settings. These are settings on a repository that can be adjusted by the user. There are currently six different kinds of user settings:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># * `builds_only_with_travis_yml` (boolean)
+</span>  <span class='comment'># * `build_pushes` (boolean)
+</span>  <span class='comment'># * `build_pull_requests` (boolean)
+</span>  <span class='comment'># * `maximum_number_of_builds` (integer)
+</span>  <span class='comment'># * `auto_cancel_pushes` (boolean)
+</span>  <span class='comment'># * `auto_cancel_pull_requests` (boolean)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name      Type       Description
+</span>  <span class='comment'>#     settings  [Setting]  List of settings.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the settings array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type                Description
+</span>  <span class='comment'>#     name   String              The setting&#39;s name.
+</span>  <span class='comment'>#     value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Repository**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a list of the settings for that repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/settings&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/settings
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/settings&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/settings
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual user.
@@ -3676,7 +4162,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /user/119240
+</span>  <span class='comment'>#     Example: GET /user/119240
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sync**
 </span>  <span class='comment'>#
@@ -3687,7 +4173,7 @@
 </span>  <span class='comment'>#     Template Variable  Type     Description
 </span>  <span class='comment'>#     user.id            Integer  Value uniquely identifying the user.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:POST /user/119240/sync
+</span>  <span class='comment'>#     Example: POST /user/119240/sync
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Current**
 </span>  <span class='comment'>#
@@ -3698,7 +4184,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /user
+</span>  <span class='comment'>#     Example: GET /user
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @note sync feature may not be permitted
 </span>  <span class='comment'># @note POST requests require an authorization token set in the headers. See: {h}
@@ -3722,11 +4208,11 @@
   <span class='id identifier rubyid_private'>private</span> <span class='comment'># @private
 </span>
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DELETE.html" title="Trav3::DELETE (module)">DELETE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="DELETE.html#call-class_method" title="Trav3::DELETE.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="GET.html" title="Trav3::GET (module)">GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="GET.html#call-class_method" title="Trav3::GET.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="REST.html#get-class_method" title="Trav3::REST.get (method)">get</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_initial_defaults'>initial_defaults</span>
@@ -3744,8 +4230,12 @@
     <span class='ivar'>@options</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_patch'><span class='object_link'><a href="REST.html#patch-class_method" title="Trav3::REST.patch (method)">patch</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="POST.html" title="Trav3::POST (module)">POST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="POST.html#call-class_method" title="Trav3::POST.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_post'><span class='object_link'><a href="REST.html#post-class_method" title="Trav3::REST.post (method)">post</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_validate_api_endpoint'>validate_api_endpoint</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
@@ -3846,6 +4336,8 @@
       <pre class="lines">
 
 
+24
+25
 26
 27
 28
@@ -5317,10 +5809,217 @@
 1494
 1495
 1496
-1497</pre>
+1497
+1498
+1499
+1500
+1501
+1502
+1503
+1504
+1505
+1506
+1507
+1508
+1509
+1510
+1511
+1512
+1513
+1514
+1515
+1516
+1517
+1518
+1519
+1520
+1521
+1522
+1523
+1524
+1525
+1526
+1527
+1528
+1529
+1530
+1531
+1532
+1533
+1534
+1535
+1536
+1537
+1538
+1539
+1540
+1541
+1542
+1543
+1544
+1545
+1546
+1547
+1548
+1549
+1550
+1551
+1552
+1553
+1554
+1555
+1556
+1557
+1558
+1559
+1560
+1561
+1562
+1563
+1564
+1565
+1566
+1567
+1568
+1569
+1570
+1571
+1572
+1573
+1574
+1575
+1576
+1577
+1578
+1579
+1580
+1581
+1582
+1583
+1584
+1585
+1586
+1587
+1588
+1589
+1590
+1591
+1592
+1593
+1594
+1595
+1596
+1597
+1598
+1599
+1600
+1601
+1602
+1603
+1604
+1605
+1606
+1607
+1608
+1609
+1610
+1611
+1612
+1613
+1614
+1615
+1616
+1617
+1618
+1619
+1620
+1621
+1622
+1623
+1624
+1625
+1626
+1627
+1628
+1629
+1630
+1631
+1632
+1633
+1634
+1635
+1636
+1637
+1638
+1639
+1640
+1641
+1642
+1643
+1644
+1645
+1646
+1647
+1648
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656
+1657
+1658
+1659
+1660
+1661
+1662
+1663
+1664
+1665
+1666
+1667
+1668
+1669
+1670
+1671
+1672
+1673
+1674
+1675
+1676
+1677
+1678
+1679
+1680
+1681
+1682
+1683
+1684
+1685
+1686
+1687
+1688
+1689
+1690
+1691
+1692
+1693
+1694
+1695
+1696
+1697
+1698
+1699
+1700
+1701
+1702
+1703
+1704</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></span>
   <span class='const'><span class='object_link'><a href="#API_ENDPOINT-constant" title="Trav3::Travis::API_ENDPOINT (constant)">API_ENDPOINT</a></span></span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Trav3.html#API_ROOT-constant" title="Trav3::API_ROOT (constant)">API_ROOT</a></span></span>
@@ -5378,6 +6077,67 @@
     <span class='kw'>self</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Please Note that the naming of this endpoint may be changed. Our naming convention for this information is in flux. If you have suggestions for how this information should be presented please leave us feedback by commenting in this issue here or emailing support support@travis-ci.com.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># A list of all the builds in an &quot;active&quot; state, either created or started.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name    Type    Description
+</span>  <span class='comment'>#     builds  Builds  The active builds.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Owner**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Returns a list of &quot;active&quot; builds for the owner.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{owner.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     owner.login        String  User or organization login set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/danielpclark/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{user.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     user.login         String  Login set on Github.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/danielpclark/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{organization.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable   Type    Description
+</span>  <span class='comment'>#     organization.login  String  Login set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/travis-ci/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/github_id/{owner.github_id}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     owner.github_id    Integer  User or organization id set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/github_id/639823/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param owner [String] username, organization name, or github id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
+      <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># The branch of a GitHub repository. Useful for obtaining information about the last build on a given branch.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.**
@@ -5421,7 +6181,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/891/branch/master
+</span>  <span class='comment'>#     Example: GET /repo/891/branch/master
 </span>  <span class='comment'>#
 </span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}&lt;/code&gt;
 </span>  <span class='comment'>#
@@ -5431,7 +6191,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/rails%2Frails/branch/master
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branch/master
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param name [String] the branch name for the current repository
 </span>  <span class='comment'># @return [Success, RequestError]
@@ -5478,7 +6238,7 @@
 </span>  <span class='comment'>#     offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 </span>  <span class='comment'>#     sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/891/branches?limit=5&amp;exists_on_github=true
+</span>  <span class='comment'>#     Example: GET /repo/891/branches?limit=5&amp;exists_on_github=true
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;last_build&lt;/code&gt;, &lt;code&gt;exists_on_github&lt;/code&gt;, &lt;code&gt;default_branch&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'># The default value is &lt;code&gt;default_branch&lt;/code&gt;,&lt;code&gt;exists_on_github&lt;/code&gt;,&lt;code&gt;last_build:desc&lt;/code&gt;.
@@ -5495,7 +6255,7 @@
 </span>  <span class='comment'>#     offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 </span>  <span class='comment'>#     sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;last_build&lt;/code&gt;, &lt;code&gt;exists_on_github&lt;/code&gt;, &lt;code&gt;default_branch&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'># The default value is &lt;code&gt;default_branch&lt;/code&gt;,&lt;code&gt;exists_on_github&lt;/code&gt;,&lt;code&gt;last_build:desc&lt;/code&gt;.
@@ -6001,7 +6761,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># POST &lt;code&gt;/lint&lt;/code&gt;
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:POST /lint
+</span>  <span class='comment'>#     Example: POST /lint
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param yaml_content [String] the contents for the file `.travis.yml`
 </span>  <span class='comment'># @return [Success, RequestError]
@@ -6069,7 +6829,7 @@
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#     log.token        Unknown   Documentation missing.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /job/86601347/log.txt
+</span>  <span class='comment'>#     Example: GET /job/86601347/log.txt
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Delete**
 </span>  <span class='comment'>#
@@ -6147,7 +6907,7 @@
 </span>  <span class='comment'>#     Query Parameter    Type      Description
 </span>  <span class='comment'>#     include            [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /org/87
+</span>  <span class='comment'>#     Example: GET /org/87
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param org_id [String, Integer] the organization id
 </span>  <span class='comment'># @raise [TypeError] if given organization id is not a number
@@ -6196,7 +6956,7 @@
 </span>  <span class='comment'>#     role               Unknown   Alias for organization.role.
 </span>  <span class='comment'>#     sort_by            [String]  Attributes to sort organizations by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /orgs?limit=5
+</span>  <span class='comment'>#     Example: GET /orgs?limit=5
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;login&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
@@ -6279,7 +7039,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#     Example: GET /owner/github_id/639823
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @param owner [String] username or github ID
+</span>  <span class='comment'># @param owner [String] username or github id
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -6425,7 +7185,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;default_branch.last_build&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @param owner [String] username or github ID
+</span>  <span class='comment'># @param owner [String] username or github id
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -6617,7 +7377,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /build/86601346/stages
+</span>  <span class='comment'>#     Example: GET /build/86601346/stages
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param build_id [String, Integer] build id
 </span>  <span class='comment'># @raise [TypeError] if given build id is not a number
@@ -6626,6 +7386,150 @@
     <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
 
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/build/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_build_id'>build_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/stages</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual repository setting. These are settings on a repository that can be adjusted by the user. There are currently five different kinds of settings a user can modify:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># * `builds_only_with_travis_yml` (boolean)
+</span>  <span class='comment'># * `build_pushes` (boolean)
+</span>  <span class='comment'># * `build_pull_requests` (boolean)
+</span>  <span class='comment'># * `maximum_number_of_builds` (integer)
+</span>  <span class='comment'># * `auto_cancel_pushes` (boolean)
+</span>  <span class='comment'># * `auto_cancel_pull_requests` (boolean)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type                Description
+</span>  <span class='comment'>#     name   String              The setting&#39;s name.
+</span>  <span class='comment'>#     value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   Name   Type                Description
+</span>  <span class='comment'>#   name   String              The setting&#39;s name.
+</span>  <span class='comment'>#   value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a single setting. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     setting.name       String   The setting&#39;s name.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     setting.name       String  The setting&#39;s name.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Update**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This updates a single setting. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in the request body to pass the new setting:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X PATCH \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;setting.value&quot;: true }&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1234/setting/{setting.name}
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/repo/{repository.id}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     setting.name       String   The setting&#39;s name.
+</span>  <span class='comment'>#     Accepted Parameter  Type                Description
+</span>  <span class='comment'>#     setting.value       Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/repo/{repository.slug}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     setting.name       String  The setting&#39;s name.
+</span>  <span class='comment'>#     Accepted Parameter  Type                Description
+</span>  <span class='comment'>#     setting.value       Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param name [String] the setting name for the current repository
+</span>  <span class='comment'># @param value [String] optional argument for setting a value for the setting name
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+    <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>setting.value</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of user settings. These are settings on a repository that can be adjusted by the user. There are currently six different kinds of user settings:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># * `builds_only_with_travis_yml` (boolean)
+</span>  <span class='comment'># * `build_pushes` (boolean)
+</span>  <span class='comment'># * `build_pull_requests` (boolean)
+</span>  <span class='comment'># * `maximum_number_of_builds` (integer)
+</span>  <span class='comment'># * `auto_cancel_pushes` (boolean)
+</span>  <span class='comment'># * `auto_cancel_pull_requests` (boolean)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name      Type       Description
+</span>  <span class='comment'>#     settings  [Setting]  List of settings.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the settings array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type                Description
+</span>  <span class='comment'>#     name   String              The setting&#39;s name.
+</span>  <span class='comment'>#     value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Repository**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a list of the settings for that repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/settings&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/settings
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/settings&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/settings
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual user.
@@ -6675,7 +7579,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /user/119240
+</span>  <span class='comment'>#     Example: GET /user/119240
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sync**
 </span>  <span class='comment'>#
@@ -6686,7 +7590,7 @@
 </span>  <span class='comment'>#     Template Variable  Type     Description
 </span>  <span class='comment'>#     user.id            Integer  Value uniquely identifying the user.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:POST /user/119240/sync
+</span>  <span class='comment'>#     Example: POST /user/119240/sync
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Current**
 </span>  <span class='comment'>#
@@ -6697,7 +7601,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /user
+</span>  <span class='comment'>#     Example: GET /user
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @note sync feature may not be permitted
 </span>  <span class='comment'># @note POST requests require an authorization token set in the headers. See: {h}
@@ -6721,11 +7625,11 @@
   <span class='id identifier rubyid_private'>private</span> <span class='comment'># @private
 </span>
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DELETE.html" title="Trav3::DELETE (module)">DELETE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="DELETE.html#call-class_method" title="Trav3::DELETE.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="GET.html" title="Trav3::GET (module)">GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="GET.html#call-class_method" title="Trav3::GET.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="REST.html#get-class_method" title="Trav3::REST.get (method)">get</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_initial_defaults'>initial_defaults</span>
@@ -6743,8 +7647,12 @@
     <span class='ivar'>@options</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_patch'><span class='object_link'><a href="REST.html#patch-class_method" title="Trav3::REST.patch (method)">patch</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="POST.html" title="Trav3::POST (module)">POST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="POST.html#call-class_method" title="Trav3::POST.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_post'><span class='object_link'><a href="REST.html#post-class_method" title="Trav3::REST.post (method)">post</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_validate_api_endpoint'>validate_api_endpoint</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
@@ -6845,6 +7753,8 @@
       <pre class="lines">
 
 
+24
+25
 26
 27
 28
@@ -8316,10 +9226,217 @@
 1494
 1495
 1496
-1497</pre>
+1497
+1498
+1499
+1500
+1501
+1502
+1503
+1504
+1505
+1506
+1507
+1508
+1509
+1510
+1511
+1512
+1513
+1514
+1515
+1516
+1517
+1518
+1519
+1520
+1521
+1522
+1523
+1524
+1525
+1526
+1527
+1528
+1529
+1530
+1531
+1532
+1533
+1534
+1535
+1536
+1537
+1538
+1539
+1540
+1541
+1542
+1543
+1544
+1545
+1546
+1547
+1548
+1549
+1550
+1551
+1552
+1553
+1554
+1555
+1556
+1557
+1558
+1559
+1560
+1561
+1562
+1563
+1564
+1565
+1566
+1567
+1568
+1569
+1570
+1571
+1572
+1573
+1574
+1575
+1576
+1577
+1578
+1579
+1580
+1581
+1582
+1583
+1584
+1585
+1586
+1587
+1588
+1589
+1590
+1591
+1592
+1593
+1594
+1595
+1596
+1597
+1598
+1599
+1600
+1601
+1602
+1603
+1604
+1605
+1606
+1607
+1608
+1609
+1610
+1611
+1612
+1613
+1614
+1615
+1616
+1617
+1618
+1619
+1620
+1621
+1622
+1623
+1624
+1625
+1626
+1627
+1628
+1629
+1630
+1631
+1632
+1633
+1634
+1635
+1636
+1637
+1638
+1639
+1640
+1641
+1642
+1643
+1644
+1645
+1646
+1647
+1648
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656
+1657
+1658
+1659
+1660
+1661
+1662
+1663
+1664
+1665
+1666
+1667
+1668
+1669
+1670
+1671
+1672
+1673
+1674
+1675
+1676
+1677
+1678
+1679
+1680
+1681
+1682
+1683
+1684
+1685
+1686
+1687
+1688
+1689
+1690
+1691
+1692
+1693
+1694
+1695
+1696
+1697
+1698
+1699
+1700
+1701
+1702
+1703
+1704</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></span>
   <span class='const'><span class='object_link'><a href="#API_ENDPOINT-constant" title="Trav3::Travis::API_ENDPOINT (constant)">API_ENDPOINT</a></span></span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Trav3.html#API_ROOT-constant" title="Trav3::API_ROOT (constant)">API_ROOT</a></span></span>
@@ -8377,6 +9494,67 @@
     <span class='kw'>self</span>
   <span class='kw'>end</span>
 
+  <span class='comment'># Please Note that the naming of this endpoint may be changed. Our naming convention for this information is in flux. If you have suggestions for how this information should be presented please leave us feedback by commenting in this issue here or emailing support support@travis-ci.com.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># A list of all the builds in an &quot;active&quot; state, either created or started.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name    Type    Description
+</span>  <span class='comment'>#     builds  Builds  The active builds.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Owner**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Returns a list of &quot;active&quot; builds for the owner.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{owner.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     owner.login        String  User or organization login set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/danielpclark/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{user.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     user.login         String  Login set on Github.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/danielpclark/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/{organization.login}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable   Type    Description
+</span>  <span class='comment'>#     organization.login  String  Login set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/travis-ci/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/owner/github_id/{owner.github_id}/active&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     owner.github_id    Integer  User or organization id set on GitHub.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /owner/github_id/639823/active
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param owner [String] username, organization name, or github id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
+      <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
   <span class='comment'># The branch of a GitHub repository. Useful for obtaining information about the last build on a given branch.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.**
@@ -8420,7 +9598,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/891/branch/master
+</span>  <span class='comment'>#     Example: GET /repo/891/branch/master
 </span>  <span class='comment'>#
 </span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}&lt;/code&gt;
 </span>  <span class='comment'>#
@@ -8430,7 +9608,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/rails%2Frails/branch/master
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branch/master
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param name [String] the branch name for the current repository
 </span>  <span class='comment'># @return [Success, RequestError]
@@ -8477,7 +9655,7 @@
 </span>  <span class='comment'>#     offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 </span>  <span class='comment'>#     sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/891/branches?limit=5&amp;exists_on_github=true
+</span>  <span class='comment'>#     Example: GET /repo/891/branches?limit=5&amp;exists_on_github=true
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;last_build&lt;/code&gt;, &lt;code&gt;exists_on_github&lt;/code&gt;, &lt;code&gt;default_branch&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'># The default value is &lt;code&gt;default_branch&lt;/code&gt;,&lt;code&gt;exists_on_github&lt;/code&gt;,&lt;code&gt;last_build:desc&lt;/code&gt;.
@@ -8494,7 +9672,7 @@
 </span>  <span class='comment'>#     offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 </span>  <span class='comment'>#     sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;last_build&lt;/code&gt;, &lt;code&gt;exists_on_github&lt;/code&gt;, &lt;code&gt;default_branch&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'># The default value is &lt;code&gt;default_branch&lt;/code&gt;,&lt;code&gt;exists_on_github&lt;/code&gt;,&lt;code&gt;last_build:desc&lt;/code&gt;.
@@ -9000,7 +10178,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># POST &lt;code&gt;/lint&lt;/code&gt;
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:POST /lint
+</span>  <span class='comment'>#     Example: POST /lint
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param yaml_content [String] the contents for the file `.travis.yml`
 </span>  <span class='comment'># @return [Success, RequestError]
@@ -9068,7 +10246,7 @@
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#     log.token        Unknown   Documentation missing.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /job/86601347/log.txt
+</span>  <span class='comment'>#     Example: GET /job/86601347/log.txt
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Delete**
 </span>  <span class='comment'>#
@@ -9146,7 +10324,7 @@
 </span>  <span class='comment'>#     Query Parameter    Type      Description
 </span>  <span class='comment'>#     include            [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /org/87
+</span>  <span class='comment'>#     Example: GET /org/87
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param org_id [String, Integer] the organization id
 </span>  <span class='comment'># @raise [TypeError] if given organization id is not a number
@@ -9195,7 +10373,7 @@
 </span>  <span class='comment'>#     role               Unknown   Alias for organization.role.
 </span>  <span class='comment'>#     sort_by            [String]  Attributes to sort organizations by. Used for pagination.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /orgs?limit=5
+</span>  <span class='comment'>#     Example: GET /orgs?limit=5
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;login&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
@@ -9278,7 +10456,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#     Example: GET /owner/github_id/639823
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @param owner [String] username or github ID
+</span>  <span class='comment'># @param owner [String] username or github id
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -9424,7 +10602,7 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;default_branch.last_build&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @param owner [String] username or github ID
+</span>  <span class='comment'># @param owner [String] username or github id
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -9616,7 +10794,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /build/86601346/stages
+</span>  <span class='comment'>#     Example: GET /build/86601346/stages
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param build_id [String, Integer] build id
 </span>  <span class='comment'># @raise [TypeError] if given build id is not a number
@@ -9625,6 +10803,150 @@
     <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
 
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/build/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_build_id'>build_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/stages</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual repository setting. These are settings on a repository that can be adjusted by the user. There are currently five different kinds of settings a user can modify:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># * `builds_only_with_travis_yml` (boolean)
+</span>  <span class='comment'># * `build_pushes` (boolean)
+</span>  <span class='comment'># * `build_pull_requests` (boolean)
+</span>  <span class='comment'># * `maximum_number_of_builds` (integer)
+</span>  <span class='comment'># * `auto_cancel_pushes` (boolean)
+</span>  <span class='comment'># * `auto_cancel_pull_requests` (boolean)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type                Description
+</span>  <span class='comment'>#     name   String              The setting&#39;s name.
+</span>  <span class='comment'>#     value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#   Name   Type                Description
+</span>  <span class='comment'>#   name   String              The setting&#39;s name.
+</span>  <span class='comment'>#   value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a single setting. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     setting.name       String   The setting&#39;s name.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     setting.name       String  The setting&#39;s name.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Update**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This updates a single setting. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in the request body to pass the new setting:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X PATCH \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;setting.value&quot;: true }&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1234/setting/{setting.name}
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/repo/{repository.id}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     setting.name       String   The setting&#39;s name.
+</span>  <span class='comment'>#     Accepted Parameter  Type                Description
+</span>  <span class='comment'>#     setting.value       Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/repo/{repository.slug}/setting/{setting.name}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     setting.name       String  The setting&#39;s name.
+</span>  <span class='comment'>#     Accepted Parameter  Type                Description
+</span>  <span class='comment'>#     setting.value       Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param name [String] the setting name for the current repository
+</span>  <span class='comment'># @param value [String] optional argument for setting a value for the setting name
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+    <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>setting.value</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of user settings. These are settings on a repository that can be adjusted by the user. There are currently six different kinds of user settings:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># * `builds_only_with_travis_yml` (boolean)
+</span>  <span class='comment'># * `build_pushes` (boolean)
+</span>  <span class='comment'># * `build_pull_requests` (boolean)
+</span>  <span class='comment'># * `maximum_number_of_builds` (integer)
+</span>  <span class='comment'># * `auto_cancel_pushes` (boolean)
+</span>  <span class='comment'># * `auto_cancel_pull_requests` (boolean)
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name      Type       Description
+</span>  <span class='comment'>#     settings  [Setting]  List of settings.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the settings array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type                Description
+</span>  <span class='comment'>#     name   String              The setting&#39;s name.
+</span>  <span class='comment'>#     value  Boolean or integer  The setting&#39;s value.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Repository**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a list of the settings for that repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/settings&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/settings
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/settings&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/settings
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual user.
@@ -9674,7 +10996,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /user/119240
+</span>  <span class='comment'>#     Example: GET /user/119240
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sync**
 </span>  <span class='comment'>#
@@ -9685,7 +11007,7 @@
 </span>  <span class='comment'>#     Template Variable  Type     Description
 </span>  <span class='comment'>#     user.id            Integer  Value uniquely identifying the user.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:POST /user/119240/sync
+</span>  <span class='comment'>#     Example: POST /user/119240/sync
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Current**
 </span>  <span class='comment'>#
@@ -9696,7 +11018,7 @@
 </span>  <span class='comment'>#     Query Parameter  Type      Description
 </span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
 </span>  <span class='comment'>#
-</span>  <span class='comment'>#     Example:GET /user
+</span>  <span class='comment'>#     Example: GET /user
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @note sync feature may not be permitted
 </span>  <span class='comment'># @note POST requests require an authorization token set in the headers. See: {h}
@@ -9720,11 +11042,11 @@
   <span class='id identifier rubyid_private'>private</span> <span class='comment'># @private
 </span>
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="DELETE.html" title="Trav3::DELETE (module)">DELETE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="DELETE.html#call-class_method" title="Trav3::DELETE.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="GET.html" title="Trav3::GET (module)">GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="GET.html#call-class_method" title="Trav3::GET.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get'><span class='object_link'><a href="REST.html#get-class_method" title="Trav3::REST.get (method)">get</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_raw_reply'>raw_reply</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_initial_defaults'>initial_defaults</span>
@@ -9742,8 +11064,12 @@
     <span class='ivar'>@options</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_patch'><span class='object_link'><a href="REST.html#patch-class_method" title="Trav3::REST.patch (method)">patch</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="POST.html" title="Trav3::POST (module)">POST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="POST.html#call-class_method" title="Trav3::POST.call (method)">call</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_post'><span class='object_link'><a href="REST.html#post-class_method" title="Trav3::REST.post (method)">post</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_validate_api_endpoint'>validate_api_endpoint</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
@@ -9806,7 +11132,145 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="branch-instance_method">
+  <h3 class="signature first" id="active-instance_method">
+  
+    #<strong>active</strong>(owner = username)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Please Note that the naming of this endpoint may be changed. Our naming convention for this information is in flux. If you have suggestions for how this information should be presented please leave us feedback by commenting in this issue here or emailing support support@travis-ci.com.</p>
+
+<p>A list of all the builds in an “active” state, either created or started.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name    Type    Description
+builds  Builds  The active builds.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>For Owner</strong></p>
+
+<p>Returns a list of “active” builds for the owner.</p>
+
+<p>GET <code>/owner/{owner.login}/active</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+owner.login        String  User or organization login set on GitHub.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /owner/danielpclark/active
+</code></pre>
+
+<p>GET <code>/owner/{user.login}/active</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+user.login         String  Login set on Github.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /owner/danielpclark/active
+</code></pre>
+
+<p>GET <code>/owner/{organization.login}/active</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable   Type    Description
+organization.login  String  Login set on GitHub.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /owner/travis-ci/active
+</code></pre>
+
+<p>GET <code>/owner/github_id/{owner.github_id}/active</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+owner.github_id    Integer  User or organization id set on GitHub.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /owner/github_id/639823/active
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>owner</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>username</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>username, organization name, or github id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135
+136
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="branch-instance_method">
   
     #<strong>branch</strong>(name)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
   
@@ -9863,7 +11327,7 @@ branch.name        String   Name of the git branch.
 Query Parameter  Type      Description
 include          [String]  List of attributes to eager load.
 
-Example:GET /repo/891/branch/master
+Example: GET /repo/891/branch/master
 </code></pre>
 
 <p>GET <code>/repo/{repository.slug}/branch/{branch.name}</code></p>
@@ -9874,7 +11338,7 @@ branch.name        String  Name of the git branch.
 Query Parameter  Type      Description
 include          [String]  List of attributes to eager load.
 
-Example:GET /repo/rails%2Frails/branch/master
+Example: GET /repo/rails%2Frails/branch/master
 </code></pre>
 
 
@@ -9922,12 +11386,12 @@ Example:GET /repo/rails%2Frails/branch/master
       <pre class="lines">
 
 
-139
-140
-141</pre>
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 139</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 198</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_branch'>branch</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -9990,7 +11454,7 @@ limit                    Integer    How many branches to include in the response
 offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 
-Example:GET /repo/891/branches?limit=5&amp;exists_on_github=true
+Example: GET /repo/891/branches?limit=5&amp;exists_on_github=true
 </code></pre>
 
 <p><strong>Sortable by:</strong> <code>name</code>, <code>last_build</code>, <code>exists_on_github</code>, <code>default_branch</code>, append <code>:desc</code> to any attribute to reverse order. The default value is <code>default_branch</code>,<code>exists_on_github</code>,<code>last_build:desc</code>.</p>
@@ -10007,7 +11471,7 @@ limit                    Integer    How many branches to include in the response
 offset                   Integer    How many branches to skip before the first entry in the response. Used for pagination.
 sort_by                  [String]   Attributes to sort branches by. Used for pagination.
 
-Example:GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
+Example: GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
 </code></pre>
 
 <p><strong>Sortable by:</strong> <code>name</code>, <code>last_build</code>, <code>exists_on_github</code>, <code>default_branch</code>, append <code>:desc</code> to any attribute to reverse order. The default value is <code>default_branch</code>,<code>exists_on_github</code>,<code>last_build:desc</code>.</p>
@@ -10037,12 +11501,12 @@ Example:GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
       <pre class="lines">
 
 
-205
-206
-207</pre>
+264
+265
+266</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 264</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_branches'>branches</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -10240,21 +11704,21 @@ Example: POST /build/86601346/restart
       <pre class="lines">
 
 
-297
-298
-299
-300
-301
-302
-303
-304
-305
-306
-307
-308</pre>
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 297</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 356</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -10400,12 +11864,12 @@ Example: GET /jobs?limit=5
       <pre class="lines">
 
 
-489
-490
-491</pre>
+548
+549
+550</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 489</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 548</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build_jobs'>build_jobs</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/build/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_build_id'>build_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/jobs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -10562,12 +12026,12 @@ Example: GET /repo/rails%2Frails/builds?limit=5
       <pre class="lines">
 
 
-416
-417
-418</pre>
+475
+476
+477</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 416</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 475</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_builds'>builds</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/builds</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -10731,16 +12195,16 @@ Example: DELETE /repo/rails%2Frails/caches
       <pre class="lines">
 
 
-584
-585
-586
-587
-588
-589
-590</pre>
+643
+644
+645
+646
+647
+648
+649</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 584</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 643</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_caches'>caches</span><span class='lparen'>(</span><span class='id identifier rubyid_delete'>delete</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_delete'>delete</span>
@@ -10840,13 +12304,13 @@ Example: DELETE /repo/rails%2Frails/caches
       <pre class="lines">
 
 
+62
+63
 64
-65
-66
-67</pre>
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='ivar'>@options</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Trav3::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Options.html#initialize-instance_method" title="Trav3::Options#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -10946,13 +12410,13 @@ Example: DELETE /repo/rails%2Frails/caches
       <pre class="lines">
 
 
+75
+76
 77
-78
-79
-80</pre>
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='ivar'>@headers</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Headers.html" title="Trav3::Headers (class)">Headers</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Headers.html#initialize-instance_method" title="Trav3::Headers#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
@@ -11132,21 +12596,21 @@ Example: POST /job/86601347/debug
       <pre class="lines">
 
 
-677
-678
-679
-680
-681
-682
-683
-684
-685
-686
-687
-688</pre>
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 677</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 736</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_job'>job</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -11193,7 +12657,7 @@ warnings  Array  An array of hashes with keys and warnings.
 
 <p>POST <code>/lint</code></p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>Example</span><span class='symbol'>:POST</span> <span class='op'>/</span><span class='id identifier rubyid_lint'>lint</span>
+<pre class="code ruby"><code class="ruby">Example: POST /lint
 </code></pre>
 
 
@@ -11241,17 +12705,17 @@ warnings  Array  An array of hashes with keys and warnings.
       <pre class="lines">
 
 
-709
-710
-711
-712
-713
-714
-715
-716</pre>
+768
+769
+770
+771
+772
+773
+774
+775</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 709</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 768</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lint'>lint</span><span class='lparen'>(</span><span class='id identifier rubyid_yaml_content'>yaml_content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_yaml_content'>yaml_content</span>
@@ -11345,7 +12809,7 @@ Query Parameter  Type      Description
 include          [String]  List of attributes to eager load.
 log.token        Unknown   Documentation missing.
 
-Example:GET /job/86601347/log.txt
+Example: GET /job/86601347/log.txt
 </code></pre>
 
 <p><strong>Delete</strong></p>
@@ -11429,19 +12893,19 @@ Example: DELETE /job/86601347/log
       <pre class="lines">
 
 
-796
-797
-798
-799
-800
-801
-802
-803
-804
-805</pre>
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 796</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 855</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -11517,7 +12981,7 @@ organization.id    Integer   Value uniquely identifying the organization.
 Query Parameter    Type      Description
 include            [String]  List of attributes to eager load.
 
-Example:GET /org/87
+Example: GET /org/87
 </code></pre>
 
 
@@ -11583,14 +13047,14 @@ Example:GET /org/87
       <pre class="lines">
 
 
-856
-857
-858
-859
-860</pre>
+915
+916
+917
+918
+919</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 856</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 915</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organization'>organization</span><span class='lparen'>(</span><span class='id identifier rubyid_org_id'>org_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -11654,7 +13118,7 @@ organization.role  Unknown   Documentation missing.
 role               Unknown   Alias for organization.role.
 sort_by            [String]  Attributes to sort organizations by. Used for pagination.
 
-Example:GET /orgs?limit=5
+Example: GET /orgs?limit=5
 </code></pre>
 
 <p><strong>Sortable by:</strong> <code>id</code>, <code>login</code>, <code>name</code>, <code>github_id</code>, append <code>:desc</code> to any attribute to reverse order.</p>
@@ -11684,12 +13148,12 @@ Example:GET /orgs?limit=5
       <pre class="lines">
 
 
-905
-906
-907</pre>
+964
+965
+966</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 905</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 964</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organizations'>organizations</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/orgs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -11812,7 +13276,7 @@ Example: GET /owner/github_id/639823
       
         &mdash;
         <div class='inline'>
-<p>username or github ID</p>
+<p>username or github id</p>
 </div>
       
     </li>
@@ -11839,16 +13303,16 @@ Example: GET /owner/github_id/639823
       <pre class="lines">
 
 
-985
-986
-987
-988
-989
-990
-991</pre>
+1044
+1045
+1046
+1047
+1048
+1049
+1050</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 985</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1044</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -12036,7 +13500,7 @@ Example: GET /repos?limit=5&amp;sort_by=active,name
       
         &mdash;
         <div class='inline'>
-<p>username or github ID</p>
+<p>username or github id</p>
 </div>
       
     </li>
@@ -12063,16 +13527,16 @@ Example: GET /repos?limit=5&amp;sort_by=active,name
       <pre class="lines">
 
 
-1131
-1132
-1133
-1134
-1135
-1136
-1137</pre>
+1190
+1191
+1192
+1193
+1194
+1195
+1196</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1131</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1190</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -12328,21 +13792,21 @@ Example: POST /repo/rails%2Frails/unstar
       <pre class="lines">
 
 
-1273
-1274
-1275
-1276
-1277
-1278
-1279
-1280
-1281
-1282
-1283
-1284</pre>
+1332
+1333
+1334
+1335
+1336
+1337
+1338
+1339
+1340
+1341
+1342
+1343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1273</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1332</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_repository_name'>repository_name</span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
@@ -12355,6 +13819,300 @@ Example: POST /repo/rails%2Frails/unstar
   <span class='kw'>else</span>
     <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setting-instance_method">
+  
+    #<strong>setting</strong>(name, value = nil)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>An individual repository setting. These are settings on a repository that can be adjusted by the user. There are currently five different kinds of settings a user can modify:</p>
+<ul><li>
+<p><code>builds_only_with_travis_yml</code> (boolean)</p>
+</li><li>
+<p><code>build_pushes</code> (boolean)</p>
+</li><li>
+<p><code>build_pull_requests</code> (boolean)</p>
+</li><li>
+<p><code>maximum_number_of_builds</code> (integer)</p>
+</li><li>
+<p><code>auto_cancel_pushes</code> (boolean)</p>
+</li><li>
+<p><code>auto_cancel_pull_requests</code> (boolean)</p>
+</li></ul>
+
+<p>If querying using the repository slug, it must be formatted using <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_parent" title="standard URL encoding">standard URL encoding</a>, including any special characters.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<p><strong>Standard Representation</strong></p>
+
+<p>Included when the resource is the main response of a request, or is <a href="https://developer.travis-ci.com/eager-loading" target="_parent" title="eager loaded">eager loaded</a>.</p>
+
+<pre class="code ruby"><code class="ruby">Name   Type                Description
+name   String              The setting&#39;s name.
+value  Boolean or integer  The setting&#39;s value.
+</code></pre>
+
+<p><strong>Minimal Representation</strong></p>
+
+<p>Included when the resource is returned as part of another resource.</p>
+
+<p>Name Type Description  name String The setting&#39;s name.  value Boolean or integer The setting&#39;s value.</p>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>Find</strong></p>
+
+<p>This returns a single setting. It is possible to use the repository id or slug in the request.</p>
+
+<p>GET <code>/repo/{repository.id}/setting/{setting.name}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+setting.name       String   The setting&#39;s name.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+</code></pre>
+
+<p>GET <code>/repo/{repository.slug}/setting/{setting.name}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+setting.name       String  The setting&#39;s name.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+</code></pre>
+
+<p><strong>Update</strong></p>
+
+<p>This updates a single setting. It is possible to use the repository id or slug in the request.</p>
+
+<p>Use namespaced params in the request body to pass the new setting:</p>
+
+<pre class="code ruby"><code class="ruby">curl -X PATCH \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Travis-API-Version: 3&quot; \
+  -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+  -d &#39;{ &quot;setting.value&quot;: true }&#39; \
+  https://api.travis-ci.com/repo/1234/setting/{setting.name}
+</code></pre>
+
+<p>PATCH <code>/repo/{repository.id}/setting/{setting.name}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+setting.name       String   The setting&#39;s name.
+Accepted Parameter  Type                Description
+setting.value       Boolean or integer  The setting&#39;s value.
+</code></pre>
+
+<p>PATCH <code>/repo/{repository.slug}/setting/{setting.name}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+setting.name       String  The setting&#39;s name.
+Accepted Parameter  Type                Description
+setting.value       Boolean or integer  The setting&#39;s value.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the setting name for the current repository</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>optional argument for setting a value for the setting name</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1476
+1477
+1478
+1479
+1480</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1476</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>setting.value</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="settings-instance_method">
+  
+    #<strong>settings</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A list of user settings. These are settings on a repository that can be adjusted by the user. There are currently six different kinds of user settings:</p>
+<ul><li>
+<p><code>builds_only_with_travis_yml</code> (boolean)</p>
+</li><li>
+<p><code>build_pushes</code> (boolean)</p>
+</li><li>
+<p><code>build_pull_requests</code> (boolean)</p>
+</li><li>
+<p><code>maximum_number_of_builds</code> (integer)</p>
+</li><li>
+<p><code>auto_cancel_pushes</code> (boolean)</p>
+</li><li>
+<p><code>auto_cancel_pull_requests</code> (boolean)</p>
+</li></ul>
+
+<p>If querying using the repository slug, it must be formatted using <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_parent" title="standard URL encoding">standard URL encoding</a>, including any special characters.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name      Type       Description
+settings  [Setting]  List of settings.
+</code></pre>
+
+<p><strong>Collection Items</strong></p>
+
+<p>Each entry in the settings array has the following attributes:</p>
+
+<pre class="code ruby"><code class="ruby">Name   Type                Description
+name   String              The setting&#39;s name.
+value  Boolean or integer  The setting&#39;s value.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>For Repository</strong></p>
+
+<p>This returns a list of the settings for that repository. It is possible to use the repository id or slug in the request.</p>
+
+<p>GET <code>/repo/{repository.id}/settings</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /repo/891/settings
+</code></pre>
+
+<p>GET <code>/repo/{repository.slug}/settings</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /repo/rails%2Frails/settings
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1531
+1532
+1533</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1531</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -12410,7 +14168,7 @@ build.id           Integer  Value uniquely identifying the build.
 Query Parameter  Type      Description
 include          [String]  List of attributes to eager load.
 
-Example:GET /build/86601346/stages
+Example: GET /build/86601346/stages
 </code></pre>
 
 
@@ -12476,14 +14234,14 @@ Example:GET /build/86601346/stages
       <pre class="lines">
 
 
-1326
-1327
-1328
-1329
-1330</pre>
+1385
+1386
+1387
+1388
+1389</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1326</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1385</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stages'>stages</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -12572,7 +14330,7 @@ user.id            Integer  Value uniquely identifying the user.
 Query Parameter  Type      Description
 include          [String]  List of attributes to eager load.
 
-Example:GET /user/119240
+Example: GET /user/119240
 </code></pre>
 
 <p><strong>Sync</strong></p>
@@ -12581,10 +14339,10 @@ Example:GET /user/119240
 
 <p>POST <code>/user/{user.id}/sync</code></p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>Template</span> <span class='const'>Variable</span>  <span class='const'>Type</span>     <span class='const'>Description</span>
-<span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>            <span class='const'>Integer</span>  <span class='const'>Value</span> <span class='id identifier rubyid_uniquely'>uniquely</span> <span class='id identifier rubyid_identifying'>identifying</span> <span class='id identifier rubyid_the'>the</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span>
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+user.id            Integer  Value uniquely identifying the user.
 
-<span class='const'>Example</span><span class='symbol'>:POST</span> <span class='op'>/</span><span class='id identifier rubyid_user'>user</span><span class='op'>/</span><span class='int'>119240</span><span class='op'>/</span><span class='id identifier rubyid_sync'>sync</span>
+Example: POST /user/119240/sync
 </code></pre>
 
 <p><strong>Current</strong></p>
@@ -12596,7 +14354,7 @@ Example:GET /user/119240
 <pre class="code ruby"><code class="ruby">Query Parameter  Type      Description
 include          [String]  List of attributes to eager load.
 
-Example:GET /user
+Example: GET /user
 </code></pre>
 
 
@@ -12682,20 +14440,20 @@ Example:GET /user
       <pre class="lines">
 
 
-1410
-1411
-1412
-1413
-1414
-1415
-1416
-1417
-1418
-1419
-1420</pre>
+1613
+1614
+1615
+1616
+1617
+1618
+1619
+1620
+1621
+1622
+1623</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1410</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1613</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sync'>sync</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_sync'>sync</span>
@@ -12718,7 +14476,7 @@ Example:GET /user
 </div>
 
       <div id="footer">
-  Generated on Tue Jan 15 14:16:04 2019 by
+  Generated on Fri Jan 18 21:43:45 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
