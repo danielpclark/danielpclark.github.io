@@ -2599,7 +2599,9 @@
 1701
 1702
 1703
-1704</pre>
+1704
+1705
+1706</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -3207,6 +3209,7 @@
 </span>  <span class='comment'># ```
 </span>  <span class='comment'>#
 </span>  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.id}/caches&lt;/code&gt;
+</span>  <span class='comment'>#
 </span>  <span class='comment'>#     Template Variable  Type     Description
 </span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
 </span>  <span class='comment'>#
@@ -3747,7 +3750,8 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;default_branch.last_build&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># **For Current User**&lt;br /&gt;
+</span>  <span class='comment'># **For Current User**
+</span>  <span class='comment'>#
 </span>  <span class='comment'># This returns a list of repositories the current user has access to.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># GET &lt;code&gt;/repos&lt;/code&gt;
@@ -6016,7 +6020,9 @@
 1701
 1702
 1703
-1704</pre>
+1704
+1705
+1706</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -6624,6 +6630,7 @@
 </span>  <span class='comment'># ```
 </span>  <span class='comment'>#
 </span>  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.id}/caches&lt;/code&gt;
+</span>  <span class='comment'>#
 </span>  <span class='comment'>#     Template Variable  Type     Description
 </span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
 </span>  <span class='comment'>#
@@ -7164,7 +7171,8 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;default_branch.last_build&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># **For Current User**&lt;br /&gt;
+</span>  <span class='comment'># **For Current User**
+</span>  <span class='comment'>#
 </span>  <span class='comment'># This returns a list of repositories the current user has access to.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># GET &lt;code&gt;/repos&lt;/code&gt;
@@ -9433,7 +9441,9 @@
 1701
 1702
 1703
-1704</pre>
+1704
+1705
+1706</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -10041,6 +10051,7 @@
 </span>  <span class='comment'># ```
 </span>  <span class='comment'>#
 </span>  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.id}/caches&lt;/code&gt;
+</span>  <span class='comment'>#
 </span>  <span class='comment'>#     Template Variable  Type     Description
 </span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
 </span>  <span class='comment'>#
@@ -10581,7 +10592,8 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'># **Sortable by:** &lt;code&gt;id&lt;/code&gt;, &lt;code&gt;github_id&lt;/code&gt;, &lt;code&gt;owner_name&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;default_branch.last_build&lt;/code&gt;, append &lt;code&gt;:desc&lt;/code&gt; to any attribute to reverse order.
 </span>  <span class='comment'>#
-</span>  <span class='comment'># **For Current User**&lt;br /&gt;
+</span>  <span class='comment'># **For Current User**
+</span>  <span class='comment'>#
 </span>  <span class='comment'># This returns a list of repositories the current user has access to.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># GET &lt;code&gt;/repos&lt;/code&gt;
@@ -12135,9 +12147,12 @@ Example: GET /repo/rails%2Frails/caches
   https://api.travis-ci.com/repo/1234/caches?branch=master
 </code></pre>
 
-<p>DELETE <code>/repo/{repository.id}/caches</code>  Template Variable Type Description  repository.id Integer Value uniquely identifying the repository.</p>
+<p>DELETE <code>/repo/{repository.id}/caches</code></p>
 
-<pre class="code ruby"><code class="ruby">Example: DELETE /repo/891/caches
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+
+Example: DELETE /repo/891/caches
 </code></pre>
 
 <p>DELETE <code>/repo/{repository.slug}/caches</code></p>
@@ -12195,16 +12210,16 @@ Example: DELETE /repo/rails%2Frails/caches
       <pre class="lines">
 
 
-643
 644
 645
 646
 647
 648
-649</pre>
+649
+650</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 643</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 644</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_caches'>caches</span><span class='lparen'>(</span><span class='id identifier rubyid_delete'>delete</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_delete'>delete</span>
@@ -12596,7 +12611,6 @@ Example: POST /job/86601347/debug
       <pre class="lines">
 
 
-736
 737
 738
 739
@@ -12607,10 +12621,11 @@ Example: POST /job/86601347/debug
 744
 745
 746
-747</pre>
+747
+748</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 736</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 737</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_job'>job</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -12705,17 +12720,17 @@ warnings  Array  An array of hashes with keys and warnings.
       <pre class="lines">
 
 
-768
 769
 770
 771
 772
 773
 774
-775</pre>
+775
+776</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 768</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 769</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lint'>lint</span><span class='lparen'>(</span><span class='id identifier rubyid_yaml_content'>yaml_content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_yaml_content'>yaml_content</span>
@@ -12893,7 +12908,6 @@ Example: DELETE /job/86601347/log
       <pre class="lines">
 
 
-855
 856
 857
 858
@@ -12902,10 +12916,11 @@ Example: DELETE /job/86601347/log
 861
 862
 863
-864</pre>
+864
+865</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 855</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 856</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -13047,14 +13062,14 @@ Example: GET /org/87
       <pre class="lines">
 
 
-915
 916
 917
 918
-919</pre>
+919
+920</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 915</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 916</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organization'>organization</span><span class='lparen'>(</span><span class='id identifier rubyid_org_id'>org_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -13148,12 +13163,12 @@ Example: GET /orgs?limit=5
       <pre class="lines">
 
 
-964
 965
-966</pre>
+966
+967</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 964</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 965</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organizations'>organizations</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/orgs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -13303,16 +13318,16 @@ Example: GET /owner/github_id/639823
       <pre class="lines">
 
 
-1044
 1045
 1046
 1047
 1048
 1049
-1050</pre>
+1050
+1051</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1044</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1045</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -13459,7 +13474,9 @@ Example: GET /owner/github_id/639823/repos?limit=5&amp;sort_by=active,name
 
 <p><strong>Sortable by:</strong> <code>id</code>, <code>github_id</code>, <code>owner_name</code>, <code>name</code>, <code>active</code>, <code>default_branch.last_build</code>, append <code>:desc</code> to any attribute to reverse order.</p>
 
-<p><strong>For Current User</strong>&lt;br /&gt; This returns a list of repositories the current user has access to.</p>
+<p><strong>For Current User</strong></p>
+
+<p>This returns a list of repositories the current user has access to.</p>
 
 <p>GET <code>/repos</code></p>
 
@@ -13527,16 +13544,16 @@ Example: GET /repos?limit=5&amp;sort_by=active,name
       <pre class="lines">
 
 
-1190
-1191
 1192
 1193
 1194
 1195
-1196</pre>
+1196
+1197
+1198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1190</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_number?'>number?</span> <span class='id identifier rubyid_owner'>owner</span>
@@ -13792,8 +13809,6 @@ Example: POST /repo/rails%2Frails/unstar
       <pre class="lines">
 
 
-1332
-1333
 1334
 1335
 1336
@@ -13803,10 +13818,12 @@ Example: POST /repo/rails%2Frails/unstar
 1340
 1341
 1342
-1343</pre>
+1343
+1344
+1345</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1332</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1334</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_repository_name'>repository_name</span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
@@ -13990,14 +14007,14 @@ setting.value       Boolean or integer  The setting&#39;s value.
       <pre class="lines">
 
 
-1476
-1477
 1478
 1479
-1480</pre>
+1480
+1481
+1482</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1476</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1478</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -14104,12 +14121,12 @@ Example: GET /repo/rails%2Frails/settings
       <pre class="lines">
 
 
-1531
-1532
-1533</pre>
+1533
+1534
+1535</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1531</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1533</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -14234,14 +14251,14 @@ Example: GET /build/86601346/stages
       <pre class="lines">
 
 
-1385
-1386
 1387
 1388
-1389</pre>
+1389
+1390
+1391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1385</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1387</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stages'>stages</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -14440,8 +14457,6 @@ Example: GET /user
       <pre class="lines">
 
 
-1613
-1614
 1615
 1616
 1617
@@ -14450,10 +14465,12 @@ Example: GET /user
 1620
 1621
 1622
-1623</pre>
+1623
+1624
+1625</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1613</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1615</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sync'>sync</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_sync'>sync</span>
@@ -14476,7 +14493,7 @@ Example: GET /user
 </div>
 
       <div id="footer">
-  Generated on Fri Jan 18 21:43:45 2019 by
+  Generated on Fri Jan 18 21:50:08 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
