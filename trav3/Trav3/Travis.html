@@ -682,6 +682,54 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#request-instance_method" title="#request (instance method)">#<strong>request</strong>(request_id)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>An individual request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#requests-instance_method" title="#requests (instance method)">#<strong>requests</strong>(**attributes)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A list of requests.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#setting-instance_method" title="#setting (instance method)">#<strong>setting</strong>(name, value = nil)  &#x21d2; Success, RequestError </a>
     
 
@@ -2601,7 +2649,211 @@
 1703
 1704
 1705
-1706</pre>
+1706
+1707
+1708
+1709
+1710
+1711
+1712
+1713
+1714
+1715
+1716
+1717
+1718
+1719
+1720
+1721
+1722
+1723
+1724
+1725
+1726
+1727
+1728
+1729
+1730
+1731
+1732
+1733
+1734
+1735
+1736
+1737
+1738
+1739
+1740
+1741
+1742
+1743
+1744
+1745
+1746
+1747
+1748
+1749
+1750
+1751
+1752
+1753
+1754
+1755
+1756
+1757
+1758
+1759
+1760
+1761
+1762
+1763
+1764
+1765
+1766
+1767
+1768
+1769
+1770
+1771
+1772
+1773
+1774
+1775
+1776
+1777
+1778
+1779
+1780
+1781
+1782
+1783
+1784
+1785
+1786
+1787
+1788
+1789
+1790
+1791
+1792
+1793
+1794
+1795
+1796
+1797
+1798
+1799
+1800
+1801
+1802
+1803
+1804
+1805
+1806
+1807
+1808
+1809
+1810
+1811
+1812
+1813
+1814
+1815
+1816
+1817
+1818
+1819
+1820
+1821
+1822
+1823
+1824
+1825
+1826
+1827
+1828
+1829
+1830
+1831
+1832
+1833
+1834
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842
+1843
+1844
+1845
+1846
+1847
+1848
+1849
+1850
+1851
+1852
+1853
+1854
+1855
+1856
+1857
+1858
+1859
+1860
+1861
+1862
+1863
+1864
+1865
+1866
+1867
+1868
+1869
+1870
+1871
+1872
+1873
+1874
+1875
+1876
+1877
+1878
+1879
+1880
+1881
+1882
+1883
+1884
+1885
+1886
+1887
+1888
+1889
+1890
+1891
+1892
+1893
+1894
+1895
+1896
+1897
+1898
+1899
+1900
+1901
+1902
+1903
+1904
+1905
+1906
+1907
+1908
+1909
+1910</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -3920,13 +4172,213 @@
     <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
 
     <span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo'>repo</span>
-    <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deavtivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deactivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 
     <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual request
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name     Type     Description
+</span>  <span class='comment'>#     id       Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     state    String   The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result   String   The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message  String   Travis-ci status message attached to the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name         Type        Description
+</span>  <span class='comment'>#     id           Integer     Value uniquely identifying the request.
+</span>  <span class='comment'>#     state        String      The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result       String      The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message      String      Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     repository   Repository  GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     branch_name  String      Name of the branch requested to be built.
+</span>  <span class='comment'>#     commit       Commit      The commit the request is associated with.
+</span>  <span class='comment'>#     builds       [Build]     The request&#39;s builds.
+</span>  <span class='comment'>#     owner        Owner       GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     created_at   String      When Travis CI created the request.
+</span>  <span class='comment'>#     event_type   String      Origin of request (push, pull request, api).
+</span>  <span class='comment'>#     base_commit  String      The base commit the request is associated with.
+</span>  <span class='comment'>#     head_commit  String      The head commit the request is associated with.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Document `resources/request/actions/find` not found.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/request/{request.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     request.id         Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/request/{request.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.slug    String   Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     request.id         Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param request_id [String, Integer] request id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
+
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/request/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request_id'>request_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of requests.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name      Type       Description
+</span>  <span class='comment'>#     requests  [Request]  List of requests.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the **requests** array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name         Type        Description
+</span>  <span class='comment'>#     id           Integer     Value uniquely identifying the request.
+</span>  <span class='comment'>#     state        String      The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result       String      The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message      String      Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     repository   Repository  GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     branch_name  String      Name of the branch requested to be built.
+</span>  <span class='comment'>#     commit       Commit      The commit the request is associated with.
+</span>  <span class='comment'>#     builds       [Build]     The request&#39;s builds.
+</span>  <span class='comment'>#     owner        Owner       GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     created_at   String      When Travis CI created the request.
+</span>  <span class='comment'>#     event_type   String      Origin of request (push, pull request, api).
+</span>  <span class='comment'>#     base_commit  String      The base commit the request is associated with.
+</span>  <span class='comment'>#     head_commit  String      The head commit the request is associated with.
+</span>  <span class='comment'>#     yaml_config  Unknown     The request&#39;s yaml_config.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of requests belonging to a repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many requests to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/requests?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many requests to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/requests?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Create**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will create a request for an individual repository, triggering a build to run on Travis CI.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in JSON format in the request body to pass any accepted parameters. Any keys in the request&#39;s config will override keys existing in the `.travis.yml`.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X POST \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;request&quot;: {
+</span>  <span class='comment'>#         &quot;message&quot;: &quot;Override the commit message: this is an api request&quot;, &quot;branch&quot;: &quot;master&quot; }}&#39;\
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1/requests
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># The response includes the following body:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```json
+</span>  <span class='comment'># {
+</span>  <span class='comment'>#   &quot;@type&quot;:              &quot;pending&quot;,
+</span>  <span class='comment'>#   &quot;remaining_requests&quot;: 1,
+</span>  <span class='comment'>#   &quot;repository&quot;:         {
+</span>  <span class='comment'>#     &quot;@type&quot;:            &quot;repository&quot;,
+</span>  <span class='comment'>#     &quot;@href&quot;:            &quot;/repo/1&quot;,
+</span>  <span class='comment'>#     &quot;@representation&quot;:  &quot;minimal&quot;,
+</span>  <span class='comment'>#     &quot;id&quot;:               1,
+</span>  <span class='comment'>#     &quot;name&quot;:             &quot;test&quot;,
+</span>  <span class='comment'>#     &quot;slug&quot;:             &quot;owner/repo&quot;
+</span>  <span class='comment'>#   },
+</span>  <span class='comment'>#   &quot;request&quot;:            {
+</span>  <span class='comment'>#     &quot;repository&quot;:       {
+</span>  <span class='comment'>#       &quot;id&quot;:             1,
+</span>  <span class='comment'>#       &quot;owner_name&quot;:     &quot;owner&quot;,
+</span>  <span class='comment'>#       &quot;name&quot;:           &quot;repo&quot;
+</span>  <span class='comment'>#     },
+</span>  <span class='comment'>#     &quot;user&quot;:             {
+</span>  <span class='comment'>#       &quot;id&quot;:             1
+</span>  <span class='comment'>#     },
+</span>  <span class='comment'>#     &quot;id&quot;:               1,
+</span>  <span class='comment'>#     &quot;message&quot;:          &quot;Override the commit message: this is an api request&quot;,
+</span>  <span class='comment'>#     &quot;branch&quot;:           &quot;master&quot;,
+</span>  <span class='comment'>#     &quot;config&quot;:           { }
+</span>  <span class='comment'>#   },
+</span>  <span class='comment'>#   &quot;resource_type&quot;:      &quot;request&quot;
+</span>  <span class='comment'># }
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Accepted Parameter  Type    Description
+</span>  <span class='comment'>#     request.config      String  Build configuration (as parsed from .travis.yml).
+</span>  <span class='comment'>#     request.message     String  Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     request.branch      String  Branch requested to be built.
+</span>  <span class='comment'>#     request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/requests
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Accepted Parameter  Type    Description
+</span>  <span class='comment'>#     request.config      String  Build configuration (as parsed from .travis.yml).
+</span>  <span class='comment'>#     request.message     String  Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     request.branch      String  Branch requested to be built.
+</span>  <span class='comment'>#     request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/requests
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param attributes [Hash] request attributes
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+    <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>request</span><span class='label_end'>&#39;:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># A list of stages.
@@ -4211,6 +4663,10 @@
 
   <span class='id identifier rubyid_private'>private</span> <span class='comment'># @private
 </span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="REST.html#create-class_method" title="Trav3::REST.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -6022,7 +6478,211 @@
 1703
 1704
 1705
-1706</pre>
+1706
+1707
+1708
+1709
+1710
+1711
+1712
+1713
+1714
+1715
+1716
+1717
+1718
+1719
+1720
+1721
+1722
+1723
+1724
+1725
+1726
+1727
+1728
+1729
+1730
+1731
+1732
+1733
+1734
+1735
+1736
+1737
+1738
+1739
+1740
+1741
+1742
+1743
+1744
+1745
+1746
+1747
+1748
+1749
+1750
+1751
+1752
+1753
+1754
+1755
+1756
+1757
+1758
+1759
+1760
+1761
+1762
+1763
+1764
+1765
+1766
+1767
+1768
+1769
+1770
+1771
+1772
+1773
+1774
+1775
+1776
+1777
+1778
+1779
+1780
+1781
+1782
+1783
+1784
+1785
+1786
+1787
+1788
+1789
+1790
+1791
+1792
+1793
+1794
+1795
+1796
+1797
+1798
+1799
+1800
+1801
+1802
+1803
+1804
+1805
+1806
+1807
+1808
+1809
+1810
+1811
+1812
+1813
+1814
+1815
+1816
+1817
+1818
+1819
+1820
+1821
+1822
+1823
+1824
+1825
+1826
+1827
+1828
+1829
+1830
+1831
+1832
+1833
+1834
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842
+1843
+1844
+1845
+1846
+1847
+1848
+1849
+1850
+1851
+1852
+1853
+1854
+1855
+1856
+1857
+1858
+1859
+1860
+1861
+1862
+1863
+1864
+1865
+1866
+1867
+1868
+1869
+1870
+1871
+1872
+1873
+1874
+1875
+1876
+1877
+1878
+1879
+1880
+1881
+1882
+1883
+1884
+1885
+1886
+1887
+1888
+1889
+1890
+1891
+1892
+1893
+1894
+1895
+1896
+1897
+1898
+1899
+1900
+1901
+1902
+1903
+1904
+1905
+1906
+1907
+1908
+1909
+1910</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -7341,13 +8001,213 @@
     <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
 
     <span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo'>repo</span>
-    <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deavtivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deactivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 
     <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual request
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name     Type     Description
+</span>  <span class='comment'>#     id       Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     state    String   The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result   String   The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message  String   Travis-ci status message attached to the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name         Type        Description
+</span>  <span class='comment'>#     id           Integer     Value uniquely identifying the request.
+</span>  <span class='comment'>#     state        String      The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result       String      The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message      String      Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     repository   Repository  GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     branch_name  String      Name of the branch requested to be built.
+</span>  <span class='comment'>#     commit       Commit      The commit the request is associated with.
+</span>  <span class='comment'>#     builds       [Build]     The request&#39;s builds.
+</span>  <span class='comment'>#     owner        Owner       GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     created_at   String      When Travis CI created the request.
+</span>  <span class='comment'>#     event_type   String      Origin of request (push, pull request, api).
+</span>  <span class='comment'>#     base_commit  String      The base commit the request is associated with.
+</span>  <span class='comment'>#     head_commit  String      The head commit the request is associated with.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Document `resources/request/actions/find` not found.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/request/{request.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     request.id         Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/request/{request.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.slug    String   Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     request.id         Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param request_id [String, Integer] request id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
+
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/request/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request_id'>request_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of requests.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name      Type       Description
+</span>  <span class='comment'>#     requests  [Request]  List of requests.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the **requests** array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name         Type        Description
+</span>  <span class='comment'>#     id           Integer     Value uniquely identifying the request.
+</span>  <span class='comment'>#     state        String      The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result       String      The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message      String      Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     repository   Repository  GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     branch_name  String      Name of the branch requested to be built.
+</span>  <span class='comment'>#     commit       Commit      The commit the request is associated with.
+</span>  <span class='comment'>#     builds       [Build]     The request&#39;s builds.
+</span>  <span class='comment'>#     owner        Owner       GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     created_at   String      When Travis CI created the request.
+</span>  <span class='comment'>#     event_type   String      Origin of request (push, pull request, api).
+</span>  <span class='comment'>#     base_commit  String      The base commit the request is associated with.
+</span>  <span class='comment'>#     head_commit  String      The head commit the request is associated with.
+</span>  <span class='comment'>#     yaml_config  Unknown     The request&#39;s yaml_config.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of requests belonging to a repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many requests to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/requests?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many requests to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/requests?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Create**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will create a request for an individual repository, triggering a build to run on Travis CI.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in JSON format in the request body to pass any accepted parameters. Any keys in the request&#39;s config will override keys existing in the `.travis.yml`.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X POST \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;request&quot;: {
+</span>  <span class='comment'>#         &quot;message&quot;: &quot;Override the commit message: this is an api request&quot;, &quot;branch&quot;: &quot;master&quot; }}&#39;\
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1/requests
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># The response includes the following body:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```json
+</span>  <span class='comment'># {
+</span>  <span class='comment'>#   &quot;@type&quot;:              &quot;pending&quot;,
+</span>  <span class='comment'>#   &quot;remaining_requests&quot;: 1,
+</span>  <span class='comment'>#   &quot;repository&quot;:         {
+</span>  <span class='comment'>#     &quot;@type&quot;:            &quot;repository&quot;,
+</span>  <span class='comment'>#     &quot;@href&quot;:            &quot;/repo/1&quot;,
+</span>  <span class='comment'>#     &quot;@representation&quot;:  &quot;minimal&quot;,
+</span>  <span class='comment'>#     &quot;id&quot;:               1,
+</span>  <span class='comment'>#     &quot;name&quot;:             &quot;test&quot;,
+</span>  <span class='comment'>#     &quot;slug&quot;:             &quot;owner/repo&quot;
+</span>  <span class='comment'>#   },
+</span>  <span class='comment'>#   &quot;request&quot;:            {
+</span>  <span class='comment'>#     &quot;repository&quot;:       {
+</span>  <span class='comment'>#       &quot;id&quot;:             1,
+</span>  <span class='comment'>#       &quot;owner_name&quot;:     &quot;owner&quot;,
+</span>  <span class='comment'>#       &quot;name&quot;:           &quot;repo&quot;
+</span>  <span class='comment'>#     },
+</span>  <span class='comment'>#     &quot;user&quot;:             {
+</span>  <span class='comment'>#       &quot;id&quot;:             1
+</span>  <span class='comment'>#     },
+</span>  <span class='comment'>#     &quot;id&quot;:               1,
+</span>  <span class='comment'>#     &quot;message&quot;:          &quot;Override the commit message: this is an api request&quot;,
+</span>  <span class='comment'>#     &quot;branch&quot;:           &quot;master&quot;,
+</span>  <span class='comment'>#     &quot;config&quot;:           { }
+</span>  <span class='comment'>#   },
+</span>  <span class='comment'>#   &quot;resource_type&quot;:      &quot;request&quot;
+</span>  <span class='comment'># }
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Accepted Parameter  Type    Description
+</span>  <span class='comment'>#     request.config      String  Build configuration (as parsed from .travis.yml).
+</span>  <span class='comment'>#     request.message     String  Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     request.branch      String  Branch requested to be built.
+</span>  <span class='comment'>#     request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/requests
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Accepted Parameter  Type    Description
+</span>  <span class='comment'>#     request.config      String  Build configuration (as parsed from .travis.yml).
+</span>  <span class='comment'>#     request.message     String  Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     request.branch      String  Branch requested to be built.
+</span>  <span class='comment'>#     request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/requests
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param attributes [Hash] request attributes
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+    <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>request</span><span class='label_end'>&#39;:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># A list of stages.
@@ -7632,6 +8492,10 @@
 
   <span class='id identifier rubyid_private'>private</span> <span class='comment'># @private
 </span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="REST.html#create-class_method" title="Trav3::REST.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -9443,7 +10307,211 @@
 1703
 1704
 1705
-1706</pre>
+1706
+1707
+1708
+1709
+1710
+1711
+1712
+1713
+1714
+1715
+1716
+1717
+1718
+1719
+1720
+1721
+1722
+1723
+1724
+1725
+1726
+1727
+1728
+1729
+1730
+1731
+1732
+1733
+1734
+1735
+1736
+1737
+1738
+1739
+1740
+1741
+1742
+1743
+1744
+1745
+1746
+1747
+1748
+1749
+1750
+1751
+1752
+1753
+1754
+1755
+1756
+1757
+1758
+1759
+1760
+1761
+1762
+1763
+1764
+1765
+1766
+1767
+1768
+1769
+1770
+1771
+1772
+1773
+1774
+1775
+1776
+1777
+1778
+1779
+1780
+1781
+1782
+1783
+1784
+1785
+1786
+1787
+1788
+1789
+1790
+1791
+1792
+1793
+1794
+1795
+1796
+1797
+1798
+1799
+1800
+1801
+1802
+1803
+1804
+1805
+1806
+1807
+1808
+1809
+1810
+1811
+1812
+1813
+1814
+1815
+1816
+1817
+1818
+1819
+1820
+1821
+1822
+1823
+1824
+1825
+1826
+1827
+1828
+1829
+1830
+1831
+1832
+1833
+1834
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842
+1843
+1844
+1845
+1846
+1847
+1848
+1849
+1850
+1851
+1852
+1853
+1854
+1855
+1856
+1857
+1858
+1859
+1860
+1861
+1862
+1863
+1864
+1865
+1866
+1867
+1868
+1869
+1870
+1871
+1872
+1873
+1874
+1875
+1876
+1877
+1878
+1879
+1880
+1881
+1882
+1883
+1884
+1885
+1886
+1887
+1888
+1889
+1890
+1891
+1892
+1893
+1894
+1895
+1896
+1897
+1898
+1899
+1900
+1901
+1902
+1903
+1904
+1905
+1906
+1907
+1908
+1909
+1910</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -10762,13 +11830,213 @@
     <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
 
     <span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo'>repo</span>
-    <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deavtivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deactivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 
     <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual request
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name     Type     Description
+</span>  <span class='comment'>#     id       Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     state    String   The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result   String   The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message  String   Travis-ci status message attached to the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name         Type        Description
+</span>  <span class='comment'>#     id           Integer     Value uniquely identifying the request.
+</span>  <span class='comment'>#     state        String      The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result       String      The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message      String      Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     repository   Repository  GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     branch_name  String      Name of the branch requested to be built.
+</span>  <span class='comment'>#     commit       Commit      The commit the request is associated with.
+</span>  <span class='comment'>#     builds       [Build]     The request&#39;s builds.
+</span>  <span class='comment'>#     owner        Owner       GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     created_at   String      When Travis CI created the request.
+</span>  <span class='comment'>#     event_type   String      Origin of request (push, pull request, api).
+</span>  <span class='comment'>#     base_commit  String      The base commit the request is associated with.
+</span>  <span class='comment'>#     head_commit  String      The head commit the request is associated with.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Document `resources/request/actions/find` not found.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/request/{request.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     request.id         Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/request/{request.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.slug    String   Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     request.id         Integer  Value uniquely identifying the request.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param request_id [String, Integer] request id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
+
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/request/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request_id'>request_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of requests.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name      Type       Description
+</span>  <span class='comment'>#     requests  [Request]  List of requests.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the **requests** array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name         Type        Description
+</span>  <span class='comment'>#     id           Integer     Value uniquely identifying the request.
+</span>  <span class='comment'>#     state        String      The state of a request (eg. whether it has been processed or not).
+</span>  <span class='comment'>#     result       String      The result of the request (eg. rejected or approved).
+</span>  <span class='comment'>#     message      String      Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     repository   Repository  GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     branch_name  String      Name of the branch requested to be built.
+</span>  <span class='comment'>#     commit       Commit      The commit the request is associated with.
+</span>  <span class='comment'>#     builds       [Build]     The request&#39;s builds.
+</span>  <span class='comment'>#     owner        Owner       GitHub user or organization the request belongs to.
+</span>  <span class='comment'>#     created_at   String      When Travis CI created the request.
+</span>  <span class='comment'>#     event_type   String      Origin of request (push, pull request, api).
+</span>  <span class='comment'>#     base_commit  String      The base commit the request is associated with.
+</span>  <span class='comment'>#     head_commit  String      The head commit the request is associated with.
+</span>  <span class='comment'>#     yaml_config  Unknown     The request&#39;s yaml_config.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of requests belonging to a repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many requests to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/requests?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many requests to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/requests?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Create**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will create a request for an individual repository, triggering a build to run on Travis CI.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in JSON format in the request body to pass any accepted parameters. Any keys in the request&#39;s config will override keys existing in the `.travis.yml`.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X POST \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;request&quot;: {
+</span>  <span class='comment'>#         &quot;message&quot;: &quot;Override the commit message: this is an api request&quot;, &quot;branch&quot;: &quot;master&quot; }}&#39;\
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1/requests
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># The response includes the following body:
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```json
+</span>  <span class='comment'># {
+</span>  <span class='comment'>#   &quot;@type&quot;:              &quot;pending&quot;,
+</span>  <span class='comment'>#   &quot;remaining_requests&quot;: 1,
+</span>  <span class='comment'>#   &quot;repository&quot;:         {
+</span>  <span class='comment'>#     &quot;@type&quot;:            &quot;repository&quot;,
+</span>  <span class='comment'>#     &quot;@href&quot;:            &quot;/repo/1&quot;,
+</span>  <span class='comment'>#     &quot;@representation&quot;:  &quot;minimal&quot;,
+</span>  <span class='comment'>#     &quot;id&quot;:               1,
+</span>  <span class='comment'>#     &quot;name&quot;:             &quot;test&quot;,
+</span>  <span class='comment'>#     &quot;slug&quot;:             &quot;owner/repo&quot;
+</span>  <span class='comment'>#   },
+</span>  <span class='comment'>#   &quot;request&quot;:            {
+</span>  <span class='comment'>#     &quot;repository&quot;:       {
+</span>  <span class='comment'>#       &quot;id&quot;:             1,
+</span>  <span class='comment'>#       &quot;owner_name&quot;:     &quot;owner&quot;,
+</span>  <span class='comment'>#       &quot;name&quot;:           &quot;repo&quot;
+</span>  <span class='comment'>#     },
+</span>  <span class='comment'>#     &quot;user&quot;:             {
+</span>  <span class='comment'>#       &quot;id&quot;:             1
+</span>  <span class='comment'>#     },
+</span>  <span class='comment'>#     &quot;id&quot;:               1,
+</span>  <span class='comment'>#     &quot;message&quot;:          &quot;Override the commit message: this is an api request&quot;,
+</span>  <span class='comment'>#     &quot;branch&quot;:           &quot;master&quot;,
+</span>  <span class='comment'>#     &quot;config&quot;:           { }
+</span>  <span class='comment'>#   },
+</span>  <span class='comment'>#   &quot;resource_type&quot;:      &quot;request&quot;
+</span>  <span class='comment'># }
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Accepted Parameter  Type    Description
+</span>  <span class='comment'>#     request.config      String  Build configuration (as parsed from .travis.yml).
+</span>  <span class='comment'>#     request.message     String  Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     request.branch      String  Branch requested to be built.
+</span>  <span class='comment'>#     request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/requests
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/requests&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Accepted Parameter  Type    Description
+</span>  <span class='comment'>#     request.config      String  Build configuration (as parsed from .travis.yml).
+</span>  <span class='comment'>#     request.message     String  Travis-ci status message attached to the request.
+</span>  <span class='comment'>#     request.branch      String  Branch requested to be built.
+</span>  <span class='comment'>#     request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/requests
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param attributes [Hash] request attributes
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+    <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>request</span><span class='label_end'>&#39;:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># A list of stages.
@@ -11053,6 +12321,10 @@
 
   <span class='id identifier rubyid_private'>private</span> <span class='comment'># @private
 </span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="REST.html#create-class_method" title="Trav3::REST.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -13829,13 +15101,357 @@ Example: POST /repo/rails%2Frails/unstar
   <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
 
   <span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo'>repo</span>
-  <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deavtivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>star</span><span class='words_sep'> </span><span class='tstring_content'>unstar</span><span class='words_sep'> </span><span class='tstring_content'>activate</span><span class='words_sep'> </span><span class='tstring_content'>deactivate</span><span class='tstring_end'>]</span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repo/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_repo'>repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_action'>action</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="request-instance_method">
+  
+    #<strong>request</strong>(request_id)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>An individual request</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<p><strong>Minimal Representation</strong></p>
+
+<p>Included when the resource is returned as part of another resource.</p>
+
+<pre class="code ruby"><code class="ruby">Name     Type     Description
+id       Integer  Value uniquely identifying the request.
+state    String   The state of a request (eg. whether it has been processed or not).
+result   String   The result of the request (eg. rejected or approved).
+message  String   Travis-ci status message attached to the request.
+</code></pre>
+
+<p><strong>Standard Representation</strong></p>
+
+<p>Included when the resource is the main response of a request, or is <a href="https://developer.travis-ci.com/eager-loading" target="_parent" title="eager loaded">eager loaded</a>.</p>
+
+<pre class="code ruby"><code class="ruby">Name         Type        Description
+id           Integer     Value uniquely identifying the request.
+state        String      The state of a request (eg. whether it has been processed or not).
+result       String      The result of the request (eg. rejected or approved).
+message      String      Travis-ci status message attached to the request.
+repository   Repository  GitHub user or organization the request belongs to.
+branch_name  String      Name of the branch requested to be built.
+commit       Commit      The commit the request is associated with.
+builds       [Build]     The request&#39;s builds.
+owner        Owner       GitHub user or organization the request belongs to.
+created_at   String      When Travis CI created the request.
+event_type   String      Origin of request (push, pull request, api).
+base_commit  String      The base commit the request is associated with.
+head_commit  String      The head commit the request is associated with.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>Find</strong></p>
+
+<p>Document <code>resources/request/actions/find</code> not found.</p>
+
+<p>GET <code>/repo/{repository.id}/request/{request.id}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+request.id         Integer  Value uniquely identifying the request.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+</code></pre>
+
+<p>GET <code>/repo/{repository.slug}/request/{request.id}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.slug    String   Same as {repository.owner.name}/{repository.name}.
+request.id         Integer  Value uniquely identifying the request.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>request id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1404
+1405
+1406
+1407
+1408</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1404</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
+
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/request/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request_id'>request_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="requests-instance_method">
+  
+    #<strong>requests</strong>(**attributes)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A list of requests.</p>
+
+<p>If querying using the repository slug, it must be formatted using <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_parent" title="standard URL encoding">standard URL encoding</a>, including any special characters.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name      Type       Description
+requests  [Request]  List of requests.
+</code></pre>
+
+<p><strong>Collection Items</strong></p>
+
+<p>Each entry in the <strong>requests</strong> array has the following attributes:</p>
+
+<pre class="code ruby"><code class="ruby">Name         Type        Description
+id           Integer     Value uniquely identifying the request.
+state        String      The state of a request (eg. whether it has been processed or not).
+result       String      The result of the request (eg. rejected or approved).
+message      String      Travis-ci status message attached to the request.
+repository   Repository  GitHub user or organization the request belongs to.
+branch_name  String      Name of the branch requested to be built.
+commit       Commit      The commit the request is associated with.
+builds       [Build]     The request&#39;s builds.
+owner        Owner       GitHub user or organization the request belongs to.
+created_at   String      When Travis CI created the request.
+event_type   String      Origin of request (push, pull request, api).
+base_commit  String      The base commit the request is associated with.
+head_commit  String      The head commit the request is associated with.
+yaml_config  Unknown     The request&#39;s yaml_config.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>Find</strong></p>
+
+<p>This will return a list of requests belonging to a repository.</p>
+
+<p>GET <code>/repo/{repository.id}/requests</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+limit            Integer   How many requests to include in the response. Used for pagination.
+offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+
+Example: GET /repo/891/requests?limit=5
+</code></pre>
+
+<p>GET <code>/repo/{repository.slug}/requests</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+limit            Integer   How many requests to include in the response. Used for pagination.
+offset           Integer   How many requests to skip before the first entry in the response. Used for pagination.
+
+Example: GET /repo/rails%2Frails/requests?limit=5
+</code></pre>
+
+<p><strong>Create</strong></p>
+
+<p>This will create a request for an individual repository, triggering a build to run on Travis CI.</p>
+
+<p>Use namespaced params in JSON format in the request body to pass any accepted parameters. Any keys in the request&#39;s config will override keys existing in the <code>.travis.yml</code>.</p>
+
+<pre class="code ruby"><code class="ruby">curl -X POST \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Travis-API-Version: 3&quot; \
+  -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+  -d &#39;{ &quot;request&quot;: {
+        &quot;message&quot;: &quot;Override the commit message: this is an api request&quot;, &quot;branch&quot;: &quot;master&quot; }}&#39;\
+  https://api.travis-ci.com/repo/1/requests
+</code></pre>
+
+<p>The response includes the following body:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@type</span><span class='label_end'>&quot;:</span>              <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pending</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>remaining_requests</span><span class='label_end'>&quot;:</span> <span class='int'>1</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>repository</span><span class='label_end'>&quot;:</span>         <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@type</span><span class='label_end'>&quot;:</span>            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>repository</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@href</span><span class='label_end'>&quot;:</span>            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/repo/1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@representation</span><span class='label_end'>&quot;:</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>minimal</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='label_end'>&quot;:</span>               <span class='int'>1</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='label_end'>&quot;:</span>             <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>slug</span><span class='label_end'>&quot;:</span>             <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>owner/repo</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request</span><span class='label_end'>&quot;:</span>            <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>repository</span><span class='label_end'>&quot;:</span>       <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='label_end'>&quot;:</span>             <span class='int'>1</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>owner_name</span><span class='label_end'>&quot;:</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>owner</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='label_end'>&quot;:</span>           <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>repo</span><span class='tstring_end'>&quot;</span></span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user</span><span class='label_end'>&quot;:</span>             <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='label_end'>&quot;:</span>             <span class='int'>1</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='label_end'>&quot;:</span>               <span class='int'>1</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>message</span><span class='label_end'>&quot;:</span>          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Override the commit message: this is an api request</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>branch</span><span class='label_end'>&quot;:</span>           <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>master</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>config</span><span class='label_end'>&quot;:</span>           <span class='lbrace'>{</span> <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resource_type</span><span class='label_end'>&quot;:</span>      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>request</span><span class='tstring_end'>&quot;</span></span>
+<span class='rbrace'>}</span>
+</code></pre>
+
+<p>POST <code>/repo/{repository.id}/requests</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+Accepted Parameter  Type    Description
+request.config      String  Build configuration (as parsed from .travis.yml).
+request.message     String  Travis-ci status message attached to the request.
+request.branch      String  Branch requested to be built.
+request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+
+Example: POST /repo/891/requests
+</code></pre>
+
+<p>POST <code>/repo/{repository.slug}/requests</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+Accepted Parameter  Type    Description
+request.config      String  Build configuration (as parsed from .travis.yml).
+request.message     String  Travis-ci status message attached to the request.
+request.branch      String  Branch requested to be built.
+request.token       Object  Travis token associated with webhook on GitHub (DEPRECATED).
+
+Example: POST /repo/rails%2Frails/requests
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>attributes</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>request attributes</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1541
+1542
+1543
+1544
+1545</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1541</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+
+  <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>request</span><span class='label_end'>&#39;:</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -14007,14 +15623,14 @@ setting.value       Boolean or integer  The setting&#39;s value.
       <pre class="lines">
 
 
-1478
-1479
-1480
-1481
-1482</pre>
+1678
+1679
+1680
+1681
+1682</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1478</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1678</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -14121,12 +15737,12 @@ Example: GET /repo/rails%2Frails/settings
       <pre class="lines">
 
 
-1533
-1534
-1535</pre>
+1733
+1734
+1735</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1533</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1733</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -14251,14 +15867,14 @@ Example: GET /build/86601346/stages
       <pre class="lines">
 
 
-1387
-1388
-1389
-1390
-1391</pre>
+1587
+1588
+1589
+1590
+1591</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1387</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1587</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stages'>stages</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -14457,20 +16073,20 @@ Example: GET /user
       <pre class="lines">
 
 
-1615
-1616
-1617
-1618
-1619
-1620
-1621
-1622
-1623
-1624
-1625</pre>
+1815
+1816
+1817
+1818
+1819
+1820
+1821
+1822
+1823
+1824
+1825</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1615</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1815</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sync'>sync</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_sync'>sync</span>
@@ -14493,7 +16109,7 @@ Example: GET /user
 </div>
 
       <div id="footer">
-  Generated on Fri Jan 18 21:50:08 2019 by
+  Generated on Mon Jan 21 12:57:47 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
