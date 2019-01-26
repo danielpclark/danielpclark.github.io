@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Exception: Trav3::InvalidAPIEndpoint
+  Exception: Trav3::EnvVarError
   
     &mdash; Documentation by YARD 0.9.16
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  pathId = "Trav3::InvalidAPIEndpoint";
+  pathId = "Trav3::EnvVarError";
   relpath = '../';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="../_index.html">Index (I)</a> &raquo;
+    <a href="../_index.html">Index (E)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span>
      &raquo; 
-    <span class="title">InvalidAPIEndpoint</span>
+    <span class="title">EnvVarError</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Exception: Trav3::InvalidAPIEndpoint
+      <div id="content"><h1>Exception: Trav3::EnvVarError
   
   
   
@@ -76,7 +76,7 @@
           
             <li class="next">StandardError</li>
           
-            <li class="next">Trav3::InvalidAPIEndpoint</li>
+            <li class="next">Trav3::EnvVarError</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
@@ -96,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/trav3/error/invalid_api_endpoint.rb</dd>
+    <dd>lib/trav3/error/env_var_error.rb</dd>
   </dl>
   
 </div>
@@ -166,16 +166,14 @@
 5
 6
 7
-8
-9</pre>
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3/error/invalid_api_endpoint.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3/error/env_var_error.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_message'>message</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The API endpoint must be either
-  &#39;https://api.travis-ci.com&#39; or
-  &#39;https://api.travis-ci.org&#39;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You must provide the keys `name`, `value`, and `public`\
+  where name and value are given String values and public is a Boolean.</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -187,7 +185,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sat Jan 26 17:08:23 2019 by
+  Generated on Sat Jan 26 17:08:22 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
