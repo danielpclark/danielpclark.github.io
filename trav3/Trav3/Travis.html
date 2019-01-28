@@ -426,6 +426,54 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#cron-instance_method" title="#cron (instance method)">#<strong>cron</strong>(id: nil, branch_name: nil, create: nil, delete: false)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>An individual cron.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#crons-instance_method" title="#crons (instance method)">#<strong>crons</strong>  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A list of crons.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#defaults-instance_method" title="#defaults (instance method)">#<strong>defaults</strong>(key: value, ...)  &#x21d2; self </a>
     
 
@@ -442,6 +490,54 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Set as many options as you&#39;d like for collections queried via an API request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#email_resubscribe-instance_method" title="#email_resubscribe (instance method)">#<strong>email_resubscribe</strong>  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>POST <code>/repo/{repository.id}/email_subscription</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#email_unsubscribe-instance_method" title="#email_unsubscribe (instance method)">#<strong>email_unsubscribe</strong>  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>DELETE <code>/repo/{repository.id}/email_subscription</code>.</p>
 </div></span>
   
 </li>
@@ -3768,7 +3864,237 @@
 2600
 2601
 2602
-2603</pre>
+2603
+2604
+2605
+2606
+2607
+2608
+2609
+2610
+2611
+2612
+2613
+2614
+2615
+2616
+2617
+2618
+2619
+2620
+2621
+2622
+2623
+2624
+2625
+2626
+2627
+2628
+2629
+2630
+2631
+2632
+2633
+2634
+2635
+2636
+2637
+2638
+2639
+2640
+2641
+2642
+2643
+2644
+2645
+2646
+2647
+2648
+2649
+2650
+2651
+2652
+2653
+2654
+2655
+2656
+2657
+2658
+2659
+2660
+2661
+2662
+2663
+2664
+2665
+2666
+2667
+2668
+2669
+2670
+2671
+2672
+2673
+2674
+2675
+2676
+2677
+2678
+2679
+2680
+2681
+2682
+2683
+2684
+2685
+2686
+2687
+2688
+2689
+2690
+2691
+2692
+2693
+2694
+2695
+2696
+2697
+2698
+2699
+2700
+2701
+2702
+2703
+2704
+2705
+2706
+2707
+2708
+2709
+2710
+2711
+2712
+2713
+2714
+2715
+2716
+2717
+2718
+2719
+2720
+2721
+2722
+2723
+2724
+2725
+2726
+2727
+2728
+2729
+2730
+2731
+2732
+2733
+2734
+2735
+2736
+2737
+2738
+2739
+2740
+2741
+2742
+2743
+2744
+2745
+2746
+2747
+2748
+2749
+2750
+2751
+2752
+2753
+2754
+2755
+2756
+2757
+2758
+2759
+2760
+2761
+2762
+2763
+2764
+2765
+2766
+2767
+2768
+2769
+2770
+2771
+2772
+2773
+2774
+2775
+2776
+2777
+2778
+2779
+2780
+2781
+2782
+2783
+2784
+2785
+2786
+2787
+2788
+2789
+2790
+2791
+2792
+2793
+2794
+2795
+2796
+2797
+2798
+2799
+2800
+2801
+2802
+2803
+2804
+2805
+2806
+2807
+2808
+2809
+2810
+2811
+2812
+2813
+2814
+2815
+2816
+2817
+2818
+2819
+2820
+2821
+2822
+2823
+2824
+2825
+2826
+2827
+2828
+2829
+2830
+2831
+2832
+2833</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -4412,6 +4738,232 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_caches'>caches</span><span class='lparen'>(</span><span class='id identifier rubyid_delete'>delete</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_without_limit'>without_limit</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual cron. There can be only one cron per branch on a repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name  Type     Description
+</span>  <span class='comment'>#     id    Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name                             Type        Description
+</span>  <span class='comment'>#     id                               Integer     Value uniquely identifying the cron.
+</span>  <span class='comment'>#     repository                       Repository  Github repository to which this cron belongs.
+</span>  <span class='comment'>#     branch                           Branch      Git branch of repository to which this cron belongs.
+</span>  <span class='comment'>#     interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#     last_run                         String      When the cron ran last.
+</span>  <span class='comment'>#     next_run                         String      When the cron is scheduled to run next.
+</span>  <span class='comment'>#     created_at                       String      When the cron was created.
+</span>  <span class='comment'>#     active                           Unknown     The cron&#39;s active.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a single cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/cron/{cron.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     cron.id            Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Delete**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This deletes a single cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/cron/{cron.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     cron.id            Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Branch**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns the cron set for the specified branch for the specified repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     branch.name        String   Name of the git branch.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     branch.name        String  Name of the git branch.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Create**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This creates a cron on the specified branch for the specified repository. It is possible to use the repository id or slug in the request. Content-Type MUST be set in the header and an interval for the cron MUST be specified as a parameter.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X POST \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;cron.interval&quot;: &quot;monthly&quot; }&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1234/branch/master/cron
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     branch.name        String   Name of the git branch.
+</span>  <span class='comment'>#     Accepted Parameter                    Type     Description
+</span>  <span class='comment'>#     cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     branch.name        String  Name of the git branch.
+</span>  <span class='comment'>#     Accepted Parameter                    Type     Description
+</span>  <span class='comment'>#     cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param id [String, Integer] cron id to get or delete
+</span>  <span class='comment'># @param branch_name [String] branch name to get cron or create
+</span>  <span class='comment'># @param create [Hash] Properties for creating the cron.  `branch_name` keyword argument required and `interval` key/value required.
+</span>  <span class='comment'># @param delete [Boolean] option for deleting cron.  Cron `id` keyword argument required.
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_cron'>cron</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>branch_name:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span>
+      <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_id'>id</span>
+
+      <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id or branch_name required</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_branch_name'>branch_name</span>
+
+    <span class='id identifier rubyid_create'>create</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of crons.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type    Description
+</span>  <span class='comment'>#     crons  [Cron]  List of crons.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the crons array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name                             Type        Description
+</span>  <span class='comment'>#     id                               Integer     Value uniquely identifying the cron.
+</span>  <span class='comment'>#     repository                       Repository  Github repository to which this cron belongs.
+</span>  <span class='comment'>#     branch                           Branch      Git branch of repository to which this cron belongs.
+</span>  <span class='comment'>#     interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#     last_run                         String      When the cron ran last.
+</span>  <span class='comment'>#     next_run                         String      When the cron is scheduled to run next.
+</span>  <span class='comment'>#     created_at                       String      When the cron was created.
+</span>  <span class='comment'>#     active                           Unknown     The cron&#39;s active.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Repository**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a list of crons for an individual repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/crons&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many crons to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/crons?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/crons&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many crons to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/crons?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_crons'>crons</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/crons</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_email_resubscribe'>email_resubscribe</span>
+    <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.id}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: DELETE /repo/891/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.slug}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: DELETE /repo/rails%2Frails/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_email_unsubscribe'>email_unsubscribe</span>
+    <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual environment variable.
@@ -5090,8 +5642,6 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#     Example: DELETE /job/86601347/log
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @note DELETE is unimplemented
-</span>  <span class='comment'>#
 </span>  <span class='comment'># @param job_id [String, Integer] the job id number
 </span>  <span class='comment'># @param option [Symbol] options for :text or :delete
 </span>  <span class='comment'># @return [Success, String, RequestError]
@@ -5100,7 +5650,7 @@
     <span class='kw'>when</span> <span class='symbol'>:text</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log.txt</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='kw'>when</span> <span class='symbol'>:delete</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Unimplemented.html" title="Trav3::Unimplemented (class)">Unimplemented</a></span></span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
@@ -6237,6 +6787,10 @@
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="REST.html#create-class_method" title="Trav3::REST.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_inject_property_name'>inject_property_name</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cron</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -6269,7 +6823,9 @@
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_inject_property_name'>inject_property_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>unless</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\.\w+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>unless</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\.\w+\z</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_hash'>hash</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_key_pair_keys'>key_pair_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
@@ -8983,7 +9539,237 @@
 2600
 2601
 2602
-2603</pre>
+2603
+2604
+2605
+2606
+2607
+2608
+2609
+2610
+2611
+2612
+2613
+2614
+2615
+2616
+2617
+2618
+2619
+2620
+2621
+2622
+2623
+2624
+2625
+2626
+2627
+2628
+2629
+2630
+2631
+2632
+2633
+2634
+2635
+2636
+2637
+2638
+2639
+2640
+2641
+2642
+2643
+2644
+2645
+2646
+2647
+2648
+2649
+2650
+2651
+2652
+2653
+2654
+2655
+2656
+2657
+2658
+2659
+2660
+2661
+2662
+2663
+2664
+2665
+2666
+2667
+2668
+2669
+2670
+2671
+2672
+2673
+2674
+2675
+2676
+2677
+2678
+2679
+2680
+2681
+2682
+2683
+2684
+2685
+2686
+2687
+2688
+2689
+2690
+2691
+2692
+2693
+2694
+2695
+2696
+2697
+2698
+2699
+2700
+2701
+2702
+2703
+2704
+2705
+2706
+2707
+2708
+2709
+2710
+2711
+2712
+2713
+2714
+2715
+2716
+2717
+2718
+2719
+2720
+2721
+2722
+2723
+2724
+2725
+2726
+2727
+2728
+2729
+2730
+2731
+2732
+2733
+2734
+2735
+2736
+2737
+2738
+2739
+2740
+2741
+2742
+2743
+2744
+2745
+2746
+2747
+2748
+2749
+2750
+2751
+2752
+2753
+2754
+2755
+2756
+2757
+2758
+2759
+2760
+2761
+2762
+2763
+2764
+2765
+2766
+2767
+2768
+2769
+2770
+2771
+2772
+2773
+2774
+2775
+2776
+2777
+2778
+2779
+2780
+2781
+2782
+2783
+2784
+2785
+2786
+2787
+2788
+2789
+2790
+2791
+2792
+2793
+2794
+2795
+2796
+2797
+2798
+2799
+2800
+2801
+2802
+2803
+2804
+2805
+2806
+2807
+2808
+2809
+2810
+2811
+2812
+2813
+2814
+2815
+2816
+2817
+2818
+2819
+2820
+2821
+2822
+2823
+2824
+2825
+2826
+2827
+2828
+2829
+2830
+2831
+2832
+2833</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -9627,6 +10413,232 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_caches'>caches</span><span class='lparen'>(</span><span class='id identifier rubyid_delete'>delete</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_without_limit'>without_limit</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual cron. There can be only one cron per branch on a repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name  Type     Description
+</span>  <span class='comment'>#     id    Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name                             Type        Description
+</span>  <span class='comment'>#     id                               Integer     Value uniquely identifying the cron.
+</span>  <span class='comment'>#     repository                       Repository  Github repository to which this cron belongs.
+</span>  <span class='comment'>#     branch                           Branch      Git branch of repository to which this cron belongs.
+</span>  <span class='comment'>#     interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#     last_run                         String      When the cron ran last.
+</span>  <span class='comment'>#     next_run                         String      When the cron is scheduled to run next.
+</span>  <span class='comment'>#     created_at                       String      When the cron was created.
+</span>  <span class='comment'>#     active                           Unknown     The cron&#39;s active.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a single cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/cron/{cron.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     cron.id            Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Delete**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This deletes a single cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/cron/{cron.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     cron.id            Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Branch**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns the cron set for the specified branch for the specified repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     branch.name        String   Name of the git branch.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     branch.name        String  Name of the git branch.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Create**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This creates a cron on the specified branch for the specified repository. It is possible to use the repository id or slug in the request. Content-Type MUST be set in the header and an interval for the cron MUST be specified as a parameter.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X POST \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;cron.interval&quot;: &quot;monthly&quot; }&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1234/branch/master/cron
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     branch.name        String   Name of the git branch.
+</span>  <span class='comment'>#     Accepted Parameter                    Type     Description
+</span>  <span class='comment'>#     cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     branch.name        String  Name of the git branch.
+</span>  <span class='comment'>#     Accepted Parameter                    Type     Description
+</span>  <span class='comment'>#     cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param id [String, Integer] cron id to get or delete
+</span>  <span class='comment'># @param branch_name [String] branch name to get cron or create
+</span>  <span class='comment'># @param create [Hash] Properties for creating the cron.  `branch_name` keyword argument required and `interval` key/value required.
+</span>  <span class='comment'># @param delete [Boolean] option for deleting cron.  Cron `id` keyword argument required.
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_cron'>cron</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>branch_name:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span>
+      <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_id'>id</span>
+
+      <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id or branch_name required</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_branch_name'>branch_name</span>
+
+    <span class='id identifier rubyid_create'>create</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of crons.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type    Description
+</span>  <span class='comment'>#     crons  [Cron]  List of crons.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the crons array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name                             Type        Description
+</span>  <span class='comment'>#     id                               Integer     Value uniquely identifying the cron.
+</span>  <span class='comment'>#     repository                       Repository  Github repository to which this cron belongs.
+</span>  <span class='comment'>#     branch                           Branch      Git branch of repository to which this cron belongs.
+</span>  <span class='comment'>#     interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#     last_run                         String      When the cron ran last.
+</span>  <span class='comment'>#     next_run                         String      When the cron is scheduled to run next.
+</span>  <span class='comment'>#     created_at                       String      When the cron was created.
+</span>  <span class='comment'>#     active                           Unknown     The cron&#39;s active.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Repository**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a list of crons for an individual repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/crons&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many crons to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/crons?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/crons&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many crons to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/crons?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_crons'>crons</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/crons</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_email_resubscribe'>email_resubscribe</span>
+    <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.id}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: DELETE /repo/891/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.slug}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: DELETE /repo/rails%2Frails/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_email_unsubscribe'>email_unsubscribe</span>
+    <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual environment variable.
@@ -10305,8 +11317,6 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#     Example: DELETE /job/86601347/log
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @note DELETE is unimplemented
-</span>  <span class='comment'>#
 </span>  <span class='comment'># @param job_id [String, Integer] the job id number
 </span>  <span class='comment'># @param option [Symbol] options for :text or :delete
 </span>  <span class='comment'># @return [Success, String, RequestError]
@@ -10315,7 +11325,7 @@
     <span class='kw'>when</span> <span class='symbol'>:text</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log.txt</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='kw'>when</span> <span class='symbol'>:delete</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Unimplemented.html" title="Trav3::Unimplemented (class)">Unimplemented</a></span></span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
@@ -11452,6 +12462,10 @@
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="REST.html#create-class_method" title="Trav3::REST.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_inject_property_name'>inject_property_name</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cron</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -11484,7 +12498,9 @@
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_inject_property_name'>inject_property_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>unless</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\.\w+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>unless</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\.\w+\z</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_hash'>hash</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_key_pair_keys'>key_pair_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
@@ -14198,7 +15214,237 @@
 2600
 2601
 2602
-2603</pre>
+2603
+2604
+2605
+2606
+2607
+2608
+2609
+2610
+2611
+2612
+2613
+2614
+2615
+2616
+2617
+2618
+2619
+2620
+2621
+2622
+2623
+2624
+2625
+2626
+2627
+2628
+2629
+2630
+2631
+2632
+2633
+2634
+2635
+2636
+2637
+2638
+2639
+2640
+2641
+2642
+2643
+2644
+2645
+2646
+2647
+2648
+2649
+2650
+2651
+2652
+2653
+2654
+2655
+2656
+2657
+2658
+2659
+2660
+2661
+2662
+2663
+2664
+2665
+2666
+2667
+2668
+2669
+2670
+2671
+2672
+2673
+2674
+2675
+2676
+2677
+2678
+2679
+2680
+2681
+2682
+2683
+2684
+2685
+2686
+2687
+2688
+2689
+2690
+2691
+2692
+2693
+2694
+2695
+2696
+2697
+2698
+2699
+2700
+2701
+2702
+2703
+2704
+2705
+2706
+2707
+2708
+2709
+2710
+2711
+2712
+2713
+2714
+2715
+2716
+2717
+2718
+2719
+2720
+2721
+2722
+2723
+2724
+2725
+2726
+2727
+2728
+2729
+2730
+2731
+2732
+2733
+2734
+2735
+2736
+2737
+2738
+2739
+2740
+2741
+2742
+2743
+2744
+2745
+2746
+2747
+2748
+2749
+2750
+2751
+2752
+2753
+2754
+2755
+2756
+2757
+2758
+2759
+2760
+2761
+2762
+2763
+2764
+2765
+2766
+2767
+2768
+2769
+2770
+2771
+2772
+2773
+2774
+2775
+2776
+2777
+2778
+2779
+2780
+2781
+2782
+2783
+2784
+2785
+2786
+2787
+2788
+2789
+2790
+2791
+2792
+2793
+2794
+2795
+2796
+2797
+2798
+2799
+2800
+2801
+2802
+2803
+2804
+2805
+2806
+2807
+2808
+2809
+2810
+2811
+2812
+2813
+2814
+2815
+2816
+2817
+2818
+2819
+2820
+2821
+2822
+2823
+2824
+2825
+2826
+2827
+2828
+2829
+2830
+2831
+2832
+2833</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -14842,6 +16088,232 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_caches'>caches</span><span class='lparen'>(</span><span class='id identifier rubyid_delete'>delete</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_without_limit'>without_limit</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># An individual cron. There can be only one cron per branch on a repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Minimal Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is returned as part of another resource.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name  Type     Description
+</span>  <span class='comment'>#     id    Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Standard Representation**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Included when the resource is the main response of a request, or is {https://developer.travis-ci.com/eager-loading eager loaded}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name                             Type        Description
+</span>  <span class='comment'>#     id                               Integer     Value uniquely identifying the cron.
+</span>  <span class='comment'>#     repository                       Repository  Github repository to which this cron belongs.
+</span>  <span class='comment'>#     branch                           Branch      Git branch of repository to which this cron belongs.
+</span>  <span class='comment'>#     interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#     last_run                         String      When the cron ran last.
+</span>  <span class='comment'>#     next_run                         String      When the cron is scheduled to run next.
+</span>  <span class='comment'>#     created_at                       String      When the cron was created.
+</span>  <span class='comment'>#     active                           Unknown     The cron&#39;s active.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a single cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/cron/{cron.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     cron.id            Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Delete**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This deletes a single cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/cron/{cron.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     cron.id            Integer  Value uniquely identifying the cron.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Branch**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns the cron set for the specified branch for the specified repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     branch.name        String   Name of the git branch.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     branch.name        String  Name of the git branch.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Create**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This creates a cron on the specified branch for the specified repository. It is possible to use the repository id or slug in the request. Content-Type MUST be set in the header and an interval for the cron MUST be specified as a parameter.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X POST \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{ &quot;cron.interval&quot;: &quot;monthly&quot; }&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/repo/1234/branch/master/cron
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     branch.name        String   Name of the git branch.
+</span>  <span class='comment'>#     Accepted Parameter                    Type     Description
+</span>  <span class='comment'>#     cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/branch/{branch.name}/cron&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     branch.name        String  Name of the git branch.
+</span>  <span class='comment'>#     Accepted Parameter                    Type     Description
+</span>  <span class='comment'>#     cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/branch/master/cron
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param id [String, Integer] cron id to get or delete
+</span>  <span class='comment'># @param branch_name [String] branch name to get cron or create
+</span>  <span class='comment'># @param create [Hash] Properties for creating the cron.  `branch_name` keyword argument required and `interval` key/value required.
+</span>  <span class='comment'># @param delete [Boolean] option for deleting cron.  Cron `id` keyword argument required.
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_cron'>cron</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>branch_name:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span>
+      <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_id'>id</span>
+
+      <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id or branch_name required</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_branch_name'>branch_name</span>
+
+    <span class='id identifier rubyid_create'>create</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of crons.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># If querying using the repository slug, it must be formatted using {http://www.w3schools.com/tags/ref_urlencode.asp standard URL encoding}, including any special characters.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name   Type    Description
+</span>  <span class='comment'>#     crons  [Cron]  List of crons.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the crons array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name                             Type        Description
+</span>  <span class='comment'>#     id                               Integer     Value uniquely identifying the cron.
+</span>  <span class='comment'>#     repository                       Repository  Github repository to which this cron belongs.
+</span>  <span class='comment'>#     branch                           Branch      Git branch of repository to which this cron belongs.
+</span>  <span class='comment'>#     interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+</span>  <span class='comment'>#     dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+</span>  <span class='comment'>#     last_run                         String      When the cron ran last.
+</span>  <span class='comment'>#     next_run                         String      When the cron is scheduled to run next.
+</span>  <span class='comment'>#     created_at                       String      When the cron was created.
+</span>  <span class='comment'>#     active                           Unknown     The cron&#39;s active.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Repository**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This returns a list of crons for an individual repository. It is possible to use the repository id or slug in the request.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.id}/crons&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many crons to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/891/crons?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/repo/{repository.slug}/crons&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#     limit            Integer   How many crons to include in the response. Used for pagination.
+</span>  <span class='comment'>#     offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /repo/rails%2Frails/crons?limit=5
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_crons'>crons</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/crons</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># POST &lt;code&gt;/repo/{repository.id}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/891/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># POST &lt;code&gt;/repo/{repository.slug}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: POST /repo/rails%2Frails/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_email_resubscribe'>email_resubscribe</span>
+    <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.id}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     repository.id      Integer  Value uniquely identifying the repository.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: DELETE /repo/891/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/repo/{repository.slug}/email_subscription&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type    Description
+</span>  <span class='comment'>#     repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: DELETE /repo/rails%2Frails/email_subscription
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_email_unsubscribe'>email_unsubscribe</span>
+    <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual environment variable.
@@ -15520,8 +16992,6 @@
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#     Example: DELETE /job/86601347/log
 </span>  <span class='comment'>#
-</span>  <span class='comment'># @note DELETE is unimplemented
-</span>  <span class='comment'>#
 </span>  <span class='comment'># @param job_id [String, Integer] the job id number
 </span>  <span class='comment'># @param option [Symbol] options for :text or :delete
 </span>  <span class='comment'># @return [Success, String, RequestError]
@@ -15530,7 +17000,7 @@
     <span class='kw'>when</span> <span class='symbol'>:text</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log.txt</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
     <span class='kw'>when</span> <span class='symbol'>:delete</span>
-      <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Unimplemented.html" title="Trav3::Unimplemented (class)">Unimplemented</a></span></span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
@@ -16667,6 +18137,10 @@
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_create'><span class='object_link'><a href="REST.html#create-class_method" title="Trav3::REST.create (method)">create</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>def</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_inject_property_name'>inject_property_name</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cron</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
     <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="REST.html" title="Trav3::REST (module)">REST</a></span></span><span class='period'>.</span><span class='id identifier rubyid_delete'><span class='object_link'><a href="REST.html#delete-class_method" title="Trav3::REST.delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -16699,7 +18173,9 @@
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_inject_property_name'>inject_property_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>unless</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\.\w+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='kw'>unless</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\.\w+\z</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_hash'>hash</span>
   <span class='kw'>end</span>
 
   <span class='kw'>def</span> <span class='id identifier rubyid_key_pair_keys'>key_pair_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
@@ -17952,6 +19428,381 @@ Example: DELETE /repo/rails%2Frails/caches
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="cron-instance_method">
+  
+    #<strong>cron</strong>(id: nil, branch_name: nil, create: nil, delete: false)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>An individual cron. There can be only one cron per branch on a repository.</p>
+
+<p>If querying using the repository slug, it must be formatted using <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_parent" title="standard URL encoding">standard URL encoding</a>, including any special characters.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<p><strong>Minimal Representation</strong></p>
+
+<p>Included when the resource is returned as part of another resource.</p>
+
+<pre class="code ruby"><code class="ruby">Name  Type     Description
+id    Integer  Value uniquely identifying the cron.
+</code></pre>
+
+<p><strong>Standard Representation</strong></p>
+
+<p>Included when the resource is the main response of a request, or is <a href="https://developer.travis-ci.com/eager-loading" target="_parent" title="eager loaded">eager loaded</a>.</p>
+
+<pre class="code ruby"><code class="ruby">Name                             Type        Description
+id                               Integer     Value uniquely identifying the cron.
+repository                       Repository  Github repository to which this cron belongs.
+branch                           Branch      Git branch of repository to which this cron belongs.
+interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+last_run                         String      When the cron ran last.
+next_run                         String      When the cron is scheduled to run next.
+created_at                       String      When the cron was created.
+active                           Unknown     The cron&#39;s active.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>Find</strong></p>
+
+<p>This returns a single cron.</p>
+
+<p>GET <code>/cron/{cron.id}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+cron.id            Integer  Value uniquely identifying the cron.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+</code></pre>
+
+<p><strong>Delete</strong></p>
+
+<p>This deletes a single cron.</p>
+
+<p>DELETE <code>/cron/{cron.id}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+cron.id            Integer  Value uniquely identifying the cron.
+</code></pre>
+
+<p><strong>For Branch</strong></p>
+
+<p>This returns the cron set for the specified branch for the specified repository. It is possible to use the repository id or slug in the request.</p>
+
+<p>GET <code>/repo/{repository.id}/branch/{branch.name}/cron</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+branch.name        String   Name of the git branch.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /repo/891/branch/master/cron
+</code></pre>
+
+<p>GET <code>/repo/{repository.slug}/branch/{branch.name}/cron</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+branch.name        String  Name of the git branch.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /repo/rails%2Frails/branch/master/cron
+</code></pre>
+
+<p><strong>Create</strong></p>
+
+<p>This creates a cron on the specified branch for the specified repository. It is possible to use the repository id or slug in the request. Content-Type MUST be set in the header and an interval for the cron MUST be specified as a parameter.</p>
+
+<pre class="code ruby"><code class="ruby">curl -X POST \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Travis-API-Version: 3&quot; \
+  -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+  -d &#39;{ &quot;cron.interval&quot;: &quot;monthly&quot; }&#39; \
+  https://api.travis-ci.com/repo/1234/branch/master/cron
+</code></pre>
+
+<p>POST <code>/repo/{repository.id}/branch/{branch.name}/cron</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+branch.name        String   Name of the git branch.
+Accepted Parameter                    Type     Description
+cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+
+Example: POST /repo/891/branch/master/cron
+</code></pre>
+
+<p>POST <code>/repo/{repository.slug}/branch/{branch.name}/cron</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+branch.name        String  Name of the git branch.
+Accepted Parameter                    Type     Description
+cron.interval                         String   Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+cron.dont_run_if_recent_build_exists  Boolean  Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+
+Example: POST /repo/rails%2Frails/branch/master/cron
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>cron id to get or delete</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>branch_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>branch name to get cron or create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>create</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Properties for creating the cron. <code>branch_name</code> keyword argument required and <code>interval</code> key/value required.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>delete</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option for deleting cron. Cron <code>id</code> keyword argument required.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 779</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cron'>cron</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>branch_name:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_id'>id</span>
+
+    <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id or branch_name required</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_branch_name'>branch_name</span>
+
+  <span class='id identifier rubyid_create'>create</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_cron_keys'>cron_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch_name'>branch_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>/cron</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="crons-instance_method">
+  
+    #<strong>crons</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A list of crons.</p>
+
+<p>If querying using the repository slug, it must be formatted using <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_parent" title="standard URL encoding">standard URL encoding</a>, including any special characters.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name   Type    Description
+crons  [Cron]  List of crons.
+</code></pre>
+
+<p><strong>Collection Items</strong></p>
+
+<p>Each entry in the crons array has the following attributes:</p>
+
+<pre class="code ruby"><code class="ruby">Name                             Type        Description
+id                               Integer     Value uniquely identifying the cron.
+repository                       Repository  Github repository to which this cron belongs.
+branch                           Branch      Git branch of repository to which this cron belongs.
+interval                         String      Interval at which the cron will run (can be &quot;daily&quot;, &quot;weekly&quot; or &quot;monthly&quot;).
+dont_run_if_recent_build_exists  Boolean     Whether a cron build should run if there has been a build on this branch in the last 24 hours.
+last_run                         String      When the cron ran last.
+next_run                         String      When the cron is scheduled to run next.
+created_at                       String      When the cron was created.
+active                           Unknown     The cron&#39;s active.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>For Repository</strong></p>
+
+<p>This returns a list of crons for an individual repository. It is possible to use the repository id or slug in the request.</p>
+
+<p>GET <code>/repo/{repository.id}/crons</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+limit            Integer   How many crons to include in the response. Used for pagination.
+offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+
+Example: GET /repo/891/crons?limit=5
+</code></pre>
+
+<p>GET <code>/repo/{repository.slug}/crons</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+limit            Integer   How many crons to include in the response. Used for pagination.
+offset           Integer   How many crons to skip before the first entry in the response. Used for pagination.
+
+Example: GET /repo/rails%2Frails/crons?limit=5
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+845
+846
+847</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 845</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_crons'>crons</span>
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/crons</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="defaults-instance_method">
   
     #<strong>defaults</strong>(key: value, ...)  &#x21d2; <tt>self</tt> 
@@ -18048,6 +19899,158 @@ Example: DELETE /repo/rails%2Frails/caches
 <span class='kw'>def</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='ivar'>@options</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Trav3::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Options.html#initialize-instance_method" title="Trav3::Options#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="email_resubscribe-instance_method">
+  
+    #<strong>email_resubscribe</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>requests require an authorization token set in the headers. See: <span class='object_link'><a href="#authorization=-instance_method" title="Trav3::Travis#authorization= (method)">#authorization=</a></span></p>
+</div>
+  </div>
+
+
+<p>POST <code>/repo/{repository.id}/email_subscription</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+
+Example: POST /repo/891/email_subscription
+</code></pre>
+
+<p>POST <code>/repo/{repository.slug}/email_subscription</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+
+Example: POST /repo/rails%2Frails/email_subscription
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+866
+867
+868</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 866</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_email_resubscribe'>email_resubscribe</span>
+  <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="email_unsubscribe-instance_method">
+  
+    #<strong>email_unsubscribe</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>requests require an authorization token set in the headers. See: <span class='object_link'><a href="#authorization=-instance_method" title="Trav3::Travis#authorization= (method)">#authorization=</a></span></p>
+</div>
+  </div>
+
+
+<p>DELETE <code>/repo/{repository.id}/email_subscription</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+repository.id      Integer  Value uniquely identifying the repository.
+
+Example: DELETE /repo/891/email_subscription
+</code></pre>
+
+<p>DELETE <code>/repo/{repository.slug}/email_subscription</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type    Description
+repository.slug    String  Same as {repository.owner.name}/{repository.name}.
+
+Example: DELETE /repo/rails%2Frails/email_subscription
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+887
+888
+889</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 887</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_email_unsubscribe'>email_unsubscribe</span>
+  <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -18317,18 +20320,18 @@ env_var.id         String  The environment variable id.
       <pre class="lines">
 
 
-778
-779
-780
-781
-782
-783
-784
-785
-786</pre>
+1004
+1005
+1006
+1007
+1008
+1009
+1010
+1011
+1012</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 778</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1004</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env_var'>env_var</span><span class='lparen'>(</span><span class='id identifier rubyid_env_var_id'>env_var_id</span><span class='comma'>,</span> <span class='label'>update:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Too many options specified</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='lbracket'>[</span><span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_delete'>delete</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>&lt;</span> <span class='int'>2</span>
@@ -18485,18 +20488,18 @@ Example: POST /repo/rails%2Frails/env_vars
       <pre class="lines">
 
 
-862
-863
-864
-865
-866
-867
-868
-869
-870</pre>
+1088
+1089
+1090
+1091
+1092
+1093
+1094
+1095
+1096</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 862</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1088</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env_vars'>env_vars</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_create'>create</span>
@@ -18712,14 +20715,14 @@ include          [String]  List of attributes to eager load.
       <pre class="lines">
 
 
-908
-909
-910
-911
-912</pre>
+1134
+1135
+1136
+1137
+1138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 908</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_installation'>installation</span><span class='lparen'>(</span><span class='id identifier rubyid_installation_id'>installation_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_installation_id'>installation_id</span>
@@ -18900,21 +20903,21 @@ Example: POST /job/86601347/debug
       <pre class="lines">
 
 
-999
-1000
-1001
-1002
-1003
-1004
-1005
-1006
-1007
-1008
-1009
-1010</pre>
+1225
+1226
+1227
+1228
+1229
+1230
+1231
+1232
+1233
+1234
+1235
+1236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 999</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1225</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_job'>job</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -19218,17 +21221,17 @@ Example: DELETE /repo/rails%2Frails/key_pair
       <pre class="lines">
 
 
-1155
-1156
-1157
-1158
-1159
-1160
-1161
-1162</pre>
+1381
+1382
+1383
+1384
+1385
+1386
+1387
+1388</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1155</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1381</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key_pair'>key_pair</span><span class='lparen'>(</span><span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>update:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Too many options specified</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='lbracket'>[</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_delete'>delete</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>&lt;</span> <span class='int'>2</span>
@@ -19382,14 +21385,14 @@ Example: POST /repo/rails%2Frails/key_pair/generated
       <pre class="lines">
 
 
-1234
-1235
-1236
-1237
-1238</pre>
+1460
+1461
+1462
+1463
+1464</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1234</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1460</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key_pair_generated'>key_pair_generated</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='symbol'>:get</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/key_pair/generated</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>create</span><span class='regexp_end'>/i</span></span><span class='rparen'>)</span>
@@ -19477,17 +21480,17 @@ warnings  Array  An array of hashes with keys and warnings.
       <pre class="lines">
 
 
-1259
-1260
-1261
-1262
-1263
-1264
-1265
-1266</pre>
+1485
+1486
+1487
+1488
+1489
+1490
+1491
+1492</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1259</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1485</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lint'>lint</span><span class='lparen'>(</span><span class='id identifier rubyid_yaml_content'>yaml_content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_yaml_content'>yaml_content</span>
@@ -19514,14 +21517,6 @@ warnings  Array  An array of hashes with keys and warnings.
 </h3><div class="docstring">
   <div class="discussion">
     
-  <div class="note notetag">
-    <strong>Note:</strong>
-    <div class='inline'>
-<p>DELETE is unimplemented</p>
-</div>
-  </div>
-
-
 <p>An individual log.</p>
 
 <h2 id="label-Attributes">Attributes</h2>
@@ -19665,26 +21660,26 @@ Example: DELETE /job/86601347/log
       <pre class="lines">
 
 
-1346
-1347
-1348
-1349
-1350
-1351
-1352
-1353
-1354
-1355</pre>
+1570
+1571
+1572
+1573
+1574
+1575
+1576
+1577
+1578
+1579</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1346</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1570</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
   <span class='kw'>when</span> <span class='symbol'>:text</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log.txt</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='kw'>when</span> <span class='symbol'>:delete</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="Unimplemented.html" title="Trav3::Unimplemented (class)">Unimplemented</a></span></span>
+    <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/job/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_job_id'>job_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/log</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -19799,14 +21794,14 @@ offset           Integer   How many messages to skip before the first entry in t
       <pre class="lines">
 
 
-1403
-1404
-1405
-1406
-1407</pre>
+1627
+1628
+1629
+1630
+1631</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1403</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1627</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_messages'>messages</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
@@ -19943,14 +21938,14 @@ Example: GET /org/87
       <pre class="lines">
 
 
-1458
-1459
-1460
-1461
-1462</pre>
+1682
+1683
+1684
+1685
+1686</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1458</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1682</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organization'>organization</span><span class='lparen'>(</span><span class='id identifier rubyid_org_id'>org_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -20044,12 +22039,12 @@ Example: GET /orgs?limit=5
       <pre class="lines">
 
 
-1507
-1508
-1509</pre>
+1731
+1732
+1733</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1507</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1731</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organizations'>organizations</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/orgs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -20199,13 +22194,13 @@ Example: GET /owner/github_id/639823
       <pre class="lines">
 
 
-1587
-1588
-1589
-1590</pre>
+1811
+1812
+1813
+1814</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1587</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1811</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -20385,18 +22380,18 @@ include          [String]  List of attributes to eager load.
       <pre class="lines">
 
 
-1662
-1663
-1664
-1665
-1666
-1667
-1668
-1669
-1670</pre>
+1886
+1887
+1888
+1889
+1890
+1891
+1892
+1893
+1894</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1662</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1886</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_preference'>preference</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>org_id:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -20515,17 +22510,17 @@ Example: GET /preferences
       <pre class="lines">
 
 
-1709
-1710
-1711
-1712
-1713
-1714
-1715
-1716</pre>
+1933
+1934
+1935
+1936
+1937
+1938
+1939
+1940</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1709</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1933</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_preferences'>preferences</span><span class='lparen'>(</span><span class='id identifier rubyid_org_id'>org_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -20743,13 +22738,13 @@ Example: GET /repos?limit=5&amp;sort_by=active,name
       <pre class="lines">
 
 
-1857
-1858
-1859
-1860</pre>
+2081
+2082
+2083
+2084</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1857</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2081</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repos</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -21002,17 +22997,17 @@ Example: POST /repo/rails%2Frails/unstar
       <pre class="lines">
 
 
-1996
-1997
-1998
-1999
-2000
-2001
-2002
-2003</pre>
+2220
+2221
+2222
+2223
+2224
+2225
+2226
+2227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1996</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2220</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_repository_name'>repository_name</span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
@@ -21221,14 +23216,14 @@ include          [String]  List of attributes to eager load.
       <pre class="lines">
 
 
-2062
-2063
-2064
-2065
-2066</pre>
+2286
+2287
+2288
+2289
+2290</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2062</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2286</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
@@ -21430,14 +23425,14 @@ Example: POST /repo/rails%2Frails/requests
       <pre class="lines">
 
 
-2199
-2200
-2201
-2202
-2203</pre>
+2423
+2424
+2425
+2426
+2427</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2199</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2423</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -21614,14 +23609,14 @@ setting.value       Boolean or integer  The setting&#39;s value.
       <pre class="lines">
 
 
-2336
-2337
-2338
-2339
-2340</pre>
+2560
+2561
+2562
+2563
+2564</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2336</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2560</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -21728,12 +23723,12 @@ Example: GET /repo/rails%2Frails/settings
       <pre class="lines">
 
 
-2391
-2392
-2393</pre>
+2615
+2616
+2617</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2391</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2615</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -21858,14 +23853,14 @@ Example: GET /build/86601346/stages
       <pre class="lines">
 
 
-2245
-2246
-2247
-2248
-2249</pre>
+2469
+2470
+2471
+2472
+2473</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2245</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2469</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stages'>stages</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -22064,17 +24059,17 @@ Example: GET /user
       <pre class="lines">
 
 
-2473
-2474
-2475
-2476
-2477
-2478
-2479
-2480</pre>
+2697
+2698
+2699
+2700
+2701
+2702
+2703
+2704</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2473</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2697</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sync'>sync</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_sync'>sync</span>
@@ -22094,7 +24089,7 @@ Example: GET /user
 </div>
 
       <div id="footer">
-  Generated on Sat Jan 26 17:26:50 2019 by
+  Generated on Mon Jan 28 18:57:27 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
