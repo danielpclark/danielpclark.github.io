@@ -258,7 +258,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#authorization=-instance_method" title="#authorization= (instance method)">#<strong>authorization=</strong>(token)  &#x21d2; self </a>
+      <a href="#authorization=-instance_method" title="#authorization= (instance method)">#<strong>authorization=</strong>(token)  &#x21d2; Travis </a>
     
 
     
@@ -274,6 +274,54 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Set the authorization token in the requests&#39; headers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#beta_feature-instance_method" title="#beta_feature (instance method)">#<strong>beta_feature</strong>(action, beta_feature_id, user_id)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A beta feature (a Travis-CI feature currently in beta).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#beta_features-instance_method" title="#beta_features (instance method)">#<strong>beta_features</strong>(user_id)  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A list of beta features.</p>
 </div></span>
   
 </li>
@@ -322,6 +370,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>A list of branches.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#broadcasts-instance_method" title="#broadcasts (instance method)">#<strong>broadcasts</strong>  &#x21d2; Success, RequestError </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A list of broadcasts for the current user.</p>
 </div></span>
   
 </li>
@@ -474,7 +546,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#defaults-instance_method" title="#defaults (instance method)">#<strong>defaults</strong>(key: value, ...)  &#x21d2; self </a>
+      <a href="#defaults-instance_method" title="#defaults (instance method)">#<strong>defaults</strong>(key: value, ...)  &#x21d2; Travis </a>
     
 
     
@@ -594,7 +666,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#h-instance_method" title="#h (instance method)">#<strong>h</strong>(key: value, ...)  &#x21d2; self </a>
+      <a href="#h-instance_method" title="#h (instance method)">#<strong>h</strong>(key: value, ...)  &#x21d2; Travis </a>
     
 
     
@@ -978,7 +1050,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#repository=-instance_method" title="#repository= (instance method)">#<strong>repository=</strong>(repo_name)  &#x21d2; self </a>
+      <a href="#repository=-instance_method" title="#repository= (instance method)">#<strong>repository=</strong>(repo_name)  &#x21d2; Travis </a>
     
 
     
@@ -4076,7 +4148,144 @@
 2812
 2813
 2814
-2815</pre>
+2815
+2816
+2817
+2818
+2819
+2820
+2821
+2822
+2823
+2824
+2825
+2826
+2827
+2828
+2829
+2830
+2831
+2832
+2833
+2834
+2835
+2836
+2837
+2838
+2839
+2840
+2841
+2842
+2843
+2844
+2845
+2846
+2847
+2848
+2849
+2850
+2851
+2852
+2853
+2854
+2855
+2856
+2857
+2858
+2859
+2860
+2861
+2862
+2863
+2864
+2865
+2866
+2867
+2868
+2869
+2870
+2871
+2872
+2873
+2874
+2875
+2876
+2877
+2878
+2879
+2880
+2881
+2882
+2883
+2884
+2885
+2886
+2887
+2888
+2889
+2890
+2891
+2892
+2893
+2894
+2895
+2896
+2897
+2898
+2899
+2900
+2901
+2902
+2903
+2904
+2905
+2906
+2907
+2908
+2909
+2910
+2911
+2912
+2913
+2914
+2915
+2916
+2917
+2918
+2919
+2920
+2921
+2922
+2923
+2924
+2925
+2926
+2927
+2928
+2929
+2930
+2931
+2932
+2933
+2934
+2935
+2936
+2937
+2938
+2939
+2940
+2941
+2942
+2943
+2944
+2945
+2946
+2947
+2948
+2949
+2950
+2951
+2952</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -4102,7 +4311,7 @@
   <span class='comment'># Set as the API endpoint
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param endpoint [String] name for value to set
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_api_endpoint='>api_endpoint=</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_api_endpoint'>validate_api_endpoint</span> <span class='id identifier rubyid_endpoint'>endpoint</span>
 
@@ -4114,7 +4323,7 @@
   <span class='comment'># Set the authorization token in the requests&#39; headers
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param token [String] sets authorization token header
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_authorization='>authorization=</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_token'>token</span>
     <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='label_end'>&#39;:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_token'>token</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -4126,7 +4335,7 @@
 </span>  <span class='comment'># @overload defaults(key: value, ...)
 </span>  <span class='comment'>#   @param key [Symbol] name for value to set
 </span>  <span class='comment'>#   @param value [Symbol, String, Integer] value for key
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='lparen'>(</span><span class='ivar'>@options</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Trav3::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Options.html#initialize-instance_method" title="Trav3::Options#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='kw'>self</span>
@@ -4139,7 +4348,7 @@
 </span>  <span class='comment'># @overload h(key: value, ...)
 </span>  <span class='comment'>#   @param key [Symbol] name for value to set
 </span>  <span class='comment'>#   @param value [Symbol, String, Integer] value for key
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='lparen'>(</span><span class='ivar'>@headers</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Headers.html" title="Trav3::Headers (class)">Headers</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Headers.html#initialize-instance_method" title="Trav3::Headers#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='kw'>self</span>
@@ -4148,7 +4357,7 @@
   <span class='comment'># Change the repository this instance of `Trav3::Travis` uses.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param repo_name [String] github_username/repository_name
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_repository='>repository=</span><span class='lparen'>(</span><span class='id identifier rubyid_repo_name'>repo_name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo_name'>repo_name</span>
     <span class='ivar'>@repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo_name'>repo_name</span>
@@ -4212,6 +4421,102 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A beta feature (a Travis-CI feature currently in beta).
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name          Type     Description
+</span>  <span class='comment'>#     id            Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     name          String   The name of the feature.
+</span>  <span class='comment'>#     description   String   Longer description of the feature.
+</span>  <span class='comment'>#     enabled       Boolean  Indicates if the user has this feature turned on.
+</span>  <span class='comment'>#     feedback_url  String   Url for users to leave Travis CI feedback on this feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Update**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will update a user&#39;s beta_feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in the request body to pass the `enabled` value (either true or false):
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X PATCH \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{&quot;beta_feature.enabled&quot;:true}&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/user/1234/{beta_feature.id}
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/user/{user.id}/beta_feature/{beta_feature.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable     Type     Description
+</span>  <span class='comment'>#     user.id               Integer  Value uniquely identifying the user.
+</span>  <span class='comment'>#     beta_feature.id       Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     Accepted Parameter    Type     Description
+</span>  <span class='comment'>#     beta_feature.id       Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     beta_feature.enabled  Boolean  Indicates if the user has this feature turned on.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Delete**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will delete a user&#39;s beta feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/user/{user.id}/beta_feature/{beta_feature.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     user.id            Integer  Value uniquely identifying the user.
+</span>  <span class='comment'>#     beta_feature.id    Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param action [Symbol] either `:enable`, `:disable` or `:delete`
+</span>  <span class='comment'># @param beta_feature_id [String, Integer] id for the beta feature
+</span>  <span class='comment'># @param user_id [String] user id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_beta_feature'>beta_feature</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>!=</span> <span class='symbol'>:delete</span>
+      <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.id</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.enabled</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>==</span> <span class='symbol'>:enable</span> <span class='rbrace'>}</span>
+
+      <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of beta features. Beta features are new Travis CI features in beta mode. They can be toggled on or off via the API or on this page on our site: https://travis-ci.com/features
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name           Type            Description
+</span>  <span class='comment'>#     beta_features  [Beta feature]  List of beta_features.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of beta features available to a user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/user/{user.id}/beta_features&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     user.id            Integer  Value  uniquely identifying the user.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /user/119240/beta_features
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param user_id [String, Integer] user id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_beta_features'>beta_features</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_features</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># The branch of a GitHub repository. Useful for obtaining information about the last build on a given branch.
@@ -4339,6 +4644,47 @@
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_branches'>branches</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of broadcasts for the current user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name        Type         Description
+</span>  <span class='comment'>#     broadcasts  [Broadcast]  List of broadcasts.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the broadcasts array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name        Type     Description
+</span>  <span class='comment'>#     id          Integer  Value uniquely identifying the broadcast.
+</span>  <span class='comment'>#     message     String   Message to display to the user.
+</span>  <span class='comment'>#     created_at  String   When the broadcast was created.
+</span>  <span class='comment'>#     category    String   Broadcast category (used for icon and color).
+</span>  <span class='comment'>#     active      Boolean  Whether or not the brodacast should still be displayed.
+</span>  <span class='comment'>#     recipient   Object   Either a user, organization or repository, or null for global.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Current User**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of broadcasts for the current user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/broadcasts&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Query Parameter   Type       Description
+</span>  <span class='comment'>#     active            [Boolean]  Alias for broadcast.active.
+</span>  <span class='comment'>#     broadcast.active  [Boolean]  Filters broadcasts by whether or not the brodacast should still be displayed.
+</span>  <span class='comment'>#     include           [String]   List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /broadcasts
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_broadcasts'>broadcasts</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/broadcasts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual build.
@@ -9715,7 +10061,144 @@
 2812
 2813
 2814
-2815</pre>
+2815
+2816
+2817
+2818
+2819
+2820
+2821
+2822
+2823
+2824
+2825
+2826
+2827
+2828
+2829
+2830
+2831
+2832
+2833
+2834
+2835
+2836
+2837
+2838
+2839
+2840
+2841
+2842
+2843
+2844
+2845
+2846
+2847
+2848
+2849
+2850
+2851
+2852
+2853
+2854
+2855
+2856
+2857
+2858
+2859
+2860
+2861
+2862
+2863
+2864
+2865
+2866
+2867
+2868
+2869
+2870
+2871
+2872
+2873
+2874
+2875
+2876
+2877
+2878
+2879
+2880
+2881
+2882
+2883
+2884
+2885
+2886
+2887
+2888
+2889
+2890
+2891
+2892
+2893
+2894
+2895
+2896
+2897
+2898
+2899
+2900
+2901
+2902
+2903
+2904
+2905
+2906
+2907
+2908
+2909
+2910
+2911
+2912
+2913
+2914
+2915
+2916
+2917
+2918
+2919
+2920
+2921
+2922
+2923
+2924
+2925
+2926
+2927
+2928
+2929
+2930
+2931
+2932
+2933
+2934
+2935
+2936
+2937
+2938
+2939
+2940
+2941
+2942
+2943
+2944
+2945
+2946
+2947
+2948
+2949
+2950
+2951
+2952</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -9741,7 +10224,7 @@
   <span class='comment'># Set as the API endpoint
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param endpoint [String] name for value to set
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_api_endpoint='>api_endpoint=</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_api_endpoint'>validate_api_endpoint</span> <span class='id identifier rubyid_endpoint'>endpoint</span>
 
@@ -9753,7 +10236,7 @@
   <span class='comment'># Set the authorization token in the requests&#39; headers
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param token [String] sets authorization token header
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_authorization='>authorization=</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_token'>token</span>
     <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='label_end'>&#39;:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_token'>token</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -9765,7 +10248,7 @@
 </span>  <span class='comment'># @overload defaults(key: value, ...)
 </span>  <span class='comment'>#   @param key [Symbol] name for value to set
 </span>  <span class='comment'>#   @param value [Symbol, String, Integer] value for key
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='lparen'>(</span><span class='ivar'>@options</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Trav3::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Options.html#initialize-instance_method" title="Trav3::Options#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='kw'>self</span>
@@ -9778,7 +10261,7 @@
 </span>  <span class='comment'># @overload h(key: value, ...)
 </span>  <span class='comment'>#   @param key [Symbol] name for value to set
 </span>  <span class='comment'>#   @param value [Symbol, String, Integer] value for key
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='lparen'>(</span><span class='ivar'>@headers</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Headers.html" title="Trav3::Headers (class)">Headers</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Headers.html#initialize-instance_method" title="Trav3::Headers#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='kw'>self</span>
@@ -9787,7 +10270,7 @@
   <span class='comment'># Change the repository this instance of `Trav3::Travis` uses.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param repo_name [String] github_username/repository_name
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_repository='>repository=</span><span class='lparen'>(</span><span class='id identifier rubyid_repo_name'>repo_name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo_name'>repo_name</span>
     <span class='ivar'>@repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo_name'>repo_name</span>
@@ -9851,6 +10334,102 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A beta feature (a Travis-CI feature currently in beta).
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name          Type     Description
+</span>  <span class='comment'>#     id            Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     name          String   The name of the feature.
+</span>  <span class='comment'>#     description   String   Longer description of the feature.
+</span>  <span class='comment'>#     enabled       Boolean  Indicates if the user has this feature turned on.
+</span>  <span class='comment'>#     feedback_url  String   Url for users to leave Travis CI feedback on this feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Update**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will update a user&#39;s beta_feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in the request body to pass the `enabled` value (either true or false):
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X PATCH \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{&quot;beta_feature.enabled&quot;:true}&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/user/1234/{beta_feature.id}
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/user/{user.id}/beta_feature/{beta_feature.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable     Type     Description
+</span>  <span class='comment'>#     user.id               Integer  Value uniquely identifying the user.
+</span>  <span class='comment'>#     beta_feature.id       Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     Accepted Parameter    Type     Description
+</span>  <span class='comment'>#     beta_feature.id       Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     beta_feature.enabled  Boolean  Indicates if the user has this feature turned on.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Delete**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will delete a user&#39;s beta feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/user/{user.id}/beta_feature/{beta_feature.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     user.id            Integer  Value uniquely identifying the user.
+</span>  <span class='comment'>#     beta_feature.id    Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param action [Symbol] either `:enable`, `:disable` or `:delete`
+</span>  <span class='comment'># @param beta_feature_id [String, Integer] id for the beta feature
+</span>  <span class='comment'># @param user_id [String] user id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_beta_feature'>beta_feature</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>!=</span> <span class='symbol'>:delete</span>
+      <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.id</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.enabled</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>==</span> <span class='symbol'>:enable</span> <span class='rbrace'>}</span>
+
+      <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of beta features. Beta features are new Travis CI features in beta mode. They can be toggled on or off via the API or on this page on our site: https://travis-ci.com/features
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name           Type            Description
+</span>  <span class='comment'>#     beta_features  [Beta feature]  List of beta_features.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of beta features available to a user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/user/{user.id}/beta_features&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     user.id            Integer  Value  uniquely identifying the user.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /user/119240/beta_features
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param user_id [String, Integer] user id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_beta_features'>beta_features</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_features</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># The branch of a GitHub repository. Useful for obtaining information about the last build on a given branch.
@@ -9978,6 +10557,47 @@
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_branches'>branches</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of broadcasts for the current user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name        Type         Description
+</span>  <span class='comment'>#     broadcasts  [Broadcast]  List of broadcasts.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the broadcasts array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name        Type     Description
+</span>  <span class='comment'>#     id          Integer  Value uniquely identifying the broadcast.
+</span>  <span class='comment'>#     message     String   Message to display to the user.
+</span>  <span class='comment'>#     created_at  String   When the broadcast was created.
+</span>  <span class='comment'>#     category    String   Broadcast category (used for icon and color).
+</span>  <span class='comment'>#     active      Boolean  Whether or not the brodacast should still be displayed.
+</span>  <span class='comment'>#     recipient   Object   Either a user, organization or repository, or null for global.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Current User**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of broadcasts for the current user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/broadcasts&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Query Parameter   Type       Description
+</span>  <span class='comment'>#     active            [Boolean]  Alias for broadcast.active.
+</span>  <span class='comment'>#     broadcast.active  [Boolean]  Filters broadcasts by whether or not the brodacast should still be displayed.
+</span>  <span class='comment'>#     include           [String]   List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /broadcasts
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_broadcasts'>broadcasts</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/broadcasts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual build.
@@ -15354,7 +15974,144 @@
 2812
 2813
 2814
-2815</pre>
+2815
+2816
+2817
+2818
+2819
+2820
+2821
+2822
+2823
+2824
+2825
+2826
+2827
+2828
+2829
+2830
+2831
+2832
+2833
+2834
+2835
+2836
+2837
+2838
+2839
+2840
+2841
+2842
+2843
+2844
+2845
+2846
+2847
+2848
+2849
+2850
+2851
+2852
+2853
+2854
+2855
+2856
+2857
+2858
+2859
+2860
+2861
+2862
+2863
+2864
+2865
+2866
+2867
+2868
+2869
+2870
+2871
+2872
+2873
+2874
+2875
+2876
+2877
+2878
+2879
+2880
+2881
+2882
+2883
+2884
+2885
+2886
+2887
+2888
+2889
+2890
+2891
+2892
+2893
+2894
+2895
+2896
+2897
+2898
+2899
+2900
+2901
+2902
+2903
+2904
+2905
+2906
+2907
+2908
+2909
+2910
+2911
+2912
+2913
+2914
+2915
+2916
+2917
+2918
+2919
+2920
+2921
+2922
+2923
+2924
+2925
+2926
+2927
+2928
+2929
+2930
+2931
+2932
+2933
+2934
+2935
+2936
+2937
+2938
+2939
+2940
+2941
+2942
+2943
+2944
+2945
+2946
+2947
+2948
+2949
+2950
+2951
+2952</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 24</span>
@@ -15380,7 +16137,7 @@
   <span class='comment'># Set as the API endpoint
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param endpoint [String] name for value to set
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_api_endpoint='>api_endpoint=</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_api_endpoint'>validate_api_endpoint</span> <span class='id identifier rubyid_endpoint'>endpoint</span>
 
@@ -15392,7 +16149,7 @@
   <span class='comment'># Set the authorization token in the requests&#39; headers
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param token [String] sets authorization token header
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_authorization='>authorization=</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_token'>token</span>
     <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='label_end'>&#39;:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_token'>token</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -15404,7 +16161,7 @@
 </span>  <span class='comment'># @overload defaults(key: value, ...)
 </span>  <span class='comment'>#   @param key [Symbol] name for value to set
 </span>  <span class='comment'>#   @param value [Symbol, String, Integer] value for key
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_defaults'>defaults</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='lparen'>(</span><span class='ivar'>@options</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Options.html" title="Trav3::Options (class)">Options</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Options.html#initialize-instance_method" title="Trav3::Options#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='kw'>self</span>
@@ -15417,7 +16174,7 @@
 </span>  <span class='comment'># @overload h(key: value, ...)
 </span>  <span class='comment'>#   @param key [Symbol] name for value to set
 </span>  <span class='comment'>#   @param value [Symbol, String, Integer] value for key
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='lparen'>(</span><span class='ivar'>@headers</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Headers.html" title="Trav3::Headers (class)">Headers</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Headers.html#initialize-instance_method" title="Trav3::Headers#initialize (method)">new</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
     <span class='kw'>self</span>
@@ -15426,7 +16183,7 @@
   <span class='comment'># Change the repository this instance of `Trav3::Travis` uses.
 </span>  <span class='comment'>#
 </span>  <span class='comment'># @param repo_name [String] github_username/repository_name
-</span>  <span class='comment'># @return [self]
+</span>  <span class='comment'># @return [Travis]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_repository='>repository=</span><span class='lparen'>(</span><span class='id identifier rubyid_repo_name'>repo_name</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo_name'>repo_name</span>
     <span class='ivar'>@repo</span> <span class='op'>=</span> <span class='id identifier rubyid_sanitize_repo_name'>sanitize_repo_name</span> <span class='id identifier rubyid_repo_name'>repo_name</span>
@@ -15490,6 +16247,102 @@
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_active'>active</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/active</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A beta feature (a Travis-CI feature currently in beta).
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name          Type     Description
+</span>  <span class='comment'>#     id            Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     name          String   The name of the feature.
+</span>  <span class='comment'>#     description   String   Longer description of the feature.
+</span>  <span class='comment'>#     enabled       Boolean  Indicates if the user has this feature turned on.
+</span>  <span class='comment'>#     feedback_url  String   Url for users to leave Travis CI feedback on this feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Update**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will update a user&#39;s beta_feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Use namespaced params in the request body to pass the `enabled` value (either true or false):
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ```bash
+</span>  <span class='comment'># curl -X PATCH \
+</span>  <span class='comment'>#   -H &quot;Content-Type: application/json&quot; \
+</span>  <span class='comment'>#   -H &quot;Travis-API-Version: 3&quot; \
+</span>  <span class='comment'>#   -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+</span>  <span class='comment'>#   -d &#39;{&quot;beta_feature.enabled&quot;:true}&#39; \
+</span>  <span class='comment'>#   https://api.travis-ci.com/user/1234/{beta_feature.id}
+</span>  <span class='comment'># ```
+</span>  <span class='comment'>#
+</span>  <span class='comment'># PATCH &lt;code&gt;/user/{user.id}/beta_feature/{beta_feature.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable     Type     Description
+</span>  <span class='comment'>#     user.id               Integer  Value uniquely identifying the user.
+</span>  <span class='comment'>#     beta_feature.id       Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     Accepted Parameter    Type     Description
+</span>  <span class='comment'>#     beta_feature.id       Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#     beta_feature.enabled  Boolean  Indicates if the user has this feature turned on.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Delete**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will delete a user&#39;s beta feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># DELETE &lt;code&gt;/user/{user.id}/beta_feature/{beta_feature.id}&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     user.id            Integer  Value uniquely identifying the user.
+</span>  <span class='comment'>#     beta_feature.id    Integer  Value uniquely identifying the beta feature.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param action [Symbol] either `:enable`, `:disable` or `:delete`
+</span>  <span class='comment'># @param beta_feature_id [String, Integer] id for the beta feature
+</span>  <span class='comment'># @param user_id [String] user id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_beta_feature'>beta_feature</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>!=</span> <span class='symbol'>:delete</span>
+      <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.id</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.enabled</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>==</span> <span class='symbol'>:enable</span> <span class='rbrace'>}</span>
+
+      <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of beta features. Beta features are new Travis CI features in beta mode. They can be toggled on or off via the API or on this page on our site: https://travis-ci.com/features
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name           Type            Description
+</span>  <span class='comment'>#     beta_features  [Beta feature]  List of beta_features.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Find**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of beta features available to a user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/user/{user.id}/beta_features&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Template Variable  Type     Description
+</span>  <span class='comment'>#     user.id            Integer  Value  uniquely identifying the user.
+</span>  <span class='comment'>#     Query Parameter  Type      Description
+</span>  <span class='comment'>#     include          [String]  List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /user/119240/beta_features
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param user_id [String, Integer] user id
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_beta_features'>beta_features</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_features</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># The branch of a GitHub repository. Useful for obtaining information about the last build on a given branch.
@@ -15617,6 +16470,47 @@
 </span>  <span class='comment'># @return [Success, RequestError]
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_branches'>branches</span>
     <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># A list of broadcasts for the current user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Attributes
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name        Type         Description
+</span>  <span class='comment'>#     broadcasts  [Broadcast]  List of broadcasts.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **Collection Items**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># Each entry in the broadcasts array has the following attributes:
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Name        Type     Description
+</span>  <span class='comment'>#     id          Integer  Value uniquely identifying the broadcast.
+</span>  <span class='comment'>#     message     String   Message to display to the user.
+</span>  <span class='comment'>#     created_at  String   When the broadcast was created.
+</span>  <span class='comment'>#     category    String   Broadcast category (used for icon and color).
+</span>  <span class='comment'>#     active      Boolean  Whether or not the brodacast should still be displayed.
+</span>  <span class='comment'>#     recipient   Object   Either a user, organization or repository, or null for global.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># ## Actions
+</span>  <span class='comment'>#
+</span>  <span class='comment'># **For Current User**
+</span>  <span class='comment'>#
+</span>  <span class='comment'># This will return a list of broadcasts for the current user.
+</span>  <span class='comment'>#
+</span>  <span class='comment'># GET &lt;code&gt;/broadcasts&lt;/code&gt;
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Query Parameter   Type       Description
+</span>  <span class='comment'>#     active            [Boolean]  Alias for broadcast.active.
+</span>  <span class='comment'>#     broadcast.active  [Boolean]  Filters broadcasts by whether or not the brodacast should still be displayed.
+</span>  <span class='comment'>#     include           [String]   List of attributes to eager load.
+</span>  <span class='comment'>#
+</span>  <span class='comment'>#     Example: GET /broadcasts
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @note requests require an authorization token set in the headers. See: {authorization=}
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [Success, RequestError]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_broadcasts'>broadcasts</span>
+    <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/broadcasts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='comment'># An individual build.
@@ -18298,7 +19192,7 @@ Example: GET /owner/github_id/639823/active
       <div class="method_details ">
   <h3 class="signature " id="authorization=-instance_method">
   
-    #<strong>authorization=</strong>(token)  &#x21d2; <tt>self</tt> 
+    #<strong>authorization=</strong>(token)  &#x21d2; <tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt> 
   
 
   
@@ -18340,7 +19234,7 @@ Example: GET /owner/github_id/639823/active
     <li>
       
       
-        <span class='type'>(<tt>self</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt>)</span>
       
       
       
@@ -18367,6 +19261,285 @@ Example: GET /owner/github_id/639823/active
   <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_token'>token</span>
   <span class='id identifier rubyid_h'>h</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='label_end'>&#39;:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>token </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_token'>token</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="beta_feature-instance_method">
+  
+    #<strong>beta_feature</strong>(action, beta_feature_id, user_id)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>A beta feature (a Travis-CI feature currently in beta).</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name          Type     Description
+id            Integer  Value uniquely identifying the beta feature.
+name          String   The name of the feature.
+description   String   Longer description of the feature.
+enabled       Boolean  Indicates if the user has this feature turned on.
+feedback_url  String   Url for users to leave Travis CI feedback on this feature.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>Update</strong></p>
+
+<p>This will update a user&#39;s beta_feature.</p>
+
+<p>Use namespaced params in the request body to pass the <code>enabled</code> value (either true or false):</p>
+
+<pre class="code ruby"><code class="ruby">curl -X PATCH \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Travis-API-Version: 3&quot; \
+  -H &quot;Authorization: token xxxxxxxxxxxx&quot; \
+  -d &#39;{&quot;beta_feature.enabled&quot;:true}&#39; \
+  https://api.travis-ci.com/user/1234/{beta_feature.id}
+</code></pre>
+
+<p>PATCH <code>/user/{user.id}/beta_feature/{beta_feature.id}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable     Type     Description
+user.id               Integer  Value uniquely identifying the user.
+beta_feature.id       Integer  Value uniquely identifying the beta feature.
+Accepted Parameter    Type     Description
+beta_feature.id       Integer  Value uniquely identifying the beta feature.
+beta_feature.enabled  Boolean  Indicates if the user has this feature turned on.
+</code></pre>
+
+<p><strong>Delete</strong></p>
+
+<p>This will delete a user&#39;s beta feature.</p>
+
+<p>DELETE <code>/user/{user.id}/beta_feature/{beta_feature.id}</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+user.id            Integer  Value uniquely identifying the user.
+beta_feature.id    Integer  Value uniquely identifying the beta feature.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>action</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>either <code>:enable</code>, <code>:disable</code> or <code>:delete</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>beta_feature_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id for the beta feature</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>user id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_beta_feature'>beta_feature</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='comma'>,</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span>
+  <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>!=</span> <span class='symbol'>:delete</span>
+    <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.id</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>beta_feature.enabled</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>==</span> <span class='symbol'>:enable</span> <span class='rbrace'>}</span>
+
+    <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_feature/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_beta_feature_id'>beta_feature_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="beta_features-instance_method">
+  
+    #<strong>beta_features</strong>(user_id)  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>requests require an authorization token set in the headers. See: <span class='object_link'><a href="#authorization=-instance_method" title="Trav3::Travis#authorization= (method)">#authorization=</a></span></p>
+</div>
+  </div>
+
+
+<p>A list of beta features. Beta features are new Travis CI features in beta mode. They can be toggled on or off via the API or on this page on our site: <a href="https://travis-ci.com/features">travis-ci.com/features</a></p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name           Type            Description
+beta_features  [Beta feature]  List of beta_features.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>Find</strong></p>
+
+<p>This will return a list of beta features available to a user.</p>
+
+<p>GET <code>/user/{user.id}/beta_features</code></p>
+
+<pre class="code ruby"><code class="ruby">Template Variable  Type     Description
+user.id            Integer  Value  uniquely identifying the user.
+Query Parameter  Type      Description
+include          [String]  List of attributes to eager load.
+
+Example: GET /user/119240/beta_features
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>user id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+247
+248
+249
+250
+251</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 247</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_beta_features'>beta_features</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_user_id'>user_id</span>
+
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user_id'>user_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/beta_features</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -18490,12 +19663,12 @@ Example: GET /repo/rails%2Frails/branch/master
       <pre class="lines">
 
 
-214
-215
-216</pre>
+310
+311
+312</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 310</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_branch'>branch</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branch/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -18605,15 +19778,112 @@ Example: GET /repo/rails%2Frails/branches?limit=5&amp;exists_on_github=true
       <pre class="lines">
 
 
-280
-281
-282</pre>
+376
+377
+378</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 280</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 376</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_branches'>branches</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/branches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="broadcasts-instance_method">
+  
+    #<strong>broadcasts</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>requests require an authorization token set in the headers. See: <span class='object_link'><a href="#authorization=-instance_method" title="Trav3::Travis#authorization= (method)">#authorization=</a></span></p>
+</div>
+  </div>
+
+
+<p>A list of broadcasts for the current user.</p>
+
+<h2 id="label-Attributes">Attributes</h2>
+
+<pre class="code ruby"><code class="ruby">Name        Type         Description
+broadcasts  [Broadcast]  List of broadcasts.
+</code></pre>
+
+<p><strong>Collection Items</strong></p>
+
+<p>Each entry in the broadcasts array has the following attributes:</p>
+
+<pre class="code ruby"><code class="ruby">Name        Type     Description
+id          Integer  Value uniquely identifying the broadcast.
+message     String   Message to display to the user.
+created_at  String   When the broadcast was created.
+category    String   Broadcast category (used for icon and color).
+active      Boolean  Whether or not the brodacast should still be displayed.
+recipient   Object   Either a user, organization or repository, or null for global.
+</code></pre>
+
+<h2 id="label-Actions">Actions</h2>
+
+<p><strong>For Current User</strong></p>
+
+<p>This will return a list of broadcasts for the current user.</p>
+
+<p>GET <code>/broadcasts</code></p>
+
+<pre class="code ruby"><code class="ruby">Query Parameter   Type       Description
+active            [Boolean]  Alias for broadcast.active.
+broadcast.active  [Boolean]  Filters broadcasts by whether or not the brodacast should still be displayed.
+include           [String]   List of attributes to eager load.
+
+Example: GET /broadcasts
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+417
+418
+419</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 417</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_broadcasts'>broadcasts</span>
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/broadcasts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -18808,21 +20078,21 @@ Example: POST /build/86601346/restart
       <pre class="lines">
 
 
-372
-373
-374
-375
-376
-377
-378
-379
-380
-381
-382
-383</pre>
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 372</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 509</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -18968,12 +20238,12 @@ Example: GET /jobs?limit=5
       <pre class="lines">
 
 
-564
-565
-566</pre>
+701
+702
+703</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 564</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 701</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_build_jobs'>build_jobs</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/build/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_build_id'>build_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/jobs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -19130,12 +20400,12 @@ Example: GET /repo/rails%2Frails/builds?limit=5
       <pre class="lines">
 
 
-491
-492
-493</pre>
+628
+629
+630</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 491</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 628</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_builds'>builds</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/builds</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -19302,13 +20572,13 @@ Example: DELETE /repo/rails%2Frails/caches
       <pre class="lines">
 
 
-660
-661
-662
-663</pre>
+797
+798
+799
+800</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 660</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 797</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_caches'>caches</span><span class='lparen'>(</span><span class='id identifier rubyid_delete'>delete</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_delete'>delete</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_without_limit'>without_limit</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/caches</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -19553,21 +20823,21 @@ Example: POST /repo/rails%2Frails/branch/master/cron
       <pre class="lines">
 
 
-779
-780
-781
-782
-783
-784
-785
-786
-787
-788
-789
-790</pre>
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 779</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 916</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cron'>cron</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>branch_name:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span>
@@ -19679,12 +20949,12 @@ Example: GET /repo/rails%2Frails/crons?limit=5
       <pre class="lines">
 
 
-845
-846
-847</pre>
+982
+983
+984</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 845</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 982</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_crons'>crons</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/crons</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -19697,7 +20967,7 @@ Example: GET /repo/rails%2Frails/crons?limit=5
       <div class="method_details ">
   <h3 class="signature " id="defaults-instance_method">
   
-    #<strong>defaults</strong>(key: value, ...)  &#x21d2; <tt>self</tt> 
+    #<strong>defaults</strong>(key: value, ...)  &#x21d2; <tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt> 
   
 
   
@@ -19766,7 +21036,7 @@ Example: GET /repo/rails%2Frails/crons?limit=5
     <li>
       
       
-        <span class='type'>(<tt>self</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt>)</span>
       
       
       
@@ -19858,12 +21128,12 @@ Example: POST /repo/rails%2Frails/email_subscription
       <pre class="lines">
 
 
-866
-867
-868</pre>
+1003
+1004
+1005</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 866</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1003</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_email_resubscribe'>email_resubscribe</span>
   <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -19934,12 +21204,12 @@ Example: DELETE /repo/rails%2Frails/email_subscription
       <pre class="lines">
 
 
-887
-888
-889</pre>
+1024
+1025
+1026</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 887</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1024</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_email_unsubscribe'>email_unsubscribe</span>
   <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/email_subscription</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -20212,18 +21482,18 @@ env_var.id         String  The environment variable id.
       <pre class="lines">
 
 
-1004
-1005
-1006
-1007
-1008
-1009
-1010
-1011
-1012</pre>
+1141
+1142
+1143
+1144
+1145
+1146
+1147
+1148
+1149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1004</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env_var'>env_var</span><span class='lparen'>(</span><span class='id identifier rubyid_env_var_id'>env_var_id</span><span class='comma'>,</span> <span class='label'>update:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Too many options specified</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='lbracket'>[</span><span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_delete'>delete</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>&lt;</span> <span class='int'>2</span>
@@ -20380,13 +21650,13 @@ Example: POST /repo/rails%2Frails/env_vars
       <pre class="lines">
 
 
-1088
-1089
-1090
-1091</pre>
+1225
+1226
+1227
+1228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1088</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1225</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env_vars'>env_vars</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_create'>create</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/env_vars</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_env_var_keys'>env_var_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_create'>create</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -20400,7 +21670,7 @@ Example: POST /repo/rails%2Frails/env_vars
       <div class="method_details ">
   <h3 class="signature " id="h-instance_method">
   
-    #<strong>h</strong>(key: value, ...)  &#x21d2; <tt>self</tt> 
+    #<strong>h</strong>(key: value, ...)  &#x21d2; <tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt> 
   
 
   
@@ -20472,7 +21742,7 @@ Example: POST /repo/rails%2Frails/env_vars
     <li>
       
       
-        <span class='type'>(<tt>self</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt>)</span>
       
       
       
@@ -20597,14 +21867,14 @@ include          [String]  List of attributes to eager load.
       <pre class="lines">
 
 
-1129
-1130
-1131
-1132
-1133</pre>
+1266
+1267
+1268
+1269
+1270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1129</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1266</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_installation'>installation</span><span class='lparen'>(</span><span class='id identifier rubyid_installation_id'>installation_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_installation_id'>installation_id</span>
@@ -20785,21 +22055,21 @@ Example: POST /job/86601347/debug
       <pre class="lines">
 
 
-1220
-1221
-1222
-1223
-1224
-1225
-1226
-1227
-1228
-1229
-1230
-1231</pre>
+1357
+1358
+1359
+1360
+1361
+1362
+1363
+1364
+1365
+1366
+1367
+1368</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1220</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1357</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_job'>job</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -21103,17 +22373,17 @@ Example: DELETE /repo/rails%2Frails/key_pair
       <pre class="lines">
 
 
-1376
-1377
-1378
-1379
-1380
-1381
-1382
-1383</pre>
+1513
+1514
+1515
+1516
+1517
+1518
+1519
+1520</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1376</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1513</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key_pair'>key_pair</span><span class='lparen'>(</span><span class='label'>create:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>update:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>delete:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Too many options specified</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='lbracket'>[</span><span class='id identifier rubyid_create'>create</span><span class='comma'>,</span> <span class='id identifier rubyid_update'>update</span><span class='comma'>,</span> <span class='id identifier rubyid_delete'>delete</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>&lt;</span> <span class='int'>2</span>
@@ -21267,14 +22537,14 @@ Example: POST /repo/rails%2Frails/key_pair/generated
       <pre class="lines">
 
 
-1455
-1456
-1457
-1458
-1459</pre>
+1592
+1593
+1594
+1595
+1596</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1455</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1592</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_key_pair_generated'>key_pair_generated</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='symbol'>:get</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/key_pair/generated</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_action'>action</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>create</span><span class='regexp_end'>/i</span></span><span class='rparen'>)</span>
@@ -21362,17 +22632,17 @@ warnings  Array  An array of hashes with keys and warnings.
       <pre class="lines">
 
 
-1480
-1481
-1482
-1483
-1484
-1485
-1486
-1487</pre>
+1617
+1618
+1619
+1620
+1621
+1622
+1623
+1624</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1480</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1617</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lint'>lint</span><span class='lparen'>(</span><span class='id identifier rubyid_yaml_content'>yaml_content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_string'>validate_string</span> <span class='id identifier rubyid_yaml_content'>yaml_content</span>
@@ -21542,19 +22812,19 @@ Example: DELETE /job/86601347/log
       <pre class="lines">
 
 
-1565
-1566
-1567
-1568
-1569
-1570
-1571
-1572
-1573
-1574</pre>
+1702
+1703
+1704
+1705
+1706
+1707
+1708
+1709
+1710
+1711</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1565</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1702</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_job_id'>job_id</span><span class='comma'>,</span> <span class='id identifier rubyid_option'>option</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_option'>option</span>
@@ -21676,14 +22946,14 @@ offset           Integer   How many messages to skip before the first entry in t
       <pre class="lines">
 
 
-1622
-1623
-1624
-1625
-1626</pre>
+1759
+1760
+1761
+1762
+1763</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1622</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1759</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_messages'>messages</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
@@ -21820,14 +23090,14 @@ Example: GET /org/87
       <pre class="lines">
 
 
-1677
-1678
-1679
-1680
-1681</pre>
+1814
+1815
+1816
+1817
+1818</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1677</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1814</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organization'>organization</span><span class='lparen'>(</span><span class='id identifier rubyid_org_id'>org_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -21921,12 +23191,12 @@ Example: GET /orgs?limit=5
       <pre class="lines">
 
 
-1726
-1727
-1728</pre>
+1863
+1864
+1865</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1726</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1863</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_organizations'>organizations</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/orgs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -22076,13 +23346,13 @@ Example: GET /owner/github_id/639823
       <pre class="lines">
 
 
-1806
-1807
-1808
-1809</pre>
+1943
+1944
+1945
+1946</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1806</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1943</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_owner'>owner</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -22262,18 +23532,18 @@ include          [String]  List of attributes to eager load.
       <pre class="lines">
 
 
-1881
-1882
-1883
-1884
-1885
-1886
-1887
-1888
-1889</pre>
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1881</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2018</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_preference'>preference</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>org_id:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -22392,17 +23662,17 @@ Example: GET /preferences
       <pre class="lines">
 
 
-1928
-1929
-1930
-1931
-1932
-1933
-1934
-1935</pre>
+2065
+2066
+2067
+2068
+2069
+2070
+2071
+2072</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 1928</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2065</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_preferences'>preferences</span><span class='lparen'>(</span><span class='id identifier rubyid_org_id'>org_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_org_id'>org_id</span>
@@ -22620,13 +23890,13 @@ Example: GET /repos?limit=5&amp;sort_by=active,name
       <pre class="lines">
 
 
-2076
-2077
-2078
-2079</pre>
+2213
+2214
+2215
+2216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2076</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2213</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repositories'>repositories</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_number?'>number?</span><span class='lparen'>(</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/owner/github_id/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_owner'>owner</span><span class='embexpr_end'>}</span><span class='tstring_content'>/repos</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_opts'>opts</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -22879,17 +24149,17 @@ Example: POST /repo/rails%2Frails/unstar
       <pre class="lines">
 
 
-2215
-2216
-2217
-2218
-2219
-2220
-2221
-2222</pre>
+2352
+2353
+2354
+2355
+2356
+2357
+2358
+2359</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2215</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2352</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_repo'>repo</span> <span class='op'>=</span> <span class='id identifier rubyid_repository_name'>repository_name</span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_repo_format'>validate_repo_format</span> <span class='id identifier rubyid_repo'>repo</span>
@@ -22907,7 +24177,7 @@ Example: POST /repo/rails%2Frails/unstar
       <div class="method_details ">
   <h3 class="signature " id="repository=-instance_method">
   
-    #<strong>repository=</strong>(repo_name)  &#x21d2; <tt>self</tt> 
+    #<strong>repository=</strong>(repo_name)  &#x21d2; <tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt> 
   
 
   
@@ -22949,7 +24219,7 @@ Example: POST /repo/rails%2Frails/unstar
     <li>
       
       
-        <span class='type'>(<tt>self</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Trav3::Travis (class)">Travis</a></span></tt>)</span>
       
       
       
@@ -23098,14 +24368,14 @@ include          [String]  List of attributes to eager load.
       <pre class="lines">
 
 
-2281
-2282
-2283
-2284
-2285</pre>
+2418
+2419
+2420
+2421
+2422</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2281</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2418</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request_id'>request_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_request_id'>request_id</span>
@@ -23307,14 +24577,14 @@ Example: POST /repo/rails%2Frails/requests
       <pre class="lines">
 
 
-2418
-2419
-2420
-2421
-2422</pre>
+2555
+2556
+2557
+2558
+2559</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2418</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2555</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_requests'>requests</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/requests</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -23491,14 +24761,14 @@ setting.value       Boolean or integer  The setting&#39;s value.
       <pre class="lines">
 
 
-2555
-2556
-2557
-2558
-2559</pre>
+2692
+2693
+2694
+2695
+2696</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2555</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2692</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_setting'>setting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/setting/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -23605,12 +24875,12 @@ Example: GET /repo/rails%2Frails/settings
       <pre class="lines">
 
 
-2610
-2611
-2612</pre>
+2747
+2748
+2749</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2610</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2747</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_settings'>settings</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_with_repo'>with_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/settings</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -23735,14 +25005,14 @@ Example: GET /build/86601346/stages
       <pre class="lines">
 
 
-2464
-2465
-2466
-2467
-2468</pre>
+2601
+2602
+2603
+2604
+2605</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2464</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2601</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stages'>stages</span><span class='lparen'>(</span><span class='id identifier rubyid_build_id'>build_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_validate_number'>validate_number</span> <span class='id identifier rubyid_build_id'>build_id</span>
@@ -23941,17 +25211,17 @@ Example: GET /user
       <pre class="lines">
 
 
-2692
-2693
-2694
-2695
-2696
-2697
-2698
-2699</pre>
+2829
+2830
+2831
+2832
+2833
+2834
+2835
+2836</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2692</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3.rb', line 2829</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_sync'>sync</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_without_repo'>without_repo</span><span class='embexpr_end'>}</span><span class='tstring_content'>/user</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_sync'>sync</span>
@@ -23971,7 +25241,7 @@ Example: GET /user
 </div>
 
       <div id="footer">
-  Generated on Mon Jan 28 19:22:11 2019 by
+  Generated on Tue Jan 29 16:09:36 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
