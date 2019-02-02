@@ -117,7 +117,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#first-instance_method" title="#first (instance method)">#<strong>first</strong>  &#x21d2; Object </a>
+      <a href="#first-instance_method" title="#first (instance method)">#<strong>first</strong>  &#x21d2; Success, RequestError </a>
     
 
     
@@ -131,7 +131,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>First page of results.</p>
+</div></span>
   
 </li>
 
@@ -165,7 +167,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#last-instance_method" title="#last (instance method)">#<strong>last</strong>  &#x21d2; Object </a>
+      <a href="#last-instance_method" title="#last (instance method)">#<strong>last</strong>  &#x21d2; Success, RequestError </a>
     
 
     
@@ -179,7 +181,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Last page of results.</p>
+</div></span>
   
 </li>
 
@@ -187,7 +191,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#next-instance_method" title="#next (instance method)">#<strong>next</strong>  &#x21d2; Object </a>
+      <a href="#next-instance_method" title="#next (instance method)">#<strong>next</strong>  &#x21d2; Success, RequestError </a>
     
 
     
@@ -201,7 +205,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Next page of results.</p>
+</div></span>
   
 </li>
 
@@ -265,43 +271,37 @@
       <div class="method_details first">
   <h3 class="signature first" id="first-instance_method">
   
-    #<strong>first</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>first</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
   
 
   
 
   
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-15
-16
-17</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3/pagination.rb', line 15</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_first'>first</span>
-  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='lparen'>(</span><span class='symbol'>:first</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
+</h3><div class="docstring">
+  <div class="discussion">
     
-      <div class="method_details ">
-  <h3 class="signature " id="last-instance_method">
-  
-    #<strong>last</strong>  &#x21d2; <tt>Object</tt> 
-  
+<p>First page of results</p>
 
-  
 
+  </div>
+</div>
+<div class="tags">
   
-</h3><table class="source_code">
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
@@ -314,6 +314,60 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/trav3/pagination.rb', line 19</span>
 
+<span class='kw'>def</span> <span class='id identifier rubyid_first'>first</span>
+  <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='lparen'>(</span><span class='symbol'>:first</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="last-instance_method">
+  
+    #<strong>last</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Last page of results</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/trav3/pagination.rb', line 25</span>
+
 <span class='kw'>def</span> <span class='id identifier rubyid_last'>last</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='lparen'>(</span><span class='symbol'>:last</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -325,24 +379,48 @@
       <div class="method_details ">
   <h3 class="signature " id="next-instance_method">
   
-    #<strong>next</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>next</strong>  &#x21d2; <tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Next page of results</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Success.html" title="Trav3::Success (class)">Success</a></span></tt>, <tt><span class='object_link'><a href="RequestError.html" title="Trav3::RequestError (class)">RequestError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-11
-12
-13</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3/pagination.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3/pagination.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='kw'>next</span>
   <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_action'>action</span><span class='lparen'>(</span><span class='symbol'>:next</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -357,7 +435,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Jan 29 16:40:25 2019 by
+  Generated on Sat Feb  2 16:15:01 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>

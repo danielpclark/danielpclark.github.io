@@ -101,7 +101,20 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The results from queries return either <code>Success</code> or <code>RequestError</code> which both repsond with Hash like query methods for the JSON data or the Net::HTTP resonse object methods.</p>
 
+<p>The <code>Response</code> classes <code>Success</code> and <code>RequestError</code> forward method calls for all of the instance methods of a <code>ResponseCollection</code> to the collection. And many of the methods calls for the Net::HTTP response are also available on this class and those method calls are forwarded to the response.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -141,7 +154,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#page-instance_method" title="#page (instance method)">#<strong>page</strong>  &#x21d2; Object </a>
+      <a href="#page-instance_method" title="#page (instance method)">#<strong>page</strong>  &#x21d2; Pagination </a>
     
 
     
@@ -195,7 +208,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Response.html" title="Trav3::Response (class)">Response</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Response.html#initialize-instance_method" title="Trav3::Response#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Response.html#inspect-instance_method" title="Trav3::Response#inspect (method)">#inspect</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Response.html#[]-instance_method" title="Trav3::Response#[] (method)">#[]</a></span>, <span class='object_link'><a href="Response.html#body-instance_method" title="Trav3::Response#body (method)">#body</a></span>, <span class='object_link'><a href="Response.html#code-instance_method" title="Trav3::Response#code (method)">#code</a></span>, <span class='object_link'><a href="Response.html#code_type-instance_method" title="Trav3::Response#code_type (method)">#code_type</a></span>, <span class='object_link'><a href="Response.html#count-instance_method" title="Trav3::Response#count (method)">#count</a></span>, <span class='object_link'><a href="Response.html#decode_content-instance_method" title="Trav3::Response#decode_content (method)">#decode_content</a></span>, <span class='object_link'><a href="Response.html#dig-instance_method" title="Trav3::Response#dig (method)">#dig</a></span>, <span class='object_link'><a href="Response.html#each-instance_method" title="Trav3::Response#each (method)">#each</a></span>, <span class='object_link'><a href="Response.html#each_header-instance_method" title="Trav3::Response#each_header (method)">#each_header</a></span>, <span class='object_link'><a href="Response.html#empty%3F-instance_method" title="Trav3::Response#empty? (method)">#empty?</a></span>, <span class='object_link'><a href="Response.html#entity-instance_method" title="Trav3::Response#entity (method)">#entity</a></span>, <span class='object_link'><a href="Response.html#fetch-instance_method" title="Trav3::Response#fetch (method)">#fetch</a></span>, <span class='object_link'><a href="Response.html#first-instance_method" title="Trav3::Response#first (method)">#first</a></span>, <span class='object_link'><a href="Response.html#follow-instance_method" title="Trav3::Response#follow (method)">#follow</a></span>, <span class='object_link'><a href="Response.html#get_fields-instance_method" title="Trav3::Response#get_fields (method)">#get_fields</a></span>, <span class='object_link'><a href="Response.html#has_key%3F-instance_method" title="Trav3::Response#has_key? (method)">#has_key?</a></span>, <span class='object_link'><a href="Response.html#hash%3F-instance_method" title="Trav3::Response#hash? (method)">#hash?</a></span>, <span class='object_link'><a href="Response.html#header-instance_method" title="Trav3::Response#header (method)">#header</a></span>, <span class='object_link'><a href="Response.html#http_version-instance_method" title="Trav3::Response#http_version (method)">#http_version</a></span>, <span class='object_link'><a href="Response.html#initialize-instance_method" title="Trav3::Response#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="Response.html#inspect-instance_method" title="Trav3::Response#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Response.html#key%3F-instance_method" title="Trav3::Response#key? (method)">#key?</a></span>, <span class='object_link'><a href="Response.html#keys-instance_method" title="Trav3::Response#keys (method)">#keys</a></span>, <span class='object_link'><a href="Response.html#last-instance_method" title="Trav3::Response#last (method)">#last</a></span>, <span class='object_link'><a href="Response.html#message-instance_method" title="Trav3::Response#message (method)">#message</a></span>, <span class='object_link'><a href="Response.html#msg-instance_method" title="Trav3::Response#msg (method)">#msg</a></span>, <span class='object_link'><a href="Response.html#read_body-instance_method" title="Trav3::Response#read_body (method)">#read_body</a></span>, <span class='object_link'><a href="Response.html#read_header-instance_method" title="Trav3::Response#read_header (method)">#read_header</a></span>, <span class='object_link'><a href="Response.html#reading_body-instance_method" title="Trav3::Response#reading_body (method)">#reading_body</a></span>, <span class='object_link'><a href="Response.html#response-instance_method" title="Trav3::Response#response (method)">#response</a></span>, <span class='object_link'><a href="Response.html#uri-instance_method" title="Trav3::Response#uri (method)">#uri</a></span>, <span class='object_link'><a href="Response.html#value-instance_method" title="Trav3::Response#value (method)">#value</a></span>, <span class='object_link'><a href="Response.html#values-instance_method" title="Trav3::Response#values (method)">#values</a></span></p>
 
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
@@ -246,12 +259,12 @@
       <pre class="lines">
 
 
-13
-14
-15</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3/response/success.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3/response/success.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_failure?'>failure?</span>
   <span class='kw'>false</span>
@@ -264,24 +277,46 @@
       <div class="method_details ">
   <h3 class="signature " id="page-instance_method">
   
-    #<strong>page</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>page</strong>  &#x21d2; <tt><span class='object_link'><a href="Pagination.html" title="Trav3::Pagination (class)">Pagination</a></span></tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Pagination.html" title="Trav3::Pagination (class)">Pagination</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-5
-6
-7</pre>
+7
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3/response/success.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3/response/success.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_page'>page</span>
   <span class='const'><span class='object_link'><a href="../Trav3.html" title="Trav3 (module)">Trav3</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Pagination.html" title="Trav3::Pagination (class)">Pagination</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Pagination.html#initialize-instance_method" title="Trav3::Pagination#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_travis'>travis</span><span class='comma'>,</span> <span class='kw'>self</span><span class='rparen'>)</span>
@@ -328,12 +363,12 @@
       <pre class="lines">
 
 
-9
-10
-11</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/trav3/response/success.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/trav3/response/success.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_success?'>success?</span>
   <span class='kw'>true</span>
@@ -348,7 +383,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Jan 29 16:40:25 2019 by
+  Generated on Sat Feb  2 16:15:01 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.6.0).
 </div>
