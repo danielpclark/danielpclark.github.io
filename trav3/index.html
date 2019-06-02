@@ -58,7 +58,7 @@
       </div>
 
       <div id="content"><div id='filecontents'>
-<p><a href="http://badge.fury.io/rb/trav3"><img src="https://badge.fury.io/rb/trav3.svg"></a> <a href="https://travis-ci.org/danielpclark/trav3"><img src="https://travis-ci.org/danielpclark/trav3.svg?branch=master"></a> <a href="https://github.com/danielpclark/trav3/graphs/commit-activity"><img src="https://img.shields.io/github/commits-since/danielpclark/trav3/v0.5.0.svg"></a> <a href="https://codeclimate.com/github/danielpclark/trav3/maintainability"><img src="https://api.codeclimate.com/v1/badges/1ed07a4baea3832b6207/maintainability"></a> <a href="https://codeclimate.com/github/danielpclark/trav3/test_coverage"><img src="https://api.codeclimate.com/v1/badges/1ed07a4baea3832b6207/test_coverage"></a> <a href="http://danielpclark.github.io/trav3/Trav3/Travis.html"><img src="https://img.shields.io/badge/Read-the%20docs-blue.svg"></a> <a href="https://saythanks.io/to/danielpclark"><img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg"></a></p>
+<p><a href="http://badge.fury.io/rb/trav3"><img src="https://badge.fury.io/rb/trav3.svg"></a> <a href="https://travis-ci.org/danielpclark/trav3"><img src="https://travis-ci.org/danielpclark/trav3.svg?branch=master"></a> <a href="https://codeclimate.com/github/danielpclark/trav3/maintainability"><img src="https://api.codeclimate.com/v1/badges/1ed07a4baea3832b6207/maintainability"></a> <a href="https://codeclimate.com/github/danielpclark/trav3/test_coverage"><img src="https://api.codeclimate.com/v1/badges/1ed07a4baea3832b6207/test_coverage"></a> <a href="http://danielpclark.github.io/trav3/Trav3/Travis.html"><img src="https://img.shields.io/badge/Read-the%20docs-blue.svg"></a> <a href="https://saythanks.io/to/danielpclark"><img src="https://img.shields.io/badge/Feature-Complete-brightgreen.svg"></a></p>
 
 <h1 id="label-Trav3">Trav3</h1>
 
@@ -79,7 +79,7 @@
 
 <p>Add this line to your application&#39;s Gemfile:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>trav3</span><span class='tstring_end'>&#39;</span></span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>trav3</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 1.0.0</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
 
 <p>And then execute:</p>
@@ -224,6 +224,8 @@
 <p><code>#hash?</code></p>
 </li><li>
 <p><code>#last</code></p>
+</li><li>
+<p><code>#warnings</code></p>
 </li></ul>
 
 <p>Which each behave as they would on the collection type per collection type, <code>Hash</code> or <code>Array</code>, with the exception of <code>#each</code>. <code>#each</code> will wrap every item in an <code>Array</code> with another <code>ResponseCollection</code>, but if it&#39;s a <code>Hash</code> then <code>#each</code> simply works as it normally would on a <code>Hash</code></p>
@@ -265,9 +267,9 @@
 </div></div>
 
       <div id="footer">
-  Generated on Sat Feb  2 16:29:56 2019 by
+  Generated on Sun Jun  2 19:39:39 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.6.0).
+  0.9.16 (ruby-2.6.3).
 </div>
 
     </div>
