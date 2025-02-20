@@ -1,0 +1,126 @@
+.left-col {
+    width: 1px;
+    padding-left: 2px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 144px;
+    height: 100%;
+}
+
+.left-col, #title-block-header, footer {
+    background-color: #987838;
+}
+
+body {
+    margin-top: 18px;
+    margin-right: 128px;
+    margin-left: 160px;
+    line-height: 150%;
+    background-color: #eed;
+}
+
+.title {
+    font-size: 44px;
+    text-transform: uppercase;
+}
+
+#title-block-header {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    padding-left: 50px;
+    margin-bottom: 20px;
+}
+
+.h2 {
+    font-size: 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.h3 {
+    font-size: 24px;
+    padding-top: 8px;
+}
+
+.h4 {
+    font-size: 18px;
+}
+
+.ref-url {
+    line-height: 100%;
+    margin-bottom: -22px;
+    padding-left: 30px;
+}
+
+.pad-right {
+    padding-left: 28px;;
+}
+
+.timeframe {
+    font-style: italic;
+    font-weight: bold;
+    padding-top: 8px;
+    color: #580000;
+}
+
+.jobtitle {
+    font-weight: bolder;
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
+.section-header {
+    padding-bottom: 8px;
+}
+
+body > p {
+    padding-left: 28px;
+}
+
+ol {
+    padding-left: 56px;
+}
+
+body > p, li {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.email {
+    padding-left: 28px;
+}
+
+a {
+    color: #000;
+}
+
+b {
+    -webkit-text-stroke: 0.4px #eed; /* Thins out the bold text */
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 84px;
+    padding-bottom: 84px;
+    text-align: center;
+}
+
+@media print {
+    body {
+        margin: 10mm;
+    }
+
+    .left-col {
+        display: none;
+    }
+
+    /* Optional: Adjust specific elements if needed */
+    header, footer, .container {
+        margin: 0; /* Remove margins for these sections */
+    }
+
+    /* Optional: Adjust page breaks */
+    .page-break {
+        page-break-before: always;
+    }
+}
