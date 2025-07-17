@@ -134,10 +134,8 @@ Extensive experience building, integrating, and consuming APIs, including authen
 <div class="h2">Technical Skills</div>
 </div>
 
-* <b>Proficient in:</b> <u>Rust</u>(Since Oct 2015), <u>Ruby</u>(Since early 2012), Ruby on Rails, Hutch, TDD, Capybara, Docker, REST, various APIs, Git, JavaScript, jQuery, CSS, Gem authoring, HTML5, JSON, Linux SysAdmin, Unix Shell Scripting, Computer Technician, VIM, AJAX
-* <b>Web automation with:</b> Continuous Integration, Mechanize, Nokogiri, Selenium, and Watir
-* <b>Moderate experience in</b> CoffeeScript, Crystal, Windows SysAdmin, ActionCable, Agile, Assembly, Bash, Batch, CGI, CMS, Django, Encryption, FFI, FishShell, Metaprogramming, OpenSSL, PostgreSQL, Python (Since 2001), RSS, SEO, SOLID, XML, Security Practices, VueJS, Ruby C API
-* <b>Studying:</b> Algorithms, CoffeeScript, Rust, Design Patterns, Ruby C API, VueJS, Haskell, Functional Programming
+* <b>Proficient in:</b> <u>Rust</u>(Since Oct 2015), <u>Ruby</u>(Since early 2012), Ruby on Rails, Hutch, TDD, Capybara, Docker, REST, various APIs, Git, JavaScript, jQuery, CSS, Gem authoring, HTML5, JSON, Linux SysAdmin, Unix Shell Scripting, Computer Technician, VIM, AJAX, Postgres, Fish, RSpec, Minitest, Microservices, RabbitMQ, Redis, n8n (prototyping applications with many API calls), OAuth, Omniauth, VCR, CI/CD, Git, Github, Code Quality, Best Practices, Object-Oriented Programming (OOP), Technical Leadership, System Design, Debugging, Refactoring, Object-Oriented Decomposition, Loose Coupling, DRY, Full-Stack Development
+* <b>Moderate experience in</b> CoffeeScript, Crystal, Windows SysAdmin, ActionCable, Agile, Assembly, Bash, Batch, CGI, CMS, Django, Encryption, FFI, FishShell, Metaprogramming, OpenSSL, Python (Since 2001), RSS, SEO, SOLID, XML, Security Practices, VueJS, Ruby C API, Kubernetes, Tailwind CSS, Flowbite, Mechanize, Nokogiri, Selenium, Watir
 
 <div class="section-header">
 <div class="h2">Additional Experience Highlights</div>
