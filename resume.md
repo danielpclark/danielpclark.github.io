@@ -21,9 +21,76 @@ I have a strong foundation in software architecture, prioritizing idiomatic code
 <b>Ideal Team Environment:</b> I thrive in an environment that is collaborative, respectful, and driven by excellence. A team that values quality over speed, encourages mentorship, and embraces constructive peer review is where I perform best. I believe in graceful feedback, continuous improvement, and writing software that stands the test of time. Above all, I hold to the principle that people come before code, fostering a culture where individuals are valued, ideas are refined through discussion, and technical challenges are met with a spirit of shared problem-solving.
 
 <div class="section-header">
-<div class="h2">Highlighted Skill Experience</div>
+<div class="h2">Work History</div>
 </div>
 
+<div class="section-header">
+<div class="h3">Headway</div>
+<div class="timeframe">1.5 months: March 2025 through May 2025</div>
+<div class="jobtitle">Senior Software Developer</div>
+</div>
+
+This was a short-term contract. Collaborated in a high-velocity startup environment, delivering robust features and scalable solutions using Ruby, Ruby on Rails, JavaScript, StimulusJS, Turbo, Tailwind CSS, Flowbite, and Postgres. Recognized as a top contributor for consistently producing clean, maintainable, and performant code. Applied best practices in architecture and code quality, leading to significant improvements in the areas I worked on. Proactively aligned implementations with evolving customer requirements and consistently delivered high-quality results under tight deadlines.
+
+<div class="section-header">
+<div class="h3">Pearson Accelerated Pathways</div>
+<div class="timeframe">5 years, 1 month: October 2019 through October 2024</div>
+<div class="jobtitle">Lead Web Developer</div>
+</div>
+
+At Pearson, I had the privilege of working with a small, highly skilled team as a Lead Web Developer, where I played a key role in system architecture, development, DevOps, and mentoring. Our work involved managing a complex ecosystem of interconnected applications, integrating third-party user management systems, and ensuring seamless interoperability across diverse platforms.
+
+<div class="h4 pad-right">Key Contributions & Achievements</div>
+* <b>Architecting Scalable Systems:</b> Designed and developed <b>networked applications</b> running in <b>Google Cloud (Kubernetes)</b>, later leading efforts to <b>migrate the entire system</b> to <b>Amazon AWS</b>, ensuring high availability and scalability.
+* <b>Leadership & Mentorship:</b> Provided <b>technical guidance and hands-on training</b>, instilling best practices in <b>code maintainability, security, and performance optimization</b>. Led by example while fostering a collaborative, growth-focused environment.
+* <b>Software Development & Security:</b> Built <b>new Ruby-based microservices</b> with <b>minimalist dependencies</b> to reduce security vulnerabilities and streamline maintenance. This addressed critical bottlenecks caused by frequent <b>JavaScript ecosystem security updates</b>, improving both <b>release efficiency and long-term security</b>.
+* <b>DevOps & Infrastructure Management:</b> Took on <b>primary DevOps responsibilities</b> after our dedicated DevOps engineer left, managing <b>containerized environments, automated deployments, and CI/CD pipelines</b>.
+* <b>System Reliability & Maintainability:</b> Applied <b>deep language and application design expertise</b>—particularly in <b>Ruby</b>—to ensure codebase longevity, maintainability, and <b>alignment with best practices</b>.
+
+Throughout my time at Pearson, I remained committed to solving complex challenges with efficient, secure, and maintainable solutions, contributing to both technical excellence and team success.
+
+<div class="section-header">
+<div class="h3">Codeship/CloudBees</div>
+<div class="timeframe">3 years, 3 months: February 2016 through May 2019</div>
+<div class="jobtitle">Profesional Ruby on Rails Blogger</div>
+</div>
+
+Contract work. I have been writing educational blogs for many years at 6ftdan.com, covering programming languages, software development, and personal growth. Additionally, I have freelanced as a technical writer for CloudBees/CodeShip, where I authored articles on various technologies, best practices, and software development methodologies. My writing focuses on delivering clear, insightful, and practical content to help developers enhance their skills and understanding. Blog titles for the subjects I posted are shared further down in my resume.
+
+<div class="section-header">
+<div class="h3">Undisclosed Start-up</div>
+<div class="timeframe">2 years, 1 month: June 2014 through June 2016</div>
+<div class="jobtitle">CTO & Full-Stack Developer</div>
+</div>
+
+Led the end-to-end development of a full-stack web application over a two-year period as the sole engineer, architecting and delivering a complex, high-availability platform from the ground up. Built entirely in Ruby on Rails, the application integrated with multiple third-party APIs, social platforms, and contact management systems using OAuth and OmniAuth.
+
+Key responsibilities and achievements:
+
+* Designed and implemented a responsive, dynamic user interface using Rails, JavaScript, jQuery, AJAX, and Bootstrap.
+* Engineered robust authentication and account management workflows using Devise, with role-based admin features powered by ActiveAdmin.
+* Developed a custom OCR-driven pipeline to extract and classify unstructured data from uploaded images (e.g., business cards), including layout analysis and programmatic parsing to map raw text to structured contact fields.
+* Integrated Google Contacts and other platform APIs for seamless data exchange and synchronization.
+* Architected a secure and scalable cloud deployment on Heroku, with automated testing and deployment pipelines via CircleCI.
+* Managed infrastructure, product decisions, and long-term technical strategy in a lean startup environment.
+
+Technologies: Ruby, Ruby on Rails, JavaScript, jQuery, AJAX, Bootstrap, OAuth, OmniAuth, Devise, ActiveAdmin, Heroku, CircleCI, OCR, Google Contacts API, REST APIs, Postgres.
+
+<div class="section-header">
+<div class="h3">NetVersa ~ 2012</div>
+</div>
+
+This was a one project contract assignment. I designed full website automation for the sign in process for many social media websites, including Facebook, using Watir and Watir-webdriver in the Ruby language.
+
+<div class="section-header">
+<div class="h3">Scholar Square ~ 2008</div>
+</div>
+
+This was a one project contract assignment. Designed a script to pay all site members who've authored content; all appropriate fees for student memberships and subscriptions, via the PayPal API using Python.
+
+<div class="section-header">
+<div class="h2">Highlighted Skill Experience</div>
+</div>
 
 <div class="section-header">
 <div class="h3">
@@ -135,42 +202,11 @@ Extensive experience building, integrating, and consuming APIs, including authen
 </div>
 
 * <b>Proficient in:</b> <u>Rust</u>(Since Oct 2015), <u>Ruby</u>(Since early 2012), Ruby on Rails, Hutch, TDD, Capybara, Docker, REST, various APIs, Git, JavaScript, jQuery, CSS, Gem authoring, HTML5, JSON, Linux SysAdmin, Unix Shell Scripting, Computer Technician, VIM, AJAX, Postgres, Fish, RSpec, Minitest, Microservices, RabbitMQ, Redis, n8n (prototyping applications with many API calls), OAuth, Omniauth, Sidekiq, VCR, CI/CD, Git, Github, Code Quality, Best Practices, Object-Oriented Programming (OOP), Technical Leadership, System Design, Debugging, Refactoring, Object-Oriented Decomposition, Loose Coupling, DRY, Full-Stack Development, CircleCI, TravisCI
-* <b>Moderate experience in:</b> CoffeeScript, Crystal, Windows SysAdmin, ActionCable, Agile, Assembly, Bash, Batch, CGI, CMS, Django, Encryption, FFI, FishShell, Metaprogramming, OpenSSL, Python (Since 2001), RSS, SEO, SOLID, XML, Security Practices, VueJS, Ruby C API, Kubernetes, Tailwind CSS, Flowbite, Mechanize, Nokogiri, Selenium, Watir, DataDog
+* <b>Moderate experience in:</b> CoffeeScript, Crystal, Windows SysAdmin, ActionCable, Agile, Assembly, Bash, Batch, CGI, CMS, Django, Encryption, FFI, FishShell, Metaprogramming, OpenSSL, Python (Since 2001), RSS, SEO, SOLID, XML, Security Practices, VueJS, Ruby C API, Kubernetes, Tailwind CSS, Flowbite, Mechanize, Nokogiri, Selenium, Watir, DataDog, ReactJS
 
 <div class="section-header">
 <div class="h2">Additional Experience Highlights</div>
 </div>
-
-<div class="section-header">
-<div class="h3">Headway</div>
-<div class="timeframe">1.5 months: March 2025 through May 2025</div>
-<div class="jobtitle">Senior Software Developer</div>
-</div>
-
-This was a short-term contract. Collaborated in a high-velocity startup environment, delivering robust features and scalable solutions using Ruby, Ruby on Rails, JavaScript, StimulusJS, Turbo, Tailwind CSS, Flowbite, and Postgres. Recognized as a top contributor for consistently producing clean, maintainable, and performant code. Applied best practices in architecture and code quality, leading to significant improvements in the areas I worked on. Proactively aligned implementations with evolving customer requirements and consistently delivered high-quality results under tight deadlines.
-
-<div class="section-header">
-<div class="h3">Pearson Accelerated Pathways</div>
-<div class="timeframe">5 years, 1 month: October 2019 through October 2024</div>
-<div class="jobtitle">Lead Web Developer</div>
-</div>
-
-At Pearson, I had the privilege of working with a small, highly skilled team as a Lead Web Developer, where I played a key role in system architecture, development, DevOps, and mentoring. Our work involved managing a complex ecosystem of interconnected applications, integrating third-party user management systems, and ensuring seamless interoperability across diverse platforms.
-
-<div class="h4 pad-right">Key Contributions & Achievements</div>
-* <b>Architecting Scalable Systems:</b> Designed and developed <b>networked applications</b> running in <b>Google Cloud (Kubernetes)</b>, later leading efforts to <b>migrate the entire system</b> to <b>Amazon AWS</b>, ensuring high availability and scalability.
-* <b>Leadership & Mentorship:</b> Provided <b>technical guidance and hands-on training</b>, instilling best practices in <b>code maintainability, security, and performance optimization</b>. Led by example while fostering a collaborative, growth-focused environment.
-* <b>Software Development & Security:</b> Built <b>new Ruby-based microservices</b> with <b>minimalist dependencies</b> to reduce security vulnerabilities and streamline maintenance. This addressed critical bottlenecks caused by frequent <b>JavaScript ecosystem security updates</b>, improving both <b>release efficiency and long-term security</b>.
-* <b>DevOps & Infrastructure Management:</b> Took on <b>primary DevOps responsibilities</b> after our dedicated DevOps engineer left, managing <b>containerized environments, automated deployments, and CI/CD pipelines</b>.
-* <b>System Reliability & Maintainability:</b> Applied <b>deep language and application design expertise</b>—particularly in <b>Ruby</b>—to ensure codebase longevity, maintainability, and <b>alignment with best practices</b>.
-
-Throughout my time at Pearson, I remained committed to solving complex challenges with efficient, secure, and maintainable solutions, contributing to both technical excellence and team success.
-
-<div class="section-header">
-<div class="h3">Profesional Ruby on Rails Blogger</div>
-</div>
-
-I have been writing educational blogs for many years at 6ftdan.com, covering programming languages, software development, and personal growth. Additionally, I have freelanced as a technical writer for CloudBees/CodeShip, where I authored articles on various technologies, best practices, and software development methodologies. My writing focuses on delivering clear, insightful, and practical content to help developers enhance their skills and understanding.
 
 <div class="section-header">
 <div class="h3">Ruby for Good &mdash; Volunteer Developer</div>
@@ -188,12 +224,6 @@ Automates <b>grading, ranking, and penalty calculations</b> with a live <b>score
   * My primary contribution was <b>implementing Docker-based language runners</b> for <b>Ruby, Python, C++, Rust, and Crystal</b>, ensuring isolated and secure execution of competition code. This work was later refined and extended by <b>Chris Hoffman</b>.
 
 Through <b>Ruby for Good</b>, I contributed technical expertise to meaningful projects, ensuring <b>scalability, maintainability, and impact</b> in <b>education and environmental conservation</b>.
-
-<div class="section-header">
-<div class="h3">Undisclosed Start-up</div>
-</div>
-
-Full stack Rails developer and CTO.  Rails, Ruby, AJAX, JavaScript, jQuery, APIs, OAuth, OmniAuth, Devise, ActiveAdmin, Heroku, and much more.
 
 <div class="section-header">
 <div class="h3">The Minitests Cookbook</div>
@@ -224,18 +254,6 @@ Participated in <b>Rails Rumble</b> for three consecutive years, collaborating w
   * <b>Real-time updates</b> using ActionCable
 
   Completed core game mechanics within the competition’s time constraints, gaining valuable experience in <b>real-time Rails applications</b>.
-
-<div class="section-header">
-<div class="h3">NetVersa ~ 2012</div>
-</div>
-
-Designed full website automation for popular sites using Watir and Watir-webdriver in the Ruby language.
-
-<div class="section-header">
-<div class="h3">Scholar Square ~ 2008</div>
-</div>
-
-Designed a script to pay all site members who've authored content; all appropriate fees for student memberships and subscriptions, via the PayPal API using Python.
 
 <div class="section-header">
 <div class="h3">HSPN</div>
