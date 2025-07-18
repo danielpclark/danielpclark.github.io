@@ -90,7 +90,7 @@ This was a one project contract assignment. I designed full website automation f
 This was a one project contract assignment. Designed a script to pay all site members who've authored content; all appropriate fees for student memberships and subscriptions, via the PayPal API using Python.
 
 <div class="section-header">
-<div class="h2">Highlighted Skill Experience</div>
+<div class="h2">Featured Projects</div>
 </div>
 
 <div class="section-header">
@@ -115,6 +115,10 @@ GitHub: <a href="https://www.github.com/danielpclark/rutie">danielpclark/faster_
 </div>
 
 With the first release of this project, I improved my Rails site's page load times by <b>over 30%</b>. Through careful performance analysis, I identified a key bottleneck in a critical Ruby method and rewrote it in <b>Rust</b> for significant speed gains. Over time, I expanded this optimization effort, rewriting <b>15 core methods</b> in Rust, each contributing to <b>faster execution and improved efficiency</b> across the application. FasterPath continues to demonstrate the power of <b>targeted performance optimizations</b> by integrating Rust for computationally intensive operations within Ruby applications.
+
+<div class="section-header">
+<div class="h2">Technologies</div>
+</div>
 
 <div class="section-header">
 <div class="h3">Ruby</div>

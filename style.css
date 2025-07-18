@@ -168,23 +168,83 @@ footer {
     }
 }
 
-/* Print styles remain the same */
 @media print {
+    /* Define overall page margins for printing */
+    @page {
+        margin: 20mm 15mm 20mm 15mm; /* Top Right Bottom Left margins */
+        /* You can also use individual properties: */
+        /* margin-top: 20mm; */
+        /* margin-right: 15mm; */
+        /* margin-bottom: 20mm; */
+        /* margin-left: 15mm; */
+    }
+
     body {
+        /* You might still keep this for specific body content,
+           but @page handles the actual print page margins */
         margin: 10mm;
+        font-size: 10pt;
     }
 
     .left-col {
         display: none;
     }
 
-    /* Optional: Adjust specific elements if needed */
-    header, footer, .container {
-        margin: 0; /* Remove margins for these sections */
+    #title-block-header, footer {
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 
-    /* Optional: Adjust page breaks */
+    #title-block-header {
+        padding-top: 0;
+    }
+
+    /* Adjust specific font sizes for headings and other elements */
+    .title {
+        font-size: 24pt; /* Adjust as needed */
+    }
+
+    .h2 {
+        font-size: 16pt; /* Adjust as needed */
+    }
+
+    .h3 {
+        font-size: 14pt; /* Adjust as needed */
+    }
+
+    .h4 {
+        font-size: 12pt; /* Adjust as needed */
+    }
+
+    /* Ensure specific text elements also inherit or are adjusted */
+    body > p, li, .ref-url, .email, .pad-right, .timeframe, .jobtitle {
+        font-size: 10pt; /* Or inherit from body if not already doing so */
+    }
+
+    /* List padding might need adjustment if font size changes */
+    ol {
+        padding-left: 20pt; /* Adjust to look good with new font size */
+    }
+
     .page-break {
         page-break-before: always;
+    }
+
+    .h2, .h3, .h4, .section-header, .jobtitle {
+        page-break-after: avoid;
+    }
+
+    .printable-section {
+        page-break-inside: avoid;
+    }
+
+    img {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    li {
+        page-break-inside: avoid;
     }
 }
