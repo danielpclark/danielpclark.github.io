@@ -190,6 +190,12 @@ footer {
         display: none;
     }
 
+    b {
+        -webkit-text-stroke: initial; /* Reset or remove this property for print */
+        /* Or simply: -webkit-text-stroke: none; */
+        font-weight: bold; /* Ensure it's explicitly bold for print */
+    }
+
     #title-block-header, footer {
         margin: 0;
         padding-left: 0;

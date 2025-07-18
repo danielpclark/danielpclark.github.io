@@ -161,7 +161,7 @@ Experienced in writing performant, idiomatic Rust code with a focus on systems p
 Experienced in <b>standalone microservice JavaScript applications</b> running in <b>Docker</b> for both local and production environments. Skilled in integrating JavaScript seamlessly with <b>Ruby on Rails</b> applications, including advanced authentication flows.
 
 * <b>Authentication & OAuth Integration:</b> Developed custom <b>JavaScript interception hooks</b> to integrate a <b>third-party OAuth provider</b> with <b>Devise</b> in a Rails backend.
-* <b>Frameworks & Libraries:</b> Proficient in <b>Vanilla JavaScript, VueJS, jQuery, UnderscoreJS, CoffeeScript, AJAX, Turbolinks, and Turbo</b>.
+* <b>Frameworks & Libraries:</b> Proficient in <b>Vanilla JavaScript, jQuery, UnderscoreJS, AJAX, Turbolinks, and Turbo</b>. Moderate experience in <b>CoffeeScript, VueJS, StimulusJS, and Flowbite</b>. Light experience in <b>ReactJS</b>.
 * <b>Testing & Automation:</b> Experience with <b>Jest</b> and <b>Mocha</b> for unit and integration testing.
 * <b>Performance & Optimization:</b> Optimized front-end interactions and <b>asynchronous data loading</b> for improved user experience.
 
