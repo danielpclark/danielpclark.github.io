@@ -46,6 +46,7 @@ At Pearson, I had the privilege of working with a small, highly skilled team as 
 * <b>Software Development & Security:</b> Built <b>new Ruby-based microservices</b> with <b>minimalist dependencies</b> to reduce security vulnerabilities and streamline maintenance. This addressed critical bottlenecks caused by frequent <b>JavaScript ecosystem security updates</b>, improving both <b>release efficiency and long-term security</b>.
 * <b>DevOps & Infrastructure Management:</b> Took on <b>primary DevOps responsibilities</b> after our dedicated DevOps engineer left, managing <b>containerized environments, automated deployments, and CI/CD pipelines</b>.
 * <b>System Reliability & Maintainability:</b> Applied <b>deep language and application design expertise</b>—particularly in <b>Ruby</b>—to ensure codebase longevity, maintainability, and <b>alignment with best practices</b>.
+* <b>Diverse Application Stack:</b> Developed and maintained a variety of interconnected systems, including <b>pure JavaScript microservices</b>, <b>Ruby microservices using Hutch</b> for message processing, and <b>full-stack Ruby on Rails applications</b>—some incorporating <b>ReactJS</b> and <b>StimulusJS</b> for dynamic front-end experiences.
 
 Throughout my time at Pearson, I remained committed to solving complex challenges with efficient, secure, and maintainable solutions, contributing to both technical excellence and team success.
 
