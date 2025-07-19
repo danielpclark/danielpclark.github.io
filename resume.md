@@ -32,6 +32,8 @@ I have a strong foundation in software architecture, prioritizing idiomatic code
 
 This was a short-term contract. Collaborated in a high-velocity startup environment, delivering robust features and scalable solutions using Ruby, Ruby on Rails, JavaScript, StimulusJS, Turbo, Tailwind CSS, Flowbite, and Postgres. Recognized as a top contributor for consistently producing clean, maintainable, and performant code. Applied best practices in architecture and code quality, leading to significant improvements in the areas I worked on. Proactively aligned implementations with evolving customer requirements and consistently delivered high-quality results under tight deadlines.
 
+Technologies: Ruby, Ruby on Rails, Stimulus, Flowbite, Turbo, ActiveAdmin, Tailwind CSS
+
 <div class="section-header">
 <div class="h3">Pearson Accelerated Pathways</div>
 <div class="timeframe">5 years, 1 month: October 2019 through October 2024</div>
@@ -41,7 +43,7 @@ This was a short-term contract. Collaborated in a high-velocity startup environm
 At Pearson, I had the privilege of working with a small, highly skilled team as a Lead Web Developer, where I played a key role in system architecture, development, DevOps, and mentoring. Our work involved managing a complex ecosystem of interconnected applications, integrating third-party user management systems, and ensuring seamless interoperability across diverse platforms.
 
 <div class="h4 pad-right">Key Contributions & Achievements</div>
-* <b>Architecting Scalable Systems:</b> Designed and developed <b>networked applications</b> running in <b>Google Cloud (Kubernetes)</b>, later leading efforts to <b>migrate the entire system</b> to <b>Amazon AWS</b>, ensuring high availability and scalability.
+* <b>Architecting Scalable Systems:</b> Designed and developed <b>networked applications</b> running in <b>Google Cloud (Kubernetes)</b>, later leading efforts to <b>migrate the entire system</b> to <b>Amazon AWS</b>, ensuring high availability and scalability.  Helped improve a numerous <b>microservice</b> environment, and a couple <b>monolithic applications</b>, interconnected with <b>RabbitMQ</b>, by large technology changes and refactoring with applying best coding practices.
 * <b>Leadership & Mentorship:</b> Provided <b>technical guidance and hands-on training</b>, instilling best practices in <b>code maintainability, security, and performance optimization</b>. Led by example while fostering a collaborative, growth-focused environment.
 * <b>Software Development & Security:</b> Built <b>new Ruby-based microservices</b> with <b>minimalist dependencies</b> to reduce security vulnerabilities and streamline maintenance. This addressed critical bottlenecks caused by frequent <b>JavaScript ecosystem security updates</b>, improving both <b>release efficiency and long-term security</b>.
 * <b>DevOps & Infrastructure Management:</b> Took on <b>primary DevOps responsibilities</b> after our dedicated DevOps engineer left, managing <b>containerized environments, automated deployments, and CI/CD pipelines</b>.
@@ -49,6 +51,8 @@ At Pearson, I had the privilege of working with a small, highly skilled team as 
 * <b>Diverse Application Stack:</b> Developed and maintained a variety of interconnected systems, including <b>pure JavaScript microservices</b>, <b>Ruby microservices using Hutch</b> for message processing, and <b>full-stack Ruby on Rails applications</b>—some incorporating <b>ReactJS</b> and <b>StimulusJS</b> for dynamic front-end experiences.
 
 Throughout my time at Pearson, I remained committed to solving complex challenges with efficient, secure, and maintainable solutions, contributing to both technical excellence and team success.
+
+Technologies: Ruby, Ruby on Rails, JavaScript, Hutch, Sinatra, AJAX, OAuth, OmniAuth, Devise, CI/CD, Kuberentes, REST APIs, Postgres, RabbitMQ, Stimulus, React, Redis, Google Cloud Infrastructure, AWS Infrastructure, Amazon S3 Bucket, Datadog, MongoDB, Turbolinks, UJS, RSpec, VCR, Kubernetes, Capybara, Selenium, Bash, Sidekiq, Delayed Job, Que, Jenkins, Third Party APIs
 
 <div class="section-header">
 <div class="h3">Codeship/CloudBees</div>
@@ -75,7 +79,7 @@ Key responsibilities and achievements:
 * Architected a secure and scalable cloud deployment on Heroku, with automated testing and deployment pipelines via CircleCI.
 * Managed infrastructure, product decisions, and long-term technical strategy in a lean startup environment.
 
-Technologies: Ruby, Ruby on Rails, JavaScript, jQuery, AJAX, Bootstrap, OAuth, OmniAuth, Devise, ActiveAdmin, Heroku, CircleCI, OCR, Google Contacts API, REST APIs, Postgres.
+Technologies: Ruby, Ruby on Rails, JavaScript, jQuery, AJAX, Bootstrap, OAuth, OmniAuth, Devise, ActiveAdmin, Heroku, CircleCI, OCR, Google Contacts API, REST APIs, Postgres
 
 <div class="section-header">
 <div class="h3">NetVersa ~ 2012</div>
