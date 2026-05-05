@@ -52,7 +52,7 @@ At Pearson, I had the privilege of working with a small, highly skilled team as 
 
 Throughout my time at Pearson, I remained committed to solving complex challenges with efficient, secure, and maintainable solutions, contributing to both technical excellence and team success.
 
-Technologies: Ruby, Ruby on Rails, JavaScript, Hutch, Sinatra, AJAX, OAuth, OmniAuth, Devise, CI/CD, Kuberentes, REST APIs, Postgres, RabbitMQ, Stimulus, React, Redis, Google Cloud Infrastructure, AWS Infrastructure, Amazon S3 Bucket, Datadog, MongoDB, Turbolinks, UJS, RSpec, VCR, Kubernetes, Capybara, Selenium, Bash, Sidekiq, Delayed Job, Que, Jenkins, Third Party APIs
+Technologies: Ruby, Ruby on Rails, JavaScript, Hutch, Sinatra, AJAX, OAuth, OmniAuth, Devise, CI/CD, REST APIs, Postgres, RabbitMQ, Stimulus, React, Redis, Google Cloud Infrastructure, AWS Infrastructure, Amazon S3 Bucket, Datadog, MongoDB, Turbolinks, UJS, RSpec, VCR, Kubernetes, Capybara, Selenium, Bash, Sidekiq, Delayed Job, Que, Jenkins, Third Party APIs
 
 <div class="section-header">
 <div class="h3">Codeship/CloudBees</div>
