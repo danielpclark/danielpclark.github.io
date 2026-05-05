@@ -125,6 +125,16 @@ With the first release of this project, I improved my Rails site's page load tim
 </div>
 
 <div class="section-header">
+<div class="h3">AI</div>
+<div class="timeframe">since 2023</div>
+</div>
+
+For my development work I've adapted to working with Github Copilot and utilizing Claude Sonnet as a pair programming tool allowing me to achieve as much as 5 times faster development with delivering on PRs when application context is provided.
+
+I've also custom built an application & multiple AI API service client architecture which together wrote, arranged, and rendered story telling videos onto Tiktok.  It integrated with ChatGPT, X's Grok, several image, video, audio, and media mixing tools as well as the backend database first implemented in Google Excel and Google Drive and later implemented in Postgres.  This was all implemented using <a href="https://n8n.io">n8n</a> locally hosted with local DB.  The first iteration was a monolith application in n8n and the second iteration was a microservice version with 10 services.  Some of the problem solving was to make this as cost effective and failure resistant as possible as failures in AI processes along the way came at the expense of financial cost.  This was a personal project.
+
+
+<div class="section-header">
 <div class="h3">Ruby</div>
 <div class="timeframe">since 2012</div>
 </div>
