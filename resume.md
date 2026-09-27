@@ -26,6 +26,16 @@ I have a strong foundation in software architecture, prioritizing idiomatic code
 
 <div class="section-header">
 <div class="h3">Headway</div>
+<div class="timeframe">1.5 months: September 2026 through October 2026</div>
+<div class="jobtitle">Senior Software Developer</div>
+</div>
+
+Current short-term contract; a return engagement with Headway. Transforming an established Ruby on Rails web application into native mobile applications for iOS and Android using Hotwire Native. By building on the existing Rails codebase, the web experience is delivered with a true native look and feel while taking full advantage of built-in device capabilities on each platform. Designing and implementing Hotwire Native Bridge Components that seamlessly connect web interactions to native platform features, closing the gap between a strong web user experience and a polished, first-class mobile application experience. Applying the same emphasis on clean, maintainable, and performant code that earned recognition during my first engagement.
+
+Technologies: Ruby, Ruby on Rails, Hotwire Native, Hotwire Native Bridge Components, Turbo, Stimulus, iOS, Android
+
+<div class="section-header">
+<div class="h3">Headway</div>
 <div class="timeframe">1.5 months: March 2025 through May 2025</div>
 <div class="jobtitle">Senior Software Developer</div>
 </div>
