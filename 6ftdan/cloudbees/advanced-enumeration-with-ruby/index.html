@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Enumeration with Ruby</title>
+<meta name="description" content="Enumeration by definition is “the action of mentioning a number of things one by one.” In programming, instead of mentioning, we choose any action we may want to perform, whether it simply be printing out the item to a…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>Advanced Enumeration with Ruby</h1>
+<p class="meta">By Daniel P. Clark · 2017-08-02 · 10 min read</p>
+<p>Enumeration by definition is “the action of mentioning a number of things one by one.” In programming, instead of mentioning, we choose any action we may want to perform, whether it simply be printing out the item to a display or performing some sort of selection and/or transformation on the item.</p><p>In programming, we can perform many ways to select and process a collection at one time by chaining on each additional transformation in steps. And each step can either consume the entire collection before handing the results off to the next step, or it can be handled “lazily” and pass one or more items at a time through all the transformations.</p><h2>How Ruby Does Enumeration</h2><p>In this post, I&#8217;ll give a quick review on what blocks and yields do. The blocks we&#8217;re interested in for Ruby are sections of code defined within methods or procs/lambdas. You can think of <code>yield</code> as a place where a code block gets pasted into the current code block from elsewhere. Let me demonstrate.</p><pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">my_printer</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"Hello World!"</span>
+<span class="k">end</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">thrice</span>
+<span class="w">  </span><span class="mi">3</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">yield</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">thrice</span><span class="w"> </span><span class="o">&amp;</span><span class="nb">method</span><span class="p">(</span><span class="ss">:my_printer</span><span class="p">)</span>
+<span class="c1"># Hello World!</span>
+<span class="c1"># Hello World!</span>
+<span class="c1"># Hello World!</span>
+
+<span class="n">thrice</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"Ruby"</span><span class="w"> </span><span class="p">}</span>
+<span class="c1"># Ruby</span>
+<span class="c1"># Ruby</span>
+<span class="c1"># Ruby</span></code></pre><p>Methods accept two forms of blocks for yield: procs or blocks. The <code>method</code> method will transform a method definition into a proc, which then can be passed in as a block as above in the <code>my_printer</code> example.</p><p>Where <code>yield</code> is written above, it&#8217;s as if the code passed as a block were written in its place. So in the first case, simply imagine <code>yield</code> replaced with <code>puts "Hello World!"</code> and the second <code>yield</code> replaced with <code>puts "Ruby"</code>.</p><p><code>yield</code> can also work as a simple enumerator. You can pass any value in as a parameter to the block/proc by adding it after <code>yield</code>.</p><pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">simple_enum</span>
+<span class="w">  </span><span class="k">yield</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="k">yield</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="k">yield</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">  </span><span class="k">yield</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="k">yield</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">end</span>
+
+<span class="n">simple_enum</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">value</span><span class="o">|</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="n">value</span>
+<span class="k">end</span>
+<span class="c1"># 4</span>
+<span class="c1"># 3</span>
+<span class="c1"># 2</span>
+<span class="c1"># 1</span>
+<span class="c1"># 0</span></code></pre><h2>Minimum Enumerator Requirements</h2><p>Ruby&#8217;s standard way of producing an enumerator is the <code>each</code> method, which yields values. With this, you can define an <code>each</code> method on any Ruby object and then take advantage of more than 50 methods for processing and evaluating collections from the <a href="https://ruby-doc.org/core-2.4.1/Enumerable.html">Enumerable</a> module. Simply add <code>include Enumerable</code> within the object that has a valid <code>each</code> method, and you can fully utilize all of those methods.</p><p>Enumerators aren&#8217;t limited to simple collections such as <code>Array</code>, but any collection that includes the <code>each</code> method (and will typically have the module Enumerable in its ancestors).</p><pre class="code-block language-ruby"><code><span class="nb">Array</span><span class="o">.</span><span class="n">ancestors</span>
+<span class="c1"># =&gt; [Array, Enumerable, Object, Kernel, BasicObject]</span>
+<span class="no">Hash</span><span class="o">.</span><span class="n">ancestors</span>
+<span class="c1"># =&gt; [Hash, Enumerable, Object, Kernel, BasicObject]</span>
+<span class="no">Hash</span><span class="o">.</span><span class="n">method_defined?</span><span class="w"> </span><span class="ss">:each</span>
+<span class="c1"># =&gt; true</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">"set"</span>
+<span class="no">Set</span><span class="o">.</span><span class="n">ancestors</span>
+<span class="c1"># =&gt; [Set, Enumerable, Object, Kernel, BasicObject]</span></code></pre><h2>Lazy and Not Lazy Enumeration</h2><p>Lazy enumeration is often considered a better way of processing a collection, as it will allow you to step through infinite sequences as far as you&#8217;d like to go.</p><p>Think of an assembly line of people to make a pizza where each person is responsible for only one step in the pizza&#8217;s transformation/creation. The first person tosses the dough into the right shape, the next person adds the sauce, the next the cheese, a person for each topping, one to put it in the oven, and the last person to deliver the ready pizza to you. In this example, Ruby&#8217;s lazy version of this is to have any number of orders of pizza, but everyone takes the time to do just the first pizza through every step of the process before continuing on to the next pizza to make.</p><p>If you don&#8217;t use lazy enumeration, then each step would have to wait for the entire collection to be done one step at a time. For example, if you have 20 orders of pizza, the person who tosses the pizza dough will have to do 20 of them before any of them get sauce added on by the next person. And each step in the line waits in a similar manner. Now, the bigger the collection you need to process, the more ridiculous it seems to make the rest of the assembly line wait.</p><p>A more real-world example would be processing emails to be sent out to all users. If there is an error in the code and it&#8217;s not being handled lazily, then it&#8217;s quite likely no one would have received an email. But in the case of lazy evaluation, you could potentially get most of your users emailed before an account information issue causes a problem. If a record is kept of successful emails sent, it&#8217;s easier to track down where the issue may lie.</p><p>Creating a lazy enumerator in Ruby is as simple as calling <code>lazy</code> on an object with <code>Enumerable</code> included in it or <code>to_enum.lazy</code> on an object with <code>each</code> defined on it.</p><pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Thing</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">each</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="s2">"winning"</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="s2">"not winning"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Thing</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">to_enum</span><span class="o">.</span><span class="n">lazy</span>
+
+<span class="no">Thing</span><span class="o">.</span><span class="n">include</span><span class="w"> </span><span class="no">Enumerable</span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Thing</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">lazy</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; "winning"</span>
+<span class="n">b</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; "winning"</span></code></pre><blockquote><p>Calling <code>to_enum</code> returns an object that is both an <code>Enumerator</code> and an <code>Enumerable</code> object and will have access to all of their methods.</p></blockquote><p>It is important to pay attention to which enumerable methods will consume the entire collection and which will work with lazy evaluation. For example, the <code>partition</code> method consumes the entire collection, so it&#8217;s unacceptable for infinite collections. Better options for lazy evaluation would be methods like <code>chunk</code> or <code>select</code>.</p><pre class="code-block language-bash"><code><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>..Float::INFINITY<span class="o">)</span>
+
+<span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>x.chunk<span class="o">(</span><span class="p">&amp;</span>:even?<span class="o">)</span>
+<span class="c1"># =&gt; #&lt;Enumerator::Lazy: #&lt;Enumerator: #&lt;Enumerator::Generator:0x0055eb840be350&gt;:each&gt;&gt;</span>
+y.next
+<span class="c1"># =&gt; [true, [0]]</span>
+y.next
+<span class="c1"># =&gt; [false, [1]]</span>
+y.next
+<span class="c1">#=&gt; [true, [2]]</span>
+
+<span class="nv">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>x.lazy.select<span class="o">(</span><span class="p">&amp;</span>:even?<span class="o">)</span>
+<span class="c1"># =&gt; #&lt;Enumerator::Lazy: #&lt;Enumerator::Lazy: 0..Infinity&gt;:select&gt;</span>
+z.next
+<span class="c1"># =&gt; 0</span>
+z.next
+<span class="c1"># =&gt; 2</span>
+z.next
+<span class="c1"># =&gt; 4</span></code></pre><p>In the case of using <code>select</code> with an infinite sequence, you must first call the <code>lazy</code> method to prevent <code>select</code> from consuming the entire collection and the program halting for want of infinity.</p><h2>Creating a Lazy Enumerator</h2><p>Ruby has the <code>Enumerator::Lazy</code> class, which allows you to write your own lazy enumerator methods like Ruby&#8217;s <code>take</code>.</p><pre class="code-block language-ruby"><code><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="no">Float</span><span class="o">::</span><span class="no">INFINITY</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; [0, 1]</span></code></pre><p>For a good example, we&#8217;ll implement FizzBuzz, which will start at any integer and allow infinite FizzBuzz results.</p><pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">divisible_by?</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-&gt;</span><span class="n">input</span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">zero?</span><span class="w"> </span><span class="p">}</span>
+<span class="k">end</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fizzbuzz_from</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="w">  </span><span class="no">Enumerator</span><span class="o">::</span><span class="no">Lazy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">value</span><span class="o">..</span><span class="no">Float</span><span class="o">::</span><span class="no">INFINITY</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">yielder</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">|</span>
+<span class="w">    </span><span class="n">yielder</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="n">val</span>
+<span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="n">divisible_by?</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="w">      </span><span class="s2">"FizzBuzz"</span>
+<span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="n">divisible_by?</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">      </span><span class="s2">"Fizz"</span>
+<span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="n">divisible_by?</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">      </span><span class="s2">"Buzz"</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="n">val</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fizzbuzz_from</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Enumerator::Lazy: 7..Infinity:each&gt;</span>
+
+<span class="mi">9</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">puts</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">next</span><span class="w"> </span><span class="p">}</span>
+<span class="c1"># 7</span>
+<span class="c1"># 8</span>
+<span class="c1"># Fizz</span>
+<span class="c1"># Buzz</span>
+<span class="c1"># 11</span>
+<span class="c1"># Fizz</span>
+<span class="c1"># 13</span>
+<span class="c1"># 14</span>
+<span class="c1"># FizzBuzz</span></code></pre><p>With <code>Enumerator::Lazy</code>, whatever you give to <code>yielder</code> will be the value that returns per each step in the progression. Enumerators do keep track of the current progress when using <code>next</code>. But if you call <code>each</code> after a few usages of <code>next</code>, it will start from the beginning of the collection.</p><p>The parameter you pass to <code>Enumerator::Lazy.new</code> is the collection that is to be enumerated over. If you wrote this method for <code>Enumerable</code> or a compatible object, you can simply place <code>self</code> as the parameter. <code>val</code> will be one value produced at a time from the collection&#8217;s <code>each</code> method and the <code>yielder</code> must be the one to receive input for any block of code you wish to pass to it, such as you would with <code>each</code>.</p><p>!Sign up for a free Codeship Account </p><h2>Advanced Enumerator Usages</h2><p>When processing collections of data, it is recommended to put your limitation filters first in the chain of transformations you process. This way, it takes less work for the code to process the data. If you&#8217;re getting data from a database to process, have your limitation filters implemented in the database&#8217;s own language before Ruby if possible. That will likely be much more efficient.</p><pre class="code-block language-ruby"><code><span class="nb">require</span><span class="w"> </span><span class="s2">"prime"</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">34</span><span class="p">)</span><span class="o">.</span><span class="n">lazy</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">&amp;</span><span class="no">Prime</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="ss">:prime?</span><span class="p">))</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 2</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 3</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 5</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 7</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 11</span></code></pre><p>After the <code>select</code> method above, you could have other methods appended to it to process the data. Those methods will only deal with the limited selection of data within prime numbers and not the rest.</p><h3>Grouping</h3><p>One nice way to process data for splitting into columns is to use <code>group_by</code> to convert the results into a hash of groups. After that, just retrieve the values, as that&#8217;s all we&#8217;re interested in.</p><pre class="code-block language-ruby"><code><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">].</span><span class="n">group_by</span><span class="o">.</span><span class="n">with_index</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">_</span><span class="p">,</span><span class="n">index</span><span class="o">|</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">}</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># =&gt; [[0, 3, 6], [1, 4, 7], [2, 5, 8]]</span></code></pre><p>If you print the above results onto a web page, the data would be ordered as follows:</p><pre class="code-block language-bash"><code><span class="m">0</span><span class="w">    </span><span class="m">3</span><span class="w">    </span><span class="m">6</span>
+<span class="m">1</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">7</span>
+<span class="m">2</span><span class="w">    </span><span class="m">5</span><span class="w">    </span><span class="m">8</span></code></pre><p>The <code>group_by</code> code above passes both a value and an index into the code block. We use an underscore for the value from the array to indicate we don&#8217;t care about that value and are only interested in the index. What gets returned by that is a hash with the keys of 0, 1, and 2 pointing to each of the groups of values we grouped. Since we don&#8217;t care about the keys, we call <code>values</code> on that hash to get the array of arrays to display as we please.</p><p>If we wanted to arrange the collection from left to right in columns, we could simply do this:</p><pre class="code-block language-ruby"><code><span class="n">threes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">cycle</span>
+<span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">].</span><span class="n">slice_when</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">threes</span><span class="o">.</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [[0, 1, 2], [3, 4, 5], [6, 7, 8]]</span></code></pre><p>The <code>threes</code> enumerator simply cycles through 0 to 2 infinitely, in a lazy fashion. Which will then permit the display to be:</p><pre class="code-block language-bash"><code><span class="m">0</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">2</span>
+<span class="m">3</span><span class="w">    </span><span class="m">4</span><span class="w">    </span><span class="m">5</span>
+<span class="m">6</span><span class="w">    </span><span class="m">7</span><span class="w">    </span><span class="m">8</span></code></pre><p>Ruby also has a <code>transpose</code> method, which will flip the above results from one to the other.</p><pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">]]</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">transpose</span>
+<span class="c1"># =&gt; [[0, 3, 6], [1, 4, 7], [2, 5, 8]]</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">transpose</span>
+<span class="c1"># =&gt; [[0, 1, 2], [3, 4, 5], [6, 7, 8]]</span></code></pre><h3>Folding</h3><p>Let&#8217;s look at ways to compound a collection down to a result. In other languages, this is commonly done with a method named <code>fold</code>. In Ruby, it has long been done with <code>reduce</code> and <code>inject</code>. A more recent addition, and the preferred way to do this, is with <code>each_with_object</code>. The basic idea behind these is to process one collection into another as the result.</p><p>Summing a collection of integers is as simple as:</p><pre class="code-block language-ruby"><code><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">reduce</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
+<span class="c1"># =&gt; 6</span>
+
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
+<span class="c1"># =&gt; 6</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AddStore</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@value</span><span class="o">.</span><span class="n">to_i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">inspect</span>
+<span class="w">    </span><span class="vi">@value</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">AddStore</span><span class="o">.</span><span class="n">new</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">memo</span><span class="o">|</span><span class="w"> </span><span class="n">memo</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="c1"># =&gt; 6</span>
+
+<span class="c1"># As of Ruby 2.4</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">sum</span>
+<span class="c1"># =&gt; 6</span></code></pre><p><code>each_with_object</code> typically needs an object that can be updated. You can&#8217;t change an integer object from itself, which is why for this trivial example we created an AddStore object.</p><p>These methods will be better demonstrated by taking data from one collection and placing them into another. Note that <code>inject</code> and <code>reduce</code> are the same aliased method in Ruby and need to have the return value be what is at the end of the block for what the enumeration continues to build upon. <code>each_with_object</code> does not need the last piece of the code block to return the item to build on.</p><pre class="code-block language-ruby"><code><span class="n">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">:p</span><span class="p">,</span><span class="w"> </span><span class="ss">:p</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="ss">:l</span><span class="p">,</span><span class="w"> </span><span class="ss">:e</span><span class="o">]</span>
+
+<span class="n">collection</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">memo</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="o">|</span>
+<span class="w">  </span><span class="n">memo</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">to_s</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">is_a?</span><span class="w"> </span><span class="no">Symbol</span>
+<span class="w">  </span><span class="n">memo</span><span class="w"> </span><span class="c1"># Note the return value needs to be the object/collection we're building</span>
+<span class="p">}</span>
+<span class="c1"># =&gt; "apple"</span>
+
+<span class="n">collection</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">memo</span><span class="o">|</span>
+<span class="w">  </span><span class="n">memo</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">to_s</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">is_a?</span><span class="w"> </span><span class="no">Symbol</span>
+<span class="p">}</span>
+<span class="c1"># =&gt; "apple"</span></code></pre><h3>Structs</h3><p>Ruby struct objects are also enumerable objects, which can make for some convenient objects to write methods in.</p><pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Pair</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:first</span><span class="p">,</span><span class="w"> </span><span class="ss">:second</span><span class="p">)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">same?</span><span class="p">;</span><span class="w">    </span><span class="n">inject</span><span class="p">(</span><span class="ss">:eql?</span><span class="p">)</span><span class="w">  </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">;</span><span class="w">      </span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span><span class="w">     </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">subtract</span><span class="p">;</span><span class="w"> </span><span class="n">inject</span><span class="p">(</span><span class="ss">:-</span><span class="p">)</span><span class="w">     </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">;</span><span class="w"> </span><span class="n">inject</span><span class="p">(</span><span class="ss">:*</span><span class="p">)</span><span class="w">     </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">;</span><span class="w">   </span><span class="n">inject</span><span class="p">(</span><span class="ss">:/</span><span class="p">)</span><span class="w">     </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">swap!</span>
+<span class="w">    </span><span class="n">members</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">entries</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">|</span><span class="w"> </span><span class="nb">self</span><span class="o">[</span><span class="n">a</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Pair</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">same?</span>
+<span class="c1"># =&gt; false</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; 23</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">swap!</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">first</span>
+<span class="c1"># =&gt; 42</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">multiply</span>
+<span class="c1"># =&gt; 966</span></code></pre><p>Structs aren&#8217;t usually used for large collections but rather as useful data objects, a way to pass organized data together, which permits clear purpose with data rather than data clumps.</p><blockquote><p>Data clumps are when two or more variables are always used in group and it wouldn&#8217;t make sense to use one of the variables by itself. This group of variables should be extracted into an object/class.</p></blockquote><p>So structs in Ruby are generally small collections of data, but there isn&#8217;t anything to say that the data itself could be other collections of data. In which case, a struct could be a way to implement transformations over those collections, much like you could do with writing a class of your own.</p><h2>Summary</h2><p>Ruby&#8217;s pretty fantastic with how easy it is to work with and manage collections of data. Learning each piece of what Ruby has to offer allows you to write far more elegant code and to test and optimize for better implementations.</p><p>If performance is key, then benchmark alternative implementations and be sure to put your filters and limits as early into the process as you can. Consider limiting your input source into smaller chunks when you can, like using the <code>readline</code> method on files rather than <code>read</code> or <code>readlines</code> or <code>LIMIT number</code> in SQL.</p><p>Lazy iteration can help greatly with splitting tasks off for different threads or background jobs to handle. The concept of lazy iteration really has no downsides, as you could still choose to consume any entire collection at any point. It offers the greatest flexibility, and some languages, such as Rust with iterators, have made it their standard to be implemented lazily.</p><p>The possibilities are endless when it comes to how to manage and transform data sets. And it&#8217;s a fun process to learn and create each way of handling our data sets by programming. Ruby has well-documented examples for each of their <a href="https://ruby-doc.org/core-2.4.1/Enumerable.html">enumerable</a> methods, so it helps to learn from the examples given. I encourage you to experiment and discover many new things which will help make programming all the more enjoyable.</p> 
+</article>
+<footer class="source">Originally published on 2017-08-02 on the Codeship blog (<a href="https://blog.codeship.com/advanced-enumeration-with-ruby/">https://blog.codeship.com/advanced-enumeration-with-ruby/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/advanced-enumeration-with-ruby">https://www.cloudbees.com/blog/advanced-enumeration-with-ruby</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VueJS Components with CoffeeScript for Rails</title>
+<meta name="description" content="The components aspect of VueJS is one of the most attractive features VueJS brings to your frontend development. It allows for composable, reusable, and protected scope code, styles, and HTML. Working with protected…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>VueJS Components with CoffeeScript for Rails</h1>
+<p class="meta">By Daniel P. Clark · 2018-03-29 · 6 min read</p>
+<p>The components aspect of VueJS is one of the most attractive features VueJS brings to your frontend development. It allows for composable, reusable, and protected scope code, styles, and HTML. Working with protected scopes is the smart way for implementing coherent systems. And with the added benefit of VueJS protecting your style&#8217;s scope to only affect your specific component, you&#8217;ll have far fewer headaches with styling your site.</p><p>With Webpack support being added to Rails as of Rails 5.1, the ecosystem for documentation on getting started is fairly young and missing many scenarios. So I&#8217;m proud to be able to introduce one of the first posts on implementing VueJS Components with CoffeeScript in Rails. This can save you a couple of days of learning the hard way and will likely help existing VueJS/Rails developers to perhaps learn a few new tricks.</p><p>We&#8217;ll be continuing from where we left off in the last blog post, <a href="../vuejs-as-a-frontend-for-rails/">VueJS as a Frontend for Rails</a>. If you&#8217;d like a copy of the code state from that, here is the public GitHub repository for that: <a href="https://github.com/danielpclark/vue_example/tree/FirstBlogVersion">danielpclark/vue_example</a>.</p><h2>Adding ERB Support for .vue Files</h2><p>To allow Ruby code interpolation with <code>.vue.erb</code> files like we have in <code>.html.erb</code> files, we need to first add the <code>rails-erb-loader</code> package with yarn.</p><pre class="code-block language-bash"><code>yarn<span class="w"> </span>add<span class="w"> </span>rails-erb-loader</code></pre><p>Next we need to update our configuration file for webpack at <code>config/webpack/loaders/vue.js</code> and change these lines:</p><pre class="code-block language-javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.vue(\.erb)?$/</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="s1">'vue-loader'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">extractCSS</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}]</span><span class="w">  </span>
+<span class="p">}</span></code></pre><p>to this:</p><pre class="code-block language-javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.vue(\.erb)?$/</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="s1">'vue-loader'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">extractCSS</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span><span class="w">  </span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="s1">'rails-erb-loader'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">runner</span><span class="o">:</span><span class="w"> </span><span class="s1">'bin/rails runner'</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dependenciesRoot</span><span class="o">:</span><span class="w"> </span><span class="s1">'../app'</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span></code></pre><p>Now we can have our Vue component files evaluate Rails methods and objects if we append the <code>.erb</code> extension to our <code>.vue</code> files.</p><h2>Moving VueJS Code into a Component</h2><p>First we can move our form view from <code>app/views/documents/_form.html.erb</code> to our new file <code>app/javascript/form-repository.vue.erb</code>.</p><pre class="code-block language-html"><code><span class="err">&lt;</span>% include ActionView::Helpers::FormOptionsHelper %&gt;
+
+<span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Subject<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">v-model</span><span class="o">=</span><span class="s">"document.subject"</span> <span class="p">/&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>State<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">select</span> <span class="na">v-model</span><span class="o">=</span><span class="s">"document.state"</span><span class="p">&gt;</span>
+      <span class="err">&lt;</span>%= options_for_select(Document.states.keys, "concept") %&gt;
+    <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Body<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">v-model</span><span class="o">=</span><span class="s">"document.body"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">v-on:click</span><span class="o">=</span><span class="s">"Submit"</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">style</span> <span class="na">scoped</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nt">textarea</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">rows</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cols</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span></code></pre><p>And we&#8217;ll simplify the <code>_form.html.erb</code> page down to:</p><pre class="code-block language-html"><code><span class="err">&lt;</span>% content_for :head do -%&gt;
+  <span class="err">&lt;</span>%= javascript_pack_tag 'documents' %&gt;
+<span class="err">&lt;</span>% end -%&gt;
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"vue-app"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">form-document</span>
+    <span class="na">v-bind:document</span><span class="o">=</span><span class="s">"&lt;%= document.to_json(except: [:created_at, :updated_at]) %&gt;"</span>
+  <span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form-document</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre><p>Before we finish by moving our CoffeeScript code from <code>app/javascript/packs/documents.coffee</code> into the same component file, let&#8217;s go over some features of this change.</p><p>The HTML is the same for the form, but we do need to additionally wrap it by a single HTML tag for the template section of the component. For the Rails form helper method <code>options_for_select</code>, we needed to include the module that defines it &#8212; <code>ActionView::Helpers::FormOptionsHelper</code> &#8212; directly from Rails on the first line.</p><p>And one of the coolest things we&#8217;ve done is moved the styles for the text area from the HTML into a style section that will only ever affect this component, as we&#8217;ve used the <code>scoped</code> attribute for <code>style</code>.</p><p>On the <code>_form.html.erb</code> partial page, we&#8217;ve simplified the code greatly. The <code>form-document</code> is a component name we&#8217;re about to define in the CoffeeScript file. The <code>v-bind:document</code> is a prop we&#8217;re using to hand our document data directly to our component.</p><p>Technically this particular technique is called a <a href="https://vuejs.org/v2/guide/components.html#Non-Prop-Attributes">non-prop</a> since there isn&#8217;t a corresponding prop defined. But we&#8217;ll treat it the same way as a prop for getting data to our component. If we were to try to implement accessing this data from an external source, we&#8217;d have to use more complex techniques with props like sync and/or emit, but that&#8217;s far more work than what our use case requires. The <code>v-bind</code> evaluates what&#8217;s on the right side of the equal sign to a JavaScript object for our non-prop prop.</p><p>Since we&#8217;ve also removed the <code>id</code> we formerly used for a Vue object to initiate on, we&#8217;ll need to add that to the list of things we change. We&#8217;ll be stripping our <code>app/javascript/packs/documents.coffee</code> down to just the following.</p><pre class="code-block language-coffeescript"><code><span class="nx">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="s">'vue/dist/vue.esm'</span>
+<span class="nx">import</span><span class="w"> </span><span class="nx">TurbolinksAdapter</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="s">'vue-turbolinks'</span>
+<span class="nx">import</span><span class="w"> </span><span class="nx">VueResource</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="s">'vue-resource'</span>
+<span class="nx">import</span><span class="w"> </span><span class="nx">FormDocument</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="s">'../form-document.vue.erb'</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">VueResource</span><span class="p">)</span>
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">TurbolinksAdapter</span><span class="p">)</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s">'form-document'</span><span class="p">,</span><span class="w"> </span><span class="nx">FormDocument</span><span class="p">)</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s">'turbolinks:load'</span><span class="p">,</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">  </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">common</span><span class="p">[</span><span class="s">'X-CSRF-Token'</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s">'meta[name="csrf-token"]'</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s">'content'</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nv">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="w"> </span><span class="s">'vue-app'</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">element</span><span class="o">?</span>
+<span class="w">    </span><span class="nv">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">(</span><span class="nv">el</span><span class="o">:</span><span class="w"> </span><span class="nx">element</span><span class="p">)</span><span class="w">   </span>
+<span class="p">)</span>
+
+<span class="nx">Turbolinks</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="s">"turbolinks:load"</span><span class="p">)</span></code></pre><p>Here, our component is imported to a <code>FormDocument</code> object, and we make the component usable as a tag with the <code>Vue.component</code> method. This needs to be defined before the first use of <code>new Vue</code>, and any component used in a web page must be within HTML tags that an instance of <code>new Vue</code> refers to. Since we call <code>new Vue</code> with the id reference of <code>#vue-app</code>, the <code>div</code> tag in our HTML page is now our root for this Vue object. This allows us to use the <code>form-document</code> tag in it like we would any other HTML tag.</p><p>Now let&#8217;s look at what our CoffeeScript looks like when moved over to a component in <code>app/javascript/form-repository.vue.erb</code>.</p><pre class="code-block language-coffeescript"><code><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">lang</span><span class="o">=</span><span class="s">"coffee"</span><span class="o">&gt;</span>
+<span class="nx">export</span><span class="w"> </span><span class="nx">default</span>
+<span class="w">  </span><span class="nv">props</span><span class="o">:</span>
+<span class="w">    </span><span class="nb">document</span><span class="o">:</span>
+<span class="w">      </span><span class="nv">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span>
+<span class="w">      </span><span class="nv">required</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="nv">methods</span><span class="o">:</span><span class="w"> </span><span class="nv">Submit</span><span class="o">:</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">    </span><span class="nv">ourDocument</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">@_props</span><span class="p">.</span><span class="nb">document</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">ourDocument</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="nx">@$http</span><span class="w"> </span><span class="c1"># New action</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">post</span><span class="w"> </span><span class="s">'/documents'</span><span class="p">,</span><span class="w"> </span><span class="nb">document</span><span class="o">:</span><span class="w"> </span><span class="nx">@</span><span class="nb">document</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="w"> </span><span class="nf">(response) -&gt;</span>
+<span class="w">            </span><span class="nx">Turbolinks</span><span class="p">.</span><span class="nx">visit</span><span class="w"> </span><span class="s">"/documents/</span><span class="si">#{</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="s">"</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">          </span><span class="nf">(response) -&gt;</span>
+<span class="w">            </span><span class="vi">@errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">errors</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="nx">@$http</span><span class="w"> </span><span class="c1"># Edit action</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">put</span><span class="w"> </span><span class="s">"/documents/</span><span class="si">#{</span><span class="nx">@</span><span class="nb">document</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="nb">document</span><span class="o">:</span><span class="w"> </span><span class="nx">@</span><span class="nb">document</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="w"> </span><span class="nf">(response) -&gt;</span>
+<span class="w">            </span><span class="nx">Turbolinks</span><span class="p">.</span><span class="nx">visit</span><span class="w"> </span><span class="s">"/documents/</span><span class="si">#{</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="s">"</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">          </span><span class="nf">(response) -&gt;</span>
+<span class="w">            </span><span class="vi">@errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">errors</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">    </span><span class="k">return</span>
+<span class="o">&lt;/</span><span class="nx">script</span><span class="o">&gt;</span></code></pre><p>Now our VueJS component should be working in our site. Just run <code>rails s</code> and open your web browser to <code>localhost:3000/documents</code>.</p><blockquote><p>If at any time the changes aren&#8217;t showing up in your browser, you need to refresh the browser&#8217;s cache with a hard reload. In the Chromium browser you can do this with CTRL-SHIFT-R.</p></blockquote><p>Here our use of <code>props</code> is a form of type checker. I highly encourage that you use this technique for all props as it will give you very helpful information should you not be getting the prop into your component as you expected. You can look into implementing further prop validations at <a href="https://vuejs.org/v2/guide/components.html#Prop-Validation">prop validations</a>.</p><p>The <code>export default</code> line is a JavaSciprt feature that has the following code all included as the main object when you use the <code>import SomeName<br /> from 'source_code'</code> to require it. The other difference in our code here is the <code>@_props.document</code> line. The <code>@_props</code> gives us direct access to the props passed in on <code>this._props</code>.</p><p>And with that you now have the ability to easily create and add as many VueJS components as you want to your Rails site. Next, we&#8217;ll look at how easy it is to just drop in the show resource for our Documents resource as a VueJS component.</p><h2>Multiple Components Per Rails Resource</h2><p>Because individual components use their own HTML style tag, you can include as many components in your source code and call them only where you want in your pages. So to change your show-resource for documents in your project, it&#8217;s pretty simple. Add two lines near the beginning of your <code>app/javascript/packs/documents.coffee</code> file:</p><pre class="code-block language-coffeescript"><code><span class="nx">import</span><span class="w"> </span><span class="nx">ShowDocument</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="s">'../show-document.vue'</span>
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s">'show-document'</span><span class="p">,</span><span class="w"> </span><span class="nx">ShowDocument</span><span class="p">)</span></code></pre><p>We&#8217;ll be replacing the following HTML from <code>app/views/documents/show.html.erb</code>:</p><pre class="code-block language-html"><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Subject:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+  <span class="err">&lt;</span>%= @document.subject %&gt;
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Body:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+  <span class="err">&lt;</span>%= @document.body %&gt;
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>State:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+  <span class="err">&lt;</span>%= @document.state %&gt;
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre><p>with:</p><pre class="code-block language-html"><code><span class="err">&lt;</span>% content_for :head do -%&gt;
+  <span class="err">&lt;</span>%= javascript_pack_tag 'documents' %&gt;
+<span class="err">&lt;</span>% end -%&gt;
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"vue-app"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">show-document</span>
+    <span class="na">v-bind:document</span><span class="o">=</span><span class="s">"&lt;%= @document.to_json(except: [:created_at, :updated_at]) %&gt;"</span>
+  <span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">show-document</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre><p>And write the component in <code>app/javascript/show-document.vue</code> as:</p><pre class="code-block language-bash"><code>&lt;template&gt;
+<span class="w">  </span>&lt;div&gt;
+<span class="w">    </span>&lt;p&gt;<span class="w"> </span>
+<span class="w">      </span>&lt;strong&gt;Subject:&lt;/strong&gt;
+<span class="w">      </span><span class="o">{{</span><span class="w"> </span>document.subject<span class="w"> </span><span class="o">}}</span>
+<span class="w">    </span>&lt;/p&gt;
+
+<span class="w">    </span>&lt;p&gt;<span class="w"> </span>
+<span class="w">      </span>&lt;strong&gt;Body:&lt;/strong&gt;
+<span class="w">      </span><span class="o">{{</span><span class="w"> </span>document.body<span class="w"> </span><span class="o">}}</span>
+<span class="w">    </span>&lt;/p&gt;
+
+<span class="w">    </span>&lt;p&gt;<span class="w"> </span>
+<span class="w">      </span>&lt;strong&gt;State:&lt;/strong&gt;
+<span class="w">      </span><span class="o">{{</span><span class="w"> </span>document.state<span class="w"> </span><span class="o">}}</span>
+<span class="w">    </span>&lt;/p&gt;
+<span class="w">  </span>&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script<span class="w"> </span><span class="nv">lang</span><span class="o">=</span><span class="s2">"coffee"</span>&gt;
+<span class="nb">export</span><span class="w"> </span>default
+<span class="w">  </span>props:
+<span class="w">    </span>document:
+<span class="w">      </span>type:<span class="w"> </span>Object
+<span class="w">      </span>required:<span class="w"> </span><span class="nb">true</span>
+&lt;/script&gt;</code></pre><p>Since we&#8217;re not evaluating anything with Ruby in this component, we make the file extension <code>.vue</code>. We&#8217;re still using our prop validation technique. And we&#8217;re using Vue&#8217;s interpolation braces to fill out our values for the view.</p><p>Now that we have our show page converted to use VueJS, we can further build on it by including components within the component. This is a very useful technique for implementing a more dynamic comment system. Create your own comment components and include them in as many other components in your site as you&#8217;d like.</p><h2>Summary</h2><p>Protecting the scope of what your code and styles have access to will make your code base a much more sane environment to work in. Both VueJS and CoffeeScript enforce a form of protected scope and help you write better code. With the problems we&#8217;ve inherited from years of backwards compatibility in the frontend technology stack, it&#8217;s really nice to work with technologies that help enforce good practices.</p><p>We&#8217;ve now covered enough to make working with VueJS in Rails a far more pleasant experience. There are still so many more possibilities that branch out from this foundation of what you can do with VueJS, including visually dynamic content. If you need to have an excellent frontend framework of sorts to work with, then I highly recommend you seriously consider VueJS and CoffeeScript.</p> 
+</article>
+<footer class="source">Originally published on 2018-03-29 on the Codeship blog (<a href="https://blog.codeship.com/vuejs-components-with-coffeescript-for-rails/">https://blog.codeship.com/vuejs-components-with-coffeescript-for-rails/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/vuejs-components-with-coffeescript-for-rails">https://www.cloudbees.com/blog/vuejs-components-with-coffeescript-for-rails</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

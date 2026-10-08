@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creating Configuration Objects in Ruby</title>
+<meta name="description" content="There are many kinds of applications and many ways to manage how they behave or perform via configurations. Software is designed with default behavior built in, so some specific configuration is usually required before…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>Creating Configuration Objects in Ruby</h1>
+<p class="meta">By Daniel P. Clark · 2017-10-24 · 6 min read</p>
+<p>There are many kinds of applications and many ways to manage how they behave or perform via configurations. Software is designed with default behavior built in, so some specific configuration is usually required before the software works (like a path to reach a dependency), or a default and possibly rudimentary implementation may run without it.</p><p>From system tools that can have a central configuration for system-wide settings to a local user configuration to perhaps a per project config, the layers of configuration and the means by which they are stored can vary greatly. The choices for how you implement a configuration object should depend on where and how it will be used.</p><h2>Simple Configuration Objects</h2><p>Many simple applications won&#8217;t need a robust system for configuring the application and can go with a simple Ruby object, such as a hash, and a stored configuration file format such as <a href="http://www.yaml.org/start.html">YAML</a>.</p><p>A key-value store is the simplest concept of what a configuration object needs to be. And Ruby&#8217;s <code>Hash</code> is the basic building block for all simple implementations of it &#8212; whether it&#8217;s a lone hash object or an object wrapping the hash with preferred behavior.</p><pre class="code-block language-ruby"><code><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="n">config</span><span class="o">[</span><span class="ss">:my_key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:value</span>
+<span class="n">config</span><span class="o">[</span><span class="ss">:my_key</span><span class="o">]</span>
+<span class="c1"># =&gt; :value</span></code></pre><p>A slightly more complex way is an object-oriented approach that dynamically defines methods to act as the keys and their return values as the values.</p><p>A common Ruby configuration object that takes the middle ground between these two approaches is the OpenStruct object. It uses a hash internally but also defines methods for each item you set so that they may be retrieved either way.</p><pre class="code-block language-ruby"><code><span class="nb">require</span><span class="w"> </span><span class="s1">'ostruct'</span>
+
+<span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">OpenStruct</span><span class="o">.</span><span class="n">new</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">my_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:value</span>
+<span class="n">config</span><span class="o">.</span><span class="n">my_key</span>
+<span class="c1"># =&gt; :value</span>
+<span class="n">config</span><span class="o">[</span><span class="ss">:my_key</span><span class="o">]</span>
+<span class="c1"># =&gt; :value</span></code></pre><p>A Ruby <code>Hash</code> will return <code>nil</code> as the default for a key that&#8217;s used for lookup but hasn&#8217;t been set yet. This is okay for rudimentary projects and simple designs, but it is not the OOP way, and on occasion you&#8217;ll want something else as the default. Hash has a <code>default_proc</code> method on it from which you may define the default behavior for the return value as well as assigning to undefined keys.</p><p>If you wanted a hash to create deeply nested keys in one go, you could have the inner hash recursively return a new empty inner hash.</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">MyProject</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">self</span><span class="o">.</span><span class="n">_hash_proc</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="n">hsh</span><span class="p">,</span><span class="n">key</span><span class="p">{</span>
+<span class="w">      </span><span class="n">hsh</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="o">.</span><span class="n">tap</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="o">|</span>
+<span class="w">        </span><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_hash_proc</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">config</span>
+<span class="w">    </span><span class="vi">@config</span><span class="w"> </span><span class="o">||=</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">      </span><span class="n">hsh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+<span class="w">      </span><span class="n">hsh</span><span class="o">.</span><span class="n">default_proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_hash_proc</span><span class="p">()</span>
+<span class="w">      </span><span class="n">hsh</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+
+<span class="no">MyProject</span><span class="o">.</span><span class="n">config</span>
+<span class="c1"># =&gt; {}</span>
+
+<span class="no">MyProject</span><span class="o">.</span><span class="n">config</span><span class="o">[</span><span class="ss">:apple</span><span class="o">][</span><span class="ss">:banana</span><span class="o">][</span><span class="ss">:cherry</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+
+<span class="no">MyProject</span><span class="o">.</span><span class="n">config</span>
+<span class="c1"># =&gt; {:apple=&gt;{:banana=&gt;{:cherry=&gt;3}}}</span></code></pre><p>But in this case, we&#8217;ve merely exchanged <code>nil</code> for an empty hash that hasn&#8217;t met object-oriented programming standards. That&#8217;s not a bad thing, and it&#8217;s great for small or simple projects. However, the default value here has no meaning for us when it hasn&#8217;t been set, so we have to build in guards and default behavior to work around this kind of model.</p><p>Rails provides an alternative kind of hash you can use called <code>HashWithIndifferentAccess</code>, which will allow you to use both a string or a symbol as the same key for a value.</p><pre class="code-block language-ruby"><code><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">HashWithIndifferentAccess</span><span class="o">.</span><span class="n">new</span>
+
+<span class="n">config</span><span class="o">[</span><span class="s2">"asdf"</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+
+<span class="n">config</span><span class="o">[</span><span class="ss">:asdf</span><span class="o">]</span>
+<span class="c1"># =&gt; 4</span></code></pre><h2>Better Configuration Objects</h2><p>If you use Rails, you&#8217;ll be happy to know that they have a system for configuration objects available for you to use &#8212; and it&#8217;s pretty simple.</p><pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConfig</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Configurable</span>
+
+<span class="w">  </span><span class="n">config_accessor</span><span class="w"> </span><span class="ss">:database_api</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="no">DummyDatabaseAPI</span><span class="o">.</span><span class="n">new</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre><p>In the code above, the <code>config_accessor</code> creates the appropriate config methods on the <code>DatabaseConfig</code> class, and they will provide a <code>DummyDatabaseAPI</code> instance as the default value object. This is nice because we can define some default behavior when a proper database has not been configured and set yet. And to update the database API on the <code>DatabaseConfig</code> object instance, we need merely to call the setter method <code>database_api=</code>. Being explicit with configuration method keys and return duck-typed objects is good practice and should make the code base more enjoyable to work with in the future.</p><p>In a previous post, we covered <a href="../creating-powerful-command-line-tools-in-ruby/">“Creating Powerful Command Line Tools in Ruby”</a>. It has some tools, such as slop, that take optional command-line input and give us a configuration object that includes defaults for anything not set via the command line. This is useful for when the configurations are few in number.</p><p>!Sign up for a free Codeship Account </p><h2>Persisted Configuration</h2><p>Persisted configuration is the type of configuration that is either hard-coded in the program, stored in a file, or stored in a database. Most configurations are intended to be handled this way, although some configurations are set in environment variables or an encrypted equivalent.</p><p>Ruby comes with YAML support, which is a configuration favorite among many people. You may set where you&#8217;d like to have the configuration file loaded from and make that available in the README or documentation for easy-to-read configuration for your end users or yourself. Rails keeps many YAML files under a <code>config</code> directory; Linux applications may have them in the project directory, in the users home directory hidden under <code>.config/project_name</code>, or sometimes a systems config location such as <code>/etc</code>. So there are many places where you may choose to have them reside.</p><p>A YAML file looks as simple as:</p><pre class="code-block language-yaml"><code><span class="nn">---</span>
+<span class="c1"># A list of tasty fruits</span>
+<span class="nt">fruits</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apple</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Orange</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Strawberry</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mango</span></code></pre><p>And in Ruby, to load this into an easy to access <code>Hash</code>:</p><pre class="code-block language-ruby"><code><span class="nb">require</span><span class="w"> </span><span class="s1">'yaml'</span>
+
+<span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+<span class="w">  </span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'example.yml'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+<span class="p">)</span>
+<span class="c1"># =&gt; {"fruits"=&gt;["Apple", "Orange", "Strawberry", "Mango"]}</span></code></pre><p>If you want, you may produce YAML from a Ruby <code>Hash</code> instance with the <code>to_yaml</code> method. This is available after <code>require yaml</code> or via <code>YAML.dump</code>.</p><pre class="code-block language-bash"><code><span class="nv">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="s2">"default"</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">"adapter"</span><span class="o">=</span>&gt;<span class="s2">"postgres"</span>,
+<span class="w">    </span><span class="s2">"encoding"</span><span class="o">=</span>&gt;<span class="s2">"utf8"</span>,
+<span class="w">    </span><span class="s2">"pool"</span><span class="o">=</span>&gt;5,
+<span class="w">    </span><span class="s2">"timeout"</span><span class="o">=</span>&gt;5000
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+
+puts<span class="w"> </span>config.to_yaml
+<span class="c1"># ---</span>
+<span class="c1"># default:</span>
+<span class="c1">#   adapter: postgres</span>
+<span class="c1">#   encoding: utf8</span>
+<span class="c1">#   pool: 5</span>
+<span class="c1">#   timeout: 5000</span></code></pre><p>Generally you won&#8217;t be writing YAML to configuration files from Ruby unless it&#8217;s a first-time setup. Even then, YAML files are generally provided along with a project rather than written from one.</p><h2>Environment Variables</h2><p>One thing you&#8217;ll want to avoid is having environment variable checks scattered across your code base. Application configuration should be centralized to avoid the potential of surprise behavior when states change.</p><p>YAML doesn&#8217;t provide a way to retrieve environment variables on its own. But Ruby includes the ERB template engine, which we may use as an additional layer of processing for our configuration files. With ERB, we can run Ruby code within and block designated with <code>&lt;%= %&gt;</code>.</p><pre class="code-block language-ruby"><code><span class="c1"># # YAML file</span>
+<span class="c1"># production:</span>
+<span class="c1">#   secret_key_base: &lt;%= ENV["SECRET_KEY_BASE"] %&gt;</span>
+<span class="c1"># # End YAML file</span>
+
+<span class="nb">require</span><span class="w"> </span><span class="s1">'yaml'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'erb'</span>
+
+<span class="n">yaml_contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'config.yml'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+<span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="w"> </span><span class="no">ERB</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">yaml_contents</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="w"> </span><span class="p">)</span>
+
+<span class="n">config</span>
+<span class="c1"># =&gt; {"production"=&gt;{"secret_key_base"=&gt;"uih...943"}}</span></code></pre><p>This keeps the more human readable configuration file and centralizes everything that belongs together into one place.</p><h2>Precedence</h2><p>When an application has a system-wide configuration as well as a user local configuration, the user local typically takes precedence.</p><p>You can choose several different behaviors for this. You could ignore the system config if a local one exists, or you could override only specific system configurations if they&#8217;re provided locally. It&#8217;s possible that some configurations have priority for the system config first, and others for the user, although this is an usual scenario.</p><p>If one simply overwrites the other, you can merge the hash results of the configurations.</p><blockquote><p>These examples will assume YAML loading has already been done and demonstrate different hash precedence techniques.</p></blockquote><pre class="code-block language-ruby"><code><span class="n">system_conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">root</span><span class="p">:</span><span class="w"> </span><span class="kp">false</span><span class="p">,</span><span class="w"> </span><span class="nb">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">}</span>
+<span class="n">user_conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">root</span><span class="p">:</span><span class="w"> </span><span class="kp">true</span><span class="p">}</span>
+
+<span class="c1"># Completely overwrite any system config from user config</span>
+<span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system_conf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">user_conf</span><span class="p">)</span>
+<span class="n">config</span>
+<span class="c1"># =&gt; {:root=&gt;true, :name=&gt;"root"}</span></code></pre><p>Another approach can be to use <code>Hash#dig</code> and prioritize what settings get called in what order.</p><pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Config</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">system_conf</span><span class="w"> </span><span class="c1"># Assume loaded from YAML</span>
+<span class="w">    </span><span class="vi">@system_conf</span><span class="w"> </span><span class="o">||=</span><span class="w"> </span><span class="p">{</span><span class="ss">root</span><span class="p">:</span><span class="w"> </span><span class="kp">false</span><span class="p">,</span><span class="w"> </span><span class="nb">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">user_conf</span><span class="w"> </span><span class="c1"># Assume loaded from YAML</span>
+<span class="w">    </span><span class="vi">@user_conf</span><span class="w"> </span><span class="o">||=</span><span class="w"> </span><span class="p">{</span><span class="ss">root</span><span class="p">:</span><span class="w"> </span><span class="kp">true</span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">name</span>
+<span class="w">    </span><span class="n">user_conf</span><span class="o">.</span><span class="n">dig</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">      </span><span class="n">system_conf</span><span class="o">.</span><span class="n">dig</span><span class="p">(</span><span class="ss">:name</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">root?</span>
+<span class="w">    </span><span class="n">system_conf</span><span class="o">.</span><span class="n">dig</span><span class="p">(</span><span class="ss">:root</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Config</span><span class="o">.</span><span class="n">new</span>
+<span class="n">config</span><span class="o">.</span><span class="n">name</span>
+<span class="c1"># =&gt; root</span>
+<span class="n">config</span><span class="o">.</span><span class="n">root?</span>
+<span class="c1"># =&gt; false</span></code></pre><p>In this example, we were able to prevent the user from overriding his status as root. And even though the user didn&#8217;t provide a name, the config fell back to the default provided from the system configuration.</p><h2>Summary</h2><p>Creating configuration object(s) for your own project need not be difficult but will often require much consideration in its implementation for the scope and size of the project you&#8217;re building.</p><p>If your project is rather large and you may pivot to an alternative way of handling configurations in the future, then you may seriously want to consider implementing your configuration system through <a href="http://rom-rb.org/">Ruby Object Mapper</a>. ROM is a uniform way to process data across a myriad of data storage types like YAML, as well as many databases. It offers flexibility with a minimal learning curve. If your project is small, then a simpler solution may be a better fit.</p><p>When it comes to implementing configuration systems in Ruby, the world is truly your oyster.</p> 
+</article>
+<footer class="source">Originally published on 2017-10-24 on the Codeship blog (<a href="https://blog.codeship.com/creating-configuration-objects-in-ruby/">https://blog.codeship.com/creating-configuration-objects-in-ruby/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/creating-configuration-objects-in-ruby">https://www.cloudbees.com/blog/creating-configuration-objects-in-ruby</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

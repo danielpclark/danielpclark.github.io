@@ -79,3 +79,4 @@ pre.code-block .vg, code.code-inline .vg { color: #19177C } /* Name.Variable.Glo
 pre.code-block .vi, code.code-inline .vi { color: #19177C } /* Name.Variable.Instance */
 pre.code-block .vm, code.code-inline .vm { color: #19177C } /* Name.Variable.Magic */
 pre.code-block .il, code.code-inline .il { color: #666 } /* Literal.Number.Integer.Long */
+pre.code-block .err, code.code-inline .err { border: none; } /* lexer errors are not reader errors */

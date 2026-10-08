@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refactoring for the Tell Don’t Ask Pattern</title>
+<meta name="description" content="Design patterns provide us with guidelines to help us implement clear and concise maintainable code. When implementing object-oriented design, both duck typing and the Tell Don’t Ask pattern go hand in hand to produce…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>Refactoring for the Tell Don’t Ask Pattern</h1>
+<p class="meta">By Daniel P. Clark · 2018-04-18 · 7 min read</p>
+<p>Design patterns provide us with guidelines to help us implement clear and concise maintainable code. When implementing object-oriented design, both duck typing and the Tell Don&#8217;t Ask pattern go hand in hand to produce easily composable and maintainable code. Also functional programming and common interface techniques such as Monads by design implement Tell Don&#8217;t Ask.</p><p>Here we&#8217;ll focus on implementing an easy-to-read, easy-to-update code base with object-oriented design, specifically using the Tell Don&#8217;t Ask principle.</p><h2>How Code Design Can Go Wrong</h2><p>Until you learn from making mistakes in design, the proper way to use design patterns tends to not entirely sink in.</p><p>For example, I decided to build a <a href="https://github.com/danielpclark/language_cards">command line flash card game</a> for learning the translations of Japanese characters. So it started out pretty simply &#8212; I made the mappings of the Japanese characters available in a YAML file. Loaded those as a raw hash and then proceeded to reference that in the game loop logic. Since this was simple enough, I went ahead and abstracted the game system out into a MVC (Model/View/Controller) arrangement with ERB templates for the view and added I18n support for all of the menu and game display words. At this point, I was very proud of what I had achieved.</p><p>But then an idea occurred to me. It&#8217;s possible to enter in Japanese characters right from the keyboard, so why not add a <em>typing</em> game in along with the <em>translation</em> game? This seemed like an easy thing to do with the current code base simply by adding details about what game modes are available to the YAML files. So I wrote in character mappings for both translation and typing modes.</p><p>But then to work with the existing code base, I had to tell each object within the code base about these two states and how to handle each one individually and I needed to maintain the state of the current mode.</p><p>When I got this finished and working well, I was still proud of it but one class stood out to me as a total violation of the Tell Don&#8217;t Ask pattern. Every method in it was an external query method asking for current state or behavior. These methods are from that class and are an example of what not to do:</p><pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">mapped_as</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="vi">@mapping</span><span class="o">.</span><span class="n">first</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:k</span>
+<span class="w">    </span><span class="vi">@mapped_as</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">first</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="vi">@mapped_as</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">match?</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">comp_bitz</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">comp_bitz</span><span class="o">.</span><span class="n">mapping</span><span class="w"> </span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:k</span>
+<span class="w">    </span><span class="n">comp_bitz</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">comp_bitz</span><span class="o">.</span><span class="n">collection</span><span class="o">[</span><span class="n">input</span><span class="o">]</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:v</span>
+<span class="w">    </span><span class="n">comp_bitz</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">input</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">choose_display</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="vi">@mapping</span><span class="o">.</span><span class="n">last</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:k</span>
+<span class="w">    </span><span class="n">key</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:v</span>
+<span class="w">    </span><span class="n">value</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">choose_expected</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="vi">@mapping</span><span class="o">.</span><span class="n">first</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:k</span>
+<span class="w">    </span><span class="n">key</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="ss">:v</span>
+<span class="w">    </span><span class="n">value</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre><p>This is bad design and leads to code that is hard to maintain. This is not duck typing nor is it Tell Don&#8217;t Ask. The code base depended on this for the behavior throughout and I knew I would have to refactor this&#8230;so a year later I did just that.</p><h2>Refactoring to Tell Don&#8217;t Ask</h2><p>When taking up the challenge to refactor my project, I first looked at the problem area I knew I had which was the query object I&#8217;ve demonstrated above. After examining the code base for some time, I realized that it wasn&#8217;t revisable in small steps but required a big rewrite, and I&#8217;ll tell you why.</p><p>The problems turned out to be more than having a query object on which the system depended. Its root problem was the lack of proper abstraction, a common occurrence when writing code that has &#8220;a love for raw types.” By importing the flash cards and using them directly as a hash (a raw type) throughout the application, everything that worked with it had to have code written specifically to understand hashy things and the meanings behind the hash&#8217;s structure.</p><p>When you fail to abstract data into representational objects, then you get stuck with implementing the methods for the abstraction at every interaction of that object rather than just once with creating an object as the abstraction. So I had to Indiana-Jones the refactor &#8212; I had to rebuild it along the side with test-driven development and then swap the code in place, hoping not to set off the cave traps.</p><p>The first step to implement and test was to create the abstraction for individual flash cards. In this instance, a flash card is a card with a Japanese character on the face and a translation on the back. A card is to have no other responsibility than to hold these two pieces of information.</p><p>When the game was first implemented as only a translation game, it felt like things adhered to the Single Responsibility Principle (where each class object and method is responsible for just one thing) since only one thing was being handled. But introducing a fundamental change to the system made it evident that the current design was not following SRP, as many of the functions needed to handle a duality of behaviors.</p><p>Creating the abstraction for a flash card immediately upon loading the data from a YAML file, with only the methods for its two pieces of data, follows SRP and is a core building block from which to implement Tell Don&#8217;t Ask with duck types.</p><blockquote><p>When designing the proper types for adhering to these design patterns, I find it&#8217;s best to write out the ideas for your application&#8217;s abstraction on paper so you can have a clearer bird&#8217;s-eye view to proceed. Having an application written at all also helps envision its design, <em>even if it is a mess</em>, but if you can skip the mess first by thinking through the design, it will make for an easier time when refactoring.</p></blockquote><p>Thinking through the design, we have <em>flash cards</em> now; a collection of them would be a <em>card set</em>. From there, we can take the card set and give it to one of two kinds of <em>game mode</em>, either <em>typing practice</em> or <em>translation</em>. These two types of game mode will be of the same duck type game.</p><p>Now when we pass this duck type of either game through the user interface, it won&#8217;t care which game is which; they&#8217;ll both have the same methods defined on each of them, so there aren&#8217;t any external query methods asking anything. This is our Tell Don&#8217;t Ask pattern.</p><h2>Implementing Tell Don&#8217;t Ask</h2><p>Here let&#8217;s look at the Tell Don&#8217;t Ask implementation. Instead of writing code that would query what mode of game play we&#8217;re in, we&#8217;ll just tell it the mode and have it produce what we want by returning our game.</p><pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">CardSet</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:card_set</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">card_hash</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@card_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">card_set_builder</span><span class="p">(</span><span class="n">card_hash</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">game</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">mode</span>
+<span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="ss">:translate</span>
+<span class="w">      </span><span class="no">Modes</span><span class="o">::</span><span class="no">Translate</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="w">    </span><span class="k">when</span><span class="w"> </span><span class="ss">:typing_practice</span>
+<span class="w">      </span><span class="no">Modes</span><span class="o">::</span><span class="no">TypingPractice</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="k">raise</span><span class="w"> </span><span class="s2">"Invalid Game Mode!"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="c1"># ...</span>
+<span class="k">end</span></code></pre><p>Here we have a class <code>CardSet</code>, which initializes its set of cards to hold and has no other responsibility. The <code>game</code> method here is our telling method. We tell it which mode we&#8217;re going to use, and it returns to us the duck type of the game we&#8217;re going to play.</p><p>Both <code>Modes::Translate</code> and <code>Modes::TypingPractice</code> are subclassed to a <code>Modes::Game</code> class and only define (the same) methods where they differ.</p><pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Translate</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Game</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">match?</span><span class="w"> </span><span class="n">input</span>
+<span class="w">    </span><span class="n">current</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">any?</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">value</span><span class="o">|</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">mode</span>
+<span class="w">    </span><span class="ss">:translate</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TypingPractice</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Game</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">match?</span><span class="w"> </span><span class="n">input</span>
+<span class="w">    </span><span class="s2">"</span><span class="si">#{</span><span class="n">current</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">input</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">mode</span>
+<span class="w">    </span><span class="ss">:typing_practice</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre><p>Now when our game sends the <code>mode</code> method for display, we have the name provided, and the <code>match?</code> method is the specific logic that differentiates the two games. This behavior is specific to the game only and therefore where this logic belongs. It also provides an infallible calling mechanism between handling each game, which is the entire purpose of duck types.</p><p>Now you may notice that the use of this method <code>match?</code> is a query method used externally which violates the Tell Don&#8217;t Ask pattern. And that&#8217;s with good reason.</p><p>Patterns are a general rule to help you, but there are always exception to the rule in programming. Scoring is outside the responsibility of our game duck type and belongs to our user interface&#8217;s scope of behavior. Also the scoring has been implemented with raw types such as Boolean and integer, so we&#8217;ve stepped out of the role of duck typing for this game mechanic. This area of code has a very low impact with future changes to the system&#8217;s code and is an acceptable and optimal time to use raw types.</p><h2>Summary</h2><p>When I finished the refactor, I had removed around 600 lines of code and added in 400. The code base went from hard to understand and maintain to easy to read and easily updatable with new features. And that&#8217;s what Tell Don&#8217;t Ask offers you when you follow this design principle. It gives you much easier to understand code and a much better guarantee for composability.</p><p>Whenever you&#8217;re building a system and you bring in data from an outside source other than the language itself, it&#8217;s highly recommended you immediately abstract that data into simple abstractions. This will maximize the flexibility you have. Create objects that only have one role following the Single Responsibility Principle.</p><p>Last, you can use the Tell Don&#8217;t Ask principle as the code demonstrates above by telling behavior rather than querying for it, and you may have that method wrap your current object&#8217;s <code>self</code> with your duck type and continue forward in the code path.</p><p>In object-oriented design, wrapping one object in another object prevents many anti-patterns from occurring and helps keep scopes pure and untampered. And this is exactly what we want.</p> 
+</article>
+<footer class="source">Originally published on 2018-04-18 on the Codeship blog (<a href="https://blog.codeship.com/refactoring-for-the-tell-dont-ask-pattern/">https://blog.codeship.com/refactoring-for-the-tell-dont-ask-pattern/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/refactoring-for-the-tell-dont-ask-pattern">https://www.cloudbees.com/blog/refactoring-for-the-tell-dont-ask-pattern</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>
