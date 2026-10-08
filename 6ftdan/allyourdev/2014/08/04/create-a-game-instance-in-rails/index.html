@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Create a Game Instance in Rails | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.7" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2014/08/04/create-a-game-instance-in-rails/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-311 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-311" class="post-311 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-programming category-technical category-technology tag-game tag-howto tag-rails tag-ruby">
+		<img width="717" height="430" src="../../../../../wp-content/uploads/2014/08/red-light.png" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2014/08/red-light.png 800w, ../../../../../wp-content/uploads/2014/08/red-light-300x180.png 300w, ../../../../../wp-content/uploads/2014/08/red-light-624x374.png 624w" sizes="(max-width: 717px) 100vw, 717px" />		<p class="date-author">August 4, 2014 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Create a Game Instance in Rails</h1>			<div class="tip-content">
+<p>So you need to load a class instance in Rails for your visitors to play your game. But Rails generally is a static website with static database lookups. So for this we&#8217;re going to assign a class instance to a game room.</p>
+<p>First let&#8217;s generate our project; we&#8217;re going to start with a prebuilt devise/bootstrap starter. Here&#8217;s a quick way to get started in Mac/Linux. Otherwise you can manually add at least devise to fully utilize this code.</p>
+<pre class="code-block language-sh"><code>wget<span class="w"> </span>bit.ly/newrails
+chmod<span class="w"> </span>+x<span class="w"> </span>newrails
+newrails<span class="w"> </span>GameServer
+<span class="nb">cd</span><span class="w"> </span>GameServer</code></pre>
+<p>Then lets use the rails generator to build the game room scaffolding:</p>
+<pre class="code-block language-sh"><code>rails<span class="w"> </span>g<span class="w"> </span>scaffold<span class="w"> </span>Game<span class="w"> </span>room:string:index<span class="w"> </span>min_players:integer<span class="w"> </span>max_players:integer<span class="w"> </span>kind:integer:index<span class="w"> </span>instance:integer
+rake<span class="w"> </span>db:migrate</code></pre>
+<p>This should get a lot of the work done for us, but let&#8217;s tidy up some of the generated output. Open the file <strong>app/assets/stylesheets/games.css.scss</strong> and drop this in.</p>
+<pre class="code-block language-css"><code><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="k">border-spacing</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-collapse</span><span class="p">:</span><span class="w"> </span><span class="kc">separate</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="w"> </span>
+<span class="nt">td</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">padding-left</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding-right</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-right</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+<p>Then open up your partial view for the form in <strong>app/views/games/_form.html.erb</strong> and change the form fields to this:</p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="n">class</span><span class="o">=</span><span class="s2">"field"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">%= f.label :room %&gt;&lt;br&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">text_field</span><span class="w"> </span><span class="ss">:room</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;/div&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="n">class</span><span class="o">=</span><span class="s2">"field"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">%= f.label :min_players %&gt;&lt;br&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="w"> </span><span class="ss">:min_players</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="ss">selected</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;/div&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="n">class</span><span class="o">=</span><span class="s2">"field"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">%= f.label :max_players %&gt;&lt;br&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="w"> </span><span class="ss">:max_players</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="ss">selected</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;/div&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="n">class</span><span class="o">=</span><span class="s2">"field"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="ss">Game</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="sx">%= f.select :kind, Game.kinds.keys, selected: :holdem %&gt;</span>
+<span class="sx">&lt;/div&gt;</span>
+<span class="sx">&lt;div class=</span><span class="s2">"actions"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">submit</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;/div&gt;</span></code></pre>
+<p>You&#8217;ll notice that we&#8217;ve removed the &#8220;instance&#8221; field, and we&#8217;ve changed 3 of the other fields to select. But don&#8217;t run it yet, because we need to define the model for Game.kinds. Here&#8217;s the model <strong>app/models/games.rb</strong></p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Game</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">enum</span><span class="w"> </span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="ss">:holdem</span><span class="p">,</span><span class="w"> </span><span class="ss">:gin</span><span class="p">,</span><span class="w"> </span><span class="ss">:rummy</span><span class="w"> </span><span class="o">]</span>
+<span class="w">  </span><span class="n">validates_presence_of</span><span class="w"> </span><span class="ss">:room</span>
+<span class="w">  </span><span class="n">validates_presence_of</span><span class="w"> </span><span class="ss">:min_players</span>
+<span class="w">  </span><span class="n">validates_presence_of</span><span class="w"> </span><span class="ss">:max_players</span>
+<span class="w">  </span><span class="n">validates</span><span class="w"> </span><span class="ss">:min_players</span><span class="p">,</span><span class="w"> </span><span class="ss">numericality</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ss">less_than_or_equal_to</span><span class="p">:</span><span class="w"> </span><span class="ss">:max_players</span><span class="p">,</span><span class="w"> </span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="s2">"must be less than, or equal to, Max players!"</span><span class="w"> </span><span class="p">}</span>
+<span class="k">end</span></code></pre>
+<p>Alright now we have the validations, and the game type enumerator built-in so your partial form view should work. (in this example we won&#8217;t be using gin or rummy)</p>
+<p>Next let&#8217;s add our game loader. To do this we&#8217;ll create a helper method in our <strong>app/controllers/application_controller.rb</strong> file</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">load_game</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span><span class="w"> </span><span class="nb">id</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+<span class="w">  </span><span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span><span class="p">(</span><span class="n">klass</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">select</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">obj</span><span class="o">|</span><span class="w"> </span><span class="n">obj</span><span class="o">::</span><span class="nb">__id__</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">id</span><span class="o">.</span><span class="n">to_i</span><span class="p">}</span><span class="o">.</span><span class="n">first</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">klassy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">klass</span><span class="o">.</span><span class="n">new</span>
+<span class="k">end</span>
+<span class="n">helper_method</span><span class="w"> </span><span class="ss">:load_game</span></code></pre>
+<p>Note that the purpose of the function is to reference the &#8220;current game&#8221; that the game room is running by the <code class="code-inline language-ruby"><span class="no">Class</span><span class="o">::</span><span class="nb">__id__</span></code> method. We will hand this a game class, such as HoldEm, and then it will be sure to return the correct running instance of the class HoldEm for us to use in Rails.  And if an instance isn&#8217;t running then the <code class="code-inline language-ruby"><span class="n">klassy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">klass</span><span class="o">.</span><span class="n">new</span></code>  part runs calling <code class="code-inline language-ruby"><span class="no">HoldEm</span><span class="o">.</span><span class="n">new</span></code>  and returns the instance of it. NOTE: you need to have the assignment here of <code class="code-inline language-ruby"><span class="n">klassy</span><span class="w"> </span><span class="o">=</span></code>  or else the class instance WILL DISAPPEAR since it wasn&#8217;t assigned &#8220;within&#8221; the scope in which it was declared.</p>
+<p>Now let&#8217;s look at how we&#8217;ll use this in our games controller. What we&#8217;re going to do is use the &#8220;show&#8221; page as the actual game room; so the game only needs to be running in that page. So we&#8217;ll modify the show method in <strong>app/controllers/games_controller.rb</strong> to this:</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">show</span>
+<span class="w">  </span><span class="vi">@card_game</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load_game</span><span class="p">(</span><span class="no">HoldEm</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="vi">@game</span><span class="o">.</span><span class="n">instance?</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="vi">@game</span><span class="o">.</span><span class="n">instance</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kp">nil</span><span class="p">))</span>
+<span class="w">  </span><span class="k">unless</span><span class="w"> </span><span class="vi">@game</span><span class="o">.</span><span class="n">instance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="vi">@card_game</span><span class="o">::</span><span class="nb">__id__</span>
+<span class="w">    </span><span class="vi">@game</span><span class="o">.</span><span class="n">update_attribute</span><span class="p">(</span><span class="ss">:instance</span><span class="p">,</span><span class="w"> </span><span class="vi">@card_game</span><span class="o">::</span><span class="nb">__id__</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>You should know that <code class="code-inline language-ruby"><span class="vi">@game</span></code>  is already declared in</p>
+<pre class="decode:1 ">before_action :set_game, only: [:show, :edit, :update, :destroy]</pre>
+<p>at the beginning of the file. Here <code class="code-inline language-ruby"><span class="vi">@card_game</span></code>  gets assigned the actual game object we want to start up, or continue, and then makes sure the class id is saved in the database table, for this game room, under <code class="code-inline language-ruby"><span class="n">instance</span></code> . As long as the game is running this game room will properly load the correct game class. And to perform any of your game functions you can just call them on <code class="code-inline language-default">@card_game</code> .</p>
+<p>Now let&#8217;s update the show view so you can see the class instance being used. Change your <strong>app/views/games/show.html.erb</strong> file to this:</p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="nb">p</span><span class="w"> </span><span class="nb">id</span><span class="o">=</span><span class="s2">"notice"</span><span class="o">&gt;&lt;</span><span class="sx">%= notice %&gt;&lt;/p&gt;</span>
+<span class="sx">&lt;p&gt;</span>
+<span class="sx">  &lt;strong&gt;Room:&lt;/strong&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="vi">@game</span><span class="o">.</span><span class="n">room</span><span class="w"> </span><span class="sx">%&gt; &lt;span style="color:grey;"&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="sx">%= @card_game::__id__ %&gt;)&lt;/span&gt;</span>
+<span class="sx">&lt;/p&gt;</span>
+<span class="sx">&lt;p&gt;</span>
+<span class="sx">  &lt;strong&gt;Min players:&lt;/strong&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="vi">@game</span><span class="o">.</span><span class="n">min_players</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;/p&gt;</span>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="no">Max</span><span class="w"> </span><span class="ss">players</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/strong&gt;</span>
+<span class="sr">  &lt;%= @game.max_players %&gt;</span>
+<span class="sr">&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="ss">Kind</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/strong&gt;</span>
+<span class="sr">  &lt;%= @game.kind %&gt;</span>
+<span class="sr">&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sx">%= link_to 'Edit', edit_game_path(@game) %&gt; |</span>
+<span class="sx">&lt;%=</span><span class="w"> </span><span class="n">link_to</span><span class="w"> </span><span class="s1">'Back'</span><span class="p">,</span><span class="w"> </span><span class="n">games_path</span><span class="w"> </span><span class="o">%&gt;</span></code></pre>
+<p>If you&#8217;ve run into any problems yet it may be because you don&#8217;t have a HoldEm class defined. For now you can create a <strong>lib/holdem.rb</strong> file and put the bare-bones in it:</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">HoldEm</span>
+<span class="k">end</span></code></pre>
+<p>And then make sure it&#8217;s loaded from the lib folder. In my use case I feel it&#8217;s more at home in the application controller rather than in the config/application.rb file. So in the application controller I added:</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">ApplicationController</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="nb">require</span><span class="w"> </span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'lib'</span><span class="p">,</span><span class="s1">'holdem.rb'</span><span class="p">)</span></code></pre>
+<p>Now one last change to make. In your visitors controller we need to add a redirect. So open <strong>app/controllers/visitors_controller.rb</strong> and add this:</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">VisitorsController</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ApplicationController</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">index</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">user_signed_in?</span>
+<span class="w">      </span><span class="n">redirect_to</span><span class="w"> </span><span class="n">games_url</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>Now everything should be ready. Run your rails server and create an account. Once you&#8217;re signed into devise it will redirect you to the list of game rooms. Create one, then on the show page click refresh as often as you like and you will see the class id right next to the game room name. This will run faithfully for you, if you want to prove a case where the game class itself disappears then try removing <code class="code-inline language-ruby"><span class="n">klassy</span><span class="w"> </span><span class="o">=</span></code>  in the <code class="code-inline language-ruby"><span class="n">application_controller</span></code>  and refresh several times. You will now see the number change ever so often. <strong>Be sure to put it back!</strong></p>
+<p>Congratulations! You now have control over running your game class per game room and ensuring the class is properly loaded!</p>
+<p>If you&#8217;re worried about the possibility of too many classes &#8220;some how&#8221; being created you can add this within the <code class="code-inline language-ruby"><span class="n">game_controllers</span></code>  destroy method</p>
+<pre class="code-block language-ruby"><code><span class="vi">@card_game</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
+<span class="no">ObjectSpace</span><span class="o">.</span><span class="n">garbage_collect</span></code></pre>
+<p>Although we&#8217;re not given too much control when it comes to garbage collection, this does seem to destroy any objects that are no longer assigned.</p>
+<p>Well I hope this was very helpful for you to get your game room created in Rails with it&#8217;s own game instance! Now make the games, and have fun!</p>
+<p>Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark">RSS Feed</a>,and follow me on twitter <a href="https://twitter.com/6ftdan">@6ftdan</a>!</p>
+<p>God Bless! &#8211; Daniel P. Clark</p>
+</div>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Create+a+Game+Instance+in+Rails" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Create+a+Game+Instance+in+Rails" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/game/">#game</a><a href="../../../../../tag/howto/">#howto</a><a href="../../../../../tag/rails/">#rails</a><a href="../../../../../tag/ruby/">#ruby</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../01/manual-polymorphic-creation-in-rails/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../../12/09/ruby-ruby-on-rails-methods-for-discovery-part-1/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+		
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

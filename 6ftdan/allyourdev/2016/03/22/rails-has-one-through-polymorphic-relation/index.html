@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Rails: Has One Through Polymorphic Relation | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.8" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2016/03/22/rails-has-one-through-polymorphic-relation/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-1353 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-1353" class="post-1353 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-rubyonrails category-technical tag-controller tag-has_on tag-inventory tag-model tag-nested tag-parameters tag-params tag-polymorphic tag-rails tag-through tag-view">
+		<img width="640" height="427" src="../../../../../wp-content/uploads/2016/03/7807604376_d905ca8637_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2016/03/7807604376_d905ca8637_z.jpg 640w, ../../../../../wp-content/uploads/2016/03/7807604376_d905ca8637_z-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		<p class="date-author">March 22, 2016 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Rails: Has One Through Polymorphic Relation</h1>			<p>As I&#8217;ve described in my blog post &#8220;<a href="../../../../2015/02/10/rails-polymorphic-models/">Rails Polymorphic Associations</a>&#8221; I&#8217;ve stated that polymorphic relations in Rails are best for scenarios where a model may &#8220;belong to&#8221; one of many other kinds of model.  So a Comment model with the polymorphic commentable relationship can belong to any other record in your Rails app.  This is a child to be adopted by any of one many parents kind of relationship.</p>
+<p>But recently I wanted to do the inverse of this and say that an Item model can be one of any Product.  An Item is something you can keep in a Location and a Product really can be anything.  So I did some digging and found a few short examples online suggesting using a middle-man model with to belongs_to relations with one being polymorphic to allow the polymorphic child type of relation.  This is a Item has_many <em>polymorphic Products</em> through MiddleMan kind of thing.  So I went ahead and tried it out and have been very successful in it&#8217;s design.  So now I&#8217;m here to share with you how to do it as well. <em>This will be more &#8220;reading source code&#8221; than commentary.  You&#8217;re more than welcome to ask questions.</em></p>
+<h3>The Models</h3>
+<p>I&#8217;ll briefly show how I set up the models.</p>
+<pre class="code-block language-sh"><code>rails<span class="w"> </span>g<span class="w"> </span>model<span class="w"> </span>Location<span class="w"> </span>name:string:index
+<span class="c1"># then modified the migration for the following</span>
+<span class="c1"># t.string :name, unique: true, null: false</span>
+
+rails<span class="w"> </span>g<span class="w"> </span>model<span class="w"> </span>Item<span class="w"> </span>placeable:references<span class="o">{</span>polymorphic<span class="o">}</span>
+
+rails<span class="w"> </span>g<span class="w"> </span>model<span class="w"> </span>ItemProduct<span class="w"> </span>item_id:integer:index<span class="w"> </span>product:references<span class="o">{</span>polymorphic<span class="o">}</span>
+<span class="c1"># then modified the migration for the following</span>
+<span class="c1"># t.integer :item_id, unique: true, null: false</span>
+
+rails<span class="w"> </span>g<span class="w"> </span>model<span class="w"> </span>Book<span class="w"> </span>isbn:text:index<span class="w"> </span>title:text:index<span class="w"> </span>author:text:index<span class="w"> </span>publisher:text:index<span class="w"> </span>year:integer:index
+
+rails<span class="w"> </span>g<span class="w"> </span>model<span class="w"> </span>Movie<span class="w"> </span>title:text:index<span class="w"> </span>director:text:index<span class="w"> </span>writer:text:index<span class="w"> </span>year:integer:index<span class="w"> </span>length:text:index
+<span class="c1"># then modified the migration for the following</span>
+<span class="c1"># t.text :title, null: false</span></code></pre>
+<p><em>I choose to use the &#8216;text&#8217; type rather than &#8216;string&#8217; because I&#8217;m using a PostgreSQL database and they&#8217;re optimized it in such a way where the &#8216;text&#8217; type is as performant as &#8216;string&#8217; and even has extra features you can take advantage of.  </em>I chose to give Item a polymorphic placeable reference for it&#8217;s location as locations will be marked shelves but items can be placed in containers on shelves and those can be labelled as a place which stores items.</p>
+<p>So now we run <strong>rake db:create &amp;&amp; rake db:migrate</strong> and all of our models are generated in the database.  Next we need to edit the model relationships in app/models to infer what relationships these models have to each other.  Here&#8217;s how I have them. <em> Don&#8217;t mind the full model files here, I thought it would be nice to share everything I added to them.</em></p>
+<pre class="code-block language-ruby"><code><span class="c1"># app/models/location.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Location</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">has_many</span><span class="w"> </span><span class="ss">:items</span><span class="p">,</span><span class="w"> </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="ss">:placeable</span>
+<span class="w">  </span><span class="n">validates_presence_of</span><span class="w"> </span><span class="ss">:name</span>
+<span class="w">  </span><span class="n">validates</span><span class="w"> </span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="nb">format</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="ss">with</span><span class="p">:</span> <span class="sr">/\A[A-Z0-9]+\z/</span><span class="p">,</span>
+<span class="w">    </span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="s2">"only allow uppercase alphanumeric labels"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">default_scope</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">order</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:ASC</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="k">end</span>
+
+<span class="c1"># app/models/item.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Item</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:placeable</span><span class="p">,</span><span class="w"> </span><span class="ss">polymorphic</span><span class="p">:</span><span class="w"> </span><span class="kp">true</span>
+<span class="w">  </span><span class="n">validates_presence_of</span><span class="w"> </span><span class="ss">:placeable_id</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:item_product</span><span class="p">,</span><span class="w"> </span><span class="ss">dependent</span><span class="p">:</span><span class="w"> </span><span class="ss">:destroy</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:book</span><span class="p">,</span><span class="w"> </span><span class="ss">through</span><span class="p">:</span><span class="w"> </span><span class="ss">:item_product</span><span class="p">,</span><span class="w"> </span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="ss">:product</span><span class="p">,</span><span class="w"> </span><span class="ss">source_type</span><span class="p">:</span><span class="w"> </span><span class="s1">'Book'</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:movie</span><span class="p">,</span><span class="w"> </span><span class="ss">through</span><span class="p">:</span><span class="w"> </span><span class="ss">:item_product</span><span class="p">,</span><span class="w"> </span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="ss">:product</span><span class="p">,</span><span class="w"> </span><span class="ss">source_type</span><span class="p">:</span><span class="w"> </span><span class="s1">'Movie'</span>
+<span class="w">  </span><span class="n">accepts_nested_attributes_for</span><span class="w"> </span><span class="ss">:item_product</span><span class="p">,</span><span class="w"> </span><span class="ss">allow_destroy</span><span class="p">:</span><span class="w"> </span><span class="kp">true</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">kinds</span>
+<span class="w">    </span><span class="o">[</span><span class="no">Book</span><span class="p">,</span><span class="w"> </span><span class="no">Movie</span><span class="o">]</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">location</span>
+<span class="w">    </span><span class="n">placeable</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">product</span>
+<span class="w">    </span><span class="n">item_product</span><span class="o">&amp;.</span><span class="n">product</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">product_name</span>
+<span class="w">    </span><span class="n">product</span><span class="o">&amp;.</span><span class="n">class</span><span class="o">&amp;.</span><span class="n">name</span><span class="o">&amp;.</span><span class="n">downcase</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># app/models/item_product.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ItemProduct</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:item</span>
+<span class="w">  </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:product</span><span class="p">,</span><span class="w"> </span><span class="ss">polymorphic</span><span class="p">:</span><span class="w"> </span><span class="kp">true</span><span class="p">,</span><span class="w"> </span><span class="ss">dependent</span><span class="p">:</span><span class="w"> </span><span class="ss">:destroy</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">place</span>
+<span class="w">    </span><span class="n">item</span><span class="o">.</span><span class="n">placeable</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># app/models/book.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:item_product</span><span class="p">,</span><span class="w"> </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="ss">:product</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:item</span><span class="p">,</span><span class="w"> </span><span class="ss">through</span><span class="p">:</span><span class="w"> </span><span class="ss">:item_product</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Locatable</span><span class="w"> </span><span class="c1"># def location; item_product.item.placeable end</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Referable</span><span class="w"> </span><span class="c1"># def ref; item_product.item end</span>
+<span class="k">end</span>
+
+<span class="c1"># app/models/movie.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Movie</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:item_product</span><span class="p">,</span><span class="w"> </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="ss">:product</span>
+<span class="w">  </span><span class="n">has_one</span><span class="w"> </span><span class="ss">:item</span><span class="p">,</span><span class="w"> </span><span class="ss">through</span><span class="p">:</span><span class="w"> </span><span class="ss">:item_product</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Locatable</span><span class="w"> </span><span class="c1"># def location; item_product.item.placeable end</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Referable</span><span class="w"> </span><span class="c1"># def ref; item_product.item end</span>
+<span class="k">end</span></code></pre>
+<p>With the design being for a polymorphic child type of relationship I also wanted the page views to be polymorphic in design.</p>
+<h3>Controllers/Views</h3>
+<p>When I generated my structure I actually used <strong>rails generate resource</strong> rather than <strong>scaffolding</strong>.  And to my surprise I found my controllers bare with no methods.  I found this an interesting experience as it let me feel my way through and see how I might do things differently.</p>
+<p><strong>app/controllers/location_controller.rb</strong></p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">LocationsController</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ApplicationController</span>
+<span class="w">  </span><span class="n">before_action</span><span class="w"> </span><span class="ss">:set_location</span><span class="p">,</span><span class="w"> </span><span class="ss">only</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="ss">:edit</span><span class="p">,</span><span class="w"> </span><span class="ss">:show</span><span class="o">]</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">index</span>
+<span class="w">    </span><span class="vi">@locations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Location</span><span class="o">.</span><span class="n">all</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">new</span>
+<span class="w">    </span><span class="vi">@location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Location</span><span class="o">.</span><span class="n">new</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">create</span>
+<span class="w">    </span><span class="k">begin</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">location_params</span><span class="o">[</span><span class="ss">:name</span><span class="o">][</span><span class="sr">/\.\./</span><span class="o">]</span>
+<span class="w">        </span><span class="no">Range</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">*</span><span class="n">location_params</span><span class="o">[</span><span class="ss">:name</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s2">".."</span><span class="p">))</span><span class="o">.</span><span class="n">to_a</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="n">location_params</span><span class="o">[</span><span class="ss">:name</span><span class="o">].</span><span class="n">del</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+<span class="w">      </span><span class="vi">@location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Location</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">      </span><span class="k">break</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="vi">@location</span><span class="o">.</span><span class="n">save</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">       </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="vi">@location</span><span class="o">.</span><span class="n">persisted?</span>
+<span class="w">      </span><span class="n">redirect_to</span><span class="w"> </span><span class="s2">"/"</span><span class="w"> </span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="n">render</span><span class="w"> </span><span class="s1">'new'</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">show</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="kp">private</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">location_params</span>
+<span class="w">    </span><span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:location</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:id</span><span class="p">,</span><span class="w"> </span><span class="ss">:name</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">set_location</span>
+<span class="w">    </span><span class="vi">@location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Location</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">].</span><span class="n">sift</span><span class="p">(</span><span class="s2">"0"</span><span class="o">..</span><span class="s2">"9"</span><span class="p">))</span><span class="o">.</span><span class="n">first</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>You can see I got a bit creative with the <strong>create</strong> method.  I decided I wanted to be able to create locations in batches so I can save time.  <em>The <strong>String#sift</strong> method in <strong>set_location</strong>, and the <strong>String#del</strong> method in <strong>create</strong>, are both from my gem <a href="https://github.com/danielpclark/MightyString">MightyString</a> and they allow you to filter your strings easily.</em></p>
+<p><strong>app/views/locations/index.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="sx">% flash.each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="nb">name</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= content_tag :div, msg, class: name %&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">-</span><span class="sx">%&gt;</span>
+<span class="sx">    </span>
+<span class="sx">&lt;div class="locations-main"&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="no">Locations</span><span class="w"> </span><span class="o">[&lt;</span><span class="sx">%= link_to "New", new_location_path %&gt;]&lt;/h3&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">link_to</span><span class="w"> </span><span class="s2">"Items"</span><span class="p">,</span><span class="w"> </span><span class="n">items_path</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;ul&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">% @locations.each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">location</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">    &lt;li&gt;</span>
+<span class="w">      </span><span class="o">&lt;%=</span><span class="w"> </span><span class="n">link_to</span><span class="w"> </span><span class="n">location</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">location_path</span><span class="p">(</span><span class="n">location</span><span class="p">)</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">    &lt;/li&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">  &lt;/ul&gt;</span><span class="w">   </span>
+<span class="o">&lt;</span><span class="sr">/div&gt;</span></code></pre>
+<p>In building this project I really wanted to go with a bare bones functional design.  I believe that&#8217;s how all projects should start.  Getting into styling things too much early on just causes more work later.  Here&#8217;s a bit of style for this page:</p>
+<pre class="code-block language-ruby" title="app/assets/stylesheets/application.css"><code><span class="o">.</span><span class="n">locations</span><span class="o">-</span><span class="n">main</span><span class="w"> </span><span class="n">ul</span><span class="w"> </span><span class="n">li</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">font</span><span class="o">-</span><span class="ss">family</span><span class="p">:</span><span class="w"> </span><span class="n">helvetica</span><span class="p">;</span>
+<span class="w">  </span><span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="n">px</span><span class="p">;</span>
+<span class="w">  </span><span class="ss">float</span><span class="p">:</span><span class="w"> </span><span class="n">left</span><span class="p">;</span>
+<span class="w">  </span><span class="n">margin</span><span class="o">-</span><span class="ss">right</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="n">px</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">display</span><span class="p">:</span><span class="w"> </span><span class="n">inline</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+<p>I find that using HTML lists permits a lot more flexibility with CSS style rather than using tables.</p>
+<p>And here&#8217;s the new location page:<br />
+<strong>app/views/locations/new.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="no">Accepts</span><span class="w"> </span><span class="n">three</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">kinds</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">input</span><span class="o">.</span>
+<span class="o">&lt;</span><span class="n">ol</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">Single</span><span class="w"> </span><span class="ss">location</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="no">A1</span><span class="o">&lt;</span><span class="sr">/strong&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">Comma</span><span class="w"> </span><span class="n">separated</span><span class="w"> </span><span class="ss">locations</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="no">A1</span><span class="p">,</span><span class="w"> </span><span class="no">A2</span><span class="p">,</span><span class="w"> </span><span class="no">A3</span><span class="o">&lt;</span><span class="sr">/strong&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">Range</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="ss">locations</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="no">A1</span><span class="o">..</span><span class="no">A9</span><span class="o">&lt;</span><span class="sr">/strong&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/ol&gt;</span>
+
+<span class="sr">&lt;%= form_for :location, url: locations_path do |f| %&gt;</span>
+
+<span class="sr">  &lt;% if @location.errors.any? %&gt;</span>
+<span class="sr">    &lt;div id="error_explanation"&gt;</span>
+<span class="sr">      &lt;h2&gt;</span>
+<span class="sr">        &lt;%= pluralize(@location.errors.count, "error") %&gt; prohibited</span>
+<span class="sr">        this article from being saved:</span>
+<span class="sr">      &lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="sx">% @location.errors.full_messages.each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">msg</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">          &lt;li&gt;</span><span class="o">&lt;</span><span class="sx">%= msg %&gt;&lt;/li&gt;</span>
+<span class="sx">        &lt;% end %&gt;</span>
+<span class="sx">      &lt;/ul&gt;</span>
+<span class="sx">    &lt;/div&gt;</span>
+<span class="sx">  &lt;% end %&gt;</span>
+
+<span class="sx">  &lt;p&gt;</span>
+<span class="sx">    &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="ss">:Location</span><span class="w"> </span><span class="sx">%&gt;&lt;br&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="sx">%= f.text_field :name %&gt;</span>
+<span class="sx">  &lt;/p&gt;</span>
+
+<span class="sx">  &lt;p&gt;</span>
+<span class="sx">    &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">submit</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;/p&gt;</span>
+
+<span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+
+<span class="sx">&lt;%= link_to 'Back', locations_path %&gt;</span></code></pre>
+<p>And that&#8217;s it for locations.  It&#8217;s a very simple implementation.  I don&#8217;t have any deletion or edit feature in it.  I don&#8217;t need it right now.  If I make a mistake I just open up the Rails console and look it up. <strong>Location.where(name: &#8220;A55&#8221;).first.update(name: &#8220;A5&#8221;)</strong></p>
+<p>Now comes the more complex controller/view&#8230;</p>
+<h3>Polymorphic Item Products</h3>
+<p>I&#8217;ll go over controller details before discussing the view on this one.</p>
+<p><strong>app/controllers/item_controller.rb</strong></p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">ItemsController</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ApplicationController</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">index</span>
+<span class="w">    </span><span class="vi">@items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="no">Item</span><span class="o">.</span><span class="n">kinds</span><span class="o">.</span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span><span class="n">k</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">downcase</span><span class="p">}</span><span class="o">.</span><span class="n">include?</span><span class="w"> </span><span class="n">params</span><span class="o">[</span><span class="ss">:kind</span><span class="o">]</span>
+<span class="w">               </span><span class="no">Item</span><span class="o">.</span><span class="n">joins</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:kind</span><span class="o">].</span><span class="n">to_sym</span><span class="p">)</span>
+<span class="w">             </span><span class="k">else</span>
+<span class="w">               </span><span class="no">Item</span><span class="o">.</span><span class="n">all</span>
+<span class="w">             </span><span class="k">end</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:placeable</span><span class="p">)</span><span class="o">.</span><span class="n">sort_by</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">placeable</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">new</span>
+<span class="w">    </span><span class="vi">@item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Item</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">placeable_id</span><span class="p">:</span><span class="w"> </span><span class="n">item_params</span><span class="o">[</span><span class="ss">:placeable_id</span><span class="o">]</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@item</span><span class="o">.</span><span class="n">build_item_product</span><span class="p">(</span><span class="w"> </span><span class="ss">product</span><span class="p">:</span><span class="w"> </span><span class="n">item_kind</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">create</span>
+<span class="w">    </span><span class="vi">@item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Item</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="w">      </span><span class="ss">placeable_id</span><span class="p">:</span><span class="w"> </span><span class="n">item_params</span><span class="o">[</span><span class="ss">:placeable_id</span><span class="o">]</span><span class="p">,</span>
+<span class="w">      </span><span class="ss">placeable_type</span><span class="p">:</span><span class="w"> </span><span class="n">item_params</span><span class="o">[</span><span class="ss">:placeable_type</span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'Location'</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@item</span><span class="o">.</span><span class="n">build_item_product</span><span class="p">(</span>
+<span class="w">      </span><span class="ss">product</span><span class="p">:</span><span class="w"> </span><span class="n">item_kind</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="w"> </span><span class="n">item_params</span><span class="o">[</span><span class="ss">:item_product_attributes</span><span class="o">]</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="vi">@item</span><span class="o">.</span><span class="n">save</span>
+<span class="w">      </span><span class="n">redirect_to</span><span class="w"> </span><span class="vi">@item</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="n">flash</span><span class="o">[</span><span class="ss">:error</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@item</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">first</span>
+<span class="w">      </span><span class="n">redirect_to</span><span class="w"> </span><span class="s2">"/"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">show</span>
+<span class="w">    </span><span class="vi">@item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">item_product</span><span class="o">.</span><span class="n">product</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">update</span>
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="w">    </span><span class="n">item</span><span class="o">.</span><span class="n">update!</span><span class="p">(</span><span class="n">item_params</span><span class="p">)</span>
+<span class="w">    </span><span class="n">redirect_to</span><span class="w"> </span><span class="n">item</span><span class="w"> </span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">destroy</span>
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+<span class="w">    </span><span class="n">item</span><span class="o">.</span><span class="n">destroy</span>
+<span class="w">    </span><span class="n">redirect_to</span><span class="w"> </span><span class="s2">"/"</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="kp">private</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">item_params</span>
+<span class="w">    </span><span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:item</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:kind</span><span class="p">,</span><span class="w"> </span><span class="ss">:placeable_id</span><span class="p">,</span><span class="w"> </span><span class="ss">:placeable_type</span><span class="p">,</span><span class="w"> </span><span class="ss">item_product_attributes</span><span class="p">:</span><span class="w"> </span><span class="n">ipa</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">ipa</span>
+<span class="w">    </span><span class="n">item_kind</span><span class="o">&amp;.</span><span class="n">column_defaults</span><span class="o">&amp;.</span><span class="n">keys</span><span class="o">.</span><span class="n">try</span><span class="p">(</span><span class="ss">:-</span><span class="p">,</span><span class="o">[</span><span class="ss">:id</span><span class="p">,</span><span class="ss">:created_at</span><span class="p">,</span><span class="ss">:updated_at</span><span class="o">]</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">item_kind</span>
+<span class="w">    </span><span class="no">Item</span><span class="o">.</span><span class="n">kinds</span><span class="o">.</span><span class="n">detect</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span><span class="w"> </span><span class="n">k</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">params</span><span class="o">.</span><span class="n">dig</span><span class="p">(</span><span class="ss">:item</span><span class="p">,</span><span class="ss">:kind</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>The <strong>index</strong> checks the <strong>Item.kinds</strong> method to see if the parameter for a kind matches the predefined acceptable models for Item.  If it does match the results will be filtered to only the kind given (e.g. Books or Movies).  This allows the index page to switch the results of it&#8217;s content based on kinds, or everything.  I found that using <strong>includes(:placeable)</strong> brought the query down from one for every item to just two simple queries to the DB.</p>
+<p>The <strong>new</strong> method controller first creates a new Item with the location provided in the parameters.  It then builds a ItemProduct with a new &#8220;product&#8221; created under the parameter <strong>{:product =&gt; thing}</strong> .  The <strong>item_kind</strong> is a private method at the end of the controller which picks a valid model from the <strong>Item.kinds</strong> method and creates a new instance of it with <strong>item_kind.new </strong>.  Seeing the use of the polymorphic attribute <strong>:product</strong> reference an object directly was something new to me <strong>build_item_product( product: item_kind.new )</strong>.  It&#8217;s cool that polymorphic references give us that much flexibility.</p>
+<p>The <strong>create</strong> method here is pretty much doing the same thing as new.  Except that is has all the attributes and performs a save action.</p>
+<p>I&#8217;ve implemented the <strong>show</strong> method a bit deceptively.  I&#8217;ve kept the <strong>@item</strong> instance variable when the object being return is the product (a book or movie).  You&#8217;ll just have to keep this in mind when we get to the view.</p>
+<p>The <strong>item_params</strong> needed to be polymorphic in whichever model it supported nested attributes for, so for that I have the <strong>ipa</strong> method get all of the database column names for the current product and remove <strong>[:id, :created_at, :updated_at]</strong> .  Congratulations!  You now have polymorphic nested attributes permitted.</p>
+<h5>Now the views</h5>
+<p><strong>app/views/items/index.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;&lt;</span><span class="sx">%= link_to "&lt;", "/" %&gt;&amp;nbsp;Items&lt;/h3&gt;</span>
+<span class="sx">&lt;div id=</span><span class="s2">"items-menu"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="sx">% Item.kinds.each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">kind</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">      &lt;li&gt;</span><span class="o">&lt;</span><span class="sx">%= link_to kind.to_s.pluralize, items_path(kind: kind.to_s.downcase) %&gt;&lt;/li&gt;</span>
+<span class="sx">    &lt;% end %&gt;</span>
+<span class="sx">  &lt;/ul&gt;</span>
+<span class="sx">&lt;/div&gt;</span>
+<span class="sx">&lt;hr/&gt;     </span>
+<span class="sx">&lt;table id=</span><span class="s2">"location-catalog"</span><span class="w"> </span><span class="n">border</span><span class="o">=</span><span class="s2">"2"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">% @items.each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">item</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">    &lt;tr&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span><span class="ss">L</span><span class="p">:</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">;</span><span class="o">&lt;</span><span class="sx">%= item.location&amp;.name %&gt;&lt;/td&gt;</span>
+<span class="sx">      &lt;td&gt;&lt;%=</span><span class="w"> </span><span class="n">link_to</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">product</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">item_path</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="sx">%&gt;&lt;/td&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="sx">% Hash(item.product&amp;.attributes).each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="k">next</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="s2">"id"</span><span class="p">,</span><span class="w"> </span><span class="s2">"created_at"</span><span class="p">,</span><span class="w"> </span><span class="s2">"updated_at"</span><span class="o">].</span><span class="n">include?</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">        &lt;td&gt;</span><span class="o">&lt;</span><span class="n">table</span><span class="w"> </span><span class="n">border</span><span class="o">=</span><span class="s2">"0"</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="w">          </span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;&lt;</span><span class="sx">%= c.humanize %&gt;&lt;/strong&gt;:&lt;/td&gt;</span>
+<span class="sx">            &lt;td&gt;&lt;%=</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="sx">%&gt;&lt;/td&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="sr">/tr&gt;</span>
+<span class="sr">        &lt;/</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;</span>
+<span class="sr">      &lt;% end %&gt;</span>
+<span class="sr">    &lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/table&gt;</span></code></pre>
+<p>This view is rather simple in structure.  The first link is simply a link to home with a less than symbol <strong>&lt;</strong> .  The next links are to each of the kinds of product item supports.  It links to the <strong>items_path</strong> with a parameter of <strong>:kind</strong> which will show up in the address bar&#8217;s url to filter the pages contents.  And in the table I render out a row for every kind of product by getting their attributes in hash form.  I use the <strong>c</strong> variable to represent column and <strong>v</strong> to represent value.  And that&#8217;s how the index works.</p>
+<p>Now for the polymorphic &#8220;new&#8221; product page<br />
+<strong>app/views/items/new.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="no">New</span><span class="w"> </span><span class="o">&lt;</span><span class="sx">%= @item.product_name %&gt;&lt;/h3&gt;                                                                </span>
+
+<span class="sx">&lt;%=</span><span class="w"> </span><span class="n">form_for</span><span class="w"> </span><span class="vi">@item</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">f</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= f.hidden_field :placeable_id, value: @item.placeable_id %&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">%= f.hidden_field :kind, value: @item.item_product.product_type %&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">render</span><span class="w"> </span><span class="ss">partial</span><span class="p">:</span><span class="w"> </span><span class="s2">"partials/</span><span class="si">#{</span><span class="vi">@item</span><span class="o">.</span><span class="n">product_name</span><span class="si">}</span><span class="s2">_fields"</span><span class="p">,</span><span class="w"> </span><span class="ss">locals</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="p">}</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= f.submit %&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span></code></pre>
+<p>The important part here is rendering the partial based on what the product name is.  @item.product_name is a method in the Item model from earlier.  It simply converts the model name to a string and down-cases it.  So if the item is a book this page will fill in the rest of the form from the partial view at <strong>app/views/partials/_book_fields.html.erb</strong> and pass the form variable <strong>f</strong> into the partial&#8217;s scope.  For each of the models I do create their own unique form fields and I keep it simple.  Here&#8217;s the one for Book:</p>
+<p><strong>app/views/partials/_book_fields.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="n">ol</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sx">%= f.fields_for :item_product, @item.product do |ip| %&gt;</span>
+<span class="sx">  &lt;li&gt;ISBN:      &lt;%=</span><span class="w"> </span><span class="n">ip</span><span class="o">.</span><span class="n">text_field</span><span class="w"> </span><span class="ss">:isbn</span><span class="w"> </span><span class="sx">%&gt;&lt;/li&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="ss">TITLE</span><span class="p">:</span><span class="w">     </span><span class="o">&lt;</span><span class="sx">%= ip.text_field :title %&gt;&lt;/li&gt;</span>
+<span class="sx">  &lt;li&gt;AUTHOR:    &lt;%=</span><span class="w"> </span><span class="n">ip</span><span class="o">.</span><span class="n">text_field</span><span class="w"> </span><span class="ss">:author</span><span class="w"> </span><span class="sx">%&gt;&lt;/li&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="no">PUBLISHER</span><span class="w">  </span><span class="o">&lt;</span><span class="sx">%= ip.text_field :publisher %&gt;&lt;/li&gt;</span>
+<span class="sx">  &lt;li&gt;YEAR:      &lt;%=</span><span class="w"> </span><span class="n">ip</span><span class="o">.</span><span class="n">text_field</span><span class="w"> </span><span class="ss">:year</span><span class="w"> </span><span class="sx">%&gt;&lt;/li&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/ol&gt;</span></code></pre>
+<p>It&#8217;s the same design for all other model partials.</p>
+<h5>The show path</h5>
+<p><strong>app/views/items/show.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;&lt;</span><span class="sx">%= link_to "&lt;", location_path(@item.location.id) %&gt; &lt;%=</span><span class="w"> </span><span class="vi">@item</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="sx">%&gt;&lt;/h3&gt;</span>
+<span class="o">&lt;</span><span class="n">table</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="ss">Location</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/strong&gt;</span>
+<span class="sr">    &lt;/</span><span class="n">td</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="sx">%= dynaspan_select(@item.ref, :placeable_id, {</span>
+<span class="sx">          choices: options_for_select(@item.location.class.pluck(:name,:id)),</span>
+<span class="sx">        }) %&gt;</span>
+<span class="sx">    &lt;/strong&gt;&lt;/td&gt;</span>
+<span class="sx">  &lt;/tr&gt;</span>
+<span class="sx">&lt;/table&gt;</span>
+<span class="sx">&lt;ol&gt;</span>
+<span class="sx">  &lt;% @item.attributes.each do |c,v| %&gt;</span>
+<span class="sx">    &lt;li&gt;&lt;strong&gt;&lt;%=</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">humanize</span><span class="w"> </span><span class="sx">%&gt;&lt;/strong&gt;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="sx">%= v %&gt;&lt;/li&gt;</span>
+<span class="sx">  &lt;% end %&gt;</span>
+<span class="sx">&lt;/ol&gt;</span>
+<span class="sx">&lt;%=</span><span class="w"> </span><span class="n">link_to</span><span class="w"> </span><span class="ss">:Remove</span><span class="p">,</span><span class="w"> </span><span class="n">item_path</span><span class="p">(</span><span class="vi">@item</span><span class="o">.</span><span class="n">ref</span><span class="p">),</span><span class="w"> </span><span class="nb">method</span><span class="p">:</span><span class="w"> </span><span class="ss">:delete</span><span class="p">,</span><span class="w"> </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ss">confirm</span><span class="p">:</span><span class="w"> </span><span class="s2">"Are you sure?"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">%&gt;</span></code></pre>
+<p>Still keeping it simple.  The item attributes are shown polymorphically with the hash and the <strong>c, v</strong> local variables representing column and value.  One thing might jump out to you is the <strong>dynaspan_select</strong> method.  This is a gem (<a href="https://github.com/danielpclark/dynaspan">DynaSpan</a>) I&#8217;ve written that lets you &#8220;magically&#8221; click on text to change to an input field where all changes get submitted to the server without the page navigating away by submitting record updates via AJAX and then the input field vanishes like Houdini to the text of the new value.  This method is just my way of simplifying something awesome and really sticking to the motto of &#8220;Keep code beautiful.  There&#8217;s beauty in simplicity.&#8221;  The use of <strong>dynaspan_select</strong> here allows the user to click the location, get a drop down menu, and instantly change the items location. 🙂</p>
+<p><strong>app/views/locations/show.html.erb</strong></p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;&lt;</span><span class="sx">%= link_to "&lt;", "/" %&gt; Location: &lt;%=</span><span class="w"> </span><span class="vi">@location</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="sx">%&gt;&lt;/h3&gt;</span>
+
+<span class="o">&lt;</span><span class="sx">%= form_tag(new_item_path, method: :get) do %&gt;</span>
+<span class="sx">&lt;%=</span><span class="w"> </span><span class="n">hidden_field_tag</span><span class="w"> </span><span class="s1">'item[placeable_id]'</span><span class="p">,</span><span class="w"> </span><span class="vi">@location</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">New Item: &lt;%= select_tag 'item[kind]', options_for_select(Item.kinds.map(&amp;:to_s)) %&gt;</span>
+<span class="o">&lt;</span><span class="sx">%= submit_tag("Create") %&gt;</span>
+<span class="sx">&lt;% end %&gt;</span>
+<span class="sx">&lt;hr/&gt;</span>
+<span class="sx">&lt;table id=</span><span class="s2">"location-catalog"</span><span class="w"> </span><span class="n">border</span><span class="o">=</span><span class="s2">"2"</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">% @location.items.each </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">item</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">    &lt;tr&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="sx">%= link_to item.product.class.name, item_path(item) %&gt;&lt;/td&gt;</span>
+<span class="sx">      &lt;% Hash(item.product&amp;.attributes).each do |c, v| next if ["id", "created_at", "updated_at"].include?(c) %&gt;</span>
+<span class="sx">        &lt;td&gt;&lt;table border=</span><span class="s2">"0"</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="n">td</span><span class="o">&gt;&lt;</span><span class="n">strong</span><span class="o">&gt;&lt;</span><span class="sx">%= c.humanize %&gt;&lt;/strong&gt;:&lt;/td&gt;</span>
+<span class="sx">            &lt;td&gt;&lt;%=</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="sx">%&gt;&lt;/td&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="sr">/tr&gt;</span>
+<span class="sr">        &lt;/</span><span class="n">table</span><span class="o">&gt;&lt;</span><span class="sr">/td&gt;</span>
+<span class="sr">      &lt;% end %&gt;</span>
+<span class="sr">    &lt;/</span><span class="n">tr</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">% end %&gt;</span>
+<span class="sx">&lt;/table&gt;</span></code></pre>
+<p>This view has the only form you will need to select creating a new product as it will set which kind of item in the /items/new resource.</p>
+<h3>And that&#8217;s it!</h3>
+<p>This was a minimalist project for me to inventory my own belongings.  It was enjoyable to do, educational, and helps me put all my warehouse experience to work in organizing.  The website experience is seamless, simple, and easy on the eyes.  I did not expect learning the use of a has_X-through scenario would work out so easily for me.  But overall this was a great experience for me.  I&#8217;m sure there are plenty of questions to ask about the code here so feel free to jump in!</p>
+<p>After this went so well I thought I&#8217;d give a shot at converting an existing polymorphic relation with many has_one-throughs already with an extra middleman in it in a big project.  Keep in mind that all the pages for the model are already built.  Let me say it was not seamless.  I put about 4 hours into it and got the 1st level of relations through it working (e.g. Contact through ProfileReference to Profile).  But I didn&#8217;t get the Profile&#8217;s nested relations working and I already hacked through a lot of code.  I ended up throwing all that work away by git stashing it and deleting the stash.  Still a good learning experience.</p>
+<p>As always I hope you’ve enjoyed this!  Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px">Image by <a href="https://www.flickr.com/photos/thomashawk/">Thomas Hawk</a> via the <a href="http://creativecommons.org/licenses/by-nc/2.0/">Creative Commons Attribution-NonCommercial 2.0 Generic License</a>.</span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Rails%3A+Has+One+Through+Polymorphic+Relation" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Rails%3A+Has+One+Through+Polymorphic+Relation" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/controller/">#controller</a><a href="../../../../../tag/has_on/">#has_on</a><a href="../../../../../tag/inventory/">#inventory</a><a href="../../../../../tag/model/">#model</a><a href="../../../../../tag/nested/">#nested</a><a href="../../../../../tag/parameters/">#parameters</a><a href="../../../../../tag/params/">#params</a><a href="../../../../../tag/polymorphic/">#polymorphic</a><a href="../../../../../tag/rails/">#rails</a><a href="../../../../../tag/through/">#through</a><a href="../../../../../tag/view/">#view</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../07/make-the-impossible-possible/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../../04/21/use-rubys-refinements-anywhere-with-an-anonymous-class/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-7190"> 	
+		<div id="comment-7190" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/5d086332eb7ac22463bb244cd732000c?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/5d086332eb7ac22463bb244cd732000c?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://makabde.me/" class="url" rel="ugc external nofollow">makabde</a></span><br />April 3, 2016 - 11:04 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>This is exactly what I needed. I am currently building an API in rails and could not find a proper way of achieving this type of association.<br />
+I am wondering how you would do, so that the `show` method in the ItemsController returns not only a `Product` attributes but also the attributes of the `Item`.<br />
+Thanks!</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7191"> 	
+		<div id="comment-7191" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />April 3, 2016 - 4:08 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>In that case I would change the show method in the controller to</p>
+<pre><code class="ruby">
+def show
+  @item = Item.find(params[:id])
+  end
+</code></pre>
+<p>And in the view simply treat @item for the item attributes @item.name, @item.description, etc.  And for the product details along with it you could use the `product` method in the Item model which points to `item_product.product` and get the attributes along with the @item: eg) @item.product.keywords, @item.product.location, etc.</p>
+<p>Assuming something may go wrong and you don&#8217;t want it to break when product is nil (this should never happen you should want it to break).  You can write the view in such a way that it safely handles nil.</p>
+<pre><code class="ruby">
+
+  
+  
+  
+    
+    
+  
+
+</code></pre>
+<p>This is typically good design for has_many situations but you can use it for has_one.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7224"> 	
+		<div id="comment-7224" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/d910281c3b01a913bb9ea91880bf5407?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d910281c3b01a913bb9ea91880bf5407?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="https://www.murdo.ch" class="url" rel="ugc external nofollow">Stephen Murdoch</a></span><br />January 17, 2017 - 3:56 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Excellent writeup, I have a question though:</p>
+<p>When I visit &#8216;/items/new&#8217; I get &#8220;undefined method `new&#8217; for nil:NilClass&#8221;</p>
+<p>I know that this is caused by this line:</p>
+<p>    `@item.build_item_product( product: item_kind.new )`</p>
+<p>This is happening because params[&#8216;item&#8217;][&#8216;kind&#8217;] (called by the **item_kind** method) is nil when you GET the :new action.</p>
+<p>I know I can make it work by visiting /items/new?[item][kind]=Book but I don&#8217;t like that. </p>
+<p>What technique are you using to ensure that item_kind returns something other than nil when visiting /items/new?</p>
+<p>Cheers</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7225"> 	
+		<div id="comment-7225" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 17, 2017 - 8:25 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>There are three ways I might go about doing this.  And in my opinion </p>
+<pre><code class="ruby">nil</code></pre>
+<p> can be very useful here.</p>
+<pre><code class="ruby"> 
+# if you don't mind passing nil as a product option then you just need to safely call new
+@item.build_item_product( product: item_kind.try(:new) )
+
+# Since Ruby 2.3 you can use the lonely man operator for this
+@item.build_item_product( product: item_kind&amp;.new )
+
+#An lastly if you want to only build if a kind is selected then add a conditional at the end
+@item.build_item_product( product: item_kind.new ) if item_kind
+</code></pre>
+<p>If you want to have a default if no kind is given you can do</p>
+<pre><code class="ruby">
+@item.build_item_product( product: item_kind.try(:new) || Book.new )
+# or
+@item.build_item_product( product: item_kind&amp;.new || Book.new )
+</code></pre>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7226"> 	
+		<div id="comment-7226" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 17, 2017 - 8:42 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Looking at my code again I realized that item_kind should not be returning <code class="ruby">nil</code> for you.  This resource should only be loaded when a form has sent the proper parameters.  If you are getting nil I would rewrite it for a redirect.</p>
+<pre><code class="ruby">
+def new
+  @item = Item.new(placeable_id: item_params[:placeable_id])
+  if item_kind
+    @item.build_item_product( product: item_kind.new )
+  else
+    flash[:error] = "Invalid item kind provided!"
+    redirect_to request.referer
+  end
+end
+</code></pre>
+<p>This site wasn&#8217;t designed for visiting <strong>/items/new</strong> directly.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment odd alt depth-2" id="li-comment-7227"> 	
+		<div id="comment-7227" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 17, 2017 - 9:01 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>That was my mistake I forgot to post the locations view.  I&#8217;ve updated the post and added it to the end.  You should never visit /items/new directly (it wasn&#8217;t designed that way).</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7228"> 	
+		<div id="comment-7228" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/d910281c3b01a913bb9ea91880bf5407?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d910281c3b01a913bb9ea91880bf5407?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="https://www.murdo.ch" class="url" rel="ugc external nofollow">Stephen Murdoch</a></span><br />January 17, 2017 - 9:01 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks! Everything works perfectly. Awesome article.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

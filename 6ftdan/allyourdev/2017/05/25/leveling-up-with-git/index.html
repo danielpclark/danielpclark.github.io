@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Leveling up with Git | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.8" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2017/05/25/leveling-up-with-git/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-1532 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-1532" class="post-1532 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-programming category-technical tag-bitbucket tag-code tag-fork tag-git tag-github tag-gitlab tag-pr tag-pull-request">
+		<img width="640" height="304" src="../../../../../wp-content/uploads/2017/05/3062069651_1bd260ef16_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2017/05/3062069651_1bd260ef16_z.jpg 640w, ../../../../../wp-content/uploads/2017/05/3062069651_1bd260ef16_z-300x143.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		<p class="date-author">May 25, 2017 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Leveling up with Git</h1>			<p>This past weekend I got to spend 4 days at the <a href="http://rubyforgood.com">Ruby for Good</a> event.  This is an event where programmers get together and volunteer their efforts in charitable programming for many needs in our communities.  The team I joined up with consisted of 10 developers and most of the team grouped together in about 2 persons per domain to be implemented.  Each <em>pull request</em> on Github needed to be reviewed before being merged in and this process has lead to me leveling up my <code class="code-inline language-sh">git</code>  skills.</p>
+<p><em>I&#8217;ll be using greater than and less than symbols as wrapper around text you would substitute with your own naming — eg: <code class="code-inline language-sh">&lt;some_name_here&gt;</code></em></p>
+<h3>git Basics</h3>
+<p>For a quick review I&#8217;ll go over some basics with using git.  When using a site such as Github they&#8217;ll typically display the first few steps to get your project set up and linked with them.  These are most of the thing&#8217;s you&#8217;ll be doing after that.</p>
+<ul>
+<li><strong>git add .</strong>  — add all the changes made in the current directory with subdirectories <em>(anything listed in the <code class="code-inline language-sh">.gitignore</code>  file will be ignored)</em></li>
+<li><strong>git add &lt;specific/file/to.add&gt;</strong> — add just one file to be committed <em>(can be done multiple times for multiple files)</em></li>
+<li><strong>git commit -m &lt;quoted_description&gt;</strong> — create a git commit which can be submitted to your public or private code repository with a quick message</li>
+<li><strong>git commit</strong> — create a git commit which can be submitted to your public or private code repository and open your default command line text editor to fill out a potentially long description and the changes made</li>
+<li><strong>git push &lt;remote_source&gt; &lt;branch_name&gt;</strong> — push the code up to the remote repository into the branch name given</li>
+<li><strong>git pull &lt;remote_source&gt; &lt;branch_name&gt;</strong> — fetches and merges remote&#8217;s branch locally</li>
+<li><strong>git fetch &lt;remote_source&gt;</strong> — make the remote code available locally without merging in the code</li>
+<li><strong>git merge &lt;remote_source&gt;/&lt;branch_name&gt;</strong> — merge the fetched branch in locally</li>
+<li><strong>git branch</strong> — list branches on current machine</li>
+<li><strong>git checkout &lt;branch_name&gt;</strong> — switch the code over to what&#8217;s in chosen branch</li>
+<li><strong>git checkout -b &lt;branch_name&gt;</strong> — checkout branch if it exists, otherwise create it and switch to it</li>
+<li><strong>git branch -D &lt;branch_name&gt;</strong> — delete a branch locally</li>
+<li><strong>git push &lt;remote_source&gt; :&lt;deleted_branch_name&gt;</strong> — delete the branch on the remote repository</li>
+</ul>
+<p>These are all the commands I would use for my own personal repository.  When you are the only one committing to a repository you won&#8217;t need to do much else.</p>
+<h3>Working with a Team</h3>
+<p>When working with a team and having some one review your code there are some additional steps to take with how you manage your code submissions.  I&#8217;ll do my best to illustrate how this works.</p>
+<p>The code you&#8217;ll be working with should be in 3 locations.  The main project repository will be know as the upstream repository.  You will then need to fork it which will create a copy of the code under your account on Github.  Once you have that you can clone it to your personal computer to work on.  Once you&#8217;ve cloned the fork to you personal computer this is when you add the upstream to you&#8217;re git&#8217;s config by typing:</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/&lt;ORIGINAL_OWNER&gt;/&lt;ORIGINAL_REPOSITORY&gt;.git</code></pre>
+<p>Or if you use ssh keys instead of passwords for Github then you&#8217;d type:</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>git@github.com:&lt;ORIGINAL_OWNER&gt;/&lt;ORIGINAL_REPOSITORY&gt;.git</code></pre>
+<p>Now you have two repositories you can pull from locally; origin (your fork), and upstream (the original repository).</p>
+<p>If the original repository (upstream) has been updated since you created your fork then you will want to update your fork as well.  To do that you would take these steps.</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>checkout<span class="w"> </span>master
+git<span class="w"> </span>fetch<span class="w"> </span>upstream
+git<span class="w"> </span>merge<span class="w"> </span>upstream/master
+git<span class="w"> </span>push<span class="w"> </span>origin/master</code></pre>
+<p>Let&#8217;s say you&#8217;ve already started work on a feature branch before doing this.  This would mean that your feature is not caught up with the code in the master branch.  After doing the above you will need to update the changes from the master branch to your feature branch by typing:</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>checkout<span class="w"> </span>&lt;feature_branch&gt;
+git<span class="w"> </span>merge<span class="w"> </span>origin/master</code></pre>
+<p>During both of the times you run the <code class="code-inline language-sh">git<span class="w"> </span>merge</code>  command a CLI text editor will open up for a new commit message.  Using the default “merge from master” is okay.  If there are any problems merging the code in you will see a list of which files have code conflicts.  You will need to manually edit these to remedy a fix.  The merge will likely have pasted two blocks in the part of the code where there is a conflict with the previous version of the code and the update.  Simply remove the one that doesn&#8217;t belong.</p>
+<p>Once your feature branch is ready to be published and for you to request a <em>pull request</em> you can type:</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;feature_branch&gt;</code></pre>
+<p>Then visit the original repository on Github in your browser and you will see a highlighted line near the top of the page of your fork/branch name with a button to create a “New Pull Request”.  Go ahead and submit that there and enter in the comment section <code class="code-inline language-sh">Fixes<span class="w"> </span><span class="c1">#34</span></code>  if your PR will fix or complete the issue from Github&#8217;s tracker numbered 34.  This will automatically close that issue once the Github PR is accepted.</p>
+<h3>Added Complexity</h3>
+<p>Some times your PR can&#8217;t be reviewed and accepted within a reasonable time frame.  Also you may need to continue work and need to work on top of your previous work.  And if the project is active enough where the master branch is changed while you&#8217;re coding you will begin to dance between branches a lot to merge changes into your feature branches.</p>
+<p>To start work on an additional branch on top of your previous branch you need to simply checkout the new branch while being in the previous one.  This will create you new feature branch with code based on whatever branch environment you did the checkout from.</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>checkout<span class="w"> </span>&lt;feature_branch&gt;
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;second_feature_branch&gt;</code></pre>
+<p>Now you can write all your new code for the second feature and submit it for a PR as well.  This second PR will show all of the git history from the previous PR so your pull request will look a bit more cluttered and have somewhat unrelated details in it.  But there&#8217; not much you can do about that.  It is what it is.</p>
+<p>Now when the team makes changes to the upstream master branch you have upwards of double the work of merging in updates.  Updating them will look like.</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>checkout<span class="w"> </span>master
+git<span class="w"> </span>fetch<span class="w"> </span>upstream
+git<span class="w"> </span>merge<span class="w"> </span>upstream/master
+git<span class="w"> </span>push<span class="w"> </span>origin/master
+git<span class="w"> </span>checkout<span class="w"> </span>&lt;feature_branch&gt;
+git<span class="w"> </span>merge<span class="w"> </span>origin/master
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;feature_branch&gt;
+git<span class="w"> </span>checkout<span class="w"> </span>&lt;second_feature_branch&gt;
+git<span class="w"> </span>merge<span class="w"> </span>origin/&lt;feature_branch&gt;
+git<span class="w"> </span>push<span class="w"> </span>origin/&lt;second_feature_branch&gt;</code></pre>
+<p>Each merge along the way you&#8217;ll need to very and fix any conflicts.  The commit messages for the second feature branch will have the commit merges from both the previous branches in it as well as its owns.  So it looks pretty bad.  But this can be considered somewhat necessary in most cases as the history of git commits is important to many people.</p>
+<h3>History Cleanup (generally taboo)</h3>
+<p>If your commit messages don&#8217;t have any useful information in it then that is a practice you need to learn.  Let&#8217;s assume that the git history isn&#8217;t important in these two feature branches (generally not a good assumption).  So in this case we&#8217;re going to go ahead and clean up our git history.</p>
+<p>Now there is a git feature called <code class="code-inline language-sh">rebase</code>  which is kinda nice for cleaning up multiple commits in one branch into a more legible git history.  But you can&#8217;t do this on any branches that have already merged the other branches commits in already… for example you may <code class="code-inline language-sh">git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>HEAD~2</code> on <code class="code-inline language-sh">&lt;second_feature_branch&gt;</code>  to merge two commits into one (if you choose to), but you can&#8217;t do it in <code class="code-inline language-sh">&lt;feature_branch&gt;</code>  when <code class="code-inline language-sh">&lt;second_feature_branch&gt;</code>  already has that specific commit update merged into it.  To do something like that you&#8217;ll need to do something more elaborate.</p>
+<p>A way you can create two clean histories is to use <code class="code-inline language-sh">git<span class="w"> </span>diff</code>  to take the differences between two branches and export that to a patch file.  You can then take that patch file and apply it to a brand new clean branch.  This is what that would look like.</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>diff<span class="w"> </span>origin/&lt;feature_branch&gt;<span class="w"> </span>origin/&lt;second_feature_branch&gt;<span class="w"> </span>&gt;<span class="w"> </span>../second_feature_branch.patch
+git<span class="w"> </span>diff<span class="w"> </span>origin/master<span class="w"> </span>origin/&lt;feature_branch&gt;<span class="w"> </span>&gt;<span class="w"> </span>../feature_branch.patch
+git<span class="w"> </span>checkout<span class="w"> </span>master
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>clean_feature
+git<span class="w"> </span>apply<span class="w"> </span>../feature_branch.patch
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>second_clean_feature
+git<span class="w"> </span>apply<span class="w"> </span>../second_feature_branch.patch</code></pre>
+<p>Now you have some identical branches of code.  The clean branches don&#8217;t have any of the previous commit history whereas the original feature branches still do.  There are some times where this may be a good idea, but generally we keep a history of the commits to code for reference to have extra insight into what&#8217;s going on and why.  <em>Note: patches work with text only files and not binary files.</em></p>
+<p>The above patch solution is what I do whenever I get an unfixable conflict where git stops cooperating anymore with merges.  So it&#8217;s a good one to have in your back pocket.</p>
+<p>Sometimes during a fix you just need to pull one file from one branch to another.  This is very simple to do.  I&#8217;ll demonstrate a branch to branch file update on the local machine.</p>
+<pre class="code-block language-sh"><code>git<span class="w"> </span>checkout<span class="w"> </span>&lt;some_branch&gt;
+git<span class="w"> </span>checkout<span class="w"> </span>&lt;some_other_branch&gt;<span class="w"> </span>&lt;path/to/file/on/other/branch&gt;</code></pre>
+<p>You will have now copied the file from the <code class="code-inline language-sh">&lt;some_other_branch&gt;</code>  into <code class="code-inline language-sh">&lt;some_branch&gt;</code>  and viola!</p>
+<h3>TDD and git commits</h3>
+<p>To make your git commit history valuable it&#8217;s probably best to add committing as the last step in the Red, Green, Refactor practice.  That way each small increment is documented in the code history along with any thoughts you had on why you implemented it that way.</p>
+<p>The steps would go</p>
+<ul>
+<li><em>red</em> — you write a test and run it to get a failing result</li>
+<li><em>green</em> — you write the code that makes it pass</li>
+<li><em>refactor</em> — you both consider and re-implement the code to be more manageable and easy to work with in the future without changing the codes behavior</li>
+<li><em>commit</em> — you document the what and why</li>
+</ul>
+<p>With a git commit history like this you will likely get a level of admiration and respect from your team as you have shown yourself to be thoughtful by leaving evidence of a well thought out process.  This is not super common in the developer community, yet this is the ideal we should strive to achieve.</p>
+<h3>Summary</h3>
+<p><em>git</em> is a very powerful code management system and has many features that are to be discovered and taken advantage of as you go along.  I quite enjoy using it and even when situations get difficult and it pushes me to learn how to use it better.  I hope you will see it in the same light when you come into difficult situations.  It is at these times that we learn and are all made better for it.</p>
+<p>I hope you enjoyed this blog post.  Feel free to share any git tips and tricks you have.  I look forward to your feedback and input.  Remeber to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank" rel="noopener noreferrer">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank" rel="noopener noreferrer">@6ftdan</a></p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Zach Stern's photostream" href="https://www.flickr.com/photos/zachstern/">Zach Stern</a> via the <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Generic License</a></span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Leveling+up+with+Git" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Leveling+up+with+Git" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/bitbucket/">#bitbucket</a><a href="../../../../../tag/code/">#code</a><a href="../../../../../tag/fork/">#fork</a><a href="../../../../../tag/git/">#git</a><a href="../../../../../tag/github/">#github</a><a href="../../../../../tag/gitlab/">#gitlab</a><a href="../../../../../tag/pr/">#PR</a><a href="../../../../../tag/pull-request/">#pull request</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../13/dont-use-objects-as-hash-keys-in-ruby/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../../08/03/elixir-envy-%E1%90%85-ruby/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-7245"> 	
+		<div id="comment-7245" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/261ed61a1ccb9986e43eb6de33eeb9ff?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/261ed61a1ccb9986e43eb6de33eeb9ff?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Dave Aronson</span><br />June 25, 2017 - 9:13 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>The bit about the project being &#8220;active enough where the master branch is changed while you’re coding&#8221; reminds me of this writeup I did a while back of a project where that was becoming a royal pain: <a href="http://blog.codosaur.us/2013/03/all-right-break-it-up.html" rel="nofollow ugc">http://blog.codosaur.us/2013/03/all-right-break-it-up.html</a></p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

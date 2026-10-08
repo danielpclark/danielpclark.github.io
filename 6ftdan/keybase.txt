@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/danielpclark
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://6ftdan.com
+  * I am danielpclark (https://keybase.io/danielpclark) on keybase.
+  * I have a public key with fingerprint 956B A9E5 AE97 55EA FAFA  4923 83D1 9EA4 79E5 7E78
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101382208c83ffc9031156b3fa1e46f3bb30c8a0a43b082b11ae1b390e59c2b32d20a",
+            "fingerprint": "956ba9e5ae9755eafafa492383d19ea479e57e78",
+            "host": "keybase.io",
+            "key_id": "83d19ea479e57e78",
+            "kid": "0101382208c83ffc9031156b3fa1e46f3bb30c8a0a43b082b11ae1b390e59c2b32d20a",
+            "uid": "9b6f22b2e4189159ff1d32e8e65dcc19",
+            "username": "danielpclark"
+        },
+        "service": {
+            "hostname": "6ftdan.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1486573026,
+    "expire_in": 157680000,
+    "prev": "f4abca483bc306191b2cc2496c0089d6ae87409169bd68069c394819aa772879",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtkn9MVWUYxw8/RGMSqBArivDgRITh+X3OewlollNUciACsbm78+M9eOBy7+Xc
+C/EjoEmyRQVpQhMYAqKbzgpCpBsgVNhQUmgtDExRCggIMGAXXCw7h9l//dn7/vHu
+fZ7P9/s+77PnIy83ZINLyQ91TXnjRbku/VMCklITt1iAChYpDzUUoBlw7YAmCdrs
+xgxFQg0ohmM4yREExokcKcsiwEgcpxmBlHkcUoxMCgKJiRyP8RQpYBwh4DgPcYEE
+GKSBSAgkIREYj4ajsmJOg6pVVcx2zRZoFjyANA8BS9OQl7VNAYLkSAkHkKdYLcdC
+ltOExyw2XaEVJ/A2GKFYtJh2Ma6V9x/8/1x39podEBiZIAQCUjgHcBrIMi6RBOQg
+Q0uiiAMdtEHVzGdCjZZ4swJNVtHEqxloYTiqZXIUEerN1X/zlGJkuwZGiJZMTW1V
+LXaLaDFp8WN2u9Vm0HX2PKsOvgUF41MLo6CYJa2TmiIHqjbFYkYNuEaKdkX3xCmO
+oVkSI5hwFOZaFRUaFZ2gWYbDtKW/A3M0S5niBTGVpzhSEEmMwQEuEKJIUIARMYwD
+EsNDjqUwgDNAkDQtA0QSUBwOeJ5lCY7VP2yDWWYLaqC1Ovk0zdOmpJl5e7YK0ULP
+91xfdEdcNiAe61z1GUM8n/H5d/ACN/sgHaatF59rnHjjO5/BAL/wM5FhJ6jjX8Xk
+P9z/a2ji7n0hTnXg60srud/PBMhjqZGFk3ELpVhC4d2yb5L9b98pAQGnfjtd0P5B
+tdPD4J9cWj+Y2mt8Iegu6AQ5N28gG/snZhOnB45s2THUfS44gpzaeDpZHt+0NPCp
+f2vsZNNVwuH12nLbnFfVSOzlb4eFe8HlWFjkJ9tev/J4uaxRvFq5nqqbqj8c/Llf
+Zln63LUP+1O8h+vHtsbWXavK8fFNHh+bvvVEeXcwpmX2SkNtwpHfZ9xfInseBC3x
+iSPiUFZr4avuQXselT+7evyPxtL6Ue+eHcNV3h0tmftq1u3tGxgsPoT5di04n/gF
+x0qRyel77zUdaO7uD2ko7luc7GrbPvS+NT4aoW7Y8yc+cxyYPCNVp3cvT/xV7WiQ
+i0Kj85cCgxoTQg+uwixwuDXqaCSF/kg+mj3bsnjhy78rHrq83XbOLW708i01YfzU
+/XdK80LOI9mVfXM/b2pvP7uKbN65O4Z9HJWdsuJRV+QoGUlMv958u3N9Oj3S5sAT
+k2peWVyo2OU6muKf3dH5sfPkxeY/75zsTDpR9tOwZ68zag9beaHYaKq96fty1/y8
+6xIVXxHYuC0OGWuPdhMOBuyPS7r/oHe+YnrR+ws8JevS9ZmdeY4VaYvY8mbt0ecl
+c0+sWv7LLmdq2HlCiPdIUP8B
+=2z3D
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/danielpclark
+
+==================================================================

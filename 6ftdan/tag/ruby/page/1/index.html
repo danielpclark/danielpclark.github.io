@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>ruby | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"f7eebb23342703340f55f649fbbd8ba8",petok:"70bd1c296488d75d19a773dcb589094bbde1546f-1426368908-1800",zone:"6ftdan.com",rocket:"0",apps:{"ga_key":{"ua":"UA-50642120-1","ga_bs":"2"}}}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=919620257c/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]>
+</script>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../wp-content/themes/newsted/favicon.ico" />        
+    <link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../comments-feed.xml" />
+<link rel='stylesheet' id='crayon-css'  href='../../../../wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-a-good-dark-theme-css'  href='../../../../wp-content/uploads/crayon-syntax-highlighter/themes/a-good-dark-theme/a-good-dark-theme.css' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-droid-sans-mono-css'  href='../../../../wp-content/plugins/crayon-syntax-highlighter/fonts/droid-sans-mono.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css'  href='../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css'  href='../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='../../../../wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.6.9","is_admin":"0","ajaxurl":"http:\/\/6ftdan.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../../../wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js'></script>
+<script type='text/javascript' src='//cdn.loginradius.com/share/v1/LoginRadius.js?ver=1.0.0'></script>
+<meta name="generator" content="WordPress 4.1.1" />
+<meta name="bitcoin" content="1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj" />
+<link rel="bitcoin" href="bitcoin:1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj" />		<script type="text/javascript">
+			LoginRadius.util.ready(function () { 
+				$i = $SS.Interface.horizontal;
+				$SS.Providers.Top = ["Facebook","Twitter","Reddit","GooglePlus","LinkedIn","Tumblr","Pinterest","Email"];
+				$u = LoginRadius.user_settings;
+				$u.sharecounttype='url';
+				$u.isMobileFriendly = false;
+									$u.apikey = "76f4dbfa-e5bf-4b8a-8a53-d7674d2cebc1";
+								$i.size = "32"; 
+				$i.show( "lr_horizontal_share" );
+			});
+		</script>
+	<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+})
+</script><script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-50642120-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+/* ]]> */
+</script>
+</head>
+<body class="archive tag tag-ruby tag-134">
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header>	
+	<div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+			<div class="post-881 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby category-technical tag-gsub tag-in-place tag-match tag-match-data tag-regex tag-ruby tag-string tag-substitution">
+	<div class="teaser">		
+		<img width="640" height="361" src="../../../../wp-content/uploads/2015/03/14637925845_98c95ed3d5_z.jpg" class="attachment-featured wp-post-image" alt="14637925845_98c95ed3d5_z" />		
+		<p class="date-author">March 12, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/03/12/substitution-with-regex-groupings/" rel="bookmark">Substitution with Regex Groupings</a></h3>		<div class="teaser-text">
+			<p>As I continue to grow in experience I was looking into how I might do some in-place substitution that I had been accustomed to performing with array matching (split-map-join).  What I&#8217;m referring to isn&#8217;t just a letter for letter substitution, but something that would find a match and modify it.  For example; if I wanted&#8230;
+<p><a href="../../../../allyourdev/2015/03/12/substitution-with-regex-groupings/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-867 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-ruby category-rubyonrails category-technical tag-constantize tag-eval tag-get_const tag-kernel tag-lambda tag-meta tag-meta-programming tag-rails tag-ruby">
+	<div class="teaser">		
+		<img width="640" height="430" src="../../../../wp-content/uploads/2015/03/4932475910_b8def212e0_z-640x430.jpg" class="attachment-featured wp-post-image" alt="4932475910_b8def212e0_z" />		
+		<p class="date-author">March 9, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/03/09/ruby-actionable-meta/" rel="bookmark">Ruby: Actionable Meta</a></h3>		<div class="teaser-text">
+			<p>The more you program the more likely you will need to change a string to the object the string represents. For example you may have a string with a mystery class name in it the you need to call methods on. Lets go a step further, lets say the method you need to call on&#8230;
+<p><a href="../../../../allyourdev/2015/03/09/ruby-actionable-meta/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-853 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby category-technical tag-config tag-configuration tag-initializer tag-module tag-openstruct tag-ruby tag-singleton tag-variable">
+	<div class="teaser">		
+		<img width="640" height="379" src="../../../../wp-content/uploads/2015/03/15719299491_ea6243b3d6_z.jpg" class="attachment-featured wp-post-image" alt="15719299491_ea6243b3d6_z" />		
+		<p class="date-author">March 7, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/03/07/configuration-with-a-singleton-instance/" rel="bookmark">Configuration With a Singleton Instance</a></h3>		<div class="teaser-text">
+			<p>I was considering how I might want to further implement my gem and incorporate configuration settings for it.  I wanted only one instance of my configuration and it needed to be part of my module.  So I&#8217;ve come up with a solution I like that allows me to do this and even have a true&#8230;
+<p><a href="../../../../allyourdev/2015/03/07/configuration-with-a-singleton-instance/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-826 post type-post status-publish format-standard has-post-thumbnail hentry category-facts category-informational category-programming category-ruby category-technical tag-base tag-base-16 tag-base-2 tag-base-58 tag-base-62 tag-base-64 tag-base-8 tag-basecustom tag-binary tag-conversion tag-hexadecimal tag-music tag-notation tag-number tag-numeral tag-numeric tag-octal tag-ruby tag-system">
+	<div class="teaser">		
+		<img width="640" height="429" src="../../../../wp-content/uploads/2015/03/6722345695_757bd0cd96_z.jpg" class="attachment-featured wp-post-image" alt="6722345695_757bd0cd96_z" />		
+		<p class="date-author">March 6, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/03/06/numeric-bases-and-defining-your-own/" rel="bookmark">Numeric Bases and Defining Your Own</a></h3>		<div class="teaser-text">
+			<p>Lately I&#8217;ve been teaching my niece a new way to do math.  She would have difficulty with addition and subtraction of numbers if they contained more than a few digits.  I asked her if she&#8217;d ever seen a clock where the numbers rolled over (like in the movie Ground Hog Day).  She hadn&#8217;t.  I decided&#8230;
+<p><a href="../../../../allyourdev/2015/03/06/numeric-bases-and-defining-your-own/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-807 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby category-technical tag-case tag-else tag-if tag-lambda tag-proc tag-ruby tag-switch tag-switching tag-when">
+	<div class="teaser">		
+		<img width="640" height="427" src="../../../../wp-content/uploads/2015/03/2186726069_711fd402f4_z.jpg" class="attachment-featured wp-post-image" alt="2186726069_711fd402f4_z" />		
+		<p class="date-author">March 3, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/03/03/ruby-the-case-for-case/" rel="bookmark">Ruby: The Case for Case</a></h3>		<div class="teaser-text">
+			<p>It&#8217;s nice to have case and when available in Ruby.  But I don&#8217;t see it used too often.  I myself don&#8217;t use it much because I&#8217;m more accustomed to just using if and else.  So let&#8217;s get into case switching. </p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-5504a98be504b402620812" class="crayon-syntax crayon-theme-a-good-dark-theme crayon-font-droid-sans-mono crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2; font-size: 12px !important; line-height: 15px !important;">
+
+person = "employee"
+
+case person
+  when "boss"
+    puts "Yes sir!"
+  when "employee"
+    puts "Sure I'll get around to that if I have any time."
+  else
+    puts "*smile and nod*"
+end
+# =&gt; "Sure I'll get around to that if I have any time."</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5504a98be504b402620812-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be504b402620812-2">2</div><div class="crayon-num" data-line="crayon-5504a98be504b402620812-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be504b402620812-4">4</div><div class="crayon-num" data-line="crayon-5504a98be504b402620812-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be504b402620812-6">6</div><div class="crayon-num" data-line="crayon-5504a98be504b402620812-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be504b402620812-8">8</div><div class="crayon-num" data-line="crayon-5504a98be504b402620812-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be504b402620812-10">10</div><div class="crayon-num" data-line="crayon-5504a98be504b402620812-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be504b402620812-12">12</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2;"><div class="crayon-line" id="crayon-5504a98be504b402620812-1">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be504b402620812-2"><span class="crayon-v">person</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"employee"</span></div><div class="crayon-line" id="crayon-5504a98be504b402620812-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be504b402620812-4"><span class="crayon-st">case</span><span class="crayon-h"> </span><span class="crayon-i">person</span></div><div class="crayon-line" id="crayon-5504a98be504b402620812-5"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-st">when</span><span class="crayon-h"> </span><span class="crayon-s">"boss"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be504b402620812-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"Yes sir!"</span></div><div class="crayon-line" id="crayon-5504a98be504b402620812-7"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-st">when</span><span class="crayon-h"> </span><span class="crayon-s">"employee"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be504b402620812-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"Sure I'll get around to that if I have any time."</span></div><div class="crayon-line" id="crayon-5504a98be504b402620812-9"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-st">else</span></div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be504b402620812-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"*smile and nod*"</span></div><div class="crayon-line" id="crayon-5504a98be504b402620812-11"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be504b402620812-12"><span class="crayon-c"># =&gt; "Sure I'll get around to that if I have any time."</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0017 seconds] -->
+<p> This is your standard use of  case switching.  We check whatever variable is handed&#8230;
+<p><a href="../../../../allyourdev/2015/03/03/ruby-the-case-for-case/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-795 post type-post status-publish format-standard has-post-thumbnail hentry category-ruby category-technical tag-gem tag-github tag-publish tag-repo tag-repository tag-ruby tag-rubygems tag-version tag-versioned tag-versioning">
+	<div class="teaser">		
+		<img width="622" height="156" src="../../../../wp-content/uploads/2015/03/version.png" class="attachment-featured wp-post-image" alt="version" />		
+		<p class="date-author">March 1, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/03/01/version-both-your-github-repo-and-gem/" rel="bookmark">Version Both Your Github Repo and Gem</a></h3>		<div class="teaser-text">
+			<p>There are many howtos on getting started with Github and creating a Ruby gem.  What I haven&#8217;t come across is a blog about versioning your github releases.  So I will demonstrate here the steps I go through after verifying a gem is ready, releasing it, and publishing a version to the code base on Github&#8230;.
+<p><a href="../../../../allyourdev/2015/03/01/version-both-your-github-repo-and-gem/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-791 post type-post status-publish format-standard has-post-thumbnail hentry category-ruby tag-defer tag-deferred tag-lambda tag-proc tag-programming tag-ruby">
+	<div class="teaser">		
+		<img width="640" height="430" src="../../../../wp-content/uploads/2015/02/5225664333_33241d54de_z-640x430.jpg" class="attachment-featured wp-post-image" alt="5225664333_33241d54de_z" />		
+		<p class="date-author">February 27, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/02/27/value-assignment-and-deferment-with-lambdasprocs/" rel="bookmark">Value Assignment and Deferment with Lambdas/Procs</a></h3>		<div class="teaser-text">
+			<p>When assigning a variable with a raw value the outcome is as you would expect. </p><!-- Crayon Syntax Highlighter v2.6.9 -->
+
+		<div id="crayon-5504a98be70e3556270682" class="crayon-syntax crayon-theme-a-good-dark-theme crayon-font-droid-sans-mono crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2; font-size: 12px !important; line-height: 15px !important;">
+
+greeting = "hello"
+# =&gt; "hello"
+puts greeting
+# hello</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5504a98be70e3556270682-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be70e3556270682-2">2</div><div class="crayon-num" data-line="crayon-5504a98be70e3556270682-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5504a98be70e3556270682-4">4</div><div class="crayon-num" data-line="crayon-5504a98be70e3556270682-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2;"><div class="crayon-line" id="crayon-5504a98be70e3556270682-1">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be70e3556270682-2"><span class="crayon-v">greeting</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">"hello"</span></div><div class="crayon-line" id="crayon-5504a98be70e3556270682-3"><span class="crayon-c"># =&gt; "hello"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5504a98be70e3556270682-4"><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-v">greeting</span></div><div class="crayon-line" id="crayon-5504a98be70e3556270682-5"><span class="crayon-c"># hello</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p> Now while learning about assigning methods to variables I used to wonder if I was assigning the result value from the method, or simply pointing to the method to be run when the variable was called upon.  To show&#8230;
+<p><a href="../../../../allyourdev/2015/02/27/value-assignment-and-deferment-with-lambdasprocs/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-786 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-ruby category-rubyonrails category-technical tag-class tag-inheritance tag-mixin tag-rails tag-ruby tag-self tag-singleton">
+	<div class="teaser">		
+		<img width="640" height="421" src="../../../../wp-content/uploads/2015/02/4440092086_8e9e03f3ef_z.jpg" class="attachment-featured wp-post-image" alt="4440092086_8e9e03f3ef_z" />		
+		<p class="date-author">February 24, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/02/24/writing-methods-for-both-class-and-instance-levels/" rel="bookmark">Writing methods for both class and instance levels</a></h3>		<div class="teaser-text">
+			<p>When perusing the Rails documentation for various methods I noticed something that seemed odd to me.  The method descriptions seemed to show an extra parameter as the first parameter that I was never using.  It&#8217;s strange when you use the methods all the time and it doesn&#8217;t seem to be implemented the way the documentation&#8230;
+<p><a href="../../../../allyourdev/2015/02/24/writing-methods-for-both-class-and-instance-levels/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-775 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby category-rubyonrails category-technical tag-browser tag-chrome tag-firefox tag-ie tag-minitest tag-rails tag-ruby tag-safari tag-spec tag-test tag-watir tag-watir-webdriver tag-web">
+	<div class="teaser">		
+		<img width="640" height="424" src="../../../../wp-content/uploads/2015/02/10411753546_fb1ddf069d_z.jpg" class="attachment-featured wp-post-image" alt="10411753546_fb1ddf069d_z" />		
+		<p class="date-author">February 21, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/02/21/minitest-with-watir-webdriver/" rel="bookmark">Minitest with Watir-webdriver</a></h3>		<div class="teaser-text">
+			<p>Why, you might ask, would I even think of Watir-webdriver?  Well let me tell you.  It&#8217;s because it&#8217;s easy and fun.  It&#8217;s not a fast way to run tests though.  What Watir will do for you is open an actual web browser window and let you check and interact with it from your Ruby code&#8230;.
+<p><a href="../../../../allyourdev/2015/02/21/minitest-with-watir-webdriver/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-768 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-ruby category-technical tag-debug tag-debugging tag-error tag-fixing tag-problem tag-rails tag-ruby tag-solving">
+	<div class="teaser">		
+		<img width="640" height="323" src="../../../../wp-content/uploads/2015/02/7134034551_8ffac12a52_z.jpg" class="attachment-featured wp-post-image" alt="7134034551_8ffac12a52_z" />		
+		<p class="date-author">February 20, 2015 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../../../allyourdev/2015/02/20/some-basic-ruby-tools-for-sniffing-out-errors/" rel="bookmark">Some Basic Ruby Tools for Sniffing out Errors</a></h3>		<div class="teaser-text">
+			<p>Needing to know what&#8217;s going on under the hood is a big part to solving problems and challenges.  For the longest time I only ever used print statements to output to the console the state of something at a specific point.  That&#8217;s all I ever used in Python.  But sometimes you need to do a&#8230;
+<p><a href="../../../../allyourdev/2015/02/20/some-basic-ruby-tools-for-sniffing-out-errors/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+			<div class="pager"><span class='page-numbers current'>1</span>
+<a class='page-numbers' href='../2/'>2</a>
+<a class='page-numbers' href='../3/'>3</a></div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;"><table border="0"><tr><td colspan="3"><a href="../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td></tr><tr><td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'><div style="display:block;background-image:url('../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../wp-content/uploads/2014/05/twitter.png" /></div></td></tr><tr><td style="vertical-align:top;"><a href="skype:danielpclark84?chat"><img alt="Message me on Skype." style="height:18px" src="https://web.archive.org/web/20251114/https://6ftdan.com/wp-content/uploads/2014/05/chatbutton_32px.png"/></a></td><td style="vertical-align:top;padding-top:4px;" onclick='window.open("https://coderwall.com/danielpclark");'><div style="z-index:1;display:block;margin: -4px 4px 0 7px;width:110px;height:24px;background-image:url('../../../../wp-content/uploads/2015/01/endorsecount.png');background-position: 0 3px;background-repeat: no-repeat;"><img src="https://api.coderwall.com/danielpclark/endorsecount.png" onerror="this.parentNode.removeChild(this)" /></div></td><td><a type="application/rss+xml" href="http://feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1399875327158.png" /></a></td></tr><tr><td colspan="3"><table><tr><td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="https://github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../wp-content/uploads/2014/05/github.png" /></a><a href="http://linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a></td><td><a href="http://stackoverflow.com/users/1500195/6ft-dan" target="_blank"><table class="so-table"><tr><td><div class="stackoverflow so-logo"></div></td><td><div class="stackoverflow so-reputation"></div></td><td><div class="stackoverflow so-silver"></div></td><td><div class="stackoverflow so-bronze"></div></td></tr></table></a></td></tr></table></td></tr></table></div></div>
+		</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h4 class="widget-title">Recent Posts</h4>		<ul>
+					<li>
+				<a href="../../../../allyourdev/2015/03/12/substitution-with-regex-groupings/">Substitution with Regex Groupings</a>
+						</li>
+					<li>
+				<a href="../../../../allyourdev/2015/03/09/ruby-actionable-meta/">Ruby: Actionable Meta</a>
+						</li>
+					<li>
+				<a href="../../../../allyourdev/2015/03/07/configuration-with-a-singleton-instance/">Configuration With a Singleton Instance</a>
+						</li>
+					<li>
+				<a href="../../../../allyourdev/2015/03/06/numeric-bases-and-defining-your-own/">Numeric Bases and Defining Your Own</a>
+						</li>
+					<li>
+				<a href="../../../../allyourdev/2015/03/03/ruby-the-case-for-case/">Ruby: The Case for Case</a>
+						</li>
+				</ul>
+		</aside><aside id="tag_cloud-3" class="widget widget_tag_cloud"><h4 class="widget-title">Topics</h4><div class="tagcloud"><a href='../../../anonymity/' class='tag-link-96' title='2 topics' style='font-size: 8pt;'>anonymity</a>
+<a href='../../../article/' class='tag-link-258' title='12 topics' style='font-size: 17.5869565217pt;'>article</a>
+<a href='../../../base-64/' class='tag-link-74' title='2 topics' style='font-size: 8pt;'>base 64</a>
+<a href='../../../blog/' class='tag-link-257' title='11 topics' style='font-size: 17.1304347826pt;'>blog</a>
+<a href='../../../challenge/' class='tag-link-75' title='3 topics' style='font-size: 9.82608695652pt;'>challenge</a>
+<a href='../../../choice/' class='tag-link-86' title='2 topics' style='font-size: 8pt;'>choice</a>
+<a href='../../../code/' class='tag-link-219' title='4 topics' style='font-size: 11.347826087pt;'>code</a>
+<a href='../../../database/' class='tag-link-306' title='3 topics' style='font-size: 9.82608695652pt;'>database</a>
+<a href='../../../development/' class='tag-link-184' title='2 topics' style='font-size: 8pt;'>development</a>
+<a href='../../../error/' class='tag-link-63' title='2 topics' style='font-size: 8pt;'>error</a>
+<a href='../../../god/' class='tag-link-89' title='2 topics' style='font-size: 8pt;'>God</a>
+<a href='../../../hope/' class='tag-link-128' title='3 topics' style='font-size: 9.82608695652pt;'>hope</a>
+<a href='../../../howto/' class='tag-link-35' title='7 topics' style='font-size: 14.3913043478pt;'>howto</a>
+<a href='../../../javascript/' class='tag-link-262' title='3 topics' style='font-size: 9.82608695652pt;'>javascript</a>
+<a href='../../../lambda/' class='tag-link-231' title='4 topics' style='font-size: 11.347826087pt;'>lambda</a>
+<a href='../../../learn/' class='tag-link-317' title='3 topics' style='font-size: 9.82608695652pt;'>learn</a>
+<a href='../../../learning/' class='tag-link-237' title='4 topics' style='font-size: 11.347826087pt;'>learning</a>
+<a href='../../../life/' class='tag-link-78' title='4 topics' style='font-size: 11.347826087pt;'>life</a>
+<a href='../../../linux/' class='tag-link-11' title='3 topics' style='font-size: 9.82608695652pt;'>linux</a>
+<a href='../../../live/' class='tag-link-77' title='2 topics' style='font-size: 8pt;'>live</a>
+<a href='../../../love/' class='tag-link-6' title='3 topics' style='font-size: 9.82608695652pt;'>love</a>
+<a href='../../../mesh/' class='tag-link-94' title='2 topics' style='font-size: 8pt;'>mesh</a>
+<a href='../../../motivation/' class='tag-link-164' title='2 topics' style='font-size: 8pt;'>motivation</a>
+<a href='../../../object/' class='tag-link-309' title='3 topics' style='font-size: 9.82608695652pt;'>object</a>
+<a href='../../../patterns/' class='tag-link-67' title='2 topics' style='font-size: 8pt;'>patterns</a>
+<a href='../../../polymorphic/' class='tag-link-206' title='2 topics' style='font-size: 8pt;'>polymorphic</a>
+<a href='../../../post/' class='tag-link-259' title='12 topics' style='font-size: 17.5869565217pt;'>post</a>
+<a href='../../../privacy/' class='tag-link-27' title='2 topics' style='font-size: 8pt;'>privacy</a>
+<a href='../../../private/' class='tag-link-95' title='2 topics' style='font-size: 8pt;'>private</a>
+<a href='../../../proc/' class='tag-link-226' title='3 topics' style='font-size: 9.82608695652pt;'>proc</a>
+<a href='../../../programming/' class='tag-link-72' title='8 topics' style='font-size: 15.152173913pt;'>programming</a>
+<a href='../../../rails/' class='tag-link-207' title='14 topics' style='font-size: 18.652173913pt;'>rails</a>
+<a href='../../' class='tag-link-134' title='24 topics' style='font-size: 22pt;'>ruby</a>
+<a href='../../../ruby-on-rails/' class='tag-link-208' title='9 topics' style='font-size: 15.9130434783pt;'>ruby on rails</a>
+<a href='../../../secure/' class='tag-link-93' title='4 topics' style='font-size: 11.347826087pt;'>secure</a>
+<a href='../../../security/' class='tag-link-25' title='3 topics' style='font-size: 9.82608695652pt;'>security</a>
+<a href='../../../software/' class='tag-link-183' title='2 topics' style='font-size: 8pt;'>software</a>
+<a href='../../../thinking/' class='tag-link-81' title='2 topics' style='font-size: 8pt;'>thinking</a>
+<a href='../../../tor/' class='tag-link-92' title='2 topics' style='font-size: 8pt;'>tor</a>
+<a href='../../../truth/' class='tag-link-44' title='3 topics' style='font-size: 9.82608695652pt;'>truth</a>
+<a href='../../../understanding/' class='tag-link-65' title='4 topics' style='font-size: 11.347826087pt;'>understanding</a>
+<a href='../../../value/' class='tag-link-172' title='3 topics' style='font-size: 9.82608695652pt;'>value</a>
+<a href='../../../video/' class='tag-link-99' title='2 topics' style='font-size: 8pt;'>video</a>
+<a href='../../../wisdom/' class='tag-link-66' title='2 topics' style='font-size: 8pt;'>wisdom</a>
+<a href='../../../worldview/' class='tag-link-82' title='2 topics' style='font-size: 8pt;'>worldview</a></div>
+</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">My Bitcoin Address</h4>			<div class="textwidget"><a href="bitcoin:1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj"><center><img src="../../../../wp-content/uploads/2014/06/qr.png" width='200' height='200' />
+<span style="font-size:xx-small;">1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj</span></center></a></div>
+		</aside><aside id="kebo_twitter_feed_widget-3" class="widget kebo_twitter_feed_widget">
+
+<ul class="kebo-tweets list light">
+        
+        
+        
+        
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/576173853874995200" target="_blank">
+                        <time title="Time posted: 12th Mar 2015 20:12:06" datetime="2015-03-12T20:12:06+00:00" aria-label="Posted on 12th Mar 2015 20:12:06">March 12, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        Aaron Draplin: There Is No Battle Plan - If you asked Aaron Draplin how he gets so much done, he’ll pretty much te... <a href="http://ow.ly/2VTeBf" target="_blank">ow.ly/2VTeBf</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/575991859144704000" target="_blank">
+                        <time title="Time posted: 12th Mar 2015 08:08:55" datetime="2015-03-12T08:08:55+00:00" aria-label="Posted on 12th Mar 2015 08:08:55">March 12, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        How to Make More Time for New Hobbies - Photo via shutterhacks on Flickr Reading the right book at the right time ... <a href="http://ow.ly/2VRrPO" target="_blank">ow.ly/2VRrPO</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/575629529953267712" target="_blank">
+                        <time title="Time posted: 11th Mar 2015 08:09:09" datetime="2015-03-11T08:09:09+00:00" aria-label="Posted on 11th Mar 2015 08:09:09">March 11, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        Bored with Your Ideas? Mash ‘em Up. - From the movie Ida Polish film director Pawel Pawlikowski knows that sometim... <a href="http://ow.ly/2VOfWn" target="_blank">ow.ly/2VOfWn</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/575529894802759680" target="_blank">
+                        <time title="Time posted: 11th Mar 2015 01:33:14" datetime="2015-03-11T01:33:14+00:00" aria-label="Posted on 11th Mar 2015 01:33:14">March 11, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        RT <a href="http://twitter.com/legalshield" target="_blank">@legalshield</a> Don't wait until it is too late! 4 Reasons why it is important to execute your <a href="http://twitter.com/search?q=%23Will" target="_blank">#Will</a> today. 
+http... <a href="http://t.co/a0cImIzqXX" target="_blank">http://t.co/a0cImIzqXX</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/575265779991625728" target="_blank">
+                        <time title="Time posted: 10th Mar 2015 08:03:44" datetime="2015-03-10T08:03:44+00:00" aria-label="Posted on 10th Mar 2015 08:03:44">March 10, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        Stuck in a Meeting That Barely Involves You? Pull a “Fixler” <a href="http://ow.ly/2VKVaU" target="_blank">ow.ly/2VKVaU</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/574994230977957889" target="_blank">
+                        <time title="Time posted: 09th Mar 2015 14:04:42" datetime="2015-03-09T14:04:42+00:00" aria-label="Posted on 09th Mar 2015 14:04:42">March 9, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        3 Steps For Bridging “The Confidence Gap” - In their groundbreaking 2014 article and book “The Confidence Gap“ Kat... <a href="http://ow.ly/2VIxYu" target="_blank">ow.ly/2VIxYu</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/574903606199062528" target="_blank">
+                        <time title="Time posted: 09th Mar 2015 08:04:35" datetime="2015-03-09T08:04:35+00:00" aria-label="Posted on 09th Mar 2015 08:04:35">March 9, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        How to Never Be Late Again - By Ariel Belinco Are you always showing up 5 to 10 minutes late to things despite you... <a href="http://ow.ly/2VHaJk" target="_blank">ow.ly/2VHaJk</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+            
+        
+                
+            
+            <li class="ktweet">
+
+                <div class="kmeta">
+                    <a class="kaccount" href="https://twitter.com/LS_IA_DC" target="_blank">@LS_IA_DC</a>
+                    <a class="kdate" href="https://twitter.com/LS_IA_DC/statuses/573545301505667073" target="_blank">
+                        <time title="Time posted: 05th Mar 2015 14:07:10" datetime="2015-03-05T14:07:10+00:00" aria-label="Posted on 05th Mar 2015 14:07:10">March 5, 2015</time>
+                    </a>
+                </div>
+
+                <p class="ktext">
+                                        How To Make Sundays Suck Less - By Anastasia Dimitriadi Sundays suck, even if you love your job. In fact, research... <a href="http://ow.ly/2VwcPR" target="_blank">ow.ly/2VwcPR</a>                </p>
+
+                <div class="kfooter">
+                                            
+                                    </div>
+                
+                                
+            </li>
+
+                        
+                
+                
+    
+</ul>
+
+</aside><aside id="text-16" class="widget widget_text">			<div class="textwidget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a></div>
+		</aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../" rel="home">Daniel P. Clark</a> Copyright &copy; 2014 &ndash; <a href="http://www.wpmultiverse.com/themes/newsted/" target="_blank">Newsted Theme</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+<script type='text/javascript' src='../../../../wp-content/themes/newsted/assets/js/newsted.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"6ftdan"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+        
+        //<![CDATA[
+        jQuery(document).ready(function() {
+            
+            jQuery( '.ktweet .kfooter a:not(.ktogglemedia)' ).click(function(e) {
+
+                // Prevent Click from Reloading page
+                e.preventDefault();
+
+                var khref = jQuery(this).attr('href');
+                window.open( khref, 'twitter', 'width=600, height=400, top=0, left=0');
+
+            });
+            
+        });
+        //]]>
+        
+    </script>
+    </body>
+</html>

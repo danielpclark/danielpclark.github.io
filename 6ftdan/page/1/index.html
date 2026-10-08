@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Daniel P. Clark | 6ft Dan™ “Sound Software Design”</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../wp-content/themes/newsted/favicon.ico" />        
+    <style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below, 
+					.blog #nav-above, 
+					.navigation.paging-navigation, 
+					.navigation.pagination,
+					.pagination.paging-pagination, 
+					.pagination.pagination, 
+					.pagination.loop-pagination, 
+					.bicubic-nav-link, 
+					#page-nav, 
+					.camp-paging, 
+					#reposter_nav-pages, 
+					.unity-post-pagination, 
+					.wordpost_content .nav_post_link,.page-link,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager { 
+						display: none !important; 
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important; 
+					}		</style>
+	<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../comments-feed.xml" />
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='../../wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-a-good-dark-theme-css'  href='../../wp-content/uploads/crayon-syntax-highlighter/themes/a-good-dark-theme/a-good-dark-theme.css' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-droid-sans-mono-css'  href='../../wp-content/plugins/crayon-syntax-highlighter/fonts/droid-sans-mono.css' type='text/css' media='all' />
+<link rel='stylesheet' id='pgntn_stylesheet-css'  href='../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='twttr_stylesheet-css'  href='../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css'  href='../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css'  href='../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+      <script>
+      if (document.location.protocol != "https:") {
+          document.location = document.URL.replace(/^http:/i, "https:");
+      }
+      </script>
+      <script type='text/javascript' src='../../wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/6ftdan.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js'></script>
+<meta name="generator" content="WordPress 4.8" />
+<meta name="bitcoin" content="1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj" />
+<link rel="bitcoin" href="bitcoin:1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj" /><style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<!-- BEGIN GADWP v5.0.1 Universal Analytics - https://deconf.com/google-analytics-dashboard-wordpress/ -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-50642120-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+	</head>
+<body data-rsssl=1 class="home blog">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+					
+		
+</header>	
+	<div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+			<div class="post-1532 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-programming category-technical tag-bitbucket tag-code tag-fork tag-git tag-github tag-gitlab tag-pr tag-pull-request">
+	<div class="teaser">		
+		<img width="640" height="304" src="../../wp-content/uploads/2017/05/3062069651_1bd260ef16_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2017/05/3062069651_1bd260ef16_z.jpg 640w, ../../wp-content/uploads/2017/05/3062069651_1bd260ef16_z-300x143.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">May 25, 2017 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2017/05/25/leveling-up-with-git/" rel="bookmark">Leveling up with Git</a></h3>		<div class="teaser-text">
+			<p>This past weekend I got to spend 4 days at the Ruby for Good event.  This is an event where programmers get together and volunteer their efforts in charitable programming for many needs in our communities.  The team I joined up with consisted of 10 developers and most of the team grouped together in about&#8230;</p>
+<p><a href="../../allyourdev/2017/05/25/leveling-up-with-git/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1518 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-ruby category-technical tag-hash tag-method tag-object tag-performance tag-ruby tag-string tag-symbol">
+	<div class="teaser">		
+		<img width="640" height="375" src="../../wp-content/uploads/2017/05/8553113311_cebc102e29_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2017/05/8553113311_cebc102e29_z.jpg 640w, ../../wp-content/uploads/2017/05/8553113311_cebc102e29_z-300x176.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">May 13, 2017 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/" rel="bookmark">Don&#8217;t Use Objects as Hash Keys in Ruby*</a></h3>		<div class="teaser-text">
+			<p>Hashes have been optimized for symbols and strings in Ruby which technically are objects but this article is for revealing how much of a difference this makes when using other objects as hash keys.  There are some cases where this makes a big difference but many times you won&#8217;t notice much of a difference. I&#8230;</p>
+<p><a href="../../allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1505 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-life tag-category tag-context tag-domain tag-meaning tag-naming tag-naming-things tag-understanding tag-words tag-worldview">
+	<div class="teaser">		
+		<img width="640" height="430" src="../../wp-content/uploads/2017/04/170257936_82828027da_z-640x430.jpg" class="attachment-featured size-featured wp-post-image" alt="" />		
+		<p class="date-author">April 14, 2017 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../danielpclark/2017/04/14/naming-things-is-hard/" rel="bookmark">“Naming Things is Hard”</a></h3>		<div class="teaser-text">
+			<p>I&#8217;ve lost count of the times I&#8217;ve heard that “Naming things is hard.”  This is said very often in the world of software development.  So I wanted to take the time to address it. First of all this statement “Naming things is hard.” is a misnomer (a wrong or inaccurate name or designation, or use of a name&#8230;</p>
+<p><a href="../../danielpclark/2017/04/14/naming-things-is-hard/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1489 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-informational category-linux category-technical category-technology tag-display tag-hd tag-how-to tag-howto tag-linux tag-raspberry-pi tag-rpi tag-tft tag-video">
+	<div class="teaser">		
+		<img width="640" height="427" src="../../wp-content/uploads/2017/03/7519629902_25477f02c6_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2017/03/7519629902_25477f02c6_z.jpg 640w, ../../wp-content/uploads/2017/03/7519629902_25477f02c6_z-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">March 12, 2017 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/" rel="bookmark">Installing the Adafruit 2.8&#8243; TFT Display on the Raspberry Pi</a></h3>		<div class="teaser-text">
+			<p>One thing I&#8217;ve learned over and over from working on the Raspberry Pi is that it&#8217;s most likely going to take a chunk of time to get things set up just the way you want.  And this display is no different. I&#8217;ve written in the past about How to Play HD Video on a Raspberry&#8230;</p>
+<p><a href="../../allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1473 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-ruby category-technical tag-array tag-parameters tag-ruby tag-splat tag-splat-operator">
+	<div class="teaser">		
+		<img width="640" height="430" src="../../wp-content/uploads/2017/01/447722454_81cce2ef09_z-640x430.jpg" class="attachment-featured size-featured wp-post-image" alt="" />		
+		<p class="date-author">January 12, 2017 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2017/01/12/re-what-is-the-splat-operator-doing-here/" rel="bookmark">Re: What is the splat operator doing here?</a></h3>		<div class="teaser-text">
+			<p>I&#8217;ve received an email from a fellow software developer inquiring about a bit of code where I use Ruby&#8217;s splat operator in two different ways.  In my Ruby gem cards_lib I wrote a &#8220;macro&#8221; to take a list of strings and generate card instances from them.  You don&#8217;t really hear of macros in the Ruby community&#8230;</p>
+<p><a href="../../allyourdev/2017/01/12/re-what-is-the-splat-operator-doing-here/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1435 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-informational category-linux tag-audio tag-concat tag-crop tag-edit tag-fade tag-framerate tag-frames tag-images tag-linux tag-slideshow tag-sync tag-video">
+	<div class="teaser">		
+		<img width="640" height="400" src="../../wp-content/uploads/2016/07/14911407259_d516082b17_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2016/07/14911407259_d516082b17_z.jpg 640w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">July 1, 2016 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2016/07/01/5-linux-video-editing-tool-tips/" rel="bookmark">5+ Linux Video Editing Tool Tips</a></h3>		<div class="teaser-text">
+			<p>Finding a video editor in Linux that isn&#8217;t severely handicapped or come with an extreme learning curve is difficult.  But this article isn&#8217;t about fancy video editors.  As it turns out many of the things you need to get done are easiest with a few command-line tools.  The packages you&#8217;ll want to install are mpv,&#8230;</p>
+<p><a href="../../allyourdev/2016/07/01/5-linux-video-editing-tool-tips/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1416 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-informational category-linux tag-linux tag-pair tag-pair-programming tag-programming tag-remote tag-session tag-virtual-machine">
+	<div class="teaser">		
+		<img width="640" height="349" src="../../wp-content/uploads/2016/05/15633410005_70ffc2769d_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2016/05/15633410005_70ffc2769d_z.jpg 640w, ../../wp-content/uploads/2016/05/15633410005_70ffc2769d_z-300x164.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">May 29, 2016 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2016/05/29/how-to-build-the-ultimate-remote-pair-programming-environment/" rel="bookmark">How to Build the Ultimate Remote Pair Programming Environment</a></h3>		<div class="teaser-text">
+			<p>There are a handful of desktop sharing apps out there and there are plenty of shell/editor sharing setups.  But the biggest problem with these is you are opening up your own personal computer to not only the person(s) you&#8217;re connecting with, but also the potentially vulnerable or malicious technology you choose to use.  A proper&#8230;</p>
+<p><a href="../../allyourdev/2016/05/29/how-to-build-the-ultimate-remote-pair-programming-environment/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1397 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-linux tag-aes tag-backup tag-data tag-duplicity tag-encrypt tag-encryption tag-google-drive tag-gpg tag-librsync tag-linux tag-offsite tag-popt tag-secure tag-store tag-ubuntu">
+	<div class="teaser">		
+		<img width="640" height="426" src="../../wp-content/uploads/2016/04/3541480021_af6063dd74_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2016/04/3541480021_af6063dd74_z.jpg 640w, ../../wp-content/uploads/2016/04/3541480021_af6063dd74_z-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">April 21, 2016 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../danielpclark/2016/04/21/encrypted-linux-backup-with-google-drive-and-duplicity/" rel="bookmark">Encrypted Linux Backup with Google Drive and Duplicity</a></h3>		<div class="teaser-text">
+			<p>When it comes to protecting your important data it&#8217;s best to have at least 3 copies of your things backed up.  One should be air-gapped (not actively connected) and another be offsite (not at the same building).  The air gap will protect against malicious code that would encrypt all your files and force you to&#8230;</p>
+<p><a href="../../danielpclark/2016/04/21/encrypted-linux-backup-with-google-drive-and-duplicity/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1384 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby category-technical tag-anonymous tag-block tag-class tag-convenient tag-refinement tag-ruby tag-scope tag-short">
+	<div class="teaser">		
+		<img width="640" height="360" src="../../wp-content/uploads/2016/04/14151945613_deb1aab17d_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2016/04/14151945613_deb1aab17d_z.jpg 640w, ../../wp-content/uploads/2016/04/14151945613_deb1aab17d_z-300x169.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">April 21, 2016 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2016/04/21/use-rubys-refinements-anywhere-with-an-anonymous-class/" rel="bookmark">Use Ruby’s Refinements Anywhere With An Anonymous Class</a></h3>		<div class="teaser-text">
+			<p>For a long time I&#8217;ve been looking for a way to use Ruby&#8217;s refinements without building a class &amp; method setup and then instantiating an instance of the class just to use it. And now I&#8217;ve finally found a solution. </p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-59628ef99acde031831924" class="crayon-syntax crayon-theme-a-good-dark-theme crayon-font-droid-sans-mono crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2; font-size: 12px !important; line-height: 15px !important;">
+
+module Moo
+  refine Fixnum do
+    def to_s
+      "moo"
+    end
+  end
+end
+
+# begin/end blocks allow access to local variables
+begin # valid Ruby 2.2.3 and NOT Ruby 2.3.0
+  using Moo
+  1.to_s
+end
+# =&gt; "moo"
+
+# class syntax has no access to outer local variables
+class &lt;&lt; Class.new # valid Ruby 2.3.0
+  using Moo
+  1.to_s
+end
+# =&gt; "moo"</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-59628ef99acde031831924-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-2">2</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-4">4</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-6">6</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-8">8</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-10">10</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-12">12</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-14">14</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-16">16</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-18">18</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-20">20</div><div class="crayon-num" data-line="crayon-59628ef99acde031831924-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-59628ef99acde031831924-22">22</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2;"><div class="crayon-line" id="crayon-59628ef99acde031831924-1">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-2"><span class="crayon-r">module</span><span class="crayon-h"> </span><span class="crayon-i">Moo</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i">refine</span><span class="crayon-h"> </span><span class="crayon-t">Fixnum</span><span class="crayon-h"> </span><span class="crayon-st">do</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-v">to</span><span class="crayon-sy">_</span>s</div><div class="crayon-line" id="crayon-59628ef99acde031831924-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s">"moo"</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-7"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-8"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-10"><span class="crayon-c"># begin/end blocks allow access to local variables</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-11"><span class="crayon-st">begin</span><span class="crayon-h"> </span><span class="crayon-c"># valid Ruby 2.2.3 and NOT Ruby 2.3.0</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-12"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i">using</span><span class="crayon-h"> </span><span class="crayon-i">Moo</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-13"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1.to_s</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-14"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-15"><span class="crayon-c"># =&gt; "moo"</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-16">&nbsp;</div><div class="crayon-line" id="crayon-59628ef99acde031831924-17"><span class="crayon-c"># class syntax has no access to outer local variables</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-18"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-o">&lt;&lt;</span><span class="crayon-h"> </span><span class="crayon-r">Class</span><span class="crayon-sy">.</span><span class="crayon-v">new</span><span class="crayon-h"> </span><span class="crayon-c"># valid Ruby 2.3.0</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-19"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i">using</span><span class="crayon-h"> </span><span class="crayon-i">Moo</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-20"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1.to_s</span></div><div class="crayon-line" id="crayon-59628ef99acde031831924-21"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-59628ef99acde031831924-22"><span class="crayon-c"># =&gt; "moo"</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0021 seconds] -->
+<p> The best work around I&#8217;ve found for accessing values outside the class wood be&#8230;</p>
+<p><a href="../../allyourdev/2016/04/21/use-rubys-refinements-anywhere-with-an-anonymous-class/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+<div class="post-1353 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-rubyonrails category-technical tag-controller tag-has_on tag-inventory tag-model tag-nested tag-parameters tag-params tag-polymorphic tag-rails tag-through tag-view">
+	<div class="teaser">		
+		<img width="640" height="427" src="../../wp-content/uploads/2016/03/7807604376_d905ca8637_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" srcset="../../wp-content/uploads/2016/03/7807604376_d905ca8637_z.jpg 640w, ../../wp-content/uploads/2016/03/7807604376_d905ca8637_z-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		
+		<p class="date-author">March 22, 2016 <span>by</span> Daniel P. Clark </p>	
+		<h3 class="teaser-title"><a href="../../allyourdev/2016/03/22/rails-has-one-through-polymorphic-relation/" rel="bookmark">Rails: Has One Through Polymorphic Relation</a></h3>		<div class="teaser-text">
+			<p>As I&#8217;ve described in my blog post &#8220;Rails Polymorphic Associations&#8221; I&#8217;ve stated that polymorphic relations in Rails are best for scenarios where a model may &#8220;belong to&#8221; one of many other kinds of model.  So a Comment model with the polymorphic commentable relationship can belong to any other record in your Rails app.  This is&#8230;</p>
+<p><a href="../../allyourdev/2016/03/22/rails-has-one-through-polymorphic-relation/">Continue Reading &raquo;</a></p>
+		</div>			
+	</div>
+</div>
+						<div class='pgntn-page-pagination pgntn-bottom'>
+							<div class="pgntn-page-pagination-block">
+																	<div class='pgntn-page-pagination-intro'>Page 1 of 11</div>
+								<span class='page-numbers current'>1</span>
+<a class='page-numbers' href='../2/'>2</a>
+<a class='page-numbers' href='../3/'>3</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class='page-numbers' href='../11/'>11</a>
+<a class="next page-numbers" href="../2/">Next »</a>							</div>
+							<div class="clear"></div>
+						</div>
+								<div class="pager"><span class='page-numbers current'>1</span>
+<a class='page-numbers' href='../2/'>2</a>
+<a class='page-numbers' href='../3/'>3</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class='page-numbers' href='../11/'>11</a></div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h4 class="widget-title">Recent Posts</h4>		<ul>
+					<li>
+				<a href="../../allyourdev/2017/05/25/leveling-up-with-git/">Leveling up with Git</a>
+						</li>
+					<li>
+				<a href="../../allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/">Don&#8217;t Use Objects as Hash Keys in Ruby*</a>
+						</li>
+					<li>
+				<a href="../../danielpclark/2017/04/14/naming-things-is-hard/">“Naming Things is Hard”</a>
+						</li>
+					<li>
+				<a href="../../allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/">Installing the Adafruit 2.8&#8243; TFT Display on the Raspberry Pi</a>
+						</li>
+					<li>
+				<a href="../../allyourdev/2017/01/12/re-what-is-the-splat-operator-doing-here/">Re: What is the splat operator doing here?</a>
+						</li>
+				</ul>
+		</aside>		<aside id="tag_cloud-3" class="widget widget_tag_cloud"><h4 class="widget-title">Topics</h4><div class="tagcloud"><a href="../../tag/activerecord/" class="tag-cloud-link tag-link-356 tag-link-position-1" style="font-size: 9.37254901961pt;" aria-label="activerecord (4 items)">activerecord</a>
+<a href="../../tag/array/" class="tag-cloud-link tag-link-344 tag-link-position-2" style="font-size: 9.37254901961pt;" aria-label="array (4 items)">array</a>
+<a href="../../tag/article/" class="tag-cloud-link tag-link-258 tag-link-position-3" style="font-size: 15pt;" aria-label="article (12 items)">article</a>
+<a href="../../tag/blog/" class="tag-cloud-link tag-link-257 tag-link-position-4" style="font-size: 15pt;" aria-label="blog (12 items)">blog</a>
+<a href="../../tag/challenge/" class="tag-cloud-link tag-link-75 tag-link-position-5" style="font-size: 8pt;" aria-label="challenge (3 items)">challenge</a>
+<a href="../../tag/change/" class="tag-cloud-link tag-link-202 tag-link-position-6" style="font-size: 8pt;" aria-label="change (3 items)">change</a>
+<a href="../../tag/code/" class="tag-cloud-link tag-link-219 tag-link-position-7" style="font-size: 12.8039215686pt;" aria-label="code (8 items)">code</a>
+<a href="../../tag/css/" class="tag-cloud-link tag-link-264 tag-link-position-8" style="font-size: 8pt;" aria-label="css (3 items)">css</a>
+<a href="../../tag/database/" class="tag-cloud-link tag-link-306 tag-link-position-9" style="font-size: 11.431372549pt;" aria-label="database (6 items)">database</a>
+<a href="../../tag/easy/" class="tag-cloud-link tag-link-272 tag-link-position-10" style="font-size: 8pt;" aria-label="easy (3 items)">easy</a>
+<a href="../../tag/examples/" class="tag-cloud-link tag-link-269 tag-link-position-11" style="font-size: 8pt;" aria-label="examples (3 items)">examples</a>
+<a href="../../tag/github/" class="tag-cloud-link tag-link-417 tag-link-position-12" style="font-size: 9.37254901961pt;" aria-label="github (4 items)">github</a>
+<a href="../../tag/hash/" class="tag-cloud-link tag-link-343 tag-link-position-13" style="font-size: 10.4705882353pt;" aria-label="hash (5 items)">hash</a>
+<a href="../../tag/hope/" class="tag-cloud-link tag-link-128 tag-link-position-14" style="font-size: 8pt;" aria-label="hope (3 items)">hope</a>
+<a href="../../tag/howto/" class="tag-cloud-link tag-link-566 tag-link-position-15" style="font-size: 13.4901960784pt;" aria-label="howto (9 items)">howto</a>
+<a href="../../tag/html/" class="tag-cloud-link tag-link-270 tag-link-position-16" style="font-size: 8pt;" aria-label="html (3 items)">html</a>
+<a href="../../tag/javascript/" class="tag-cloud-link tag-link-262 tag-link-position-17" style="font-size: 8pt;" aria-label="javascript (3 items)">javascript</a>
+<a href="../../tag/jquery/" class="tag-cloud-link tag-link-261 tag-link-position-18" style="font-size: 9.37254901961pt;" aria-label="jquery (4 items)">jquery</a>
+<a href="../../tag/lambda/" class="tag-cloud-link tag-link-231 tag-link-position-19" style="font-size: 10.4705882353pt;" aria-label="lambda (5 items)">lambda</a>
+<a href="../../tag/learning/" class="tag-cloud-link tag-link-237 tag-link-position-20" style="font-size: 10.4705882353pt;" aria-label="learning (5 items)">learning</a>
+<a href="../../tag/life/" class="tag-cloud-link tag-link-573 tag-link-position-21" style="font-size: 10.4705882353pt;" aria-label="life (5 items)">life</a>
+<a href="../../tag/linux/" class="tag-cloud-link tag-link-563 tag-link-position-22" style="font-size: 14.5882352941pt;" aria-label="linux (11 items)">linux</a>
+<a href="../../tag/love/" class="tag-cloud-link tag-link-562 tag-link-position-23" style="font-size: 8pt;" aria-label="love (3 items)">love</a>
+<a href="../../tag/object/" class="tag-cloud-link tag-link-309 tag-link-position-24" style="font-size: 9.37254901961pt;" aria-label="object (4 items)">object</a>
+<a href="../../tag/parameters/" class="tag-cloud-link tag-link-253 tag-link-position-25" style="font-size: 8pt;" aria-label="parameters (3 items)">parameters</a>
+<a href="../../tag/patterns/" class="tag-cloud-link tag-link-67 tag-link-position-26" style="font-size: 8pt;" aria-label="patterns (3 items)">patterns</a>
+<a href="../../tag/polymorphic/" class="tag-cloud-link tag-link-206 tag-link-position-27" style="font-size: 8pt;" aria-label="polymorphic (3 items)">polymorphic</a>
+<a href="../../tag/post/" class="tag-cloud-link tag-link-259 tag-link-position-28" style="font-size: 15pt;" aria-label="post (12 items)">post</a>
+<a href="../../tag/private/" class="tag-cloud-link tag-link-95 tag-link-position-29" style="font-size: 8pt;" aria-label="private (3 items)">private</a>
+<a href="../../tag/proc/" class="tag-cloud-link tag-link-226 tag-link-position-30" style="font-size: 9.37254901961pt;" aria-label="proc (4 items)">proc</a>
+<a href="../../tag/programming/" class="tag-cloud-link tag-link-571 tag-link-position-31" style="font-size: 14.5882352941pt;" aria-label="programming (11 items)">programming</a>
+<a href="../../tag/rails/" class="tag-cloud-link tag-link-207 tag-link-position-32" style="font-size: 19.6666666667pt;" aria-label="rails (27 items)">rails</a>
+<a href="../../tag/raspberry-pi/" class="tag-cloud-link tag-link-110 tag-link-position-33" style="font-size: 9.37254901961pt;" aria-label="Raspberry Pi (4 items)">Raspberry Pi</a>
+<a href="../../tag/rpi/" class="tag-cloud-link tag-link-109 tag-link-position-34" style="font-size: 9.37254901961pt;" aria-label="RPI (4 items)">RPI</a>
+<a href="../../tag/ruby/" class="tag-cloud-link tag-link-134 tag-link-position-35" style="font-size: 22pt;" aria-label="ruby (41 items)">ruby</a>
+<a href="../../tag/ruby-on-rails/" class="tag-cloud-link tag-link-208 tag-link-position-36" style="font-size: 15.5490196078pt;" aria-label="ruby on rails (13 items)">ruby on rails</a>
+<a href="../../tag/scope/" class="tag-cloud-link tag-link-310 tag-link-position-37" style="font-size: 9.37254901961pt;" aria-label="scope (4 items)">scope</a>
+<a href="../../tag/secure/" class="tag-cloud-link tag-link-93 tag-link-position-38" style="font-size: 10.4705882353pt;" aria-label="secure (5 items)">secure</a>
+<a href="../../tag/security/" class="tag-cloud-link tag-link-564 tag-link-position-39" style="font-size: 8pt;" aria-label="security (3 items)">security</a>
+<a href="../../tag/truth/" class="tag-cloud-link tag-link-567 tag-link-position-40" style="font-size: 8pt;" aria-label="truth (3 items)">truth</a>
+<a href="../../tag/ubuntu/" class="tag-cloud-link tag-link-382 tag-link-position-41" style="font-size: 10.4705882353pt;" aria-label="ubuntu (5 items)">ubuntu</a>
+<a href="../../tag/understanding/" class="tag-cloud-link tag-link-65 tag-link-position-42" style="font-size: 10.4705882353pt;" aria-label="understanding (5 items)">understanding</a>
+<a href="../../tag/value/" class="tag-cloud-link tag-link-172 tag-link-position-43" style="font-size: 8pt;" aria-label="value (3 items)">value</a>
+<a href="../../tag/video/" class="tag-cloud-link tag-link-99 tag-link-position-44" style="font-size: 10.4705882353pt;" aria-label="video (5 items)">video</a>
+<a href="../../tag/worldview/" class="tag-cloud-link tag-link-82 tag-link-position-45" style="font-size: 8pt;" aria-label="worldview (3 items)">worldview</a></div>
+</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">Bitcoin:</span>
+<a href="bitcoin:1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj"><center><img src="../../wp-content/uploads/2014/06/qr.png" width='200' height='200' />
+<span style="font-size:xx-small;">1HiZmkQVwbWbtzX7UxPaEqE5GvQryDjoGj</span></center></a><br />
+<br />
+<span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="text-16" class="widget widget_text">			<div class="textwidget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div>
+		</aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2017 ::: <a href="../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+<script type='text/javascript' src='../../wp-content/themes/newsted/assets/js/newsted.js'></script>
+<script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"6ftdan"};
+/* ]]> */
+</script>
+</body>
+</html>

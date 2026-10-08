@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Using Ruby Object Type Classes to Safely Build Data | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.8" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2015/02/04/using-ruby-object-type-classes-to-safely-build-data/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-678 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-678" class="post-678 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby category-technical tag-array tag-article tag-blog tag-collection tag-collections tag-complex tag-data tag-dictionary tag-example tag-hash tag-index tag-key tag-list tag-lists tag-object tag-post tag-ruby tag-type tag-types tag-value">
+		<img width="640" height="430" src="../../../../../wp-content/uploads/2015/02/2862539016_8d56792eee_z-640x430.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" />		<p class="date-author">February 4, 2015 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Using Ruby Object Type Classes to Safely Build Data</h1>			<p>When building collections of data you will find situations where the types aren&#8217;t what you planned to work with.  And when I say types I&#8217;m speaking generically of arrays, hashes, strings, integers, nil, etc.  Everything&#8217;s cosy when you know what your getting.  For example putting 10 integers into an Array:</p>
+<pre class="code-block language-ruby"><code><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="mi">10</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">num</span><span class="o">|</span>
+<span class="w">  </span><span class="n">arr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span>
+<span class="k">end</span>
+<span class="n">arr</span>
+<span class="c1"># =&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] </span></code></pre>
+<p>But if you want to work something that is not yet defined, or is nil, then you&#8217;ll get an error:</p>
+<pre class="code-block language-ruby"><code><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># NameError: undefined local variable or method `y' for main:Object</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
+<span class="c1"># =&gt; nil </span>
+<span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># NoMethodError: undefined method `&lt;&lt;' for nil:NilClass</span></code></pre>
+<p>You will find yourself more likely to run into this kind of situation when working with Hashes:</p>
+<pre class="code-block language-ruby"><code><span class="n">example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="c1"># =&gt; {}</span>
+<span class="n">example</span><span class="o">[</span><span class="ss">:foo</span><span class="o">]</span>
+<span class="c1"># =&gt; nil</span>
+<span class="n">example</span><span class="o">[</span><span class="ss">:foo</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># NoMethodError: undefined method `&lt;&lt;' for nil:NilClass</span></code></pre>
+<p>In each of these examples I&#8217;ve been using <strong>&lt;&lt;</strong> to put something into what we would like to be an Array.  But the Array Object must first be instantiated before we can insert items into it.  We could do it like so:</p>
+<pre class="code-block language-ruby"><code><span class="n">example</span><span class="o">[</span><span class="ss">:bar</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="c1"># =&gt; []</span>
+<span class="n">example</span><span class="o">[</span><span class="ss">:bar</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># =&gt; [5]</span></code></pre>
+<p>But now we&#8217;ve taken two lines to accomplish this.  We may end up writing LOTS of code with similar behavior so we don&#8217;t really want to have to write more than we need to.  Well there&#8217;s good news.  Ruby has classes that allow us to create the right Objects for just this kind of situation.</p>
+<pre class="code-block language-ruby"><code><span class="nb">Array</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="w"> </span><span class="c1"># =&gt; []</span>
+<span class="no">Hash</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="w"> </span><span class="c1"># =&gt; {}</span>
+<span class="nb">String</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="w"> </span><span class="c1"># =&gt; ""</span></code></pre>
+<p>As you can see we handed these classes a nil Object and it returned an empty collection of the type class we used.  So with this we can take our example and one-line the nil Object assignment and insertion.</p>
+<pre class="code-block language-ruby"><code><span class="n">example</span><span class="o">[</span><span class="ss">:fiz</span><span class="o">]</span>
+<span class="c1"># =&gt; nil</span>
+<span class="n">example</span><span class="o">[</span><span class="ss">:fiz</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">(</span><span class="n">example</span><span class="o">[</span><span class="ss">:fiz</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># =&gt; [5]</span></code></pre>
+<p>And it worked!  The <strong>Array(example[:fiz])</strong> created an empty Array since <strong>example[:fiz]</strong> was nil which then allowed us to insert <strong>5</strong> in to the Array and finally save it on the left side of the equals into <strong>example[:fiz]</strong>.  It looks a lot like the way <strong>+=</strong> works except that <strong>+=</strong> will not work on <strong>nil</strong>.  Now lets try it with the loop.</p>
+<pre class="code-block language-ruby"><code><span class="n">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="c1"># =&gt; {}</span>
+<span class="mi">10</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">num</span><span class="o">|</span>
+<span class="w">  </span><span class="n">sample</span><span class="o">[</span><span class="ss">:fez</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span>
+<span class="k">end</span>
+<span class="c1"># NoMethodError: undefined method `&lt;&lt;' for nil:NilClass</span>
+<span class="mi">10</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">num</span><span class="o">|</span>
+<span class="w">  </span><span class="n">sample</span><span class="o">[</span><span class="ss">:fez</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">(</span><span class="n">sample</span><span class="o">[</span><span class="ss">:fez</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span>
+<span class="k">end</span>
+<span class="n">sample</span><span class="o">[</span><span class="ss">:fez</span><span class="o">]</span>
+<span class="c1"># =&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></code></pre>
+<p>In this situation the Array() class method ensured we had an Array the very first time.  It took nil and made an empty Array.  From there it used the same Array for each cycle of the loop and appended the new number to the end.  With this we don&#8217;t have to care about nil being an Issue.  That issue&#8217;s been dealt with.</p>
+<h3>A Complex Example</h3>
+<p>When organizing data you will get into far more complex situations where you will need this.  One great way is to handle files and directories and organize collections with them.  Here&#8217;s the start of an MP3 play-list creator I&#8217;m working on.  The way it works is it finds all mp3s in subdirectories and then uses the folder as the play-list group that they will belong to.</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_dir</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
+<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="s2">/**/*.mp3"</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">path</span><span class="o">|</span>
+<span class="w">    </span><span class="n">m3u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="si">#{</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="o">[-</span><span class="mi">2</span><span class="o">].</span><span class="n">gsub</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="s1">'_'</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="si">}</span><span class="s2">.m3u"</span>
+<span class="w">    </span><span class="n">result</span><span class="o">[</span><span class="n">m3u</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="p">(</span><span class="n">result</span><span class="o">[</span><span class="n">m3u</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+<span class="w">      </span><span class="ss">files</span><span class="p">:</span><span class="w"> </span><span class="nb">Array</span><span class="p">(</span><span class="no">Hash</span><span class="p">(</span><span class="n">result</span><span class="o">[</span><span class="n">m3u</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="ss">:files</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n n-Operator">&lt;&lt;</span><span class="p">({</span>
+<span class="w">        </span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="n">path</span><span class="p">,</span>
+<span class="w">        </span><span class="ss">filename</span><span class="p">:</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">result</span>
+<span class="k">end</span></code></pre>
+<p>There&#8217;s a lot going on here.  You can see that I&#8217;m using both Array() and Hash().  In each case where these class methods are first reached the Object within them will evaluate as nil.  So they will create a new empty instance of either the Array or Hash instance that the collection gets built from.</p>
+<p>Lets break it down.  <strong>Dir.glob(&#8220;#{dir}/**/*.mp3&#8221;)</strong> takes the path we hand in to the <strong>parse_dir</strong> method and goes through all subdirectories no matter how deep.  The double stars <strong>**</strong> are what has the glob method traversing all the directories.  The end of the string <strong>*.mp3</strong> selects any file that ends with <strong>.mp3</strong> .  The result of this will be an enumerable Object which we can iterate over <span style="color: #999999">(a list of results)</span>.</p>
+<p>Now that we have the list of results we want to take each one and place them in a &#8220;play-list&#8221; group in our Hash called result.  So with <strong>each</strong> we hand each item in the list to the variable path and start our process.</p>
+<p>First we want to create the play-list name.  So we take the files complete path and split it by directory seperators <strong>&#8220;/&#8221;</strong>, from there we take the second from last <strong>[-2]</strong> which is the directory the file is in.  <span style="color: #999999">([-1] is the file name itself)</span> We&#8217;ll want uniform file names so we replace the spaces with underscores and lower-case the whole thing.  From there we have our string &#8220;my_directory_name.m3u&#8221; stored in the variable <strong>m3u</strong>.</p>
+<p>Now we apply the technique I&#8217;ve shown here with <strong>result[m3u] = Hash(result[m3u])</strong>.  The first time this code is cycled through <strong>result[m3u]</strong> is <strong>nil</strong>, so <strong>Hash()</strong> turns it into an empty Hash <strong>{}</strong> and it gets assigned to <strong>result[m3u] = {}</strong>.</p>
+<p>Next we <strong>update</strong> the Hash with new values.  Now this may take a little bit to wrap your head around so I&#8217;ll see if I can simplify it.  The first time this block is run it looks like this (with nils):</p>
+<pre class="code-block language-ruby"><code><span class="n">result</span><span class="o">[</span><span class="n">m3u</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+<span class="w">  </span><span class="ss">files</span><span class="p">:</span><span class="w"> </span><span class="nb">Array</span><span class="p">(</span><span class="no">Hash</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="o">[</span><span class="ss">:files</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n n-Operator">&lt;&lt;</span><span class="p">({</span>
+<span class="w">    </span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="n">path</span><span class="p">,</span>
+<span class="w">    </span><span class="ss">filename</span><span class="p">:</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="o">.</span><span class="n">last</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">})</span></code></pre>
+<p>During the first time the <strong>Hash(nil)[:files]</strong> is attempting to access the symbol <strong>:files</strong> on an empty Hash <strong>{}[:files] #=&gt; nil</strong> .  So that turns it into <strong>files: Array(nil).&lt;&lt;</strong> which further turns into <strong>files: [] &lt;&lt;</strong> .  So the first time the <strong>:files</strong> key inside the <strong>result[m3u]</strong> Hash is created with an empty Array.  Then continues to insert the first item into that Array via the <strong>&lt;&lt;</strong> method.  The Object getting inserted to that Array is the hand written Hash you see above which will look something like:</p>
+<pre class="code-block language-ruby"><code><span class="p">{</span>
+<span class="w">    </span><span class="ss">path</span><span class="p">:</span><span class="w"> </span><span class="s2">"/computer/path/to/file.mp3"</span><span class="p">,</span>
+<span class="w">    </span><span class="ss">filename</span><span class="p">:</span><span class="w"> </span><span class="s2">"file.mp3"</span>
+<span class="p">}</span></code></pre>
+<p>Each time the loop goes through it will now update the Array within the Hash within the Hash with the individual file details as hashes of their own.  <span style="text-decoration: underline">Let me simplify it.</span>  So <strong>result</strong> has multiple keys labelled as m3u lists <span style="color: #999999">(&#8220;my_directory_name.m3u&#8221;)</span> based on the directory names.  Each of those keys will access the Hash that has the key <strong>:files</strong> which returns an Array <span style="color: #999999">(list) </span>of files with their own hashes of <strong>path</strong>/<strong>filename</strong>.</p>
+<p>And now we have successfully grouped all the file details by directory name.  If you&#8217;re wondering why I used a <strong>:files</strong> Hash instead of just an Array here it is because I have more items in the Hash in my production code.  My next step in the project is to dynamically render a m3u play-list as a view and use it to stream audio over my local area network.  It&#8217;s fun and I&#8217;m looking forward to using it.</p>
+<h5>Cautionary Note:</h5>
+<p>These methods are good for working with collections.  But not all Ruby Type Classes are equal.  If you use the Integer() method on nil it doesn&#8217;t produce zero.</p>
+<pre class="code-block language-ruby"><code><span class="nb">Integer</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span>
+<span class="c1"># TypeError: can't convert nil into Integer</span>
+<span class="kp">nil</span><span class="o">.</span><span class="n">to_i</span>
+<span class="c1"># =&gt; 0</span></code></pre>
+<p>So you&#8217;ll need to use <strong>.to_i</strong> for integers.  That being the case if you want to use any other methods like this then test them first to ensure their behavior.</p>
+<h3>Summary</h3>
+<p>Using Type Classes are a good practice.  They will save time and effort by incorporating them on the right side of the assignment methods.  It&#8217;s also nice that <strong>Array([])</strong> won&#8217;t result in doubling the depth of the Array like <strong>[[]]</strong> but still returns <strong>[]</strong>.  So these methods are a safety net against nil.  These methods are like having your cake and eating it too ^_^.</p>
+<p>I hope you enjoyed this and that it was insightful. Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px">Image by <a class="owner-name truncate" title="Go to Mark Thurman's photostream" href="https://www.flickr.com/photos/mthurman/">Mark Thurman</a> via the <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/" rel="license">Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic License</a>.</span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Using+Ruby+Object+Type+Classes+to+Safely+Build+Data" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Using+Ruby+Object+Type+Classes+to+Safely+Build+Data" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/array/">#array</a><a href="../../../../../tag/article/">#article</a><a href="../../../../../tag/blog/">#blog</a><a href="../../../../../tag/collection/">#collection</a><a href="../../../../../tag/collections/">#collections</a><a href="../../../../../tag/complex/">#complex</a><a href="../../../../../tag/data/">#data</a><a href="../../../../../tag/dictionary/">#dictionary</a><a href="../../../../../tag/example/">#example</a><a href="../../../../../tag/hash/">#hash</a><a href="../../../../../tag/index/">#index</a><a href="../../../../../tag/key/">#key</a><a href="../../../../../tag/list/">#list</a><a href="../../../../../tag/lists/">#lists</a><a href="../../../../../tag/object/">#object</a><a href="../../../../../tag/post/">#post</a><a href="../../../../../tag/ruby/">#ruby</a><a href="../../../../../tag/type/">#type</a><a href="../../../../../tag/types/">#types</a><a href="../../../../../tag/value/">#value</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../01/discovering-ujs-with-ajax/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../06/getting-into-rails-model-queries/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-6949"> 	
+		<div id="comment-6949" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/eedc3687a5e76c282e43508e29cd67b7?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/eedc3687a5e76c282e43508e29cd67b7?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://www.andrewberls.com/" class="url" rel="ugc external nofollow">Andrew Berls</a></span><br />February 5, 2015 - 2:30 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>So these are not really &#8220;type classes&#8221; in the traditional sense &#8211; type classes are a way to define functions that have different implementations depending on the type of data they&#8217;re given (&#8220;ad-hoc polymorphism&#8221;). In Haskell, you might define a typeclass and an associated &#8220;instance&#8221;</p>
+<pre><code>
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+
+instance Eq Integer where
+  x == y = x `integerEq` y
+
+instance Eq Bool where
+  -- ... and so on
+</code></pre>
+<p>so now you can call <code>a == b</code> to your hearts desire and the compiler will be able to figure out which function to call based on the types. That's a typeclass. In Ruby, things like <code>Array()</code> and <code>Hash()</code> are just methods defined in the [kernel module](<a href="http://www.ruby-doc.org/core-2.2.0/Kernel.html#method-i-Array" rel="nofollow ugc">http://www.ruby-doc.org/core-2.2.0/Kernel.html#method-i-Array</a>).</p>
+<p>In your case, I think it'd be simpler to just provide a default value for your hashes. For example, instead of writing</p>
+<pre><code class="ruby">
+example[:fiz] = Array(example[:fiz]) &lt;&lt; 5
+</code></pre>
+<p>, you can just provide a default like this:</p>
+<pre><code class="ruby">
+example = Hash.new { |h,k| h[k] = [] }
+# =&gt; {}
+example[:fiz]
+# =&gt; []
+example[:fiz] &lt; [5]
+
+</code></pre>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6950"> 	
+		<div id="comment-6950" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 5, 2015 - 3:11 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thank you for informing me about the traditional sense of &#8220;type classes&#8221;.  I was using it in the more literal sense of a method of the class for the type.  I had originally learned about the coercive methods like Array from Avdi Grimm&#8217;s blogs and &#8220;Confident Ruby&#8221; talk.</p>
+<p>There are many who seem to share your view of what is &#8220;simpler&#8221;.  But when it comes to that I believe that may be a matter of preference/perception.  If I were new to the language then all of this &#8220;<strong>{ |h,k| h[k] = [] }</strong>&#8221; would having me scratching my head in confusion.  Coercing with an English word of what you&#8217;d like something to &#8216;be&#8217; would be &#8220;simpler&#8221; just as <strong>example = {}</strong> seems easier on the eyes than <strong>example = Hash.new {&#8230;}</strong>.</p>
+<p>I&#8217;m not saying your wrong, far from it.  It seems that those who have spoken up on this article have preferred the style you&#8217;ve suggested.  Perhaps you all are trying to &#8220;coerce&#8221; me ;-).</p>
+<p>Before I had learned about the coercive Array() method I was doing some ugly code such as:</p>
+<pre><code class="ruby">
+example = {}
+10.times do |i|
+  example[:raz] = [example[:raz]].flatten &lt;<i> {:raz =&gt; [0,1,2,3,4,5,6,7,8,9]}
+</i></code></pre>
+<p>It worked, but I wasn&#8217;t happy with it visually.</p>
+<p>There are many ways to accomplish the same feat in Ruby, I wrote this to illistrate the usefulness of coercion to protect building data collections.  As <a href="http://www.reddit.com/r/ruby/comments/2uqfmp/using_ruby_object_type_classes_to_safely_build/cobe9g2" rel="nofollow">Kache</a> has recommended on Reddit the complex example would look a lot nicer with &#8220;dedicated, serializable Playlist and Mp3Path classes&#8221;.  I do agree that your suggestion is simple.  But I believe it&#8217;s only &#8220;simpler&#8221; as a matter of practice.</p>
+<p>I admit I am a bit opinionated.  I hope to put that aside though and learn what I can despite myself.  Again thank you for sharing!  It was insightful to me.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-6956"> 	
+		<div id="comment-6956" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/b8ba8d51bf0dea33d4b1c6e51f9ea8cd?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/b8ba8d51bf0dea33d4b1c6e51f9ea8cd?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Stephan</span><br />February 6, 2015 - 7:06 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>For the hash example, you can use:</p>
+<pre><code>
+hash = Hash.new([])
+hash[:test] &lt;&lt; 5
+</code></pre>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6958"> 	
+		<div id="comment-6958" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 6, 2015 - 7:19 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks for the input!  That works nicely.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even depth-2" id="li-comment-6965"> 	
+		<div id="comment-6965" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/a395185efba4b0cbf1f8a0df0e760022?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/a395185efba4b0cbf1f8a0df0e760022?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Aaron Schrab</span><br />February 11, 2015 - 12:19 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>That will use the same Array object for every key that isn&#8217;t previously set.  If after the above somebody did:</p>
+<p>    hash[:another] &lt;&lt; 7</p>
+<p>Then `hash[:test]` and `hash[:another]` would both return `[5,7]`.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-3" id="li-comment-6966"> 	
+		<div id="comment-6966" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 11, 2015 - 12:30 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Good catch.  Wouldn&#8217;t want that unexpected surprise.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even depth-3" id="li-comment-6967"> 	
+		<div id="comment-6967" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/b8ba8d51bf0dea33d4b1c6e51f9ea8cd?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/b8ba8d51bf0dea33d4b1c6e51f9ea8cd?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Stephan</span><br />February 12, 2015 - 4:24 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Yeah. I just realised. Strange that it keeps re-using the same array for every non-initialized key-value pair. I do get why though, as it would require a deep clone to fix the issue, which would signifiantly reduce performance. Guess this approach isn&#8217;t any good for arrays and hashes (which has the same issue). I have tried to come up with a clever way to fix it using lambdas etc. but I can&#8217;t seem to make this work. You could of course monkey-patch the hash-class itself and make it return an empty array in the case that the element does not exist, but that seems like too much work, and that it would not really benefit anyone.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-4" id="li-comment-6968"> 	
+		<div id="comment-6968" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/a395185efba4b0cbf1f8a0df0e760022?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/a395185efba4b0cbf1f8a0df0e760022?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Aaron Schrab</span><br />February 12, 2015 - 7:43 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>There&#8217;s no need for monkey patching or doing anything overly fancy. You can instead supply a block to Hash.new:</p>
+<p>    Hash.new{ |hash,key| hash[key] = [] }</p>
+<p>The block is responsible for putting the new item into the hash, and returning the value for the initial access.</p>
+<p>This method had already been mentioned in a previous comment, so I didn&#8217;t address it in my earlier reply.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>
