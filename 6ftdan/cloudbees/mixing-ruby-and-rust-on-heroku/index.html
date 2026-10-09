@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mixing Ruby and Rust on Heroku</title>
+<meta name="description" content="Ruby has been around for a good many years now and has become a quite well-seasoned language. There are many profitable tools, projects, and sites with code written in Ruby, which is a nice thing that we can utilize…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>Mixing Ruby and Rust on Heroku</h1>
+<p class="meta">By Daniel P. Clark · 2017-12-26 · 5 min read</p>
+<p>Ruby has been around for a good many years now and has become a quite well-seasoned language. There are many profitable tools, projects, and sites with code written in Ruby, which is a nice thing that we can utilize even in Rust.</p><p>In this post, I&#8217;ll be covering running Ruby code from Rust, touch on Rust from Ruby, and deploying each on a Heroku instance. The Rust language can benefit from having Ruby&#8217;s ecosystem accessible and Ruby to have Rust&#8217;s performance.</p><p>Let&#8217;s have a look at how we can go about doing this for ourselves.</p><h2>Ruby on Rust</h2><p><em>This guide assumes you have Ruby, Rust, git, and Heroku&#8217;s CLI tool installed.</em></p><p>First you need to create your Rust project with the following:</p><pre class="code-block language-bash"><code>cargo<span class="w"> </span>new<span class="w"> </span>ruby_on_rust<span class="w"> </span>--bin
+<span class="nb">cd</span><span class="w"> </span>ruby_on_rust/</code></pre><p>Next we need to prove we can Ruby code on Rust. For this, we&#8217;ll use ruru as they allow us to run the Ruby Virtual Machine from Rust. So add the ruru dependency to your <code>Cargo.toml</code> file.</p><pre class="code-block language-rust"><code><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">ruru</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"~0.9"</span></code></pre><p>Now we need a simple piece of code to try to prove we&#8217;re calling Ruby code. For this example, we&#8217;ll create a Ruby string and call the <code>String#upcase</code> method. We&#8217;ll convert the result back from a Ruby string to a Rust string and test that we have the desired result.</p><p>Before we do that, ruru, at this time, requires that the Ruby library be among our build dependencies. To accommodate this, we&#8217;ll create a Rakefile task to copy our lib file to <code>target/debug/deps</code>.</p><pre class="code-block language-ruby"><code><span class="c1"># Rakefile</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'rake/testtask'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'fileutils'</span>
+
+<span class="n">desc</span><span class="w"> </span><span class="s1">'prep'</span>
+<span class="n">task</span><span class="w"> </span><span class="ss">:prep</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s1">'Copying rubylib to build deps…'</span>
+<span class="w">  </span><span class="sb">`mkdir -p target/debug/deps`</span>
+<span class="w">  </span><span class="sb">`cp $(ruby -e \</span>
+<span class="sb">  'puts File.join(RbConfig::CONFIG["libdir"], \</span>
+<span class="sb">  RbConfig::CONFIG["LIBRUBY_ALIASES"].split(" ").first)') \</span>
+<span class="sb">  target/debug/deps`</span>
+<span class="k">end</span>
+
+<span class="n">desc</span><span class="w"> </span><span class="s1">'test run'</span>
+<span class="w">  </span><span class="n">task</span><span class="w"> </span><span class="ss">run</span><span class="p">:</span><span class="w"> </span><span class="ss">:prep</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">exec</span><span class="w"> </span><span class="s1">'cargo run'</span>
+<span class="k">end</span>
+<span class="n">task</span><span class="w"> </span><span class="ss">default</span><span class="p">:</span><span class="w"> </span><span class="ss">:prep</span></code></pre><p>We&#8217;ve thrown in the run command to call prep before using <code>cargo run</code>, which, once we&#8217;ve implemented our web server, will run our web server.</p><p>And now to run Ruby code from Rust.</p><pre class="code-block language-rust"><code><span class="c1">// src/main.rs</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">ruru</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">ruru</span><span class="p">::{</span><span class="n">VM</span><span class="p">,</span><span class="w"> </span><span class="n">RString</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="p">};</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">ruby_upcase</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">RString</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">s</span><span class="p">).</span>
+<span class="w">    </span><span class="n">send</span><span class="p">(</span><span class="s">"upcase"</span><span class="p">,</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[]).</span>
+<span class="w">    </span><span class="n">try_convert_to</span><span class="p">::</span><span class="o">&lt;</span><span class="n">RString</span><span class="o">&gt;</span><span class="p">().</span>
+<span class="w">    </span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">RString</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">""</span><span class="p">)).</span>
+<span class="w">    </span><span class="n">to_string</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="cp">#[test]</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">it_works</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">VM</span><span class="p">::</span><span class="n">init</span><span class="p">();</span>
+
+<span class="w">  </span><span class="fm">assert_eq!</span><span class="p">(</span>
+<span class="w">    </span><span class="n">ruby_upcase</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">),</span>
+<span class="w">    </span><span class="s">"HELLO WORLD!"</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span></code></pre><p>At this point, we run <code>cargo test</code> and we get a passing result. We have successfully called Ruby&#8217;s <code>String#upcase</code> method and received the reward of integrating Ruby into Rust.</p><p>An added advantage of having ruru init the Ruby VM is that any Ruby objects we create should properly have their memory freed without issue.</p><p>Since Rust is a typed language and Ruby isn&#8217;t, a method call in Ruby can return any type of object. For that, ruru has methods and procs return an <a href="https://docs.rs/ruru/0.9.3/ruru/struct.AnyObject.html">AnyObject</a> type. From this we try the <code>try_convert_to::&lt;T&gt;()</code> method to get a <code>Result&lt;T&gt;</code> for our expected type.</p><p>In the example above, the use of <code>unwrap_or(RString::new"")</code> will give us the Ruby string back if that&#8217;s what the method returns, or it will create a blank Ruby string if we didn&#8217;t get a Ruby string back. So no matter what item is returned in our result, we&#8217;re guaranteed an <code>RString</code> to work with, which we can call <code>to_string()</code> on to get a Rust <code>String</code>.</p><h3>Rocket web framework</h3><p>Next, we&#8217;ll write a minimal website with <a href="https://github.com/SergioBenitez/Rocket">Rocket</a> and display our resulting Ruby code on the web.</p><p>First, add Rocket to the <code>Cargo.toml</code> file.</p><pre class="code-block language-bash"><code><span class="o">[</span>dependencies<span class="o">]</span>
+<span class="nv">ruru</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~0.9"</span>
+<span class="nv">rocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.3.3"</span>
+<span class="nv">rocket_codegen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.3.3"</span></code></pre><p>And now we copy the getting started example from <a href="https://rocket.rs">rocket.rs</a> and call our method in it.</p><pre class="code-block language-rust"><code><span class="c1">// src/main.rs</span>
+<span class="cp">#![feature(plugin)]</span>
+<span class="cp">#![plugin(rocket_codegen)]</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">rocket</span><span class="p">;</span>
+
+<span class="c1">//</span>
+<span class="c1">// Our ruru code…</span>
+<span class="c1">//</span>
+
+<span class="cp">#[get(</span><span class="s">"/"</span><span class="cp">)]</span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">index</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">ruby_upcase</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="w"> </span>
+<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">VM</span><span class="p">::</span><span class="n">init</span><span class="p">();</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">rocket</span><span class="p">::</span><span class="n">ignite</span><span class="p">().</span>
+<span class="w">    </span><span class="n">mount</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="w"> </span><span class="n">routes</span><span class="o">!</span><span class="p">[</span><span class="n">index</span><span class="p">]).</span>
+<span class="w">    </span><span class="n">launch</span><span class="p">();</span>
+<span class="p">}</span></code></pre><p><em>Be sure to use the nightly version of Rust for Rocket.</em></p><p>Next, we run our rake command, <code>rake run</code>, and our website will take a little while to build. Once it&#8217;s done building, a local web server will be running, and it will give you a URL to try out on your machine to see your site.</p><p>Go ahead and open that in your browser. At this point, you will see the page load with our upcased “HELLO WORLD!” and we&#8217;ll know that it works locally.</p><p>!Sign up for a free Codeship Account </p><h3>Deploying to Heroku</h3><p>First off, we&#8217;ll run the <code>heroku create</code> command with a Heroku buildpack for our language to the one designed for a Rust server to create a server instance for this project with your <a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku client</a>. Since we&#8217;re also using Ruby, we&#8217;ll need to add a buildpack for that as well.</p><pre class="code-block language-bash"><code>heroku<span class="w"> </span>create<span class="w"> </span>--buildpack<span class="w"> </span>https://github.com/emk/heroku-buildpack-rust.git
+heroku<span class="w"> </span>buildpacks:add<span class="w"> </span>heroku/ruby</code></pre><p>Before we can push this to Heroku, we need to set it so that Heroku will use the nightly release of Rust, as that is a requirement for Rocket.</p><pre class="code-block language-bash"><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"VERSION=nightly"</span><span class="w"> </span>&gt;<span class="w"> </span>RustConfig</code></pre><p>We need to set what Heroku should run for our web server with the <code>Procfile</code>.</p><pre class="code-block language-bash"><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"web: ROCKET_PORT=\$PORT ROCKET_ENV=prod ./target/release/ruby_on_rust"</span><span class="w"> </span>&gt;<span class="w"> </span>Procfile</code></pre><p>And the Ruby buildpack for Heroku will fail to run unless we have the <code>Gemfile</code> and <code>Gemfile.lock</code> files, so let&#8217;s add that.</p><pre class="code-block language-bash"><code>touch<span class="w"> </span>Gemfile
+bundle</code></pre><p>And now we&#8217;re ready to deploy.</p><pre class="code-block language-bash"><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Initial ruru on Rocket build."</span>
+git<span class="w"> </span>push<span class="w"> </span>heroku<span class="w"> </span>master</code></pre><p>At this point, you should have enough time to make a cup of coffee while you wait for it to build. Once it&#8217;s done, you can type <code>heroku open</code> for it to open the running site in your browser. And you&#8217;ve done it!</p><p><em>If you named your project something else, be sure to change the names in all places. If the <code>Procfile</code> doesn&#8217;t point to the right executable, your site won&#8217;t run.</em></p><h2>Rust on Ruby with Helix</h2><p>Helix has a pretty awesome generator system that generates code for you in a Rails project so you can drop some Rust code into your program with very little effort. They&#8217;ve written up <a href="http://usehelix.com/getting_started">a getting started web page</a> that does a great job giving you all the details for getting a Rails site to run Rust code pretty quickly.</p><p>The one thing their How To is lacking is the database issue where Heroku won&#8217;t accept the default sqlite3 database &#8212; you&#8217;ll need to do your own research for changing the database settings to work on Heroku before the test example will work for you.</p><p>Helix&#8217;s generator will create a Rust crate each time you use the generator tool and place it in a crates subdirectory. It&#8217;s nice that each of these are individually namespaced for specific purposes and included in your Rails website like native Ruby code. You may even write Ruby-like Rust code with their very advanced Rust macros that do a lot of work parsing Ruby style coding into Rust equivalents.</p><p>Here&#8217;s an example of what turning a Ruby string to uppercase through Rust is like.</p><pre class="code-block language-rust"><code><span class="cp">#[macro_use]</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">helix</span><span class="p">;</span>
+
+<span class="n">ruby</span><span class="o">!</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">class</span><span class="w"> </span><span class="n">TextTransform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">upcase</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">text</span><span class="p">.</span><span class="n">to_uppercase</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span><span class="w">   </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></code></pre><p>And anywhere in your Rails project, you can simply call <code>TextTransform.upcase("my string")</code> to get your result back: <code>"MY STRING"</code>.</p><p>Using Helix for adding Rust in Rails is a no brainer for efficiency and convenience.</p><h2>Summary</h2><p>There is a vast number of tools in Ruby that are hard to work without: database abstractions, object mappers, many web utilities, and the list goes on. You can keep most of the time efficiency of developing in Ruby while in Rust if you simply use Ruby in Rust. And system-heavy code in Ruby is not so much of an issue anymore, as you can get a rough equivalent of C code performance without many of the pitfalls of C by calling into Rust from Ruby.</p> 
+</article>
+<footer class="source">Originally published on 2017-12-26 on the Codeship blog (<a href="https://blog.codeship.com/mixing-ruby-and-rust-on-heroku/">https://blog.codeship.com/mixing-ruby-and-rust-on-heroku/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/mixing-ruby-and-rust-on-heroku">https://www.cloudbees.com/blog/mixing-ruby-and-rust-on-heroku</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

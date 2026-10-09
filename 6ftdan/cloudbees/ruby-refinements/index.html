@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pros and Cons of Ruby Refinements</title>
+<meta name="description" content="In Ruby 2.0.0, refinements were introduced as a new feature. Monkey patching has been used for a long time for modifying code behavior, but it creates side effects in code elsewhere that ends up affected by the modified…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>The Pros and Cons of Ruby Refinements</h1>
+<p class="meta">By Daniel P. Clark · 2016-07-27 · 5 min read</p>
+<p>In Ruby 2.0.0, refinements were introduced as a new feature. Monkey patching has been used for a long time for modifying code behavior, but it creates side effects in code elsewhere that ends up affected by the modified code.</p><p>The purpose of Ruby refinements is to provide a solution by scoping changed behavior to the very specific area of code you choose. This is a huge blessing for the language, but the current implementation of refinements has its flaws. Still, everyone should be using refinements to create a more sane code base and not create surprise side effects in your code base. In this post, I&#8217;ll go into detail on how refinements can be used, as well as discuss many of the issues you&#8217;ll face with its as-yet-incomplete design.</p><h2>How to Use Refinements</h2><p>First, you need to define the behavior you wish to change by defining a module and declaring which class(es) you will be refining.</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">ListStrings</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">+</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="w">      </span><span class="s2">"</span><span class="si">#{</span><span class="nb">self</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">other</span><span class="si">}</span><span class="s2">"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre><p>To use the behavior, simply use <code>using ListStrings</code> in one of several areas.</p><pre class="code-block language-ruby"><code><span class="n">using</span><span class="w"> </span><span class="no">ListStrings</span>
+<span class="s1">'4'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'5'</span>
+<span class="c1"># =&gt; "4, 5"</span></code></pre><p>You can use the refinement at the top level of your code, and all code written below that in the current file will be affected. You may also use it within eval statements.</p><pre class="code-block language-ruby"><code><span class="nb">eval</span><span class="w"> </span><span class="s2">"using ListStrings; '4' + '5'"</span>
+<span class="c1"># =&gt; "4, 5"</span></code></pre><blockquote><p>As of Ruby 2.3, these won&#8217;t work in IRB but will still work in your Ruby files.</p></blockquote><p>The use of <code>using</code> is lexically scoped. When used at the top level of your code, its affects are scoped only to the current file from that point on to the end and not in any other code you require from other files.</p><p>As of Ruby 2.3, you may use refinements within classes.</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Foo</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="no">Fixnum</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">to_s</span>
+<span class="w">      </span><span class="ss">:foo</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NumAsString</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">num</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+<span class="w">    </span><span class="n">input</span><span class="o">.</span><span class="n">to_s</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NumAsFoo</span>
+<span class="w">  </span><span class="n">using</span><span class="w"> </span><span class="no">Foo</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">num</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+<span class="w">    </span><span class="n">input</span><span class="o">.</span><span class="n">to_s</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">NumAsString</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">num</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; "4" </span>
+<span class="no">NumAsFoo</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">num</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; :foo </span></code></pre><p>This creates a very safe and sane way to scope changed behavior for existing code.</p><h2>Current Issues with Ruby Refinements</h2><p>As with most relatively young features, refinements still has some flaws. Let&#8217;s unpack where the trouble is.</p><h4>Refinements can only be used once within a scope</h4><p>If you&#8217;re benchmarking alternative ways and using multiple refinements on the same method name, then consecutive runs will fail to reuse used refinements. While this may not be a likely scenario, it&#8217;s good to keep this limitation in mind.</p><h4>Dynamic dispatch won&#8217;t work with refinements yet</h4><p>Dynamic dispatch happens when you use the proc form of mapping method calls, like <code>[1,2,3].map(&amp;:to_s)</code>. Here&#8217;s an example of how it won&#8217;t work with refinements:</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Moo</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="no">Fixnum</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">to_s</span>
+<span class="w">      </span><span class="s2">"moo"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="w">  </span><span class="n">using</span><span class="w"> </span><span class="no">Moo</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">a</span>
+<span class="w">    </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">to_s</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">b</span>
+<span class="w">    </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">a</span>
+<span class="c1"># =&gt; ["moo", "moo", "moo"] </span>
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">b</span>
+<span class="c1"># =&gt; ["1", "2", "3"]</span></code></pre><p>If you had redefined the <code>to_s</code> method as a monkey patch, then both method calls would have returned lists of &#8220;moo&#8221;.</p><h4>You cannot use methods for introspection</h4><p>The Ruby documentation says, &#8220;When using indirect method access such as <code>Kernel#send</code>, <code>Kernel#method</code>, or <code>Kernel#respond_to?</code>, refinements are not honored for the caller context during method lookup. This behavior may be changed in the future.&#8221;</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Baz</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">baz</span>
+<span class="w">      </span><span class="ss">:baz</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Venue</span>
+<span class="w">  </span><span class="n">using</span><span class="w"> </span><span class="no">Baz</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">respond?</span>
+<span class="w">    </span><span class="s2">""</span><span class="o">.</span><span class="n">respond_to?</span><span class="w"> </span><span class="ss">:baz</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">call</span>
+<span class="w">    </span><span class="s2">""</span><span class="o">.</span><span class="n">baz</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Venue</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">respond?</span>
+<span class="c1"># =&gt; false </span>
+<span class="no">Venue</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">call</span>
+<span class="c1"># =&gt; :baz</span></code></pre><p>This makes determining whether code has been changed more difficult if you&#8217;re not looking at the source code yourself. It might be worthwhile to add something like an instance variable to your refinement if you need to dynamically determine what refinements are in play.</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Bar</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">refinements</span>
+<span class="w">    </span><span class="nb">require</span><span class="w"> </span><span class="s1">'set'</span>
+<span class="w">    </span><span class="vi">@refinements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="vi">@refinements</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="no">Set</span><span class="o">.</span><span class="n">new</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="no">Bar</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">bar</span>
+<span class="w">      </span><span class="ss">:bar</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Bar</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="no">Bar</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">a</span>
+<span class="w">    </span><span class="s2">""</span><span class="o">.</span><span class="n">bar</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">refinements</span>
+<span class="c1"># =&gt; #&lt;Set: {Bar}&gt; </span>
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">a</span>
+<span class="c1"># =&gt; :bar</span></code></pre><p>You can decide for yourself how important introspection is for you; it would be quite handy when debugging. You may also choose to give more details for your introspection method than the example given here.</p><h4>You can&#8217;t use <code>using</code> from within a method or module</h4><p>This requires you to very explicitly declare <code>using</code> within the lexical scope where you&#8217;ve choosen to modify the codes behavior. This is good for the sanity of all future developers who&#8217;ll look at the code and see that there is modified behavior.</p><h4>You&#8217;re unable to experiment with refinements at the top level</h4><p>As I mentioned earlier, the behavior in IRB changed at 2.3, limiting the ways you can experiment with refinements. To experiment with it in IRB with Ruby 2.3 and later, you may do so with anonymous classes.</p><pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Fiz</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="no">Fixnum</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">+</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="w">      </span><span class="s2">"</span><span class="si">#{</span><span class="nb">self</span><span class="si">}#{</span><span class="n">other</span><span class="si">}</span><span class="s2">"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="no">Class</span><span class="o">.</span><span class="n">new</span>
+<span class="w">  </span><span class="n">using</span><span class="w"> </span><span class="no">Fiz</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; "12"</span></code></pre><h2>Summary</h2><p>Refinements are still in their infancy in Ruby, and improvements are very likely to be made to them. However, current development on refinements seems to be on hold, as Ruby development focuses on optimizing Ruby 3 to be three times faster than Ruby 2. As a result, refinement issues raised on the bug tracker aren&#8217;t receiving much attention.</p><p>Regardless of all the issues that exist with refinements, they are still a must for developers. With them, you can help ensure a code base that clearly shows alternative behavior while ensuring safe cohesion with larger code bases. You can worry less about name collision, side effects, and hard-to-track bugs when you contain your changes with refinements.</p><p>Refinements become most important any time you&#8217;re making modifications to existing methods on core classes in Ruby or any other widely used code base. I have tried monkey patching in the past to write a gem in the past that would have a String object behave like an Array, but when I included it in a Rails project, it all came crashing down. Many applications may use methods like <code>respond_to?</code> to type check and perform different actions based on type. So of course making strings respond as arrays will break things globally. Now with refinements, you don&#8217;t have to worry about this &#8212; the changes are specifically only effective within the file, eval string, or class you used the refinement in.</p><blockquote><p>Don&#8217;t rely on the lack of introspection in refinements as a feature. This will likely change in the future. If you use a refinement to have a method respond to a specific method call, and you type-check against that knowing it won&#8217;t show up, you&#8217;d have created a &#8220;bug waiting to happen.&#8221;</p></blockquote><p>I for one really look forward to future development in Ruby around refinements to get past the current issues and move on to a more mature code use for all our benefit. And the biggest thing that will help refinements move further along in the development process is for more people to use it. The more people who use it, the more attention it will get, which will lead to more focus in developing it within the language.</p> 
+</article>
+<footer class="source">Originally published on 2016-07-27 on the Codeship blog (<a href="https://blog.codeship.com/ruby-refinements/">https://blog.codeship.com/ruby-refinements/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/ruby-refinements">https://www.cloudbees.com/blog/ruby-refinements</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

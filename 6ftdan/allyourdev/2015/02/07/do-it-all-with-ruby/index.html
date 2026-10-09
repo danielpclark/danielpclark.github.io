@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Do It All With Ruby | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.6" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2015/02/07/do-it-all-with-ruby/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-693 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-693" class="post-693 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-technology tag-advanced tag-begginer tag-c tag-d tag-java tag-language tag-preogramming tag-python tag-rails tag-ruby tag-scala">
+		<img width="640" height="426" src="../../../../../wp-content/uploads/2015/02/14955789626_2944d26ba0_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2015/02/14955789626_2944d26ba0_z.jpg 640w, ../../../../../wp-content/uploads/2015/02/14955789626_2944d26ba0_z-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		<p class="date-author">February 7, 2015 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Do It All With Ruby</h1>			<p>There is a recent post on thewildblogger.com titled &#8220;Top 12 Programming Languages for Beginners in 2015&#8221; which uses diagrams from IEEE Spectrum based on popularity of languages on the internet based on quantity.  The article itself does a decent job on touching on many good languages.  But I find the image graphic misleading.</p>
+<p><img decoding="async" style="width: 624px; height: 711px;" src="../../../../../wp-content/uploads/2015/02/20-most-important-programming-languages.png" alt="" /></p>
+<p style="text-align: center;">Image: <a href="http://spectrum.ieee.org/computing/software/top-10-programming-languages" target="_blank" rel="nofollow">IEEE Spectrum Ranking</a> for Programming Languages</p>
+<h3>Java</h3>
+<p>Back in the day Java didn&#8217;t exist.  Java was built as a revolutionary way to make cross-platform software a reality.  Write the software in Java and use it anywhere.  A lot of work has gone into Java to make this possible.  Even hardware manufacturers have made chips that are designed to make Java work more easily within systems.  For a long time Apple had kept their iPhones proprietary in such a way that you would have to use their choice of programming language Objective-C to write apps for it.  But overtime Apple included some hardware that includes Java support.  So Java is a language that is cross-platform, and available to use most anywhere.</p>
+<p>There are many pros and cons with Java.  It&#8217;s been around long enough, and it&#8217;s been optimized enough, to be a great language for servers offering amazing tool-sets.  Security has been a reoccurring issue many times over the years, but who doesn&#8217;t have to deal with that?</p>
+<p>Java is very important in todays day and age.  The language itself probably isn&#8217;t a good &#8220;beginner language&#8221;.  It&#8217;s the longest &#8220;hello world&#8221; example I&#8217;ve seen (besides getting into system languages like assembly).  So it&#8217;s syntax is a bit excessive.  Scala, on the other hand, is a beautiful language written on top of Java which compiles into Java bytecode.  It&#8217;s thought of highly by the author of Java.</p>
+<blockquote>
+<table border="0">
+<tbody>
+<tr>
+<td><img decoding="async" src="https://scalacamp.pl/intro/img/people/james-gosling.jpg" alt="" /></td>
+<td>&#8220;If I were to pick a language today other than Java, it would be Scala.&#8221;</p>
+<p style="text-align: right;">James Gosling<br />
+<span style="font-size: smaller;">father of Java</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>To take advantage of the wonderful Java ecosystem some languages have incorporated into Java, such as JRuby.  JRuby gives you the best of both worlds.  You can write pure Ruby and have it run as Java code.  You can also write Ruby that works with native Java code.  And with the soon to be released JRuby 9000 you will have all the latest features of Ruby 2.2 at your finger tips.</p>
+<h3>C/C++</h3>
+<p>Most computer operating systems were written in some flavor of C with some Assembly.  This is slowly changing as more languages continue to be written, such as Rust (which I hear is a language primarily written for writing operating systems).  Ruby was originally written in C by Yukihiro Matsumoto.  It includes excellent support for extending C libraries in your projects.  There are plenty of online videos/resources you can check out on this subject.  Yukihiro Matsumoto has also authored the mRuby language for programming Ruby code for embedded systems.  So Ruby is pretty tight with C.</p>
+<h3>D</h3>
+<p><a href="http://dlang.org/">D</a> is a beautiful language.  I really believe more people should know about it.  Spread the word! Check it out!  If C was the successor to Assembly and C++ to C, then I would consider D the successor to C++.  D is designed so that you can write code optimized for mutli-core systems.  It&#8217;s very powerful, efficient, and not too bad looking ;-).  There&#8217;s a Ruby programmer out there, <a href="https://github.com/tomash">Tomasz Stachewicz</a>, who started a project called <a href="https://github.com/tomash/rudy">rudy</a> to allow the same integration with D as Ruby has with C.  The project hasn&#8217;t gotten the attention that it needs and has been dormant for about 6 years.  A lot has changed since then and I really hope more people who feel passionate about these two languages will pick this project up and make this a full featured library.</p>
+<h3>Python</h3>
+<p>As a developer who&#8217;s been in Python for over 10 years I&#8217;d like to think I&#8217;ve gotten pretty familiar with it.  From what I can see the popularity of Python has lead to it gaining a huge following.  I have too many books on it (if you can imagine that).  Python seems to be getting into many places, web hosting/services, Linux system boot-ups, game development, networking technologies, and much more.  It has a lot of support for a lot of libraries and features.  It, having a big community, has really helped it grow.  I believe that this has allowed Python to have a few more robust tools over Ruby.  But as I&#8217;ve converted into a Ruby enthusiast I know that as Python developers learn Ruby they&#8217;ll fall in love with it.</p>
+<p>The main reason I brought up Python is game development.  Python has an amazing game library called <a href="http://pygame.org/news.html">PyGame</a> which is integrated with SDL and OpenGL.  I wrote a full game in PyGame with animations, sound effects, and a complete UI.  I even wrote it before I understood what classes were, so I wrote it entirely with functions.  Haha!  Not DRY I must say.  But I digress.  The library itself is wonderful and well supported.  In Ruby we also have a library for SDL.  But the community hasn&#8217;t seemed to be as supportive in this; and the project&#8217;s own website discourages it:</p>
+<blockquote><p>Ruby/SDL has following disadvantage.</p>
+<ul>
+<li>Slow &#8211; Ruby is very slow compared to C or C++. In my opinion it is difficult to develop 3D games with Ruby/SDL.</li>
+</ul>
+<p>But SDL has fast 2D drawing function, so I think they can develop many kinds of games with Ruby/SDL.</p>
+<p style="text-align: right;">&#8211;<a href="http://www.kmc.gr.jp/~ohai/rubysdl.en.html">http://www.kmc.gr.jp/~ohai/rubysdl.en.html</a></p>
+</blockquote>
+<p style="text-align: left;">There is absolutely no reason why PyGame should be any better in performance advantage over Ruby/SDL.  They are in the same level of language hierarchy so performance should be similar.  I believe that with the right positive community around Ruby/SDL that it can be taken farther than PyGame and better games can be made for it.</p>
+<p style="text-align: left;">I also think Python has a better networking library <a href="https://twistedmatrix.com/trac/">Twisted</a> than the Ruby community.  It&#8217;s not that we don&#8217;t have the tools and libraries (which we have many!), they&#8217;re just not as robust.  I believe this has everything to do with the size of the community involved.  The Ruby community is an awesome one with many passionate people who love the language&#8230; we just need to bring more people in and the effect will be more projects to flourish.  That won&#8217;t be too difficult to do as the pay for Ruby web framework development is some of the highest paying available work at the moment.</p>
+<h3 style="text-align: left;">JavaScript</h3>
+<p>It wasn&#8217;t that long ago that JavaScript was a client side only language based solely within your browser.  JavaScript has perhaps one of the most interesting evolutions.  As it grows it&#8217;s required to keep all it&#8217;s legacy support.  So it becomes more powerful yet has many evolved methods and ways of doing things.  JavaScript being brought to the server side of things has made it a &#8220;contender&#8221;, as it were, as a programming language amongst the rest.  It&#8217;s been shooting up in popularity.  And pay, from what I hear, is also going up for it.</p>
+<p>JavaScript is no longer just a useful tool to get things done in your browser.  It&#8217;s become a capable environment for both server and client code to be executed.  This is revolutionizing the web, and many big projects/companies are taking advantage of this.  We have AngularJS, EmberJS, and the new contender ReactJS just to name a few of the big ones within the JavaScript landscape.  Please don&#8217;t yell at me for bringing up ReactJS (or for neglecting node.js and others).  I know it&#8217;s just for the View layer where Ember and Angular are both Model-View-Controller complete systems.  But I will get more into React in a moment.</p>
+<p>Ruby really shines here in JavaScript.  Starting with UJS (Unobtrusive JavaScript) that was introduced into Rails way back in the day, to the growingly popular Opal.  <a href="http://opalrb.org/">Opal</a> is a transpiler; a Ruby to JavaScript compiler.  With Opal you write Ruby code, it gets &#8220;translated&#8221; into JavaScript, and it pretty much &#8220;Just works!&#8221;.  Opal has opened new possibilities that are only just starting to be realized.  Volt is one such realization.  Introduced officially in &#8220;<a href="https://youtu.be/7i6AL7Walc4">RubyConf 2014 &#8211; Isomorphic App Development with Ruby and Volt by Ryan Stout</a>&#8220;; Volt revolutionizes MVC by eliminating the duplication of MVC implementation on both server and client code to just one MVC code base that &#8220;just works&#8221; between the server and client.  The power of transpiling changes everything.</p>
+<p><a href="http://facebook.github.io/react/">ReactJS</a>, by Facebook, redefines how we do Views for the web.  They&#8217;ve taken steps that have had the internet community, at first, thinking badly of them, but whom have then later accepted the new found methodology.  If you haven&#8217;t seen React in action I highly recommend watching this conference talk: &#8220;<a href="https://youtu.be/z5e7kWSHWTg">React.js Conf 2015 &#8211; Hype!</a>&#8220;.  Here we have a live demo between Ember, Angular, and React.  The difference is astounding!  React blows the others away in performance!  The technology behind it has to do with a VirtualDOM they&#8217;ve created within the browser and using a diff/update kind of implementation to allow only the part of the DOM that needs to be updated to update.  It&#8217;s brilliant!</p>
+<p>Not only does React redefine how Views are implemented (with styles and the like), but the team from Facebook have just introduced <strong>React Native</strong>.  React Native allows you to write software for iOS, and soon Android, natively as if you were writing a pure HTML view.  There are no cheap tricks or gimmicks to &#8220;mimic&#8221; Native features of iOS.  They have implemented a second thread process to process the updates to the main thread in your iOS app which runs NATIVE code.  You have to see it to believe it: &#8220;<a href="https://youtu.be/KVZ-P-ZI6W4">React.js Conf 2015 Keynote &#8211; Introducing React Native</a>&#8220;.  This brings the JavaScript language to offer true native iOS/Android app implementation making it a key feature to reaching audiences with a beautiful native experience.  One thing I should mention is they&#8217;re not making it &#8216;write once, run everywhere&#8217;, but &#8216;learn once, write everywhere&#8217;.  What that means for you is you will write very similar code for each but you&#8217;re writing it specifically for the targeted OS thereby allowing you to write purposefully native behavior.  (Read this excellent review: <a href="http://jlongster.com/First-Impressions-using-React-Native">First Impressions using React Native</a>)</p>
+<p>Ruby has a library for making natively compiled iOS/Android applications with <a href="http://www.rubymotion.com">RubyMotion</a>.  RubyMotion isn&#8217;t a free library, there is a monthly cost involved.  You can write you code once in Ruby and have it work on both iOS and Android.  This is wonderful!  You have the advantage of a powerful and beautiful language, such as Ruby, able to reach the broadest of audiences.  If you are an App developer, or plan to be, it&#8217;s a worthwhile library.</p>
+<p>Now I want to tickle your mind with this.  We have Ruby running on Java with JRuby getting all the access you could want to the Java ecosystem.  We have Ruby code converting to perfectly running JavaScript with Opal.  And we have a View layer with React that needs a Model/Controller back-end.  What if we decide to write a Rails framework application integrated with react (<a href="https://github.com/reactjs/react-rails">react-rails</a>) built on top of JRuby with some meta-programming to allow us to write an application that automatically deploys to Web &amp; mobile with full native features?  Well I&#8217;m not sure what React Native requires to deploy native apps, but right now this actually sounds feasible.  Some might argue that this would be a terrible idea because of possible performance issues.  But I&#8217;d like to point out that Rails already runs on JRuby with React view support, so it&#8217;s not far-fetched at all.  This would be superbly AMAZING!  So much power!!!  What would one do with it?</p>
+<h3>Ruby</h3>
+<p>Ruby was designed <strong>for</strong> programmers.  It&#8217;s intuitive, straightforward, simple, and allows many different styles of writing.  Many programmers can come in from a different language and write code similar to what they&#8217;re used to and find it very compatible.  You can often guess what something is, or should be, and find that it works.  It&#8217;s very well designed.</p>
+<p>Ruby has an excellent meta-programming ability to it.  You can write code, that writes code.  This opens up doors to limitless possibilities.</p>
+<p>Ruby is one of the most powerful languages out there.  The saying &#8220;If you can&#8217;t beat them, join them&#8221; fits in my opinion as Ruby has within it&#8217;s full capacity both Java and JavaScript.  Personally I think Ruby could beat them in a fair fight.  But that&#8217;s not the way of things.  So Ruby has joined the masters and can implement whatever could be desired.</p>
+<h3>Summary</h3>
+<p>Many of these thoughts have been on my mind for some time.  Basing languages based on popularity isn&#8217;t honest for any of the upcoming underdogs, nor is it a fair assessment for beginners.  I&#8217;m not saying that Ruby is the one language that fits all situations.  Not in the least.  But I&#8217;d like to argue that it&#8217;s not a Web-Only language, but is very much a compatible language for OS dev, game dev, web dev, embedded systems, and so much more.</p>
+<p>The shear power of testing and automating with Ruby is worthy of mentioning.  Whether it&#8217;s code testing with test-unit, rspec, minitest, cucumber, and capybara, or with web automation/scraping with watir-webdriver, selenium, mechanize, nokogiri, and the like.  There are entire web based systems that will QC your code like Travis CI <span style="color: #999999;">(although they&#8217;re not a Ruby alone service)</span>.  I just can&#8217;t do it justice by trying to list a few.  The possibilities are limitless.</p>
+<p>There are many Ruby technologies I haven&#8217;t touched on and I don&#8217;t mean to leave them out so I apologize for that.  My main point in writing this is to raise awareness of the power available with the Ruby language and the many options available.  I also wanted to bring light to a few areas that I saw needed attention, and inspire new ideas through new technologies that are evolving/developing.</p>
+<p>When getting into discussion over different programming languages I take a big risk at stepping on peoples toes.  I hope I haven&#8217;t done that for anyone.  I&#8217;m not a one language guy.  I want to learn many programming languages.  Scala, D, and Assembly are some I&#8217;d like to be savvy with, and it won&#8217;t stop there.</p>
+<p>If you&#8217;re not involved in an open source project I highly encourage you to find one you&#8217;re passionate about and get involved.  There are many good code projects that need a person like you to call them &#8220;home&#8221;.  I also encourage you to branch out and learn new languages, if for no other reason, to take back something new.</p>
+<p>I&#8217;m excited about what&#8217;s developing in the open source world and I want to be there when it happens!  I&#8217;m sure that many of you feel the same way.</p>
+<p>I hope that this was an enjoyable read for you and that the information here was insightful to you.  Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Heine Christiansen's photostream" href="https://www.flickr.com/photos/cagedigit/">Heine Christiansen</a> via the <a href="http://creativecommons.org/licenses/by-nc-sa/2.0/" rel="license">Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic License</a>.</span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Do+It+All+With+Ruby" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Do+It+All+With+Ruby" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/advanced/">#advanced</a><a href="../../../../../tag/begginer/">#begginer</a><a href="../../../../../tag/c/">#c</a><a href="../../../../../tag/d/">#d</a><a href="../../../../../tag/java/">#java</a><a href="../../../../../tag/language/">#language</a><a href="../../../../../tag/preogramming/">#preogramming</a><a href="../../../../../tag/python/">#python</a><a href="../../../../../tag/rails/">#rails</a><a href="../../../../../tag/ruby/">#ruby</a><a href="../../../../../tag/scala/">#scala</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../06/getting-into-rails-model-queries/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../10/rails-polymorphic-models/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-6959"> 	
+		<div id="comment-6959" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/7baaa7babd9d8de6b9d72775dcb10b35?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/7baaa7babd9d8de6b9d72775dcb10b35?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>ferdinandrosario</span><br />February 9, 2015 - 7:19 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Yes of course, I enjoyed. very fruitful info, Thanks for sharing and tickling..</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6960"> 	
+		<div id="comment-6960" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 9, 2015 - 3:01 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks for the feedback!</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-6961"> 	
+		<div id="comment-6961" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/00df35d64a78646d50328f615bf7f250?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/00df35d64a78646d50328f615bf7f250?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>genericid</span><br />February 10, 2015 - 3:32 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Please remove that obtrusive social bar at the bottom! Thanks.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6963"> 	
+		<div id="comment-6963" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 10, 2015 - 11:25 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Done!</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-6969"> 	
+		<div id="comment-6969" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/00df35d64a78646d50328f615bf7f250?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/00df35d64a78646d50328f615bf7f250?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>genericid</span><br />February 12, 2015 - 8:12 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Your article was good though 🙂</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-4" id="li-comment-6970"> 	
+		<div id="comment-6970" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 12, 2015 - 11:29 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks!  I appreciate it.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7038"> 	
+		<div id="comment-7038" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/43535083ff1d3e73e23093a471b5e98a?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/43535083ff1d3e73e23093a471b5e98a?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Forrest Chang</span><br />March 12, 2015 - 8:03 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Daniel, do you know about Jubilee/Vert.x?  I think they are key, along w/opal in the browser,  in keeping Ruby viable in most of the places people are leaving Ruby for &#8212; my rubyconf talk and slides try to cover that <a href="https://funkworks.blogspot.com/2015/01/jubilee.html" rel="nofollow ugc">http://funkworks.blogspot.com/2015/01/jubilee.html</a></p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7039"> 	
+		<div id="comment-7039" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />March 13, 2015 - 11:31 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I hadn&#8217;t heard about it.  I like the presentation.  Definitely looks like a great resource to have.  I&#8217;ve been planning to get into Torquebox myself.  Would you consider that a competitive product?  Or perhaps that&#8217;s like comparing apples and oranges?</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7041"> 	
+		<div id="comment-7041" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/43535083ff1d3e73e23093a471b5e98a?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/43535083ff1d3e73e23093a471b5e98a?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Forrest Chang</span><br />March 14, 2015 - 2:58 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I used to favor torquebox, I see them in sort of a similar area, they support many of the same features and give you access to the JVM ecosystem and other JVM languages.  Vert.x feels lighter and more modular where Torquebox puts into JBoss.  That said, the jubilee/rails game I show in the presentation runs in a single free heroku dyno, not sure if torquebox could</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

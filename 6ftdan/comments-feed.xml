@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments for Daniel P. Clark	</title>
+	<atom:link href="https://danielpclark.github.io/6ftdan/comments-feed.xml" rel="self" type="application/rss+xml" />
+	<link>https://6ftdan.com</link>
+	<description>6ft Dan™ “Sound Software Design”</description>
+	<lastBuildDate>Thu, 23 Apr 2020 01:48:53 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.2.7</generator>
+	<item>
+		<title>
+		Comment on Writing methods for both class and instance levels by john		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2015/02/24/writing-methods-for-both-class-and-instance-levels/</link>
+
+		<dc:creator><![CDATA[john]]></dc:creator>
+		<pubDate>Thu, 23 Apr 2020 01:48:53 +0000</pubDate>
+		<guid isPermaLink="false">http://6ftdan.com/?p=786#comment-8364</guid>
+
+					<description><![CDATA[great post]]></description>
+			<content:encoded><![CDATA[<p>great post</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Micro Backups of Your Git Dev Work by Dmitry		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2018/03/07/micro-backups-of-your-git-dev-work/</link>
+
+		<dc:creator><![CDATA[Dmitry]]></dc:creator>
+		<pubDate>Wed, 22 Jan 2020 21:02:56 +0000</pubDate>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1622#comment-7470</guid>
+
+					<description><![CDATA[I&#039;m using borgbackup, it has everything you may need, including incremental backups, compression, encryption, possibility to cron, cleanup archive.]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;m using borgbackup, it has everything you may need, including incremental backups, compression, encryption, possibility to cron, cleanup archive.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Elixir Envy ᐅ Ruby by Csaba		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/</link>
+
+		<dc:creator><![CDATA[Csaba]]></dc:creator>
+		<pubDate>Wed, 08 Jan 2020 09:36:32 +0000</pubDate>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1560#comment-7337</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/ P. Clark&lt;/a&gt;.
+
+Also with Ruby 2.6 &lt;code&gt;yield_self&lt;/code&gt; got aliased to &lt;code&gt;then&lt;/code&gt;, which is much less burdening to type and read, especially if used in abundance.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/">Daniel P. Clark</a>.</p>
+<p>Also with Ruby 2.6 <code>yield_self</code> got aliased to <code>then</code>, which is much less burdening to type and read, especially if used in abundance.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on ProxMox; A VM Server For Your Home by joey		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2018/02/04/proxmox-a-vm-server-for-your-home/</link>
+
+		<dc:creator><![CDATA[joey]]></dc:creator>
+		<pubDate>Fri, 04 Oct 2019 16:02:28 +0000</pubDate>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1589#comment-7256</guid>
+
+					<description><![CDATA[hello i want to buy a homeserver. learn how to use docker and i want to use services like nextcloud tvheadend and plex and freenas. also i want to use it as testlab for eg windows server DC and max 2 test windows clients... also linux samba .
+
+is a intel nuc 8 i3 enough with 16 gb? or shuld i buy a deskmini with better CPU?]]></description>
+			<content:encoded><![CDATA[<p>hello i want to buy a homeserver. learn how to use docker and i want to use services like nextcloud tvheadend and plex and freenas. also i want to use it as testlab for eg windows server DC and max 2 test windows clients&#8230; also linux samba .</p>
+<p>is a intel nuc 8 i3 enough with 16 gb? or shuld i buy a deskmini with better CPU?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on God&#8217;s Provision by Benjamin Sunderland		</title>
+		<link>https://danielpclark.github.io/6ftdan/danielpclark/2018/02/07/gods-provision/</link>
+
+		<dc:creator><![CDATA[Benjamin Sunderland]]></dc:creator>
+		<pubDate>Tue, 21 May 2019 15:16:23 +0000</pubDate>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1597#comment-7254</guid>
+
+					<description><![CDATA[Jesus all the way brother! Great to see other developers who love and believe in him also.]]></description>
+			<content:encoded><![CDATA[<p>Jesus all the way brother! Great to see other developers who love and believe in him also.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Rails Polymorphic Associations by Akhil Gautam		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2015/02/10/rails-polymorphic-models/</link>
+
+		<dc:creator><![CDATA[Akhil Gautam]]></dc:creator>
+		<pubDate>Fri, 05 Jan 2018 12:34:00 +0000</pubDate>
+		<guid isPermaLink="false">http://6ftdan.com/?p=724#comment-7252</guid>
+
+					<description><![CDATA[nice]]></description>
+			<content:encoded><![CDATA[<p>nice</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Play HD Youtube from the Raspberry Pi Command Line by Daniel P. Clark		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2015/07/25/play-hd-youtube-from-the-raspberry-pi-command-line/</link>
+
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Tue, 05 Sep 2017 00:30:00 +0000</pubDate>
+		<guid isPermaLink="false">http://6ftdan.com/?p=1113#comment-7251</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://danielpclark.github.io/6ftdan/allyourdev/2015/07/25/play-hd-youtube-from-the-raspberry-pi-command-line/
+
+Because you&#039;re telling omxplayer to play a video or audio file named youtube-dl in the current directory.  Which does not exist and is not what you want to do.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://danielpclark.github.io/6ftdan/allyourdev/2015/07/25/play-hd-youtube-from-the-raspberry-pi-command-line/">Powsniffer0110</a>.</p>
+<p>Because you&#8217;re telling omxplayer to play a video or audio file named youtube-dl in the current directory.  Which does not exist and is not what you want to do.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Play HD Youtube from the Raspberry Pi Command Line by Powsniffer0110		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2015/07/25/play-hd-youtube-from-the-raspberry-pi-command-line/</link>
+
+		<dc:creator><![CDATA[Powsniffer0110]]></dc:creator>
+		<pubDate>Thu, 31 Aug 2017 02:37:00 +0000</pubDate>
+		<guid isPermaLink="false">http://6ftdan.com/?p=1113#comment-7250</guid>
+
+					<description><![CDATA[hey when i do  omxplayer youtube-dl -g youtubevideo 
+
+I get youtube-dl not found, even tho I do have youtube-dl installed. Why is this?]]></description>
+			<content:encoded><![CDATA[<p>hey when i do  omxplayer youtube-dl -g youtubevideo </p>
+<p>I get youtube-dl not found, even tho I do have youtube-dl installed. Why is this?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Elixir Envy ᐅ Ruby by Daniel P. Clark		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/</link>
+
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Mon, 07 Aug 2017 15:24:00 +0000</pubDate>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1560#comment-7249</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/
+
+Thank you for sharing that.  I&#039;d seen &lt;b&gt;yield_self&lt;/b&gt; but had never seen it shown to work in that way.   That&#039;s great!
+
+I&#039;ve pointed out in other posts that I thought &lt;b&gt;yield_self&lt;/b&gt; was a terrible thing to add because you could just alias that to &lt;b&gt;instance_eval&lt;/b&gt; and get the same result.  But I was corrected by being told that &lt;b&gt;yield_self&lt;/b&gt; has access to the outer context as its binding rather than the inner context of the instance.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/">zverok</a>.</p>
+<p>Thank you for sharing that.  I&#8217;d seen <b>yield_self</b> but had never seen it shown to work in that way.   That&#8217;s great!</p>
+<p>I&#8217;ve pointed out in other posts that I thought <b>yield_self</b> was a terrible thing to add because you could just alias that to <b>instance_eval</b> and get the same result.  But I was corrected by being told that <b>yield_self</b> has access to the outer context as its binding rather than the inner context of the instance.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Elixir Envy ᐅ Ruby by zverok		</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/</link>
+
+		<dc:creator><![CDATA[zverok]]></dc:creator>
+		<pubDate>Fri, 04 Aug 2017 20:19:00 +0000</pubDate>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1560#comment-7248</guid>
+
+					<description><![CDATA[Nice compendium! Mostly proofs that envy without trying to be Ruby-idiomatic leads to any cool trick possible, just not useful in any way :)
+
+It is a pity that it lacks mentioning &lt;a href=&quot;https://bugs.ruby-lang.org/issues/6721&quot; rel=&quot;nofollow&quot;&gt;yield_self&lt;/a&gt;, already introduced in Ruby 2.5 and being exactly the &quot;Ruby way of implementing Elixir pipe&quot;:
+
+&lt;pre&gt;
+&quot;hello http:///www.google.com world&quot;
+  .yield_self(&#038;URI.method(:extract)).first
+  .yield_self(&#038;URI.method(:parse))
+  .yield_self { &#124;uri&#124; open(uri).read }
+  .yield_self(&#038;HTML.method(:parse))
+  .css(&quot;h1&quot;)
+  .first.text.strip
+&lt;/pre&gt;]]></description>
+			<content:encoded><![CDATA[<p>Nice compendium! Mostly proofs that envy without trying to be Ruby-idiomatic leads to any cool trick possible, just not useful in any way 🙂</p>
+<p>It is a pity that it lacks mentioning <a href="https://bugs.ruby-lang.org/issues/6721" rel="nofollow">yield_self</a>, already introduced in Ruby 2.5 and being exactly the &#8220;Ruby way of implementing Elixir pipe&#8221;:</p>
+<pre>
+"hello http:///www.google.com world"
+  .yield_self(&amp;URI.method(:extract)).first
+  .yield_self(&amp;URI.method(:parse))
+  .yield_self { |uri| open(uri).read }
+  .yield_self(&amp;HTML.method(:parse))
+  .css("h1")
+  .first.text.strip
+</pre>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Refinements over Monkey-patching | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.8" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2015/01/20/refinements-over-monkey-patching/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-614 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-614" class="post-614 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-programming category-ruby tag-alias tag-article tag-block tag-blog tag-object tag-post tag-refine tag-refinement tag-ruby tag-scope">
+		<img width="640" height="430" src="../../../../../wp-content/uploads/2015/01/3158881133_42d58d4a62_z-640x430.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" />		<p class="date-author">January 20, 2015 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Refinements over Monkey-patching</h1>			<p>Monkey patching is rather straight forward.  You take an existing object and you apply your own duct tape, glue, nuts and bolts, or even chewing gum.  Or if it&#8217;s bad you hit it with a hammer.  No, but more seriously, it&#8217;s when you modify something existing from outside it&#8217;s original project code.</p>
+<p>For example you can add a method to the String Object by monkey patching like so:</p>
+<pre class="code-block language-ruby"><code><span class="s2">"asdfghjkl"</span><span class="o">.</span><span class="n">at</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># NoMethodError: undefined method `at' for "asdfghjkl":String</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">at</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">[</span><span class="n">num</span><span class="o">..</span><span class="n">num</span><span class="o">]</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="s2">"asdfghjkl"</span><span class="o">.</span><span class="n">at</span><span class="w"> </span><span class="mi">5</span>
+<span class="c1"># =&gt; "h"</span></code></pre>
+<p>As you can see the method <strong>.at()</strong> does not currently exist as an available method on String.  But when we defined the method within the class String it became available.</p>
+<p>If you&#8217;re new to monkey patching then I should inform you that the String Object is not redefined or rewritten here&#8230; but it has been built further upon.  So when you use monkey patching to define a new method, all the other methods and functionality still remains within the class.  But if you were to redefine an existing method it &#8220;does overwrite it&#8221;.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"asdf"</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="c1"># =&gt; "Asdf" </span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">capitalize</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">replace</span><span class="w"> </span><span class="nb">self</span><span class="o">.</span><span class="n">reverse</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="s2">"asdf"</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="c1"># =&gt; "fdsa" </span></code></pre>
+<p>For this reason you want to be very cautious against doing anything potentially dangerous with existing code.  The main reason is &#8220;when you monkey patch: it changes the way that Object works <strong>EVERYWHERE</strong>&#8220;.  Also if you still want to maintain the previous behavior you&#8217;ll need to keep the old method around with <strong>alias_method</strong>.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="n">alias_method</span><span class="w"> </span><span class="ss">:old_capitalize</span><span class="p">,</span><span class="w"> </span><span class="ss">:capitalize</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">capitalize</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">replace</span><span class="w"> </span><span class="nb">self</span><span class="o">.</span><span class="n">reverse</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">old_capitalize</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="s2">"asdf"</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="c1"># =&gt; "Fdsa" </span></code></pre>
+<p>So now we&#8217;ve added in the new behavior we wanted to to capitalize and still called the old one.  We still kept it&#8217;s original function around be renaming it with <strong>alias_method</strong>.  The old <strong>method_missing</strong> is the new method named <strong>old_method_missing</strong>.</p>
+<p>Keep in mind that this change, and/or behavior, is now happening everywhere.  It&#8217;s wreaking havoc across the universe with unforetold damages (<span style="color: #999999;">tongue-in-cheek</span>).  If you want proof; try adding the method <strong>each</strong> to the String Object in a Rails project.  It&#8217;ll blow up within the Cookies library.  Or you can try adding the <strong>flatten</strong> method into String&#8230; this will disable Rubygems&#8230; all of them&#8230; you won&#8217;t be able to import any.  At least that&#8217;s what happened back when I tried it&#8230; Rubygems may have changed enough since then for that to not be the case.</p>
+<p>There are plenty of times where the monkey-patching way is exactly what you want to use.  Like by adding logging to the nil class to help you know when your code unexpectedly calls an Object that wasn&#8217;t supposed to be nil:</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">NilClass</span>
+<span class="w">  </span><span class="n">alias_method</span><span class="w"> </span><span class="ss">:old_method_missing</span><span class="p">,</span><span class="w"> </span><span class="ss">:method_missing</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">method_missing</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="w"> </span><span class="s2">"</span><span class="si">#{</span><span class="n">m</span><span class="si">}</span><span class="s2"> called on nil object with </span><span class="si">#{</span><span class="n">args</span><span class="si">}</span><span class="s2"> attributes</span><span class="si">#{</span>
+<span class="w">                     </span><span class="s1">' from '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">block</span><span class="o">.</span><span class="n">try</span><span class="p">(</span><span class="ss">:source_location</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">block</span><span class="si">}</span><span class="s2">."</span>
+<span class="w">    </span><span class="n">old_method_missing</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">block</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="kp">nil</span><span class="o">.</span><span class="n">cow</span>
+<span class="c1"># cow called on nil object with [] attributes.</span>
+<span class="c1"># NoMethodError: undefined method `cow' for nil:NilClass</span></code></pre>
+<p>One thing to consider: if your project includes lots of Gems or code from other people, they may have also re-aliased methods.  So one person could be undoing the other persons work if you re-alias with the same naming.  So if you working on a Gem project, or the like, you might consider aliasing more like <strong>alias_method :old_method_missing_in_myproject, :method_missing</strong> but try to keep the name a little bit shorter then that.  This will help prevent against collision with other projects modifications.</p>
+<h3>Refinements</h3>
+<p>Refinements are the same thing as monkey patching, except without everything blowing up.  Refinements are your monkey patches getting used only within the scope that you call it to be used.  For example:</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">MyStringThing</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">at</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">self</span><span class="o">[</span><span class="n">num</span><span class="o">..</span><span class="n">num</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="w"> </span>
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="w">  </span><span class="n">using</span><span class="w"> </span><span class="no">MyStringThing</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">fifth</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+<span class="w">    </span><span class="n">str</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="w"> </span>
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">fifth</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+<span class="w">    </span><span class="n">str</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">fifth</span><span class="p">(</span><span class="s2">"qwerty"</span><span class="p">)</span>
+<span class="c1"># =&gt; "t" </span>
+<span class="n">B</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">fifth</span><span class="p">(</span><span class="s2">"qwerty"</span><span class="p">)</span>
+<span class="c1"># NoMethodError: undefined method `at' for "qwerty":String</span></code></pre>
+<p>Here you see that the method <strong>.at()</strong> is defined as a refinement within the module <strong>MyStringThing</strong>.  And only in <strong>class A</strong> did it work.  That&#8217;s because the <strong>using MyStringThing</strong> brought in the refinement within the scope of the <strong>class A</strong>.  Now with refinements we can define <strong>each</strong>, or <strong>flatten</strong>, on String and not blow everything up!  Because we&#8217;ll be scoping it to only where we need it.  <span style="color: #999999;">Note: a refinement is defined within a module and not a class.</span></p>
+<p>So refinements allow you to put your Mad Scientist ideas to the test but restricts your explosions to just the lab you&#8217;re working in instead of you obliterating the whole world.  Now people don&#8217;t mind your insanity that much since you no longer appear to be a threat.  Yes, they don&#8217;t even mind that you&#8217;ve given the monkey a lab coat and set him loose.  <em>&#8220;As longs as you&#8217;ve scoped him&#8221;</em> we&#8217;re all <em>&#8220;safe&#8221;</em> ;-).</p>
+<p>I must add that monkey patching isn&#8217;t generally as dangerous as I may have joked about.  Just keep in mind that there may be some cause and effect.  Don&#8217;t fear monkey patching.  Just use it wisely when you need to.  And if you only need it within a certain &#8220;area&#8221;, as opposed to everywhere, then use refinements.</p>
+<p>As always I hope my writing was both informational and enjoyable.  Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Dave Stokes's photostream" href="https://www.flickr.com/photos/33909700@N02/">Dave Stokes</a> via the <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">Creative Commons Attribution 2.0 Generic License</a>.</span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Refinements+over+Monkey-patching" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Refinements+over+Monkey-patching" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/alias/">#alias</a><a href="../../../../../tag/article/">#article</a><a href="../../../../../tag/block/">#block</a><a href="../../../../../tag/blog/">#blog</a><a href="../../../../../tag/object/">#object</a><a href="../../../../../tag/post/">#post</a><a href="../../../../../tag/refine/">#refine</a><a href="../../../../../tag/refinement/">#refinement</a><a href="../../../../../tag/ruby/">#ruby</a><a href="../../../../../tag/scope/">#scope</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../../../../danielpclark/2015/01/16/the-500-millisecond-rails-partial/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../22/learning-your-first-programming-language/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-6922"> 	
+		<div id="comment-6922" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/7baaa7babd9d8de6b9d72775dcb10b35?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/7baaa7babd9d8de6b9d72775dcb10b35?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>ferdinandrosario</span><br />January 22, 2015 - 1:57 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Nice Article. you helped me to be clear with refinement .Thanks</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6923"> 	
+		<div id="comment-6923" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 23, 2015 - 12:05 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Glad I could help!  Feel free to ask any questions you may have.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7125"> 	
+		<div id="comment-7125" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/d35567dcfbe690ccd011a903dca8b1ba?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d35567dcfbe690ccd011a903dca8b1ba?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://volta.ge" class="url" rel="ugc external nofollow">dimakura</a></span><br />September 8, 2015 - 4:10 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Hi, Daniel!</p>
+<p>Thanks for writing this article.</p>
+<p>It&#8217;s really interesting feature added in Ruby2. And I can imagine several use cases for using it.</p>
+<p>Still it looks a bit restricted. I wanted to ask your opinion about how usable Refinements might be in replacing monkey patches for Rails core classes.</p>
+<p>As an illustration what I mean. I just found a question on StackOverflow and was thinking about using Refinements in it (instead of monkey patch) <a href="http://stackoverflow.com/a/32457119/1426097" rel="nofollow ugc">http://stackoverflow.com/a/32457119/1426097</a>. It basically extends functionality of ActiveRecord::LoggerSubscriber class. While it should be used internally by Rails itself, I can&#8217;t figure out how Refinements might be useful in this context.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7126"> 	
+		<div id="comment-7126" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />September 11, 2015 - 8:38 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I&#8217;ve written a follow up post on refinements: <a href="../../../06/21/ruby-refinements-not-quite-ready-for-production/" rel="nofollow">Ruby Refinements – Not quite ready for production</a></p>
+<p>Refinements are virtually invisible to any outside introspection which can lead to troubles with testing and verifying what&#8217;s going on under the hood.  There are &#8220;planned changes&#8221; to eventually allow introspection, but for now I&#8217;d be careful about using it.  Don&#8217;t mix refinements (for now) and use them in a very clear way as to not need the use of introspection.</p>
+<p>Sandi Metz, the author of several excellent Ruby books, has done a conference talk called &#8220;Nothing is Something&#8221;.  Towards the end of that talk she gets into proper Object design and dealing with refining an Object by determining ideal attribute objects.  I recommend it before you continue.</p>
+<p><a href="https://www.youtube.com/watch?v=9lv2lBq6x4A" rel="nofollow ugc">https://www.youtube.com/watch?v=9lv2lBq6x4A</a></p>
+<p>In your StackOverflow question example it&#8217;s important to note that the link is to a module.  Refinements can only be included within a class.  It&#8217;s written as a module and used in a class.  The keyword &#8220;using&#8221; is only available within that scope.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7127"> 	
+		<div id="comment-7127" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/d35567dcfbe690ccd011a903dca8b1ba?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d35567dcfbe690ccd011a903dca8b1ba?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://volta.ge" class="url" rel="ugc external nofollow">dimakura</a></span><br />September 14, 2015 - 3:48 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks, Daniel!</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematics with MathJS</title>
+<meta name="description" content="One of the language design decisions in JavaScript has followed in C’s footsteps by providing implicit type conversions based on what operators you give it. For example in JavaScript, you can add true + true to get 2.…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>Mathematics with MathJS</h1>
+<p class="meta">By Daniel P. Clark · 2018-06-07 · 8 min read</p>
+<p>One of the language design decisions in JavaScript has followed in C&#8217;s footsteps by providing implicit type conversions based on what operators you give it. For example in JavaScript, you can add <code>true + true</code> to get <code>2</code>. While it may be convenient in some cases, this has been a pain point for many developers trying to locate and remedy bugs in their programs and makes it more difficult for developers new to the language to get their desired result.</p><p>So to save yourself from the headache of potential unintended type coercion with mathematics, you can be explicit with using MathJS and better guarantee the results you want.</p><p>MathJS is a very robust mathematics library that provides the capability to perform calculations in many additional math categories. It also provides unit conversion with minimal setup for custom unit types.</p><p>MathJS is the Swiss Army knife for having peace of mind when working with numbers, conversions, and mathematics in JavaScript.</p><h2>Setting Up TDD Environment for Trying MathJS</h2><p>I wanted to find an enjoyable way to test out most any JavaScript library from the comfort of my computer console. And here&#8217;s an elegant and easy way to get started &#8212; you&#8217;ll need to have <a href="https://nodejs.org/en/">NodeJS</a> and <a href="https://yarnpkg.com/lang/en/docs/install/">Yarn</a> installed on your machine.</p><blockquote><p><a href="https://www.npmjs.com/">npm</a> is an alternative to Yarn you may use, but I won&#8217;t be giving instructions for that.</p></blockquote><p>For testing, we&#8217;ll use <a href="https://mochajs.org/">Mocha</a> and <a href="http://www.chaijs.com/">Chai</a>, and for elegance, we&#8217;ll be writing our code in <a href="https://coffeescript.org/">CoffeeScript</a>.</p><p>To ensure that our tests are able to run from global commands on our system, we&#8217;ll need to run the following commands:</p><pre class="code-block language-bash"><code>yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>mocha
+yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>coffee-script</code></pre><p>Next we&#8217;ll create our project directory and initialize a project with <code>yarn</code>.</p><pre class="code-block language-bash"><code>mkdir<span class="w"> </span>MathJS
+<span class="nb">cd</span><span class="w"> </span>MathJS
+yarn<span class="w"> </span>init</code></pre><p>Now add Mocha and Chai to the project&#8217;s development dependencies and add MathJS as a primary dependency:</p><pre class="code-block language-bash"><code>yarn<span class="w"> </span>add<span class="w"> </span>mocha<span class="w"> </span>chai<span class="w"> </span>--dev
+yarn<span class="w"> </span>add<span class="w"> </span>mathjs
+yarn<span class="w"> </span>install</code></pre><p>Now make the folders for the project.</p><pre class="code-block language-bash"><code>mkdir<span class="w"> </span>bin<span class="w"> </span>src<span class="w"> </span><span class="nb">test</span></code></pre><p>And we&#8217;ll create files for testing with Mocha. We&#8217;ll first put defaults for Mocha in <code>test/mocha.opts</code>.</p><pre class="code-block language-bash"><code>--reporter<span class="w"> </span>spec
+--require<span class="w"> </span>coffee-script/register</code></pre><p>Then we&#8217;ll create a shorthand for executing the tests by making a file <code>bin/test</code>.</p><pre class="code-block language-bash"><code><span class="ch">#!/bin/bash</span>
+mocha<span class="w"> </span><span class="s2">"test/**/*Test.{js,coffee}"</span></code></pre><p>Change it to an executable with <code>chmod +x bin/test</code>, and now you can type <code>bin/test</code> on the command line whenever you want to run your tests.</p><p>An alternative way to simplify running tests is to use the <code>cake</code> executable that is provided globally when we installed CoffeeScript globally. This works like Ruby&#8217;s <code>rake</code> command; similarly you need to create a <code>Cakefile</code> to define the different executable tasks you want defined. It&#8217;s a nice system, and I do recommend learning it if you&#8217;d like.</p><p>Now if you&#8217;re familiar with having your tests run automatically whenever a change is committed to a file, you can do that here as well. <code>mocha</code> has some command line flag options for watching files. You would basically need to tack on <code>--watch --watch-extensions js,coffee</code>.</p><p>The problem with this system though is that it remembers everything between each run, so both of your sequential test runs have conflicts with the code already loaded. So you need to be a bit more creative in getting this feature enabled.</p><p>For anyone on Ubuntu or using an Ubuntu shell in Windows, Mac, or other platform, you can use the <code>inotifywait</code> command to implement something. Here&#8217;s what I&#8217;ve written that may work for you.</p><pre class="code-block language-bash"><code><span class="ch">#!/bin/bash</span>
+
+test_watch<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>clear
+<span class="w">  </span>inotifywait<span class="w"> </span>--quiet<span class="w"> </span>--recursive<span class="w"> </span>--monitor<span class="w"> </span>--format<span class="w"> </span><span class="s2">"Changed: %w%f"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--event<span class="w"> </span>close_write<span class="w"> </span>--exclude<span class="w"> </span><span class="s1">'(\.sw|~|[[:digit:]]+|node_modules)'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span>bin/test<span class="p">;</span>
+<span class="w">  </span>test_watch
+<span class="o">}</span>
+
+test_watch</code></pre><p>You can save that in <code>bin/watch</code> or make an equivalent entry in your <code>Cakefile</code> and be sure to change <code>bin/watch</code> to executable with <code>chmod<br /> +x</code>.</p><blockquote><p>The <code>inotifywait</code> can only take one exclude flag. You may change the regex matchers to better fit your personal needs.</p></blockquote><p>With that, you can split your terminal editor window with something like tmux, Vim, or the terminal program itself and watch live change results appear in one window while you code in another.</p><p>For testing, we&#8217;re going to have a default test helper file to load default code to use in all our test files. Create the file <code>test/testHelper.coffee</code> and putting the following line of code in it:</p><pre class="code-block language-coffeescript"><code><span class="nv">global.expect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s">'chai'</span><span class="p">).</span><span class="nx">expect</span></code></pre><p>Likewise in the src directory we&#8217;re going to do the same. Create the file <code>src/app.coffee</code> and put the following line in it.</p><pre class="code-block language-coffeescript"><code><span class="nv">global.MathJS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s">'mathjs'</span><span class="p">)</span></code></pre><h2>TDD with MathJS</h2><p>First we&#8217;ll create two files, one for source and one for testing.</p><pre class="code-block language-bash"><code>touch<span class="w"> </span>src/basicMath.coffee
+touch<span class="w"> </span>test/basicMathTest.coffee</code></pre><p>Then we&#8217;ll open up <code>test/basicMathTest.coffee</code> and write our first failing test.</p><pre class="code-block language-coffeescript"><code><span class="nx">require</span><span class="w"> </span><span class="s">'./testHelper'</span>
+<span class="nx">require</span><span class="w"> </span><span class="s">'../src/basicMath'</span>
+
+<span class="nx">describe</span><span class="w"> </span><span class="s">'Math basics'</span><span class="p">,</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">  </span><span class="nx">it</span><span class="w"> </span><span class="s">'input of 1 and 1 should be 2'</span><span class="p">,</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">add</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"1"</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="w"> </span><span class="mi">2</span></code></pre><p>This test is testing the function <code>add</code>, which we have not defined yet. The parameters have one number as a string, as this is a common input we end up with when calculating things in JavaScript. Now you can go ahead and run your test with <code>bin/test</code> and see your first failing message.</p><pre class="code-block language-bash"><code>Math<span class="w"> </span>basics
+<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>input<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="m">2</span>
+
+<span class="m">0</span><span class="w"> </span>passing<span class="w"> </span><span class="o">(</span>21ms<span class="o">)</span>
+<span class="m">1</span><span class="w"> </span>failing
+
+<span class="m">1</span><span class="o">)</span><span class="w"> </span>Math<span class="w"> </span>basics
+<span class="w">     </span>input<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="m">2</span>:
+<span class="w">   </span>ReferenceError:<span class="w"> </span>add<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>defined
+<span class="w">    </span>at<span class="w"> </span>Context.&lt;anonymous&gt;<span class="w"> </span><span class="o">(</span>test/basicMathTest.coffee:8:7<span class="o">)</span>&lt;/anonymous&gt;</code></pre><p>The next step for TDD is to work toward green. Now we&#8217;ll define an add method to our source code in <code>src/basicMath.coffee</code>. We&#8217;ll give it the generic JavaScript adding operator for this next test.</p><pre class="code-block language-coffeescript"><code><span class="nx">require</span><span class="w"> </span><span class="s">'./app'</span>
+
+<span class="nv">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">(a, b) -&gt;</span>
+<span class="w">  </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span>
+
+<span class="nv">global.add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">add</span></code></pre><p>The <code>global.add = add</code> exports the <code>add</code> function to be globally available. Now we run <code>bin/test</code> to see our new error message.</p><pre class="code-block language-bash"><code>Math<span class="w"> </span>basics
+<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>input<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="m">2</span>
+
+
+<span class="m">0</span><span class="w"> </span>passing<span class="w"> </span><span class="o">(</span>24ms<span class="o">)</span>
+<span class="m">1</span><span class="w"> </span>failing
+
+<span class="m">1</span><span class="o">)</span><span class="w"> </span>Math<span class="w"> </span>basics
+<span class="w">     </span>input<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="m">2</span>:
+<span class="w">   </span>AssertionError:<span class="w"> </span>expected<span class="w"> </span><span class="s1">'11'</span><span class="w"> </span>to<span class="w"> </span>equal<span class="w"> </span><span class="m">2</span>
+<span class="w">    </span>at<span class="w"> </span>Context.&lt;anonymous&gt;<span class="w"> </span><span class="o">(</span>test/basicMathTest.coffee:6:27<span class="o">)</span>&lt;/anonymous&gt;</code></pre><p>Here we now see that the <code>add</code> method is correctly available to call, but the error message is showing us that when we added <code>1 + "1"</code> we got a string of <code>11</code>. This is part of the coercion behavior that JavaScript has for these types when adding. Now let&#8217;s change it to use MathJS and see our results.</p><pre class="code-block language-coffeescript"><code><span class="nv">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">(a, b) -&gt;</span>
+<span class="w">  </span><span class="nx">MathJS</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span></code></pre><p>Run our tests and we get:</p><pre class="code-block language-bash"><code>Math<span class="w"> </span>basics
+<span class="w">  </span>✓<span class="w"> </span>input<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>and<span class="w"> </span><span class="m">1</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="m">2</span>
+
+
+<span class="m">1</span><span class="w"> </span>passing<span class="w"> </span><span class="o">(</span>33ms<span class="o">)</span></code></pre><p>Now this example of using <code>MathJS.add</code> is a contrived example but does demonstrate that MathJS has cleared up our worries of unwanted type coercion. If we really wanted to make <code>MathJS.add</code> globally available as add, we simply could have done <code>global.add = MathJS.add</code>. This was merely to demonstrate code structure for writing and using code with TDD.</p><p>Now on to MathJS specifics.</p><h2>MathJS</h2><p>MathJS is pretty exhaustive in the amount of features it contains, and I will only be highlighting some aspects as they are very well documented. But I feel it is important nonetheless to share and raise awareness of what you can do with MathJS.</p><pre class="code-block language-coffeescript"><code><span class="c1"># You can simplify mathmatical expressions with</span>
+<span class="nx">MathJS</span><span class="p">.</span><span class="nx">simplify</span><span class="p">(</span><span class="s">'x * y * -x / (x ^ 2)'</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
+<span class="c1"># =&gt; '-y'</span>
+
+<span class="c1"># Find the symbolic derivative of an expression</span>
+<span class="nx">MathJS</span><span class="p">.</span><span class="nx">derivative</span><span class="p">(</span><span class="s">'2x^2 + 3x + 4'</span><span class="p">,</span><span class="w"> </span><span class="s">'x'</span><span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
+<span class="c1"># =&gt; '4 * x + 3'</span>
+
+<span class="c1"># Evaluate expressions</span>
+<span class="nx">MathJS</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="s">'2 inch to cm'</span><span class="p">)</span>
+<span class="c1"># =&gt; 5.08 cm</span></code></pre><p>You can chain your method calls together.</p><pre class="code-block language-coffeescript"><code><span class="nx">MathJS</span><span class="p">.</span><span class="nx">chain</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="nx">multiply</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">done</span><span class="p">()</span>
+<span class="c1"># =&gt; 29</span></code></pre><p>You may define your own unit measurements and override existing ones.</p><pre class="code-block language-coffeescript"><code><span class="nx">math</span><span class="p">.</span><span class="nx">createUnit</span><span class="p">(</span><span class="s">'mile'</span><span class="p">,</span><span class="w"> </span><span class="s">'1609.347218694'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">override</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}})</span></code></pre><p>You can choose different types of the number you return, like having a fraction be the return type.</p><pre class="code-block language-coffeescript"><code><span class="nx">math</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span><span class="w"> </span><span class="nv">number</span><span class="o">:</span><span class="w"> </span><span class="s">'Fraction'</span><span class="w"> </span><span class="p">})</span></code></pre><p>These are just a small glimpse into what you may do with MathJS.</p><h3>Some things to keep in mind with MathJS</h3><p>When you want to perform division with MathJS, it&#8217;s better to use the fraction methods included with it rather than divide. MathJS has included an entirely separate library just for dealing with fractions, and it&#8217;s much more accurate in producing desired results.</p><p>Also, when you&#8217;re writing methods that return values after a calculation, there is a MathJS object that&#8217;s generally returned from many of the methods; you may want to simplify that back down to a number by passing it to <code>MathJS.number</code>.</p><p>When writing a function that needs to perform division and return a number with something like <code>1250 - ((450-98)*37)/5000</code> where each of those numbers could be variables or parameters, it would look like:</p><pre class="code-block language-coffeescript"><code><span class="nx">MathJS</span><span class="p">.</span><span class="nx">number</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">MathJS</span><span class="p">.</span><span class="nx">subtract</span><span class="p">(</span>
+<span class="w">    </span><span class="mi">1250</span>
+<span class="w">    </span><span class="nx">MathJS</span><span class="p">.</span><span class="nx">fraction</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">MathJS</span><span class="p">.</span><span class="nx">chain</span><span class="p">(</span><span class="mi">450</span><span class="p">).</span><span class="nx">subtract</span><span class="p">(</span><span class="mi">98</span><span class="p">).</span><span class="nx">multiply</span><span class="p">(</span><span class="mi">37</span><span class="p">).</span><span class="nx">done</span><span class="p">()</span>
+<span class="w">      </span><span class="mi">5000</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">)</span></code></pre><p>This produces a good decimal number result.</p><p>When trying to deal with some quirks, like round-off errors in JavaScript where you add <code>0.1 + 0.2</code> and get <code>0.30000000000000004</code>, even with <code>MathJS.add</code> you need to either format it with precision, use <code>Fractions</code>, or use <code>BigNumbers</code>.</p><p>To format it with precision, you would do the following.</p><pre class="code-block language-coffeescript"><code><span class="nv">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MathJS</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span>
+<span class="nx">MathJS</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">precision</span><span class="o">:</span><span class="w"> </span><span class="mi">14</span><span class="p">})</span>
+<span class="c1"># =&gt; '0.3'</span></code></pre><p>Note that the format method will return a string type. As long as you continue using MathJS for further calculations on the returned value, there shouldn&#8217;t be an issue. Otherwise pass it to <code>MathJS.number</code> to convert the string to an integer or float.</p><h2>Counting to Change</h2><p>In an example where you would like to calculate the exact coin change from an amount, you could use TDD to invent the process one step at a time. With MathJS&#8217;s unit conversion feature, you can completely skip writing the implementation and simply define quantity relations of one coin to another.</p><p>So a penny will be the smallest unit of 1, and everything else can relate to that. Using the <code>MathJS.createUnit</code> method, we can define all the relations in one go.</p><pre class="code-block language-coffeescript"><code><span class="nx">MathJS</span><span class="p">.</span><span class="nx">createUnit</span><span class="p">({</span>
+<span class="w">  </span><span class="s">'penny'</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">'pennies'</span><span class="p">]</span>
+<span class="w">  </span><span class="s">'nickel'</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">definition</span><span class="o">:</span><span class="w"> </span><span class="s">'5 pennies'</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">'nickels'</span><span class="p">]</span>
+<span class="w">  </span><span class="s">'dime'</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">definition</span><span class="o">:</span><span class="w"> </span><span class="s">'2 nickels'</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">'dimes'</span><span class="p">]</span>
+<span class="w">  </span><span class="s">'quarter'</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">definition</span><span class="o">:</span><span class="w"> </span><span class="s">'5 nickels'</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">'quarters'</span><span class="p">]</span>
+<span class="w">  </span><span class="s">'halfdollar'</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">definition</span><span class="o">:</span><span class="w"> </span><span class="s">'2 quarters'</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">'halfdollars'</span><span class="p">]</span>
+<span class="w">  </span><span class="s">'dollar'</span><span class="o">:</span>
+<span class="w">    </span><span class="nv">definition</span><span class="o">:</span><span class="w"> </span><span class="s">'4 quarters'</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">'dollars'</span><span class="p">]</span>
+<span class="p">})</span></code></pre><p>With this, we have everything we need to convert a dollar and change amount into the proper coinage. Here&#8217;s how that looks after the TDD work as demonstrated above &#8212; the <code>src/coinCounter.coffee</code> file looks like:</p><pre class="code-block language-coffeescript"><code><span class="nx">require</span><span class="w"> </span><span class="s">'./app'</span>
+
+<span class="c1">#</span>
+<span class="c1">#  The MathJS.createUnit code shown</span>
+<span class="c1">#  above goes here</span>
+<span class="c1">#</span>
+
+<span class="nv">defaultDenoms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s">'dollars'</span>
+<span class="w">  </span><span class="s">'halfdollars'</span>
+<span class="w">  </span><span class="s">'quarters'</span>
+<span class="w">  </span><span class="s">'dimes'</span>
+<span class="w">  </span><span class="s">'nickels'</span>
+<span class="w">  </span><span class="s">'pennies'</span>
+<span class="p">]</span>
+
+<span class="nv">count_change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">(amount, denominations) -&gt;</span>
+<span class="w">  </span><span class="nv">denoms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">denominations</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">defaultDenoms</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">MathJS</span><span class="p">.</span>
+<span class="w">    </span><span class="nx">unit</span><span class="p">(</span><span class="nx">amount</span><span class="p">).</span>
+<span class="w">    </span><span class="nx">splitUnit</span><span class="p">(</span><span class="nx">denoms</span><span class="p">).</span>
+<span class="w">    </span><span class="nx">toString</span><span class="p">()</span>
+
+<span class="nv">global.count_change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count_change</span></code></pre><p>And the tests in <code>test/coinCounterTest.coffee</code> to show splitting into coins:</p><pre class="code-block language-coffeescript"><code><span class="nx">require</span><span class="w"> </span><span class="s">'./testHelper'</span>
+<span class="nx">require</span><span class="w"> </span><span class="s">'../src/coinCounter'</span>
+
+<span class="nx">describe</span><span class="w"> </span><span class="s">'Makes change'</span><span class="p">,</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">  </span><span class="nx">it</span><span class="w"> </span><span class="s">'should produce default denominations of change'</span><span class="p">,</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">count_change</span><span class="p">(</span><span class="s">'831 pennies'</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nx">equal</span><span class="w"> </span><span class="s">'</span>
+<span class="s">      8 dollars,\</span>
+<span class="s">      0 halfdollars,\</span>
+<span class="s">      1 quarters,\</span>
+<span class="s">      0 dimes,\</span>
+<span class="s">      1 nickels,\</span>
+<span class="s">      1 pennies</span>
+<span class="s">    '</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="w"> </span><span class="s">'can handle specific small change only'</span><span class="p">,</span><span class="w"> </span><span class="nf">-&gt;</span>
+<span class="w">    </span><span class="nv">denominations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">'dimes'</span><span class="p">,</span><span class="w"> </span><span class="s">'nickels'</span><span class="p">,</span><span class="w"> </span><span class="s">'pennies'</span><span class="p">]</span>
+
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">count_change</span><span class="p">(</span><span class="s">'831 pennies'</span><span class="p">,</span><span class="w"> </span><span class="nx">denominations</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="nx">equal</span><span class="w"> </span><span class="s">'</span>
+<span class="s">      83 dimes,\</span>
+<span class="s">      0 nickels,\</span>
+<span class="s">      1 pennies</span>
+<span class="s">    '</span></code></pre><p>And with running <code>bin/test</code>, we get all tests passing green.</p><p>We didn&#8217;t need to do any conversion logic of our own &#8212; we simply let MathJS take the unit comparisons we gave it and do the work for us.</p><p>My only nitpick about the results is that whenever a value of <code>1</code> is returned for any denomination, it would be really nice if it used the singular word for it. But that&#8217;s easy enough to program for if it&#8217;s a requirement.</p><h2>Summary</h2><p>Not only does MathJS make calculations safer to do in JavaScript, but it gives us so much that we can do with the robustness of its library. Now we can do finance, Latex, unit conversions, algebra, and much more with the well designed library MathJS. Enjoy!</p> 
+</article>
+<footer class="source">Originally published on 2018-06-07 on the Codeship blog (<a href="https://blog.codeship.com/mathematics-with-mathjs/">https://blog.codeship.com/mathematics-with-mathjs/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/mathematics-with-mathjs">https://www.cloudbees.com/blog/mathematics-with-mathjs</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

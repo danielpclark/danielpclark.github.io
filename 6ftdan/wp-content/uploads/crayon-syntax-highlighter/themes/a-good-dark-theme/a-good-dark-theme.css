@@ -1,0 +1,175 @@
+/*
+Name: A Good Dark Theme
+Description: A good dark theme
+Version: 1
+Author: Daniel P. Clark
+URL: http://6ftdan.com
+*/
+.crayon-theme-a-good-dark-theme {
+	border-width: 1px !important;
+	border-color: #999 !important;
+	border-style: solid !important;
+	text-shadow: none !important;
+	background: #272822 !important;
+}
+.crayon-theme-a-good-dark-theme-inline {
+	background: #272822 !important;
+	border-width: 0px !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-table .crayon-nums {
+	background: #272822 !important;
+	color: #868686 !important;
+}
+.crayon-theme-a-good-dark-theme *::selection {
+	background: transparent !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-code *::selection {
+	background: #ddeeff !important;
+	color: #316ba5 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-striped-line {
+	background: #272822 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-striped-num {
+	background: #32322a !important;
+	color: #868686 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-line {
+	background: #272822 !important;
+	border-width: 1px !important;
+	border-color: #272822 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-num {
+	color: #868686 !important;
+	background: #272822 !important;
+	border-width: 1px !important;
+	border-color: #272822 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-line.crayon-striped-line {
+	background: #272822 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-num.crayon-striped-num {
+	background: #272822 !important;
+	color: #868686 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-line.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-num.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-line.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-marked-num.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-info {
+	background: #bcbbfb !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #b3afee !important;
+	border-bottom-style: solid !important;
+	color: #3c37a4 !important;
+	font-weight: bold !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-toolbar {
+	background: #bdbcfb !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #BBB !important;
+	border-bottom-style: solid !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-toolbar > div {
+	float: left !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-toolbar .crayon-tools {
+	float: right !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-title {
+	color: #295668 !important;
+	font-weight: bold !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-language {
+	color: #295668 !important;
+	background-color: #bcbbfb !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-button {
+	background-color: #bcbbfb !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-button:hover {
+	background-color: #7b79f9 !important;
+	color: #666;
+}
+.crayon-theme-a-good-dark-theme .crayon-button.crayon-pressed:hover {
+	background-color: #bcbbfb !important;
+	color: #666;
+}
+.crayon-theme-a-good-dark-theme .crayon-button.crayon-pressed {
+	background-color: #7573f5 !important;
+	color: #FFF;
+}
+.crayon-theme-a-good-dark-theme .crayon-button.crayon-pressed:active {
+	background-color: #a8a7fc !important;
+	color: #FFF;
+}
+.crayon-theme-a-good-dark-theme .crayon-button:active {
+	background-color: #bcbbfb !important;
+	color: #FFF;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-c {
+	color: #75715e !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-s {
+	color: #f6f368 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-p {
+	color: #b85c00 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-ta {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-k {
+	color: #66d9ef !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-st {
+	color: #66d9ef !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-r {
+	color: #66d9ef !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-t {
+	color: #2884f7 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-m {
+	color: #66d9ef !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-i {
+	color: #d768ef !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-e {
+	color: #6af033 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-v {
+	color: #ffffff !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-cn {
+	color: #ffffff !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-o {
+	color: #66d9ef !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-sy {
+	color: #ffffff !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-n {
+	color: #666 !important;
+	font-style: italic !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-f {
+	color: #999 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre .crayon-h {
+	color: #006fe0 !important;
+}
+.crayon-theme-a-good-dark-theme .crayon-pre {
+	color: #f8f8f2 !important;
+}

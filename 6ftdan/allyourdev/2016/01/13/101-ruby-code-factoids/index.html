@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>101 Ruby Code Factoids | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.8" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2016/01/13/101-ruby-code-factoids/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-1248 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-1248" class="post-1248 post type-post status-publish format-standard has-post-thumbnail hentry category-programming category-ruby tag-code tag-examples tag-factoids tag-ruby tag-things">
+		<img width="640" height="427" src="../../../../../wp-content/uploads/2016/01/420970243_35ab3a0891_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2016/01/420970243_35ab3a0891_z.jpg 640w, ../../../../../wp-content/uploads/2016/01/420970243_35ab3a0891_z-300x200.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		<p class="date-author">January 13, 2016 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">101 Ruby Code Factoids</h1>			<h5>0) &#8216;methods&#8217; method</h5>
+<p>Since <em>almost</em> everything in Ruby is an Object you can type dot methods on it to see what methods are available.</p>
+<pre class="code-block language-ruby"><code><span class="mi">4</span><span class="o">.</span><span class="n">methods</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="no">Object</span><span class="o">.</span><span class="n">methods</span>
+<span class="c1"># =&gt; [:-@, :+, :-, :*, :/, :div, :%, :modulo, :divmod, :fdiv, :**, :abs, :magnitude, :~, :&amp;, :|, :^, :[], :&lt;&lt;, :&gt;&gt;, :to_f, :size, :bit_length, :zero?, :odd?, :even?, :succ, :integer?, :upto, :downto, :times, :next, :pred, :chr, :ord, :to_i, :to_int, :floor, :ceil, :truncate, :round, :gcd, :lcm, :gcdlcm, :numerator, :denominator, :to_r, :rationalize, :singleton_method_added, :coerce, :i, :+@, :remainder, :real?, :nonzero?, :step, :quo, :to_c, :real, :imaginary, :imag, :abs2, :arg, :angle, :phase, :rectangular, :rect, :polar, :conjugate, :conj, :between?]</span></code></pre>
+<h5>1) _</h5>
+<p>In IRB the use of the underscore variable <strong>_</strong> will hold the evaluation of the last line of code executed.</p>
+<p>When the variable is used in code it&#8217;s an indicator from the developer that this parameter isn&#8217;t going to be used.  For example &#8220;Divided into columns of 4&#8221;</p>
+<pre class="code-block language-ruby"><code><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="o">].</span><span class="n">group_by</span><span class="o">.</span><span class="n">with_index</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">_</span><span class="p">,</span><span class="n">index</span><span class="o">|</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">}</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># =&gt; [[0, 4, 9], [1, 5], [2, 6], [3, 7]]</span></code></pre>
+<p>In the Minitest framework, starting in version 5.6.0, the use of underscore is an alias to the new <strong>spec</strong> style testing.</p>
+<pre class="code-block language-ruby"><code><span class="n">spec</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">must_be</span><span class="w"> </span><span class="ss">:even?</span>
+<span class="n">_</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">wont_be</span><span class="w"> </span><span class="ss">:odd?</span></code></pre>
+<h5>2) instance_exec</h5>
+<p>The <strong>instance_exec</strong> method is available on every Object, and everything in Ruby is an Object, and when you use it you open up the <strong>singleton_class</strong> of the object to work on.  Anything you can do in a Class you could do in an <strong>instance_exec</strong>.</p>
+<pre class="code-block language-ruby"><code><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Object</span><span class="o">.</span><span class="n">new</span>
+<span class="n">num</span><span class="o">.</span><span class="n">instance_exec</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">==</span><span class="w"> </span><span class="n">other</span>
+<span class="w">    </span><span class="n">other</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="p">}</span>
+<span class="n">num</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span>
+<span class="c1"># =&gt; false</span>
+<span class="n">num</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span>
+<span class="c1"># =&gt; true</span></code></pre>
+<p>You can even use this on a Proc&#8230; which could drive people crazy if you do.  But just so you know that you can, here it is.</p>
+<pre class="code-block language-ruby"><code><span class="n">prc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">proc</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">num</span><span class="o">|</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span>
+<span class="n">prc</span><span class="o">.</span><span class="n">instance_exec</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">==</span><span class="w"> </span><span class="n">other</span><span class="p">;</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">end</span><span class="w">  </span><span class="p">}</span>
+
+<span class="n">prc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; true</span>
+<span class="n">prc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># =&gt; false</span>
+
+<span class="n">prc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span>
+<span class="c1"># =&gt; false</span>
+<span class="n">prc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span>
+<span class="c1"># =&gt; true</span></code></pre>
+<h5>3) Enumerator::Lazy</h5>
+<p>An Enumerator::Lazy object will give you back one object at a time from your collection with optional processing on each item.</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">do_the_lazy</span><span class="p">(</span><span class="n">array_input</span><span class="p">)</span>
+<span class="w">  </span><span class="no">Enumerator</span><span class="o">::</span><span class="no">Lazy</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">array_input</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">yielder</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="o">|</span>
+<span class="w">    </span><span class="n">yielder</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">do_the_lazy</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="o">]</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;Enumerator::Lazy: [1, 2, 3, 4, 5, 6]:each&gt;</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 1</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 2</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 3</span>
+<span class="n">x</span><span class="o">.</span><span class="n">force</span>
+<span class="c1"># =&gt; [1, 2, 3, 4, 5, 6]</span></code></pre>
+<h5>4) Struct has Enumerable as its ancestor</h5>
+<p>Since Struct has Enumerable as its ancestor you can use any method from it and write some handy methods on Structs themselves.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Pair</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:first</span><span class="p">,</span><span class="w"> </span><span class="ss">:second</span><span class="p">)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">same?</span>
+<span class="w">    </span><span class="n">inject</span><span class="p">(</span><span class="ss">:==</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add</span>
+<span class="w">    </span><span class="n">reduce</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Pair</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;struct Pair first=4, second=4&gt;</span>
+<span class="n">a</span><span class="o">.</span><span class="n">same?</span>
+<span class="c1"># =&gt; true</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add</span>
+<span class="c1"># =&gt; 8</span>
+
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Pair</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;struct Pair first=5, second=6&gt;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">same?</span>
+<span class="c1"># =&gt; false</span>
+<span class="n">b</span><span class="o">.</span><span class="n">add</span>
+<span class="c1"># =&gt; 11</span></code></pre>
+<h5>5) $:</h5>
+<p>The <strong>$:</strong> variable is the load path for Ruby gems.  <em>Also available via <strong>$LOAD_PATH</strong>.</em>  You can add the current directory to your load path with:</p>
+<pre class="code-block language-ruby"><code><span class="vg">$:</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s1">'.'</span></code></pre>
+<h5>6) inspect</h5>
+<p>The inspect method is meant to be a human readable representation for any object.  It is the default representation of an Object when you call Class#new and it shows it on the next line.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Human</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:age</span><span class="p">)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">inspect</span>
+<span class="w">    </span><span class="s2">"</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2"> is a human of age </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2">"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">joe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Human</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"Joe"</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">)</span>
+<span class="c1"># =&gt; Joe is a human of age 43</span></code></pre>
+<h5>7) Hash#invert</h5>
+<p>Reverse your Hash key-value pairs.</p>
+<pre class="code-block language-ruby"><code><span class="p">{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span><span class="o">.</span><span class="n">invert</span>
+<span class="c1"># =&gt; {1=&gt;:a, 2=&gt;:b}</span></code></pre>
+<h5>8) Method#to_proc</h5>
+<p>You can convert methods to a proc.  <em>Note they may be exclusively scoped to the same kind of Object they were defined in.</em></p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">plus_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="n">proc_increment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">method</span><span class="p">(</span><span class="ss">:plus_one</span><span class="p">)</span><span class="o">.</span><span class="n">to_proc</span>
+
+<span class="n">proc_increment</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; 5</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="o">].</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="n">proc_increment</span><span class="p">)</span>
+<span class="c1"># =&gt; [2, 4, 6, 10]</span></code></pre>
+<h5>9) module_function</h5>
+<p><strong>module_function</strong> is to a <strong>Module</strong> what <strong>private</strong> is to a <strong>Class</strong>.  <em>Clarification: when <strong>included</strong>.</em></p>
+<p>For writing your own private methods in a module see my blog post: <a href="../../../../2015/05/02/private-module-methods-in-ruby/">Private Module Methods in Ruby</a><strong><br />
+</strong></p>
+<h5>10) require_relative</h5>
+<p><strong>require_relative</strong> is a convenient way to load other ruby files relative to your current files location.</p>
+<h5>11) instance_methods</h5>
+<p>On any class you can call the <strong>instance_methods</strong> method to find out what the individual instances of the class will have defined on them.</p>
+<h5>12) Enumerable</h5>
+<p>Enumerable is a module that is included in basic collection types such as Array, Hash, and Struct.  So all of these object types will include the instance methods from Enumerable.</p>
+<h5>13) defined?</h5>
+<p>The <strong>defined?</strong> <del>method</del> keyword is handy for checking whether anything is publicly defined module, class, method, etc.  On classes on modules you can also call <strong>method_defined?</strong>, <strong>public_method_defined?</strong>, <strong>private_method_defined?</strong>, and <strong>protected_method_defined?</strong></p>
+<h5>14) &#8211;noprompt</h5>
+<p>If you execute IRB with the command line flag <strong>&#8211;noprompt</strong> you will enter in to an IRB session with none of the extra characters showing up on the left side of the terminal.  This is great if you want to experiment with code and then use your mouse to copy &amp; paste from it.</p>
+<h5>15) string % value(s)</h5>
+<p>You can insert with type conversion into strings using the percent <strong>%</strong> method.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"Number: %f %f"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">]</span>
+<span class="c1"># =&gt; Number: 1.000000 2.000000</span>
+
+<span class="s2">"Number: %e"</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s2">"6"</span>
+<span class="c1"># =&gt; "Number: 6.000000e+00"</span></code></pre>
+<h5>16) ternary operator _ ? _ : _</h5>
+<p>When you use a question mark after something with some space it starts an if else switch.  If the value before the question mark is true then return the first item after the question mark.  If false then move past the colon mark.</p>
+<pre class="code-block language-ruby"><code><span class="kp">true</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="c1"># =&gt; 10 </span>
+<span class="kp">false</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="c1"># =&gt; 20 </span>
+<span class="kp">false</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="c1"># =&gt; 30</span>
+<span class="kp">false</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">!</span><span class="mi">20</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="c1"># =&gt; 40</span>
+<span class="kp">false</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="c1"># =&gt; 50</span>
+<span class="kp">false</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="o">!</span><span class="mi">30</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="c1"># =&gt; 60</span>
+<span class="kp">false</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">!</span><span class="mi">20</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="c1"># =&gt; 40</span></code></pre>
+<p>Is is generally advisable to use just one ternary operator per line.  If you wish to use more you should add parenthesis around each inner expression to allow for ease of comprehension.</p>
+<h5>17) ruby -e &#8220;#code&#8221;</h5>
+<p>Run ruby code snippets from the command line</p>
+<pre class="code-block language-sh"><code>home:~$<span class="w"> </span>ruby<span class="w"> </span>-e<span class="w"> </span><span class="s2">"puts 1 + 1"</span>
+<span class="m">2</span></code></pre>
+<h5>18) %[]</h5>
+<p><strong>%[]</strong> is just like using quotations to form a string.  It allows you to use interpolation, double quotes, and single quotes within.</p>
+<pre class="code-block language-ruby"><code><span class="sx">%[Hello </span><span class="si">#{</span><span class="w"> </span><span class="s2">"World!"</span><span class="w"> </span><span class="si">}</span><span class="sx"> "Quoted" and 'quoted!']</span>
+<span class="c1"># =&gt; "Hello World! \"Quoted\" and 'quoted!'"</span></code></pre>
+<h5>19) erb</h5>
+<p>ERB is an included library with Ruby and you can use it to add Ruby code to other documents/strings.</p>
+<pre class="code-block language-ruby"><code><span class="nb">require</span><span class="w"> </span><span class="s2">"erb"</span>
+<span class="no">ERB</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="sx">%[&lt;html&gt;&lt;body&gt;Hello &lt;%= "Wor" + "ld!" %&gt;&lt;/body&gt;&lt;/html&gt;]</span><span class="p">)</span><span class="o">.</span><span class="n">result</span>
+<span class="c1"># =&gt; "&lt;html&gt;&lt;body&gt;Hello World!&lt;/body&gt;&lt;/html&gt;"</span></code></pre>
+<h5>20) undefined <del>Class</del> instance variables don&#8217;t raise errors</h5>
+<p>When a variable hasn&#8217;t been defined yet and you use the <del>class</del> instance variable form of an at symbol (<strong>@</strong>) then it will evaluate as nil rather than raising any &#8220;undefined&#8221; errors.</p>
+<pre class="code-block language-ruby"><code><span class="vi">@a</span>
+<span class="c1"># =&gt; nil</span>
+<span class="vi">@a</span><span class="o">.</span><span class="n">to_i</span>
+<span class="c1"># =&gt; 0</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">instance_eval</span><span class="w"> </span><span class="p">{</span><span class="vi">@a</span><span class="p">}</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_from_one</span><span class="p">()</span>
+<span class="w">  </span><span class="vi">@num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@num</span><span class="o">.</span><span class="n">to_i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">end</span>
+<span class="n">count_from_one</span>
+<span class="c1"># =&gt; 1 </span>
+<span class="n">count_from_one</span>
+<span class="c1"># =&gt; 2 </span>
+<span class="n">count_from_one</span>
+<span class="c1"># =&gt; 3 </span>
+<span class="n">count_from_one</span>
+<span class="c1"># =&gt; 4</span></code></pre>
+<h5>21) UnboundMethod</h5>
+<p>You can extract an instance method from a class and use it like a stand alone Proc with <strong>bind</strong>.</p>
+<pre class="code-block language-ruby"><code><span class="nb">split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="o">.</span><span class="n">instance_method</span><span class="p">(</span><span class="ss">:split</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;UnboundMethod: String#split&gt;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="k">undef</span><span class="w"> </span><span class="ss">:split</span>
+<span class="k">end</span>
+
+<span class="s2">"asdf"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"s"</span><span class="p">)</span>
+<span class="c1">#NoMethodError: undefined method `split' for "asdf":String</span>
+
+<span class="nb">split</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">"asdf"</span><span class="p">)</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"s"</span><span class="p">)</span>
+<span class="c1"># =&gt; ["a", "df"]</span></code></pre>
+<h5>22) ObjectSpace</h5>
+<p>You can get get a reference to every instance of a specific object with ObjectSpace.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="k">end</span>
+
+<span class="mi">3</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">A</span><span class="o">.</span><span class="n">new</span>
+<span class="k">end</span>
+
+<span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
+<span class="c1"># =&gt; 3</span>
+<span class="no">ObjectSpace</span><span class="o">.</span><span class="n">each_object</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [#&lt;A:0x0000000204cc00&gt;, #&lt;A:0x00000002244800&gt;, #&lt;A:0x00000002254430&gt;]</span></code></pre>
+<h5>23) freeze</h5>
+<p>Once you freeze an object it cannot be modified.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Test</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">example</span>
+<span class="w">    </span><span class="s2">"Hello World!"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Test</span><span class="o">.</span><span class="n">freeze</span>
+<span class="no">Test</span><span class="o">.</span><span class="n">example</span>
+<span class="c1"># =&gt; "Hello World!" </span>
+
+<span class="k">module</span><span class="w"> </span><span class="nn">Test</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">asdf</span>
+<span class="w">    </span><span class="mi">123</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="c1">#RuntimeError: can't modify frozen Module</span></code></pre>
+<h5>24) &#8216;self&#8217; can optionally be replaced by the object name</h5>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Apple</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">Apple</span><span class="o">.</span><span class="nf">chew</span>
+<span class="w">    </span><span class="s2">"munch munch"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Apple</span><span class="o">.</span><span class="n">chew</span>
+<span class="c1"># =&gt; "munch munch" </span>
+
+<span class="k">def</span><span class="w"> </span><span class="nc">Apple</span><span class="o">.</span><span class="nf">cut</span>
+<span class="w">  </span><span class="s2">"chop chop"</span>
+<span class="k">end</span>
+
+<span class="no">Apple</span><span class="o">.</span><span class="n">cut</span>
+<span class="c1"># =&gt; "chop chop"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">A</span><span class="o">.</span><span class="nf">foo</span>
+<span class="w">    </span><span class="s2">"bar"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">foo</span>
+<span class="c1"># =&gt; "bar"</span></code></pre>
+<h5>25) Top level scope objects can be accessed with ::</h5>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">test</span>
+<span class="w">    </span><span class="s2">"FOO"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span><span class="w"> </span><span class="nn">Thing</span>
+<span class="w">  </span><span class="k">module</span><span class="w"> </span><span class="nn">A</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">test</span>
+<span class="w">      </span><span class="s2">"BAR"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">Thing</span><span class="o">.</span><span class="nf">inner</span>
+<span class="w">    </span><span class="n">A</span><span class="o">.</span><span class="n">test</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">Thing</span><span class="o">.</span><span class="nf">outer</span>
+<span class="w">    </span><span class="o">::</span><span class="n">A</span><span class="o">.</span><span class="n">test</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Thing</span><span class="o">.</span><span class="n">outer</span>
+<span class="c1"># =&gt; "FOO"</span>
+<span class="no">Thing</span><span class="o">.</span><span class="n">inner</span>
+<span class="c1"># =&gt; "BAR"</span></code></pre>
+<h5>26) prepend</h5>
+<p>prepend adds a module to the most recent chain of class ancestors.  Those methods will be called first.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">split</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">upcase</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">String</span><span class="o">.</span><span class="n">prepend</span><span class="w"> </span><span class="n">A</span>
+
+<span class="nb">String</span><span class="o">.</span><span class="n">ancestors</span>
+<span class="c1"># =&gt; [A, String, Comparable, Object, Kernel, BasicObject] </span>
+<span class="s2">"asdf"</span><span class="o">.</span><span class="n">split</span>
+<span class="c1"># =&gt; "ASDF"</span></code></pre>
+<h5>27) super</h5>
+<p><strong>super</strong> calls the current methods name up the ancestor chain and continues until it finds the definition.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="o">*</span><span class="n">_</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">String</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">split</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="s2">"b"</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"123abc"</span><span class="p">)</span>
+<span class="c1"># =&gt; "123abc" </span>
+<span class="n">b</span><span class="o">.</span><span class="n">split</span>
+<span class="c1"># =&gt; ["123a", "c"]</span>
+<span class="n">B</span><span class="o">.</span><span class="n">ancestors</span>
+<span class="c1"># =&gt; [B, String, Comparable, Object, Kernel, BasicObject]</span>
+
+<span class="nb">String</span><span class="o">.</span><span class="n">prepend</span><span class="w"> </span><span class="n">A</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">split</span>
+<span class="c1"># =&gt; ["123", "bc"] </span>
+<span class="n">B</span><span class="o">.</span><span class="n">ancestors</span>
+<span class="c1"># =&gt; [B, A, String, Comparable, Object, Kernel, BasicObject]</span></code></pre>
+<h5>28) arity</h5>
+<p><strong>arity</strong> lets you know how many parameters a Proc or method will take.</p>
+<pre class="code-block language-ruby"><code><span class="o">-&gt;</span><span class="p">{}</span><span class="o">.</span><span class="n">arity</span>
+<span class="c1"># =&gt; 0 </span>
+<span class="o">-&gt;</span><span class="n">_</span><span class="p">{}</span><span class="o">.</span><span class="n">arity</span>
+<span class="c1"># =&gt; 1 </span>
+<span class="o">-&gt;</span><span class="n">_</span><span class="p">,</span><span class="n">_</span><span class="p">{}</span><span class="o">.</span><span class="n">arity</span>
+<span class="c1"># =&gt; 2 </span>
+<span class="o">-&gt;*</span><span class="n">_</span><span class="p">{}</span><span class="o">.</span><span class="n">arity</span>
+<span class="c1"># =&gt; -1</span>
+<span class="s2">""</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="ss">:upcase</span><span class="p">)</span><span class="o">.</span><span class="n">arity</span>
+<span class="c1"># =&gt; 0 </span>
+<span class="nb">String</span><span class="o">.</span><span class="n">instance_method</span><span class="p">(</span><span class="ss">:upcase</span><span class="p">)</span><span class="o">.</span><span class="n">arity</span>
+<span class="c1"># =&gt; 0</span></code></pre>
+<h5>29) cloning Arrays</h5>
+<p>When you use the <strong>Array#clone</strong> method you end up with a different Array with the same exact Objects in them.  No additional memory will be used for the internal objects.  <strong>Array#dup</strong> will do the same thing.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Thing</span>
+<span class="k">end</span>
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="no">Thing</span><span class="o">.</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="no">Thing</span><span class="o">.</span><span class="n">new</span><span class="o">]</span>
+<span class="c1"># =&gt; [#&lt;Thing:0x000000017eba48&gt;, #&lt;Thing:0x000000017eba20&gt;] </span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">clone</span>
+<span class="c1"># =&gt; [#&lt;Thing:0x000000017eba48&gt;, #&lt;Thing:0x000000017eba20&gt;] </span>
+<span class="n">a</span><span class="o">.</span><span class="n">object_id</span>
+<span class="c1"># =&gt; 12541180 </span>
+<span class="n">b</span><span class="o">.</span><span class="n">object_id</span>
+<span class="c1"># =&gt; 12522640 </span>
+<span class="n">a</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:object_id</span><span class="p">)</span>
+<span class="c1"># =&gt; [12541220, 12541200] </span>
+<span class="n">b</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:object_id</span><span class="p">)</span>
+<span class="c1"># =&gt; [12541220, 12541200]</span></code></pre>
+<p>If you modify the Array itself you don&#8217;t have to worry about the other Array being effected.  But if you change an object in the Array internally that object will be changed in both Arrays.</p>
+<h5>30) Default value for Hash</h5>
+<p>Just like above where duplicating an Array points to the same objects, so also we have the same object returned when we set a default for the Hash.</p>
+<pre class="code-block language-ruby"><code><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+<span class="c1"># =&gt; {} </span>
+<span class="n">h</span><span class="o">.</span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="c1"># =&gt; [] </span>
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">[</span><span class="ss">:c</span><span class="o">]</span>
+<span class="c1"># =&gt; [] </span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">[</span><span class="ss">:d</span><span class="o">]</span>
+<span class="c1"># =&gt; [] </span>
+<span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="c1"># =&gt; 1 </span>
+<span class="n">h</span><span class="o">[</span><span class="ss">:z</span><span class="o">]</span>
+<span class="c1"># =&gt; [1]</span></code></pre>
+<p>To remedy this it&#8217;s best to use default_proc to create a new Array each time.</p>
+<pre class="code-block language-ruby"><code><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+<span class="c1"># =&gt; {} </span>
+<span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-&gt;</span><span class="n">hsh</span><span class="p">,</span><span class="n">key</span><span class="p">{</span><span class="w"> </span><span class="n">hsh</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="p">}</span>
+<span class="c1"># =&gt; #&lt;Proc:0x00000001f66598@(irb):8 (lambda)&gt; </span>
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">[</span><span class="ss">:c</span><span class="o">]</span>
+<span class="c1"># =&gt; [] </span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="o">[</span><span class="ss">:d</span><span class="o">]</span>
+<span class="c1"># =&gt; [] </span>
+<span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="c1"># =&gt; 1 </span>
+<span class="n">h</span><span class="o">[</span><span class="ss">:z</span><span class="o">]</span>
+<span class="c1"># =&gt; []</span></code></pre>
+<h5>31) class_eval with included</h5>
+<p>Using <strong>class_eval</strong> when you&#8217;re writing methods to be included is the more natural way of updating classes.  You&#8217;ll write your definitions just as if you&#8217;re in the class.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="k">end</span>
+
+<span class="k">module</span><span class="w"> </span><span class="nn">Example</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="w">    </span><span class="n">base</span><span class="o">.</span><span class="n">class_eval</span><span class="w"> </span><span class="k">do</span>
+<span class="w">      </span><span class="k">def</span><span class="w"> </span><span class="nf">example</span>
+<span class="w">        </span><span class="s2">"instance method"</span>
+<span class="w">      </span><span class="k">end</span>
+
+<span class="w">      </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">example</span>
+<span class="w">        </span><span class="s2">"class method"</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">include</span><span class="w"> </span><span class="no">Example</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">example</span>
+<span class="s2">"class method"</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">example</span>
+<span class="s2">"instance method"</span></code></pre>
+<h5>32) inherited</h5>
+<p>When you&#8217;re having one class inherit from another class <del>as a &#8220;mixin&#8221;</del> you can write an inherited hook.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Foo</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">inherited</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="w">    </span><span class="n">base</span><span class="o">.</span><span class="n">class_eval</span><span class="w"> </span><span class="k">do</span>
+<span class="w">      </span><span class="k">def</span><span class="w"> </span><span class="nf">bar</span>
+<span class="w">        </span><span class="s2">"Drinking at the bar!"</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">foo</span>
+<span class="w">    </span><span class="s2">"bar"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Foo</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>
+<span class="c1"># =&gt; "bar"</span>
+<span class="n">A</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">bar</span>
+<span class="c1"># =&gt; "Drinking at the bar!"</span>
+
+<span class="no">Foo</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>
+<span class="c1"># =&gt; "bar"</span>
+<span class="no">Foo</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">bar</span>
+<span class="c1">#NoMethodError: undefined method `bar' for #&lt;Foo:0x00000001916378&gt;</span></code></pre>
+<h5>33) %x</h5>
+<p>You can run external commands with %x{}.  <strong>%x</strong> can have any grouping symbols around its content: eg: &#8221;, &#8220;&#8221;, {}, [], //, (), ^^.  <em>Ruby&#8217;s percent methods typically allow all of these and more (most any non-alphanumeric character).</em></p>
+<pre class="code-block language-ruby"><code><span class="nb">puts</span><span class="w"> </span><span class="sx">%x'cowsay "Hello World!"'</span>
+<span class="c1"># ______________</span>
+<span class="c1">#&lt; Hello World! &gt;</span>
+<span class="c1"># --------------</span>
+<span class="c1">#        \   ^__^</span>
+<span class="c1">#         \  (oo)\_______</span>
+<span class="c1">#            (__)\       )\/\</span>
+<span class="c1">#                ||----w |</span>
+<span class="c1">#                ||     ||</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>34) break :value</h5>
+<p>You can return a value out of a loop with <strong>break</strong> just like you would with <strong>return</strong>.</p>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">loop</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="k">break</span><span class="w"> </span><span class="mi">9</span>
+<span class="k">end</span>
+
+<span class="n">x</span>
+<span class="c1"># =&gt; 9</span></code></pre>
+<h5>35) Lonely Operator &amp;.</h5>
+<p>As of Ruby 2.3.0 there is a new operator known as the Safe Navigation Operator, or the Lonely Operator.  According to Matz it &#8220;looks like <em>someone</em> sitting on the floor, looking at the dot.&#8221;  What this operator allows you to do is continue chaining methods even if one of the items along the way returns nil.  It will safely return nil if that is the case.</p>
+<pre class="code-block language-ruby"><code><span class="vi">@a</span><span class="o">&amp;.</span><span class="n">size</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="vi">@a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span>
+
+<span class="vi">@a</span><span class="o">&amp;.</span><span class="n">size</span>
+<span class="c1"># =&gt; 3</span></code></pre>
+<p>Notice we didn&#8217;t get a <strong>NoMethodError</strong>.  This will save a lot of the uses of the Rails <strong>try</strong> method.</p>
+<h5>36) Hash#to_proc</h5>
+<p>Mapping values in Ruby is fairly common.  As of Ruby 2.3.0 they&#8217;ve added <strong>Hash#to_proc</strong>.</p>
+<pre class="code-block language-ruby"><code><span class="n">hsh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+
+<span class="o">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="o">].</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hsh</span><span class="p">)</span>
+<span class="c1"># =&gt; [1, 2, 3]</span></code></pre>
+<p>Anytime you place an ampersand symbol before an Object as a parameter it calls the <strong>to_proc</strong> method on the Object.  You can mimic the behavior above in earlier versions of Ruby by using the <strong>method</strong> method.</p>
+<pre class="code-block language-ruby"><code><span class="n">hsh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+
+<span class="o">[</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span><span class="p">,</span><span class="w"> </span><span class="ss">:c</span><span class="o">].</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hsh</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="ss">:[]</span><span class="p">))</span>
+<span class="c1"># =&gt; [1, 2, 3]</span></code></pre>
+<h5>37) retry</h5>
+<p>In any begin/rescue/end block you can use retry to repeat the code execution within the block when an error is raised.</p>
+<pre class="code-block language-ruby"><code><span class="k">begin</span>
+<span class="w">  </span><span class="vi">@x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@x</span><span class="o">.</span><span class="n">to_i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="k">raise</span><span class="w"> </span><span class="s2">"Error"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="k">rescue</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"We're rescuing!"</span>
+<span class="w">  </span><span class="k">retry</span>
+<span class="k">end</span>
+<span class="no">We</span><span class="s1">'re rescuing!</span>
+<span class="s1">We'</span><span class="n">re</span><span class="w"> </span><span class="n">rescuing!</span>
+<span class="no">We</span><span class="s1">'re rescuing!</span>
+<span class="s1">We'</span><span class="n">re</span><span class="w"> </span><span class="n">rescuing!</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>38) raise</h5>
+<p>raise can take 3 different parameters.  Just a text explanation, an Error class &amp; a text explanation, or an Error class &amp; text explanation &amp; where the error is from.</p>
+<pre class="code-block language-ruby"><code><span class="k">raise</span><span class="w"> </span><span class="s2">"Hello World!"</span>
+<span class="c1">#RuntimeError: Hello World!</span>
+
+<span class="k">raise</span><span class="w"> </span><span class="no">StandardError</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hello World!"</span>
+<span class="c1">#StandardError: Hello World!</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DigestionError</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">StandardError</span>
+<span class="k">end</span>
+
+<span class="k">raise</span><span class="w"> </span><span class="no">DigestionError</span><span class="p">,</span><span class="w"> </span><span class="s2">"stomach hurts"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bad food"</span>
+<span class="c1">#DigestionError: stomach hurts</span>
+<span class="c1">#	from bad food</span></code></pre>
+<p>Note you&#8217;ll probably want to use file and line info for the from area.</p>
+<h5>39) __FILE__</h5>
+<p>The current file.  In irb this will return &#8220;(irb)&#8221; .</p>
+<h5>40) __LINE__</h5>
+<p>The current line.</p>
+<h5>41) Hash.[]</h5>
+<pre class="code-block language-ruby"><code><span class="no">Hash</span><span class="o">[</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:of</span><span class="p">,</span><span class="w"> </span><span class="ss">:key</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p">,</span><span class="w"> </span><span class="ss">:pairs</span><span class="p">,</span><span class="w"> </span><span class="s2">"."</span><span class="o">]</span>
+<span class="c1"># =&gt; {:array=&gt;:of, :key=&gt;:value, :pairs=&gt;"."}</span></code></pre>
+<h5>42) Global Variables</h5>
+<p>The dollar sign defines global variables. (<strong>$</strong>)  Please don&#8217;t use them.  It will kludge up your code.  Constants can be used as global variables.  When possible use constants or objects to contain values you need.  <strong>APPLE</strong> is a lot nicer to see than <strong>$apple</strong> .  If you need to define <strong>APPLE</strong> globally just use <strong>::APPLE</strong></p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Kludge</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">Kludge</span><span class="o">.</span><span class="nf">ugly</span>
+<span class="w">    </span><span class="vg">$marco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:polo</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="vg">$marco</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="no">Kludge</span><span class="o">.</span><span class="n">ugly</span>
+<span class="vg">$marco</span>
+<span class="c1"># =&gt; :polo </span>
+
+<span class="k">module</span><span class="w"> </span><span class="nn">Nice</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">thing</span>
+<span class="w">    </span><span class="o">::</span><span class="no">Marco</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:polo</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Marco</span>
+<span class="c1">#NameError: uninitialized constant Marco</span>
+
+<span class="no">Nice</span><span class="o">.</span><span class="n">thing</span>
+<span class="no">Marco</span>
+<span class="c1"># =&gt; :polo</span></code></pre>
+<h5>43) $0</h5>
+<p>$0 (dollar-zero) is the root file executed in Ruby.  It can be used like Python&#8217;s <strong>__name__ == &#8220;__main__&#8221;</strong> to only run code if this file is the main file.  Avoid running code when the file is required with this.</p>
+<pre class="code-block language-ruby"><code><span class="k">if</span><span class="w"> </span><span class="bp">__FILE__</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="vg">$0</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"You ran this </span><span class="si">#{</span><span class="bp">__FILE__</span><span class="si">}</span><span class="s2"> directly! :-)"</span>
+<span class="k">end</span></code></pre>
+<h5>44) case permits then</h5>
+<pre class="code-block language-ruby"><code><span class="k">case</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">when</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">then</span><span class="w"> </span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"yes"</span>
+<span class="k">end</span>
+<span class="c1">#yes</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>45) case doesn&#8217;t need a value</h5>
+<pre class="code-block language-ruby"><code><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+
+<span class="k">case</span>
+<span class="w">  </span><span class="k">when</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"yes"</span>
+<span class="k">end</span>
+<span class="c1">#yes</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>46) case then is optional</h5>
+<pre class="code-block language-ruby"><code><span class="k">case</span><span class="w"> </span><span class="mi">4</span>
+<span class="k">when</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"yes"</span>
+<span class="k">end</span>
+<span class="c1">#yes</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>47) case calls the === method</h5>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Truth</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">===</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"=== has been called!"</span>
+<span class="w">    </span><span class="kp">true</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">case</span><span class="w"> </span><span class="ss">:pizza_is_delicious</span>
+<span class="k">when</span><span class="w"> </span><span class="no">Truth</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"yummy food for my tummy"</span>
+<span class="k">end</span>
+<span class="c1">#=== has been called!</span>
+<span class="c1">#yummy food for my tummy</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>48) tail conditions</h5>
+<p>You can put your if statements and rescue statements after code.</p>
+<pre class="code-block language-ruby"><code><span class="vi">@x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">  </span><span class="mi">5</span>
+<span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="kp">false</span>
+
+<span class="vi">@x</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="k">raise</span><span class="w"> </span><span class="s2">"Error"</span><span class="w"> </span><span class="k">rescue</span><span class="w"> </span><span class="ss">:all_clear</span>
+<span class="c1"># =&gt; :all_clear</span>
+
+<span class="k">if</span><span class="w"> </span><span class="kp">true</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"Hello World!"</span>
+<span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="kp">false</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>49) use of return</h5>
+<p>In Ruby the last thing evaluated is automatically the returned object.  The only time you need to use <strong>return</strong> is if you want to exit with a value earlier in the code.</p>
+<pre class="code-block language-ruby"><code><span class="vi">@x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">a</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kp">true</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="kp">false</span>
+<span class="k">end</span>
+
+<span class="n">a</span>
+<span class="c1"># =&gt; true</span>
+
+<span class="vi">@x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="n">a</span>
+<span class="c1"># =&gt; false</span></code></pre>
+<h5>50) String#chars</h5>
+<p>The <strong>chars</strong> method will automatically split your string into individual String characters in an Array.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"asdf"</span><span class="o">.</span><span class="n">chars</span>
+<span class="c1"># =&gt; ["a", "s", "d", "f"]</span></code></pre>
+<h5>51) to_enum, enum_for, each, lazy</h5>
+<p>On any Array you can call any of <strong>to_enum, enum_for,</strong> <strong>each,</strong> or<strong> lazy</strong> methods to return an Enumerator Object that you can iterate over.  You have basic methods <strong>:next, :peek, :feed,</strong> and <strong>:rewind</strong> for each of these Enumerators.  But with Lazy you also get a <strong>:force</strong> method which returns the original collection.</p>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">enum_for</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 1</span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 2</span>
+
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">].</span><span class="n">lazy</span>
+<span class="n">y</span><span class="o">.</span><span class="n">peek</span>
+<span class="c1"># =&gt; 1</span>
+<span class="n">y</span><span class="o">.</span><span class="n">force</span>
+<span class="c1"># =&gt; [1,2,3]</span></code></pre>
+<h5>52) curry</h5>
+<p>You can create additional Proc objects that set some of the parameters on another.</p>
+<pre class="code-block language-ruby"><code><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">lambda</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">|</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">}</span>
+
+<span class="n">add</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; 3</span>
+
+<span class="n">add1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="o">.</span><span class="n">curry</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+
+<span class="n">add1</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; 5</span></code></pre>
+<h5>53) mandatory keyword parameters</h5>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="ss">first</span><span class="p">:,</span><span class="w"> </span><span class="ss">last</span><span class="p">:)</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"Your name is </span><span class="si">#{</span><span class="n">first</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">last</span><span class="si">}</span><span class="s2">."</span>
+<span class="k">end</span>
+
+<span class="nb">name</span>
+<span class="c1">#ArgumentError: missing keywords: first, last</span>
+
+<span class="nb">name</span><span class="w"> </span><span class="ss">first</span><span class="p">:</span><span class="w"> </span><span class="s2">"J"</span><span class="p">,</span><span class="w"> </span><span class="ss">last</span><span class="p">:</span><span class="w"> </span><span class="s2">"Appleseed"</span>
+<span class="c1">#Your name is J Appleseed.</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>54) Range inclusive and exclusive</h5>
+<pre class="code-block language-ruby"><code><span class="no">Range</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="kp">true</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [1, 2, 3, 4] </span>
+<span class="p">(</span><span class="mi">1</span><span class="o">...</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [1, 2, 3, 4]</span>
+
+<span class="no">Range</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="kp">false</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [1, 2, 3, 4, 5]</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; [1, 2, 3, 4, 5]</span></code></pre>
+<h5>55) String#upto</h5>
+<p>The <strong>upto</strong> method for String uses the strings ordinal values to build the range.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"A"</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="s2">"z"</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",</span>
+<span class="c1"># "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "\\", "]",</span>
+<span class="c1"># "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",</span>
+<span class="c1"># "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]</span>
+
+<span class="s2">"A"</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="s2">"z"</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:ord</span><span class="p">)</span>
+<span class="c1"># =&gt; [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81,</span>
+<span class="c1"># 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,</span>
+<span class="c1"># 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113,</span>
+<span class="c1"># 114, 115, 116, 117, 118, 119, 120, 121, 122]</span></code></pre>
+<h5>56) String#squeeze</h5>
+<p>The squeeze method on String objects brings gaps down to one in length.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"  asdf     fdsa   asdf   "</span><span class="o">.</span><span class="n">squeeze</span>
+<span class="c1"># =&gt; " asdf fdsa asdf "</span>
+
+<span class="s2">"..asdf.......fdsa....asdf..."</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span>
+<span class="c1"># =&gt; ".asdf.fdsa.asdf."</span></code></pre>
+<p>Clarification: This doesn&#8217;t just squeeze spaces.  When no parameter is given it squeezes all duplicate neighboring characters.</p>
+<h5>57) String#replace</h5>
+<p>The <strong>replace</strong> method <del>is unusual as it</del> allows you to rewrite the string inside itself.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">are_you_happy?</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">replace</span><span class="w"> </span><span class="s2">"I'm happy"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"waaaa!"</span>
+<span class="c1"># =&gt; "waaaa!"</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">are_you_happy?</span>
+<span class="c1"># =&gt; "I'm happy"</span>
+
+<span class="n">x</span>
+<span class="c1"># =&gt; "I'm happy"</span></code></pre>
+<h5>58) Infinity</h5>
+<p>You can count up to infinity&#8230; but you should do it lazily.</p>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="no">Float</span><span class="o">::</span><span class="no">INFINITY</span><span class="p">)</span><span class="o">.</span><span class="n">lazy</span>
+
+<span class="mi">50</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; 50 </span>
+<span class="n">x</span><span class="o">.</span><span class="n">next</span>
+<span class="c1"># =&gt; 51 </span></code></pre>
+<h5>59) Enumerable#detect</h5>
+<p>You can use the detect method to return the first item that evaluates as true.</p>
+<pre class="code-block language-ruby"><code><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">28</span><span class="o">].</span><span class="n">detect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:even?</span><span class="p">)</span>
+<span class="c1"># =&gt; 18</span>
+
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">28</span><span class="o">].</span><span class="n">detect</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">number</span><span class="o">|</span><span class="w"> </span><span class="n">number</span><span class="o">.</span><span class="n">even?</span><span class="w"> </span><span class="p">}</span>
+<span class="c1"># =&gt; 18</span></code></pre>
+<h5>60) Enumerable#grep</h5>
+<p>You can use the <strong>grep</strong> method to find items in an Array that match your expression.</p>
+<pre class="code-block language-ruby"><code><span class="nb">Array</span><span class="o">.</span><span class="n">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="w"> </span><span class="sr">/\?/</span>
+<span class="c1"># =&gt; [:include?, :any?, :empty?, :eql?, :frozen?, :all?, :one?, :none?,</span>
+<span class="c1"># :member?, :instance_of?, :instance_variable_defined?, :kind_of?, :is_a?,</span>
+<span class="c1"># :respond_to?, :nil?, :tainted?, :untrusted?, :equal?]</span>
+
+<span class="nb">Array</span><span class="o">.</span><span class="n">instance_methods</span><span class="o">.</span><span class="n">grep</span><span class="w"> </span><span class="sr">/one/</span>
+<span class="c1"># =&gt; [:one?, :none?, :clone]</span></code></pre>
+<h5>61) Method#owner</h5>
+<p>You can discover which object defines a method within the objects ancestry.</p>
+<pre class="code-block language-ruby"><code><span class="nb">Array</span><span class="o">.</span><span class="n">instance_method</span><span class="p">(</span><span class="ss">:grep</span><span class="p">)</span><span class="o">.</span><span class="n">owner</span>
+<span class="c1"># =&gt; Enumerable</span>
+<span class="o">[].</span><span class="n">method</span><span class="p">(</span><span class="ss">:grep</span><span class="p">)</span><span class="o">.</span><span class="n">owner</span>
+<span class="c1"># =&gt; Enumerable</span></code></pre>
+<h5>62) String#tr</h5>
+<p>Replaces all characters that match in place.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"hello world"</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">'el'</span><span class="p">,</span><span class="w"> </span><span class="s1">'*'</span><span class="p">)</span>
+<span class="c1"># =&gt; "h***o wor*d"</span></code></pre>
+<h5>63) String#tr_s</h5>
+<p>Replaces all characters that match and squashes groups.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"hello world"</span><span class="o">.</span><span class="n">tr_s</span><span class="p">(</span><span class="s1">'el'</span><span class="p">,</span><span class="w"> </span><span class="s1">'*'</span><span class="p">)</span>
+<span class="c1"># =&gt; "h*o wor*d"</span></code></pre>
+<h5>64) Array building</h5>
+<p>Using <strong>Kernel#Array</strong> to safely enforce an Array result along with using a class variable to avoid any errors creates for a clean looking and less redundant Array builder.  The <strong>&lt;&lt;</strong> method appends a to the end of the Array.</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+<span class="w">  </span><span class="vi">@arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">(</span><span class="vi">@arr</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">thing</span>
+<span class="k">end</span>
+
+<span class="vi">@arr</span>
+<span class="c1"># =&gt; nil</span>
+
+<span class="n">build</span><span class="w"> </span><span class="ss">:brick1</span>
+<span class="n">build</span><span class="w"> </span><span class="ss">:brick2</span>
+<span class="n">build</span><span class="w"> </span><span class="ss">:brick3</span>
+
+<span class="vi">@arr</span>
+<span class="c1"># =&gt; [:brick1, :brick2, :brick3]</span></code></pre>
+<p>A more common form is as follows:</p>
+<pre class="code-block language-ruby"><code><span class="p">(</span><span class="vi">@arr</span><span class="w"> </span><span class="o">||=</span><span class="w"> </span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">thing</span></code></pre>
+<p>But I find this far more cryptic looking and not as newbie friendly.  Readability, simplicity, and beauty are all important.</p>
+<h5>65) spaces</h5>
+<p>You can put spaces in between method calls and new lines after periods.</p>
+<pre class="code-block language-ruby"><code><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"asdf"</span>
+
+<span class="n">a</span><span class="w">   </span><span class="o">.</span><span class="w">   </span><span class="n">reverse</span><span class="w">   </span><span class="o">.</span>
+<span class="w">        </span><span class="nb">split</span><span class="p">(</span><span class="w">     </span><span class="s2">"s"</span><span class="w">     </span><span class="p">)</span><span class="w">  </span><span class="o">.</span>
+<span class="w">        </span><span class="n">join</span><span class="w">   </span><span class="o">.</span><span class="w">     </span><span class="n">capitalize</span>
+<span class="c1"># =&gt; "Fda" </span>
+
+<span class="k">module</span><span class="w"> </span><span class="nn">A</span>
+<span class="w">  </span><span class="k">module</span><span class="w"> </span><span class="nn">B</span>
+<span class="w">    </span><span class="k">module</span><span class="w"> </span><span class="nn">C</span>
+<span class="w">      </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">a</span>
+<span class="w">        </span><span class="s2">"a"</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">A</span><span class="o">::</span>
+<span class="w">   </span><span class="n">B</span><span class="o">::</span>
+<span class="w">      </span><span class="n">C</span><span class="w">   </span><span class="o">.</span>
+<span class="w">          </span><span class="n">a</span>
+<span class="c1"># =&gt; "a" </span></code></pre>
+<h5>66) function one liners</h5>
+<p>With a semicolon you can avoid the need for adding extra lines.  Best for when you need to have many &#8220;short&#8221; functions defined.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">PairMath</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:a</span><span class="p">,</span><span class="ss">:b</span><span class="p">)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">;</span><span class="w">      </span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span><span class="w"> </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">subtract</span><span class="p">;</span><span class="w"> </span><span class="n">inject</span><span class="p">(</span><span class="ss">:-</span><span class="p">)</span><span class="w"> </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">;</span><span class="w"> </span><span class="n">inject</span><span class="p">(</span><span class="ss">:*</span><span class="p">)</span><span class="w"> </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">;</span><span class="w">   </span><span class="n">inject</span><span class="p">(</span><span class="ss">:/</span><span class="p">)</span><span class="w"> </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">PairMath</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;struct PairMath a=6, b=2&gt; </span>
+<span class="n">a</span><span class="o">.</span><span class="n">add</span>
+<span class="c1"># =&gt; 8 </span>
+<span class="n">a</span><span class="o">.</span><span class="n">subtract</span>
+<span class="c1"># =&gt; 4 </span>
+<span class="n">a</span><span class="o">.</span><span class="n">multiply</span>
+<span class="c1"># =&gt; 12 </span>
+<span class="n">a</span><span class="o">.</span><span class="n">divide</span>
+<span class="c1"># =&gt; 3</span></code></pre>
+<h5>67) Forwardable#def_delegators</h5>
+<p>You can pass method calls forward (to another object) with the Forwardable standard library module.</p>
+<pre class="code-block language-ruby"><code><span class="nb">require</span><span class="w"> </span><span class="s1">'forwardable'</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Arr</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">thing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@thing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thing</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="kp">extend</span><span class="w"> </span><span class="no">Forwardable</span>
+<span class="w">  </span><span class="n">def_delegators</span><span class="w"> </span><span class="ss">:@thing</span><span class="p">,</span><span class="w"> </span><span class="ss">:join</span><span class="p">,</span><span class="w"> </span><span class="ss">:&lt;&lt;</span>
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Arr</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">]</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">join</span>
+<span class="c1"># =&gt; "123" </span>
+<span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span>
+<span class="n">x</span><span class="o">.</span><span class="n">join</span>
+<span class="c1"># =&gt; "1234"</span></code></pre>
+<h5>68) unless</h5>
+<p><strong>unless</strong> is the same thing as <strong>if not</strong> <span style="color: #999999;">(as it&#8217;s understood in English)</span>.  So whenever you see it &#8211; think &#8220;if not&#8221; and that should help.  If you aren&#8217;t accustomed to this it can be confusing.  The use case for <strong>unless</strong> is: you want a positive response for a negative situation.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Tree</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">has_no_apples?</span>
+<span class="w">    </span><span class="kp">true</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span><span class="w"> </span><span class="s2">"Munch munch"</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="no">Tree</span><span class="o">.</span><span class="n">has_no_apples?</span>
+<span class="c1"># =&gt; nil </span></code></pre>
+<p>&nbsp;</p>
+<h5>69) superclass</h5>
+<p>You can use <strong>superclass</strong> to access the class inherited from.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">foo</span>
+<span class="w">    </span><span class="s2">"bar"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">foo</span>
+<span class="w">    </span><span class="s2">"mountain"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="o">.</span><span class="n">new</span>
+<span class="n">x</span><span class="o">.</span><span class="n">foo</span>
+<span class="c1"># =&gt; "mountain"</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">superclass</span>
+<span class="c1"># =&gt; A</span></code></pre>
+<h5>70) binding an UnboundMethod</h5>
+<p>Continuing from the code above in #69 .</p>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="o">.</span><span class="n">instance_exec</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">self</span><span class="o">.</span>
+<span class="w">    </span><span class="n">class</span><span class="o">.</span>
+<span class="w">    </span><span class="n">superclass</span><span class="o">.</span>
+<span class="w">    </span><span class="nb">instance_method</span><span class="p">(</span><span class="ss">:foo</span><span class="p">)</span><span class="o">.</span>
+<span class="w">    </span><span class="n">bind</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span><span class="o">.</span>
+<span class="w">    </span><span class="n">call</span>
+<span class="p">}</span>
+<span class="c1"># =&gt; "bar"</span></code></pre>
+<p>When <strong>instance_method(:foo)</strong> is invoked above it returns an UnboundMethod.  UnboundMethods can only be used in the same kind of Object they were defined in.  But first they must be bound.  To do this we used <strong>bind(self)</strong> inside an <strong>instance_exec</strong> .  Then to call it we run it as we would a Proc object with the <strong>call</strong> method.</p>
+<h5>71) alternative code continuation with \</h5>
+<p>If you don&#8217;t like entering new lines after a period, you may use a backslash.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"asdf"</span><span class="w">      </span><span class="p">\</span>
+<span class="w">  </span><span class="o">.</span><span class="n">reverse</span><span class="w">   </span><span class="p">\</span>
+<span class="w">  </span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"s"</span><span class="p">)</span><span class="w"> </span><span class="p">\</span>
+<span class="w">  </span><span class="o">.</span><span class="n">join</span><span class="w">        </span><span class="p">\</span>
+<span class="w">  </span><span class="o">.</span><span class="n">capitalize</span>
+<span class="c1"># =&gt; "Fda"</span></code></pre>
+<h5>72) HEREDOC</h5>
+<p>Multiple line strings.</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">a</span>
+<span class="w">  </span><span class="o">&lt;&lt;</span><span class="dl">ASTRING</span>
+<span class="sh">    This</span>
+<span class="sh">    is </span>
+<span class="sh">    multi-</span>
+<span class="sh">    line.</span>
+<span class="dl">ASTRING</span>
+<span class="k">end</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">b</span>
+<span class="w">  </span><span class="o">&lt;&lt;-</span><span class="dl">BSTRING</span>
+<span class="sh">    This</span>
+<span class="sh">    is</span>
+<span class="sh">    as</span>
+<span class="sh">    well!</span>
+<span class="dl">  BSTRING</span>
+<span class="k">end</span>
+
+<span class="n">a</span>
+<span class="c1"># =&gt; "    This\n    is \n    multi-\n    line.\n"</span>
+<span class="n">b</span>
+<span class="c1"># =&gt; "    This\n    is\n    as\n    well!\n"</span></code></pre>
+<p>The dash (<strong>&#8211;</strong>) is needed if you want to indent the ending of your HEREDOC closer.</p>
+<p>As of Ruby 2.3.0 they&#8217;ve added the squiggle (<strong>~</strong>) option to remove leading white space. <em>Note: It&#8217;s called a tilde and not squiggle.</em></p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">c</span>
+<span class="w">  </span><span class="o">&lt;&lt;~</span><span class="dl">CSTRING</span>
+<span class="sh">    Look</span>
+<span class="sh">    ma!</span>
+<span class="sh">    No</span>
+<span class="sh">    leading</span>
+<span class="sh">    white</span>
+<span class="sh">    space.</span>
+<span class="dl">  CSTRING</span>
+<span class="k">end</span>
+
+<span class="n">c</span>
+<span class="c1"># =&gt; "Look\nma!\nNo\nleading\nwhite\nspace.\n"</span></code></pre>
+<p>You can use any up-cased string for marking the beginning and ending of your HEREDOC as long as they&#8217;re the same at both ends.</p>
+<h5>73) Hash#dig</h5>
+<p>As of Ruby 2.3.0 you now have a dig method great for getting deep into nested hashes.</p>
+<pre class="code-block language-ruby"><code><span class="n">buried_treasure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="ss">dirt</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="ss">dirt</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="ss">dirt</span><span class="p">:</span><span class="w"> </span><span class="s2">"gold"</span><span class="p">}}}</span>
+
+<span class="n">buried_treasure</span><span class="o">.</span><span class="n">dig</span><span class="p">(</span><span class="ss">:dirt</span><span class="p">,</span><span class="w"> </span><span class="ss">:dirt</span><span class="p">,</span><span class="w"> </span><span class="ss">:dirt</span><span class="p">)</span>
+<span class="c1"># =&gt; "gold"</span></code></pre>
+<h5>74) dynamically naming classes</h5>
+<p>Ruby is full of ways to dynamically define methods.  <del>But for classes there seems to only be the use of eval.</del>  One way to define Classes is with eval.</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">boat_them_all</span><span class="p">(</span><span class="n">array_in</span><span class="p">)</span>
+<span class="w">  </span><span class="n">array_in</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">noun</span><span class="o">|</span>
+<span class="w">    </span><span class="nb">eval</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">BOATMAKER</span>
+<span class="sh">      class ::#{noun.capitalize}Boat</span>
+<span class="sh">        def float?</span>
+<span class="sh">          true</span>
+<span class="sh">        end</span>
+<span class="sh">      end</span>
+<span class="dl">    BOATMAKER</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">nouns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="ss">:joe</span><span class="p">,</span><span class="w"> </span><span class="ss">:cow</span><span class="p">,</span><span class="w"> </span><span class="ss">:car</span><span class="o">]</span>
+
+<span class="n">boat_them_all</span><span class="p">(</span><span class="n">nouns</span><span class="p">)</span>
+<span class="no">JoeBoat</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">float?</span>
+<span class="c1"># =&gt; true</span>
+<span class="no">CowBoat</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">float?</span>
+<span class="c1"># =&gt; true</span>
+<span class="no">CarBoat</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">float?</span>
+<span class="c1"># =&gt; true</span></code></pre>
+<p>I use the double colon here because in most cases you&#8217;ll be defining classes from within another class or module.  And if you want the classes to be available globally you&#8217;ll need to prepend the double colon <strong>::</strong></p>
+<p>Another way to define a class is to use <strong>const_set</strong>.  (<em>Credit to <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyxehcq">0x0dea</a>.</em>)</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">M</span>
+<span class="w">  </span><span class="nb">const_set</span><span class="w"> </span><span class="s1">'SomeClass'</span><span class="p">,</span><span class="w"> </span><span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># methods here</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="k">end</span></code></pre>
+<h5>75) addition doesn&#8217;t care</h5>
+<p>about excess symbol usage.  You can be artsy with code this way :-).</p>
+<pre class="code-block language-ruby"><code><span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span>
+<span class="c1"># =&gt; -2</span>
+
+<span class="mi">4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span>
+<span class="c1"># =&gt; 10</span></code></pre>
+<h5>76) ~ tilde calls itself on the following Object</h5>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Cow</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">~</span>
+<span class="w">    </span><span class="ss">:moo</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="vi">@cow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Cow</span><span class="o">.</span><span class="n">new</span>
+
+<span class="o">~</span>
+<span class="w">   </span><span class="vi">@cow</span>
+<span class="c1"># =&gt; :moo </span>
+<span class="o">~</span><span class="vi">@cow</span>
+<span class="c1"># =&gt; :moo </span></code></pre>
+<h5>77) empty parenthesis () is nil</h5>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>78) !!</h5>
+<p>Truthiness of Object.  Think of it as a double negative&#8230; it evaluates truth.</p>
+<pre class="code-block language-ruby"><code><span class="o">!!</span><span class="kp">nil</span>
+<span class="c1"># =&gt; false </span>
+<span class="o">!!</span><span class="kp">false</span>
+<span class="c1"># =&gt; false </span>
+<span class="o">!!</span><span class="no">Object</span>
+<span class="c1"># =&gt; true </span>
+<span class="o">!!</span><span class="no">Object</span><span class="o">.</span><span class="n">new</span>
+<span class="c1"># =&gt; true </span>
+<span class="o">!!</span><span class="mi">4</span><span class="o">.</span><span class="n n-Operator">+</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># =&gt; true </span></code></pre>
+<h5>79) Ranges guess types</h5>
+<p>And it&#8217;s not always the right guess.</p>
+<pre class="code-block language-ruby"><code><span class="p">(</span><span class="s2">"D9"</span><span class="o">..</span><span class="s2">"F5"</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; ["D9", "E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "F0", "F1", "F2", "F3", "F4", "F5"]</span>
+
+<span class="p">(</span><span class="s2">"DD"</span><span class="o">..</span><span class="s2">"FA"</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; ["DD", "DE", "DF", "DG", "DH", "DI", "DJ", "DK", "DL", "DM", "DN", "DO", "DP", "DQ", "DR", "DS", "DT", "DU", "DV", "DW", "DX", "DY", "DZ", "EA", "EB", "EC", "ED", "EE", "EF", "EG", "EH", "EI", "EJ", "EK", "EL", "EM", "EN", "EO", "EP", "EQ", "ER", "ES", "ET", "EU", "EV", "EW", "EX", "EY", "EZ", "FA"]</span>
+
+<span class="p">(</span><span class="s2">"88"</span><span class="o">..</span><span class="s2">"AA"</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<span class="c1"># =&gt; ["88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99"]</span></code></pre>
+<h5>80) Symbols have methods too</h5>
+<pre class="code-block language-ruby"><code><span class="ss">:asdf</span><span class="o">.</span><span class="n">class</span>
+<span class="c1"># =&gt; Symbol</span>
+<span class="ss">:apple</span><span class="o">.</span><span class="n">methods</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="no">Object</span><span class="o">.</span><span class="n">methods</span>
+<span class="c1"># =&gt; [:id2name, :intern, :to_sym, :to_proc, :succ, :next, :casecmp, :[], :slice, :length, :size, :empty?, :match, :upcase, :downcase, :capitalize, :swapcase, :encoding, :between?] </span>
+<span class="ss">:apple</span><span class="o">.</span><span class="n">capitalize</span>
+<span class="c1"># =&gt; :Apple</span></code></pre>
+<h5>81)  Numbers succ</h5>
+<pre class="code-block language-ruby"><code><span class="mi">4</span><span class="o">.</span><span class="n">succ</span>
+<span class="c1"># =&gt; 5</span>
+<span class="mi">4</span><span class="o">.</span><span class="n">succ</span><span class="o">.</span><span class="n">succ</span><span class="o">.</span><span class="n">succ</span>
+<span class="c1"># =&gt; 7</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+<span class="n">x</span><span class="o">.</span><span class="n">succ</span>
+<span class="c1"># =&gt; 5</span>
+<span class="n">x</span>
+<span class="c1"># =&gt; 4</span></code></pre>
+<h5>82) %w and %W makes an Array of Strings</h5>
+<p>Like mentioned above in #33 most non alphanumeric symbols can mark the edges.</p>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+
+<span class="sx">%w^a s d f #{x}^</span>
+<span class="c1"># =&gt; ["a", "s", "d", "f", "\#{x}"] </span>
+
+<span class="sx">%W^a s d f </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="sx">^</span>
+<span class="c1"># =&gt; ["a", "s", "d", "f", "4"]</span></code></pre>
+<p>BONUS: <strong>%i</strong> and <strong>%I</strong> for Arrays of Symbols. (<em>credit to <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyx0cgv">tfaaft</a></em>)</p>
+<pre class="code-block language-ruby"><code><span class="o">%</span><span class="n">i</span><span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="n">baz</span><span class="p">)</span>
+<span class="c1"># =&gt; [:foo, :bar, :baz]</span>
+<span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ell'</span>
+<span class="o">%</span><span class="n">I</span><span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="n">h</span><span class="c1">#{s}o baz)</span>
+<span class="c1"># =&gt; [:foo, :hello, :baz]</span></code></pre>
+<h5>83) refinements are awesome</h5>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">NewUpcase</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">upcase</span>
+<span class="w">      </span><span class="s2">"moo"</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span>
+<span class="w">  </span><span class="n">using</span><span class="w"> </span><span class="no">NewUpcase</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">thing</span>
+<span class="w">    </span><span class="s2">"asdf"</span><span class="o">.</span><span class="n">upcase</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">B</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">thing</span>
+<span class="c1"># =&gt; "moo" </span></code></pre>
+<h5>84) Procs keep their original binding</h5>
+<p>The following code is invalid.  The error demonstrates that even though the Proc is called from within an instance of Doctor that the Proc executes and evaluates directly from the instance of Cow.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Cow</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">    </span><span class="vi">@feeling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"moo"</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">feeling</span>
+<span class="w">    </span><span class="nb">proc</span><span class="w"> </span><span class="p">{</span><span class="nb">send</span><span class="p">(</span><span class="s2">"@greeting"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vi">@feeling</span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Doctor</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">    </span><span class="vi">@greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hi Doctor. "</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">feeling?</span><span class="p">(</span><span class="n">how_are_you</span><span class="p">)</span>
+<span class="w">    </span><span class="n">how_are_you</span><span class="o">.</span><span class="n">call</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Doctor</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">feeling?</span><span class="w"> </span><span class="no">Cow</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">feeling</span>
+<span class="c1">#NoMethodError: undefined method `@greeting' for #&lt;Cow:0x000000013e4698 @feeling=:moo&gt;</span></code></pre>
+<p>To make the above work you&#8217;d need to have the new scope values brought into the Proc as a parameter.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">Cow</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">    </span><span class="vi">@feeling</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"moo"</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">feeling</span>
+<span class="w">    </span><span class="nb">proc</span><span class="w"> </span><span class="p">{</span><span class="o">|</span><span class="n">greet</span><span class="o">|</span><span class="w"> </span><span class="n">greet</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vi">@feeling</span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Doctor</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">    </span><span class="vi">@greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hi Doctor. "</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">feeling?</span><span class="p">(</span><span class="n">how_are_you</span><span class="p">)</span>
+<span class="w">    </span><span class="n">how_are_you</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@greeting</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Doctor</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">feeling?</span><span class="w"> </span><span class="no">Cow</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">feeling</span>
+<span class="c1"># =&gt; "Hi Doctor. moo"</span></code></pre>
+<h5>85) Regex named matchers</h5>
+<pre class="code-block language-ruby"><code><span class="sr">/(?&lt;h&gt;.+) (?&lt;w&gt;.+)/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span><span class="o">[</span><span class="s2">"h"</span><span class="o">]</span>
+<span class="c1"># =&gt; "Hello" </span>
+<span class="sr">/(?&lt;h&gt;.+) (?&lt;w&gt;.+)/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">)</span><span class="o">[</span><span class="s2">"w"</span><span class="o">]</span>
+<span class="c1"># =&gt; "World!"</span></code></pre>
+<h5>86) included_modules</h5>
+<p>Beyond knowing the ancestry hierarchy with the ancestors method you can use the included_modules method for, as the name says, just seeing modules included.</p>
+<pre class="code-block language-ruby"><code><span class="nb">Array</span><span class="o">.</span><span class="n">included_modules</span>
+<span class="c1"># =&gt; [Enumerable, Kernel]</span></code></pre>
+<h5>87) at_exit</h5>
+<p>You can make code run as Ruby exits after the <strong>exit</strong> command.  Example from <a href="http://apidock.com/ruby/v1_9_3_392/Kernel/at_exit">APIDock</a></p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">do_at_exit</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">at_exit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">str1</span><span class="w"> </span><span class="p">}</span>
+<span class="k">end</span>
+<span class="nb">at_exit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">puts</span><span class="w"> </span><span class="s2">"cruel world"</span><span class="w"> </span><span class="p">}</span>
+<span class="n">do_at_exit</span><span class="p">(</span><span class="s2">"goodbye "</span><span class="p">)</span>
+<span class="nb">exit</span>
+<span class="c1"># =&gt; goodbye cruel world</span></code></pre>
+<p>BONUS: And <code>BEGIN { ... }</code> for running ASAP. (<em>credit to <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyxehcq">0x0dea</a></em>)</p>
+<h5>88) ensure</h5>
+<p><strong>ensure</strong> lets you make sure certain code gets run from within the block.</p>
+<pre class="code-block language-ruby"><code><span class="k">begin</span>
+<span class="w">  </span><span class="vi">@a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span>
+<span class="w">  </span><span class="k">raise</span><span class="w"> </span><span class="s2">"error"</span>
+<span class="k">ensure</span>
+<span class="w">  </span><span class="vi">@a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+<span class="k">end</span>
+<span class="c1">#RuntimeError: error</span>
+
+<span class="vi">@a</span>
+<span class="c1"># =&gt; 7 </span></code></pre>
+<h5>89) alias</h5>
+<p>You can give a method an additional name.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">A</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">foo</span>
+<span class="w">    </span><span class="s2">"bar"</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">A</span>
+<span class="w">  </span><span class="k">alias</span><span class="w"> </span><span class="ss">:fib</span><span class="w"> </span><span class="ss">:foo</span>
+<span class="k">end</span>
+
+<span class="n">B</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">foo</span>
+<span class="c1"># =&gt; "bar" </span>
+<span class="n">B</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">fib</span>
+<span class="c1"># =&gt; "bar" </span></code></pre>
+<h5>90) ENV</h5>
+<p>ENV is a variable holding a Hash of your systems environment variables.</p>
+<h5>91) Marshal</h5>
+<p>Convert Objects to Strings and back again with Marshal.</p>
+<pre class="code-block language-ruby"><code><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Marshal</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="nb">Array</span><span class="p">(</span><span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">"3"</span><span class="o">]</span><span class="p">))</span>
+<span class="c1"># =&gt; "\x04\b[\bi\x06i\aI\"\x063\x06:\x06ET"</span>
+<span class="no">Marshal</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># =&gt; [1, 2, "3"]</span></code></pre>
+<h5>92) sleep</h5>
+<p>You can make your current thread sleep with calling sleep and providing in seconds how long to wait.</p>
+<h5>93) TAB</h5>
+<p>In IRB you can press the TAB key to autofill the rest of a constant or method name.  If there are more than one possibility it will list them all.</p>
+<h5>94) help</h5>
+<p>If you have your RI documentation installed then you can lookup information on methods in Ruby by typing <strong>help</strong> in IRB.</p>
+<h5>95) block_given?</h5>
+<p><strong>block_given?</strong> is a method to determine if a block can be evaluated in the current scope.  <em>Formerly <strong>iterator?</strong></em></p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">block_given?</span>
+<span class="k">end</span>
+
+<span class="n">a</span>
+<span class="c1"># =&gt; false </span>
+<span class="n">a</span><span class="w"> </span><span class="p">{}</span>
+<span class="c1"># =&gt; true</span></code></pre>
+<h5>96) $&gt;</h5>
+<p><strong>$&gt;</strong> is a global variable for STDOUT</p>
+<pre class="code-block language-ruby"><code><span class="vg">$&gt;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s2">"hello world!</span><span class="se">\n</span><span class="s2">"</span>
+<span class="c1">#hello world!</span>
+<span class="c1"># =&gt; #&lt;IO:&lt;STDOUT&gt;&gt;</span></code></pre>
+<h5>97) $;</h5>
+<p><strong>$;</strong> is a global variable that may change what strings split on by default.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"a s d"</span><span class="o">.</span><span class="n">split</span>
+<span class="c1"># =&gt; ["a", "s", "d"] </span>
+
+<span class="vg">$;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span>
+
+<span class="s2">"a s d"</span><span class="o">.</span><span class="n">split</span>
+<span class="c1"># =&gt; ["a s d"]</span></code></pre>
+<p>It looks as though this feature is here to stay: <a href="https://bugs.ruby-lang.org/issues/11729">Ruby Issue #11729</a></p>
+<p>BONUS: And <strong>$,</strong> is the default for <strong>String#join</strong> (<em>credit to <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyxehcq">0x0dea</a></em>)</p>
+<h5>98) warn</h5>
+<p>You can use warn to print a warning message to STDERR.</p>
+<pre class="code-block language-ruby"><code><span class="nb">warn</span><span class="w"> </span><span class="s2">"Oh no!"</span>
+<span class="c1">#Oh no!</span>
+<span class="c1"># =&gt; nil</span></code></pre>
+<h5>99) 1.0/0 is Infinity</h5>
+<pre class="code-block language-ruby"><code><span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="c1">#ZeroDivisionError: divided by 0</span>
+<span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+<span class="c1"># =&gt; Infinity</span></code></pre>
+<h5>100) Ruby has been around for 20 years!</h5>
+<pre class="code-block language-ruby"><code><span class="no">RUBY_COPYRIGHT</span>
+<span class="c1"># =&gt; "ruby - Copyright (C) 1993-2015 Yukihiro Matsumoto"</span></code></pre>
+<h5>THANK YOU!</h5>
+<p>Congratulations you have made it to the end of all 101 Ruby code factoids!  Let me know if you found this useful or insightful!  Thanks!</p>
+<p>As always I hope you’ve enjoyed this!  Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p>P.S. Thanks to everyone who&#8217;ve pointed out corrections on here and on <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/">reddit</a>!  Reddit credits: <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyx0cgv">tfaaft</a>, <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyx9tti">Craftkorb</a>, <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyxehcq">0x0dea</a>, and <a href="https://www.reddit.com/r/ruby/comments/40rzm0/101_ruby_code_factoids/cyxjcgz">jb3689</a>.</p>
+<p><span style="font-size: 8px;">Image by <a href="https://www.flickr.com/photos/bramapp/">Bram</a> via the <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/">Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Generic License</a></span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=101+Ruby+Code+Factoids" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=101+Ruby+Code+Factoids" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/code/">#code</a><a href="../../../../../tag/examples/">#examples</a><a href="../../../../../tag/factoids/">#factoids</a><a href="../../../../../tag/ruby/">#ruby</a><a href="../../../../../tag/things/">#things</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../../../2015/12/12/ruby-arrays-by-example/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../../02/02/ruby-bindings-across-inheritance/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-7142"> 	
+		<div id="comment-7142" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/81c3e738c6c4d4ec282b2df918cf882c?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/81c3e738c6c4d4ec282b2df918cf882c?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://blackbytes.info/ruby-course/" class="url" rel="ugc external nofollow">Jesus Castello</a></span><br />January 13, 2016 - 8:55 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Nice collection you have here 🙂</p>
+<p>It&#8217;s worth noting that `warn` prints to stderr instead of stdout, you can try that with `irb &gt; /tmp/out`, type 1+1 then type `warn &#8216;test&#8217;`.</p>
+<p>The result: 2 will not be printed because stdout is being redirected, but &#8216;test&#8217; will be printed on your screen.</p>
+<p>Here is an extra one for your collection: `__method__`.</p>
+<p>With `__method__` you can get the name of the current method, could be useful for meta-programming stuff.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7143"> 	
+		<div id="comment-7143" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 13, 2016 - 10:17 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thank you!</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7144"> 	
+		<div id="comment-7144" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/0e0d65cab697a4240c2960ff8618c87b?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/0e0d65cab697a4240c2960ff8618c87b?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Nunya Bidness</span><br />January 13, 2016 - 11:03 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Factoid means an &#8220;piece of information that becomes accepted as a fact even though it’s not actually true, or an invented fact believed to be true because it appears in print&#8221;, not a small fact.</p>
+<p>The things you posted here seem true though.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7145"> 	
+		<div id="comment-7145" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 13, 2016 - 12:22 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Google&#8217;s brief definition says: &#8220;a brief or trivial item of news or information.&#8221;</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7152"> 	
+		<div id="comment-7152" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1f6c2a80093cebe2ac57cf573b72fb66?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1f6c2a80093cebe2ac57cf573b72fb66?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Carl Anderson</span><br />January 14, 2016 - 2:18 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Both are true: <a href="http://www.merriam-webster.com/dictionary/factoid" rel="nofollow ugc">http://www.merriam-webster.com/dictionary/factoid</a> Which is nearly as confusing as the current definition for literally: <a href="http://www.merriam-webster.com/dictionary/literally" rel="nofollow ugc">http://www.merriam-webster.com/dictionary/literally</a></p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-even depth-1" id="li-comment-7146"> 	
+		<div id="comment-7146" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/df08a0889bad0229c372f702976a3da6?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/df08a0889bad0229c372f702976a3da6?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Pavel Pravosud</span><br />January 13, 2016 - 1:06 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>iterator? is deprecated. you should use block_given? instead</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7147"> 	
+		<div id="comment-7147" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/df08a0889bad0229c372f702976a3da6?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/df08a0889bad0229c372f702976a3da6?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Pavel Pravosud</span><br />January 13, 2016 - 1:10 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Also, ENV is not an Array, it&#8217;s a Hash-like object</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7148"> 	
+		<div id="comment-7148" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 13, 2016 - 2:31 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks!  Amended both.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7149"> 	
+		<div id="comment-7149" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/92d7f1b728abd1bb61142ceb30ff5008?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/92d7f1b728abd1bb61142ceb30ff5008?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="https://vtrkanna.wordpress.com/" class="url" rel="ugc external nofollow">Kanna Vrk</a></span><br />January 14, 2016 - 5:35 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Nice collection, amazing 😉</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-7150"> 	
+		<div id="comment-7150" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/34d79b463e70da70ad027ed4586474de?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/34d79b463e70da70ad027ed4586474de?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://fighterleslie.com" class="url" rel="ugc external nofollow">Leslie Zhang</a></span><br />January 14, 2016 - 9:39 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Wow, great work!</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7151"> 	
+		<div id="comment-7151" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/f55298b16490cdfa08cca375b7e1eed5?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/f55298b16490cdfa08cca375b7e1eed5?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>smolnar</span><br />January 14, 2016 - 2:07 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Might be obvious for some people, but it&#8217;s sure nice to point out that squeeze without parameters actually squeezes every character, not just space.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-7153"> 	
+		<div id="comment-7153" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1f6c2a80093cebe2ac57cf573b72fb66?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1f6c2a80093cebe2ac57cf573b72fb66?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Carl Anderson</span><br />January 14, 2016 - 2:33 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Mention should be made about Hash.invert when there would be duplicate keys after inversion:</p>
+<p>h = {test: 1, tests: 1, testing: 2}</p>
+<p>{:test=&gt;1, :tests=&gt;1, :testing=&gt;2}</p>
+<p>h.invert</p>
+<p>{1=&gt;:tests, 2=&gt;:testing}</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7154"> 	
+		<div id="comment-7154" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/bc2505ee6c8c02e2afd1c3ff49db3fd7?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/bc2505ee6c8c02e2afd1c3ff49db3fd7?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://RailsPerformance.com" class="url" rel="ugc external nofollow">johnmccaffrey</a></span><br />January 14, 2016 - 2:47 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Nice work!<br />
+There were quite a few I hadn&#8217;t seen before</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-7155"> 	
+		<div id="comment-7155" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/8637ec936a4d2a4c813a838e9391f1ac?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/8637ec936a4d2a4c813a838e9391f1ac?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://about.me/halilim" class="url" rel="ugc external nofollow">Halil Özgür</a></span><br />January 14, 2016 - 4:14 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Nice list, thanks!</p>
+<p>1) _<br />
+You can suffix it with a name if you want to keep the name around even if you don&#8217;t intend to use it:</p>
+<pre><code class="ruby">
+-&gt; (_something) { # don't do anything with _something }
+</code></pre>
+<p>9) module_method<br />
+What&#8217;s a <code>module_method</code>? Did you mean <a href="http://ruby-doc.org/core-2.3.0/Module.html#method-i-module_function" rel="nofollow"><code>module_function</code></a>?</p>
+<p>15) string % value(s)<br />
+I&#8217;d call it <a href="http://ruby-doc.org/core-2.3.0/String.html#method-i-25" rel="nofollow">formatting</a> rather than type conversion.</p>
+<p>16) ternary operator _ ? _ : _<br />
+Nah, never use more than one per line, with parens or not 🙂</p>
+<p>18) %[]<br />
+You can use any non-alphanumeric character in place of <code>[]</code>, i.e. <code>%[]</code>=<code>%()</code>=<code>%!!</code>=&#8230;<br />
+Unfortunately Ruby documentation is lacking in this department (and in some others), for example <a href="http://ruby-doc.org/core-2.3.0/doc/syntax/literals_rdoc.html#label-Percent+Strings" rel="nofollow">percent strings</a> doesn&#8217;t explain the bare <code>%</code>; except the very implicit hint on <code>String::new</code> 🙂</p>
+<p>27) super<br />
+Talking about <code>super</code>, it might be worthwhile to mention the difference between<br />
+<code>super</code> and <code>super()</code>: <a href="http://ruby-doc.org/core-2.3.0/doc/syntax/modules_and_classes_rdoc.html#label-Inheritance" rel="nofollow ugc">http://ruby-doc.org/core-2.3.0/doc/syntax/modules_and_classes_rdoc.html#label-Inheritance</a>.</p>
+<p>48) tail conditions<br />
+<a href="https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions" rel="nofollow">Don&#8217;t hide exceptions</a>, or they are going to bite you from where you can&#8217;t see them 🙂</p>
+<p>55) String#upto<br />
+<code>('A'..'z').to_a</code> does the same thing. Also you don&#8217;t need <code>to_a</code> in the second example as ranges, <code>upto</code> etc. already return an enumerator, e.g. <code>('A'..'z').to_a.map(&amp;:ord)</code> = <code>('A'..'z').map(&amp;:ord)</code></p>
+<p>61) Method#owner<br />
+Really useful!</p>
+<p>68) unless<br />
+Regarding confusion, I replace it with an <code>if</code> as soon as it makes me think about it.</p>
+<p>89) alias<br />
+You may want to use <a href="http://ruby-doc.org/core-2.3.0/Module.html#method-i-alias_method" rel="nofollow">alias_method</a> instead: <a href="http://stackoverflow.com/questions/4763121/should-i-use-alias-or-alias-method" rel="nofollow ugc">http://stackoverflow.com/questions/4763121/should-i-use-alias-or-alias-method</a></p>
+<p>91) Marshal<br />
+Never pass untrusted data to <a href="http://ruby-doc.org/core-2.3.0/Marshal.html#method-c-load" rel="nofollow"><code>Marshal::load</code></a> (similar to <code>Yaml::load</code>, which had security issues in the past).</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7156"> 	
+		<div id="comment-7156" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/6c529a8494597386bfd27eec899ba834?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/6c529a8494597386bfd27eec899ba834?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>cn_jidong</span><br />January 14, 2016 - 9:05 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>awesome ！</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-7157"> 	
+		<div id="comment-7157" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/ae62505fba91b9ae398bbd84554a21b9?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/ae62505fba91b9ae398bbd84554a21b9?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Philippe Van Eerdenbrugghe</span><br />January 15, 2016 - 7:57 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Concerning `prepend`, it&#8217;s more subtle than that.</p>
+<p>Every class actually has a two half list of ancestors. One list &#8220;below&#8221; the class : the modules prepended tot the class  and one list &#8220;above&#8221; the class : the modules included.</p>
+<p>When you call a method on an instance of the class, the method call will be tried on the &#8220;below&#8221; list, then on the class itself, then on the &#8220;above&#8221; list.</p>
+<p>This mechanism makes prepended modules really interesting to make `super` call and do something with the result. Actually that&#8217;s the main reason they were introduced, because it&#8217;s a much cleaner way to achieve this goal than the old `alias_method_chain`</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7158"> 	
+		<div id="comment-7158" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/ee476e26c6d61456b0f6a3070c01b9ce?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/ee476e26c6d61456b0f6a3070c01b9ce?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://onebree.github.io" class="url" rel="ugc external nofollow">Hunter Stevens</a></span><br />January 18, 2016 - 11:45 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>20 &#8211; an at-sign designates an instance variable, which does not always lie within a class. Therefore, calling it a class variable is not accurate.</p>
+<p>24 &#8211; I suggest removing this. Although true, it is best practice to use `self`, in case you ever change class or module names.</p>
+<p>54 &#8211; Also while true, it is much easier to do `(1..10)` (inclusive) and `(1&#8230;10)` (exclusive).</p>
+<p>56 &#8211; `#squeeze` does not remove gaps, but rather takes all repeated characters (&#8220;aaa&#8221;, &#8220;&#8230;&#8221;) and spits out a string with them replaced by a single char (&#8220;a&#8221;, &#8220;.&#8221;). No parameter acts on all duplicate instances, while a param searches for only that one.</p>
+<p>65 &#8211; True but would not recommend. If anything, you should separate long method chains by a new line, NOT spaces between the period!</p>
+<p>66 &#8211; tabular alignment is not ideal &#8212; <a href="http://wconrad.github.io/20150627/tabular-alignment-antipattern.html" rel="nofollow ugc">http://wconrad.github.io/20150627/tabular-alignment-antipattern.html</a></p>
+<p>68 &#8211; `unless` is NOT the same as `if not`. The `not` keyword has lower precedence than `!method`. Rather, `unless` is the same as `if false`.</p>
+<p>79 &#8211; That&#8217;s because `&#8217;99&#8217;.next` is `&#8217;100&#8217;`. Unless defined elsewhere, how is Ruby to know that `&#8217;99&#8217;.next` is `&#8217;AA&#8217;`?</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-7160"> 	
+		<div id="comment-7160" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/f1c918f57851557cf4c123ce12e4fe44?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/f1c918f57851557cf4c123ce12e4fe44?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>George Taveras</span><br />January 20, 2016 - 10:15 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I&#8217;m pretty sure 9)  is not correct. </p>
+<p>a module module_function != a class private_method</p>
+<p>here is a gist explaining:<br />
+<a href="https://gist.github.com/GeorgeTaveras1231/a673b23c37f969ba1f35" rel="nofollow ugc">https://gist.github.com/GeorgeTaveras1231/a673b23c37f969ba1f35</a></p>
+<p>You can say that module_function == single_methods. e.i. methods beginning with &#8216;self.&#8217; inside a class or module, also known as class methods </p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-2" id="li-comment-7161"> 	
+		<div id="comment-7161" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 21, 2016 - 2:30 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Yes, I&#8217;ve added clarification and a link to my previous blog on the topic <a href="../../../../2015/05/02/private-module-methods-in-ruby/" rel="nofollow">Private Module Methods in Ruby</a></p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-even depth-1" id="li-comment-7162"> 	
+		<div id="comment-7162" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/4f873fd56f2bb58c0a13847a46b481f3?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/4f873fd56f2bb58c0a13847a46b481f3?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="http://pikachuexe.weebly.com/" class="url" rel="ugc external nofollow">Leung Ho Kuen</a></span><br />January 21, 2016 - 8:40 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I think it&#8217;s better to talk about alias_method as well<br />
+And the difference between alias_method and alias</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7163"> 	
+		<div id="comment-7163" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/5ac7b0e4acc7301cdc6a0b7dce42a6f7?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/5ac7b0e4acc7301cdc6a0b7dce42a6f7?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="https://www.jianshu.com/users/ad88fa6a0ba6/latest_articles" class="url" rel="ugc external nofollow">chenge</a></span><br />January 22, 2016 - 5:47 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>97) maybe Array#join, right?</p>
+<p>cool doc, thanks!</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-even depth-1" id="li-comment-7181"> 	
+		<div id="comment-7181" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/cd057748ea945a25d902454a58aed6f5?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/cd057748ea945a25d902454a58aed6f5?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>dhalai</span><br />February 28, 2016 - 10:56 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thx, it&#8217;s really interesting bundle 😉</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7200"> 	
+		<div id="comment-7200" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/2b742351b67a1d5c4114ee7474c5bd84?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/2b742351b67a1d5c4114ee7474c5bd84?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Sean Snyder</span><br />April 28, 2016 - 11:36 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>81. Numbers succ, also pred for reverse</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-even depth-1" id="li-comment-7219"> 	
+		<div id="comment-7219" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/466e7b165fadbcab2748c68016a3bf3c?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/466e7b165fadbcab2748c68016a3bf3c?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Simone Bravo</span><br />December 28, 2016 - 12:25 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I&#8217;m not 100% sure about the 93)TAB in IRB</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-2" id="li-comment-7220"> 	
+		<div id="comment-7220" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />December 29, 2016 - 1:35 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>What version of Ruby are you using?  The feature wasn&#8217;t always there.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-3" id="li-comment-7221"> 	
+		<div id="comment-7221" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/466e7b165fadbcab2748c68016a3bf3c?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/466e7b165fadbcab2748c68016a3bf3c?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Simone Bravo</span><br />December 29, 2016 - 4:50 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Sorry it was my fault, I&#8217;m using hyper.js and it has strange behaviours with everything.<br />
+BTW great article you taught me lots of hacks, thank you.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7222"> 	
+		<div id="comment-7222" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/ba613469857ce0fd0cf86a0d7c56041b?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/ba613469857ce0fd0cf86a0d7c56041b?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Joshua Scott</span><br />January 6, 2017 - 1:32 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>49 &#8211; this doesn&#8217;t work as written, the `x` isn&#8217;t in scope inside the `a` method</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7223"> 	
+		<div id="comment-7223" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 11, 2017 - 1:24 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Good catch!  Updating it now.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7233"> 	
+		<div id="comment-7233" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/79c2fde186c0096abf88124848514e63?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/79c2fde186c0096abf88124848514e63?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Billy.Zheng</span><br />May 5, 2017 - 11:39 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>What the difference with:</p>
+<p>&#8220;`rb<br />
+def do_the_lazy(array_input)<br />
+  Enumerator::Lazy.new(array_input) do |yielder, value|<br />
+    yielder &lt;&lt; value<br />
+  end<br />
+end<br />
+&#8220;`</p>
+<p>and </p>
+<p>&#8220;`rb<br />
+def do_the_lazy(array_input)<br />
+  Enumerator::Lazy.new(array_input) do |yielder, value|<br />
+     yielder.yield(value)<br />
+  end<br />
+end<br />
+&#8220;`</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7234"> 	
+		<div id="comment-7234" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />May 8, 2017 - 12:58 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>If you look at the tests for Ruby they&#8217;re the same.</p>
+<p>link: <a href="https://github.com/ruby/ruby/blob/trunk/spec/rubyspec/core/enumerator/yielder/append_spec.rb" rel="nofollow">.&lt;&lt;</a></p>
+<p>link: <a href="https://github.com/ruby/ruby/blob/trunk/spec/rubyspec/core/enumerator/yielder/yield_spec.rb" rel="nofollow">.yield</a></p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7244"> 	
+		<div id="comment-7244" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/79c2fde186c0096abf88124848514e63?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/79c2fde186c0096abf88124848514e63?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Billy.Zheng</span><br />June 23, 2017 - 2:24 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

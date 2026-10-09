@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Writing methods for both class and instance levels | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.8" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2015/02/24/writing-methods-for-both-class-and-instance-levels/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-786 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-786" class="post-786 post type-post status-publish format-standard has-post-thumbnail hentry category-informational category-programming category-ruby category-rubyonrails category-technical tag-class tag-inheritance tag-mixin tag-rails tag-ruby tag-self tag-singleton">
+		<img width="640" height="421" src="../../../../../wp-content/uploads/2015/02/4440092086_8e9e03f3ef_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2015/02/4440092086_8e9e03f3ef_z.jpg 640w, ../../../../../wp-content/uploads/2015/02/4440092086_8e9e03f3ef_z-300x197.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		<p class="date-author">February 24, 2015 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Writing methods for both class and instance levels</h1>			<p>When perusing the Rails documentation for various methods I noticed something that seemed odd to me.  The method descriptions seemed to show an extra parameter as the first parameter that I was never using.  It&#8217;s strange when you use the methods all the time and it doesn&#8217;t seem to be implemented the way the documentation describes it.  So what&#8217;s going on here?</p>
+<p>Well as it turns out the method is defined twice, but only in name.  Once at the class level, and then at the instance level; where they pass the work on forward.  How is this accomplished?  Well you can access all class level methods on the <strong>.class</strong> instance variable&#8230; why do I call it a variable?  Because it&#8217;s assigned to the Class from which the instance was instantiated.</p>
+<pre class="code-block language-ruby"><code><span class="s2">"a string"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">String</span>
+<span class="c1"># =&gt; false</span>
+<span class="s2">"a string"</span><span class="o">.</span><span class="n">class</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">String</span>
+<span class="c1"># =&gt; true</span></code></pre>
+<p>So any class level methods available in the constant of the class name <span style="color: #999999">(eg: String)</span> is also available on the instance variable <strong>.class</strong> .</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">spell</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+<span class="w">    </span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">String</span><span class="o">.</span><span class="n">methods</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="no">Object</span><span class="o">.</span><span class="n">methods</span>
+<span class="c1"># =&gt; [:try_convert, :spell] </span>
+<span class="s2">""</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">methods</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="no">Object</span><span class="o">.</span><span class="n">methods</span>
+<span class="c1"># =&gt; [:try_convert, :spell] </span>
+<span class="nb">String</span><span class="o">.</span><span class="n">spell</span><span class="w"> </span><span class="s2">"hello"</span>
+<span class="c1"># =&gt; ["h", "e", "l", "l", "o"]</span>
+<span class="s2">"hello"</span><span class="o">.</span><span class="n">spell</span>
+<span class="c1"># NoMethodError: undefined method `spell' for "hello":String</span>
+<span class="s2">"hello"</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">spell</span><span class="w"> </span><span class="s2">"cow"</span>
+<span class="c1"># =&gt; ["c", "o", "w"]</span></code></pre>
+<p>So if we wanted to call the method spell on the string &#8220;hello&#8221; we would need to define a class instance method to do this.</p>
+<pre class="code-block language-ruby"><code><span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">spell</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+<span class="w">    </span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">spell</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">spell</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="s2">"hello"</span><span class="o">.</span><span class="n">spell</span>
+<span class="c1"># =&gt; ["h", "e", "l", "l", "o"] </span>
+<span class="nb">String</span><span class="o">.</span><span class="n">spell</span><span class="w"> </span><span class="s2">"hello"</span>
+<span class="c1"># =&gt; ["h", "e", "l", "l", "o"] </span>
+<span class="s2">"cow"</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">spell</span><span class="w"> </span><span class="s2">"hello"</span>
+<span class="c1"># =&gt; ["h", "e", "l", "l", "o"] </span></code></pre>
+<p>Here you can see I&#8217;ve defined a class instance method <strong>spell</strong> without any parameters to be passed.  That is because we are passing <strong>self</strong>, the instance of the string itself, as the parameter to the class level method <strong>spell</strong>.  This is why you will see definition on methods with the object written in as a first parameter.  If you&#8217;re calling the method on the class itself you will need that first parameter.  If it&#8217;s an instance of the class then it evaluates <strong>self</strong> as the first method.</p>
+<h3>Mixins</h3>
+<p>When implementing this with modules to be included into other classes you need to write just a bit more.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Cat</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nc">base</span><span class="o">.</span><span class="nf">speak</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="w">      </span><span class="o">[</span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="s2">"meow"</span><span class="o">].</span><span class="n">join</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">speak</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Cat</span>
+<span class="k">end</span></code></pre>
+<p>Now you have a cat that will always get the last word when you speak ;-).  Defining <strong>self.included(base)</strong> is the way Ruby lets you perform the same action as if you were writing a <strong>def self.my_method</strong> right in the class it gets included into.  The variable base is the class that called include.  So the last part in the example above where <strong>include Cat</strong> is called inside the String class will make the base variable <strong>String</strong>.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Cat</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="n">base</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Cat</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; String</span></code></pre>
+<p>So defining methods inside the <strong>self.include(base)</strong> definition on base is the same thing as writing the methods into the class.  <strong>self</strong> is the current Object you&#8217;re in wherever you are.  So in the example above <strong>self.include</strong> is the same as <strong>Cat.include</strong> .  And anything within the included defined on base is like self within the class called: <strong>def base.speak</strong> <span style="color: #999999"># =&gt;  def String.speak</span></p>
+<h3>No Shovel</h3>
+<p>If you want class methods to be available on the <strong>.class</strong> instance variable then you can&#8217;t use the shovel operator (<strong>&lt;&lt;</strong>) like when you have seen <strong>class &lt;&lt; self</strong>.  Why is that?  The reason is because you are not actually writing methods into the class, but you&#8217;ve opened up a singleton instance and are writing methods directly into there.  It&#8217;s easier if you see it.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Crackle</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="nb">self</span>
+<span class="w">  </span><span class="nb">puts</span><span class="w"> </span><span class="nb">self</span><span class="o">.</span><span class="n">name</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; Crackle</span>
+<span class="c1"># =&gt; Crackle</span>
+
+<span class="k">module</span><span class="w"> </span><span class="nn">Crackle</span>
+<span class="w">  </span><span class="k">class</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nb">self</span>
+<span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="nb">self</span>
+<span class="w">    </span><span class="nb">puts</span><span class="w"> </span><span class="nb">self</span><span class="o">.</span><span class="n">name</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; Crackle</span>
+<span class="c1"># =&gt;</span></code></pre>
+<p>You&#8217;ll notice the name came out blank for the second item.  That&#8217;s because when using the shovel operator <strong>&lt;&lt;</strong> you are opening a singleton instance.  These are anonymous objects.  When defining a method in here you&#8217;re only working on a single instance of the class/module/object in which you define it.  So in the second example the module Crackle isn&#8217;t only a Module now, but it has an anonymous singleton object which will only be accessed when you call the method on the class Crackle.  Nothing that includes Crackle, or extends it, will get these defined methods.  For an excellent presentation on this see Dave Thomas talk on &#8220;<a href="https://youtu.be/X2sgQ38UDVY">The Ruby Object Model</a>&#8221;</p>
+<p>Lets look at it not work.</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Crackle</span>
+<span class="w">  </span><span class="k">class</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nb">self</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">pizza</span>
+<span class="w">      </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">String</span>
+<span class="w">  </span><span class="kp">include</span><span class="w"> </span><span class="no">Crackle</span>
+<span class="k">end</span>
+
+<span class="nb">String</span><span class="o">.</span><span class="n">pizza</span>
+<span class="c1"># NoMethodError: undefined method `pizza' for String:Class</span>
+
+<span class="s2">""</span><span class="o">.</span><span class="n">pizza</span>
+<span class="c1"># NoMethodError: undefined method `pizza' for "":String</span>
+
+<span class="no">Crackle</span><span class="o">.</span><span class="n">pizza</span>
+<span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">1</span></code></pre>
+<p>So even though we included Crackle into String we inherited nothing from the singleton instance that exists on the module Crackle.  So don&#8217;t use the shovel operator for inheritance.</p>
+<h3>Rails</h3>
+<p>Rails has implemented a way for mixins to be done with what they call concerns.  You need to consider some things when using Rails concerns.  They aren&#8217;t as they seem.  They perform some &#8220;management&#8221; of your mixins rather than being a pure mixin feature.  For more details on that read Corey Haines blog post: <a href="http://blog.coreyhaines.com/2012/12/why-i-dont-use-activesupportconcern.html">Why I Don&#8217;t Use ActiveSupport::Concern or, why I actively replace ActiveSupport::Concern with Ruby in codebases I work on</a></p>
+<p>Here&#8217;s how you can change your mixin to a ActiveSupport::Concern.  You take something like:</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Dog</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">included</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nc">base</span><span class="o">.</span><span class="nf">speak</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="w">      </span><span class="o">[</span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="s2">"woof"</span><span class="o">].</span><span class="n">join</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">speak</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>And change it to</p>
+<pre class="code-block language-ruby"><code><span class="k">module</span><span class="w"> </span><span class="nn">Dog</span>
+<span class="w">  </span><span class="kp">extend</span><span class="w"> </span><span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+<span class="w">  </span><span class="n">included</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">speak</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="w">      </span><span class="o">[</span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="s2">"woof"</span><span class="o">].</span><span class="n">join</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">speak</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>So consider for yourself if it&#8217;s what you want to do.  Notice we&#8217;re using <strong>self</strong> instead of a parameter like base.  In a standard mixin you can&#8217;t use <strong>self</strong> to refer to the caller.  But with Rails&#8217; concern <strong>self</strong> becomes as if you are in the class that is/(will be) inheriting this.</p>
+<h3>Summary</h3>
+<p>So now you know how to write methods in a DRY way and make them available on both instance and class levels.  I like to use this wherever I can.  <strong>self</strong> can be passed where it is the object that will be worked on.  This works on objects where they hold any kind of state, query, or action.  Even if <strong>size</strong> only make sense to you on an instance of the Object, it could just as easily be handed self via the class method and get the same job done.  It&#8217;s up to you whether you like this as a pattern to follow.  Yes it may be slightly confusing at first have the same method name take a different number of parameters.  But it&#8217;s easy to see if it&#8217;s an instance or not based on the parameters or the error message.  Just think about and try it out.</p>
+<p>As always, I hope this was both enjoyable and insightful for you!  Please feel free to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px">Image by <a class="owner-name truncate" title="Go to Ian Sane's photostream" href="https://www.flickr.com/photos/31246066@N04/">Ian Sane</a> via the <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">Creative Commons Attribution 2.0 Generic License</a>.</span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Writing+methods+for+both+class+and+instance+levels" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Writing+methods+for+both+class+and+instance+levels" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/class/">#class</a><a href="../../../../../tag/inheritance/">#inheritance</a><a href="../../../../../tag/mixin/">#mixin</a><a href="../../../../../tag/rails/">#rails</a><a href="../../../../../tag/ruby/">#ruby</a><a href="../../../../../tag/self/">#self</a><a href="../../../../../tag/singleton/">#singleton</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../21/minitest-with-watir-webdriver/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../27/value-assignment-and-deferment-with-lambdasprocs/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-6987"> 	
+		<div id="comment-6987" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/3992b4782ea7ed0ffd6605805e2620a7?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/3992b4782ea7ed0ffd6605805e2620a7?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Josh Bodah</span><br />February 26, 2015 - 1:24 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Good post!</p>
+<p>I can&#8217;t say that I&#8217;m a big fan of the &#8220;included&#8221; and &#8220;extended&#8221; callbacks, mostly because it means that something different happens depending on whether you use the module via &#8220;include&#8221; or &#8220;extend&#8221;. I would only recommend using them when you are using them to manipulate the singleton as in the examples above (e.g. we use the included callback to modify the singleton which our module relies on)</p>
+<p>Some things that help me think about this sort of thing:</p>
+<p>1) Only modules/classes can be the owners of methods</p>
+<p>2) Every object has a singleton class (note: modules/classes are objects with a singleton too). When you call &#8220;self.whatever&#8221; you are referencing the singleton</p>
+<p>3) &#8220;include&#8221; will copy all of the instance methods of the target module into the class. &#8220;extend&#8221; will copy all of the instance methods of the target module into the singleton class</p>
+<p>4) instance methods defined in a class are callable to instances of that class</p>
+<p>There are a couple more interesting about Ruby&#8217;s design regarding methods being bound vs. unbound, when that binding is made, and how a method&#8217;s owner and receiver are determined. This can make it a bit more difficult to do things like transplant one method from one class to another or dynamically wrap and unwrap methods (which is trivial in languages like Javascript).</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6990"> 	
+		<div id="comment-6990" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 26, 2015 - 11:04 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks!  Excellent short list.</p>
+<p>I&#8217;ve run into a few cases where I&#8217;ve needed to get the binding from a different scope.  That can be interesting.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-6988"> 	
+		<div id="comment-6988" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/7fd8a94ada202c8d338c50643ef817d4?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/7fd8a94ada202c8d338c50643ef817d4?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Yevhene Shemet</span><br />February 26, 2015 - 2:25 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>2 important notices about ActiveSupport::Concern:<br />
+1. ActiveSupport::Concern can be included to another ActiveSupport::Concern.<br />
+2. It is better to use module ClassMethods inside ActiveSupport::Concern instead of using self.method in included block.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6989"> 	
+		<div id="comment-6989" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 26, 2015 - 10:44 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks for tips!  Might I ask you why you believe your point #2 to be better?</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-7000"> 	
+		<div id="comment-7000" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/7fd8a94ada202c8d338c50643ef817d4?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/7fd8a94ada202c8d338c50643ef817d4?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Yevhene Shemet</span><br />March 2, 2015 - 4:42 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Because (1) don&#8217;t work without (2). Because &#8220;included&#8221; would be triggered for concern included in, but not for target class.<br />
+You can read detailed description of ActiveSupport::Concern in Chaper 10 of Metaprogramming Ruby 2: Program Like the Ruby Pros in (<a href="https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2" rel="nofollow ugc">https://pragprog.com/book/ppmetr2/metaprogramming-ruby-2</a>).</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-even depth-1" id="li-comment-6991"> 	
+		<div id="comment-6991" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/7f4eb585502e0c3ee57516c4925e1517?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/7f4eb585502e0c3ee57516c4925e1517?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>estum</span><br />March 1, 2015 - 3:35 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>When method doesn&#8217;t dependent on the instance&#8217;s condition, but should be available for both layers, I declare it as a class method and simply use `delegate :some_method, :to =&gt; :class` construction. When I want to use it just as shorthand, I add `private :some_method` after. </p>
+<p>If the method will be dependent on the instance&#8217;s state, then, firstly, I&#8217;ll decide whether this is really necessary to have it in the class layer, and whether it complex to move this method into a separate class (using `SimpleDelegator`, some kind of `#call` object or something else). In the most cases the answer is &#8220;no&#8221;.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-2" id="li-comment-6996"> 	
+		<div id="comment-6996" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />March 1, 2015 - 9:23 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Very good points.  In one of my gems I&#8217;m not able to use delegate as I&#8217;m supporting Ruby 1.8.  But I do really like to use it when the situation allows for it.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-8364"> 	
+		<div id="comment-8364" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/44a9ad2fac49d583d8d273d7559fee0d?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/44a9ad2fac49d583d8d273d7559fee0d?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>john</span><br />April 22, 2020 - 9:48 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>great post</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

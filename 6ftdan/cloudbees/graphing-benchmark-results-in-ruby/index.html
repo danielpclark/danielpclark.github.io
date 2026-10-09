@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphing Benchmark Results in Ruby</title>
+<meta name="description" content="Nothing presents performance statistics quite as well as having graphs for benchmarks. Whether you want to present an alternative way for code guidelines based on performance or show a presentation, seeing the…">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/code.css">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a href="../../">Daniel P. Clark</a>
+<nav><a href="../">CloudBees Blog Archive</a><a href="../../">6ftdan.com Archive</a><a href="../../../">Resume</a></nav>
+</div></header>
+<div class="wrap">
+<article>
+<h1>Graphing Benchmark Results in Ruby</h1>
+<p class="meta">By Daniel P. Clark · 2017-07-05 · 8 min read</p>
+<p>Nothing presents performance statistics quite as well as having graphs for benchmarks. Whether you want to present an alternative way for code guidelines based on performance or show a presentation, seeing the difference makes a difference. What we&#8217;ll cover here will show you how to generate graph data images from your own Ruby codebase&#8217;s benchmark suite, with presentation-worthy quality.</p><p>The benchmark I often like to use when comparing code is iterations-per-second. You can find an excellent Ruby gem for that at <a href="https://github.com/evanphx/benchmark-ips">benchmark-ips</a>. This will give you numbers showing how many times the code was able to run before a second passes. You write code two different ways which perform the same result, and you use benchmarking to see which one is more performant.</p><p>Now another kind of benchmark is one which graphs on one or multiple planes different values that change given different inputs. The typical graph would be an <em>xy</em> plane where <em>x</em> would be the time taken and <em>y</em> would be a measurement of distance, such as iterations as our case will be.</p><p>The Minitest benchmark suite has five kinds graphing benchmarks as of this writing. The ones most people will be interested in are either <code>assert_performance_constant</code> or <code>assert_performance_linear</code>.</p><p>When you try to persuade individuals about a better way of doing something, sometimes numbers don&#8217;t hold the weight they should. This is where visual graphs come into play to give a greater advantage of persuasion. Graph data can reveal the difference in more than numbers; it can reveal it at scale. When someone sees the compounded difference of system resources consumed as the code is scaled up, even the smaller savings become much more desirable.</p><p>Let&#8217;s take a look at a performance benchmark from FasterPath which demonstrates how the native Ruby code runs against the Rust implementation of it.</p><p><!-- image unavailable: https://1npo9l3lml0zvr6w62acc3t1-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/68747470733a2f2f36667464616e2e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031372f30362f6861735f747261696c696e675f736570617261746f725f62656e63686d61726b2e706e67.png --></p><p>Seeing the difference gives the impact you&#8217;re looking for. When the numbers are small, the costs don&#8217;t seem as high. But this one method alone looks to cut out about 50 percent of the execution time required for this method. You do this a few times on highly used methods, and your overall systems performance will show significant performance improvements. For example, FasterPath has given my Rails 4 site a 30 percent performance gain, as path handling is required for all website assets.</p><p>What&#8217;s more impressive to hear or see, that the <code>FasterPath.absolute?</code> method is 96 percent faster than <code>Pathname.absolute?</code>, or to see the image of it here:</p><p><!-- image unavailable: https://1npo9l3lml0zvr6w62acc3t1-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/68747470733a2f2f36667464616e2e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031372f30362f6162736f6c7574655f62656e63686d61726b2e706e67.png --></p><p>Having the visual graph lets you see that while one method takes one second to run, the other is less than a tenth of a second. Even with the words stated, a visual benchmark is clearly a winner for the art of persuasion.</p><p>Now let&#8217;s write some code to produce these kinds of graphs.</p><h2>The Implementation</h2><p>First of all, this code uses the <a href="https://github.com/topfunky/gruff">gruff</a> gem which depends on RMagick. It&#8217;s a beautiful and simple interface to mark data points on a graph and will let you choose many different kinds of graphs and styles of data presentation for your image output. The next gem we&#8217;ll use is one called <a href="https://github.com/danielpclark/stop_watch">stop_watch</a>, which is a simple gem that lets you have a stopwatch timer. Simply press the mark button to mark the times.</p><blockquote><p>When you include the dependencies, keep in mind that RMagick may not play well with continuous integration services (and it&#8217;s not meant to be used there anyway). So you need to add a conditional to your gemspec to make sure the gems aren&#8217;t included during CI runs.</p></blockquote><pre class="code-block language-ruby"><code><span class="c1"># you can place this towards the end of your gemspec</span>
+<span class="w">  </span><span class="k">unless</span><span class="w"> </span><span class="no">ENV</span><span class="o">[</span><span class="s1">'CI'</span><span class="o">]</span>
+<span class="w">    </span><span class="n">spec</span><span class="o">.</span><span class="n">add_development_dependency</span><span class="w"> </span><span class="s2">"stop_watch"</span><span class="p">,</span><span class="w"> </span><span class="s2">"~&gt; 1.0.0"</span>
+<span class="w">    </span><span class="n">spec</span><span class="o">.</span><span class="n">add_development_dependency</span><span class="w"> </span><span class="s2">"gruff"</span><span class="p">,</span><span class="w"> </span><span class="s2">"~&gt; 0.7.0"</span>
+<span class="w">  </span><span class="k">end</span></code></pre><p>I&#8217;ll share two code files here and discuss them afterward. It may seem a bit long at first, but it&#8217;s been refactored down to simple methods.</p><pre class="code-block language-ruby"><code><span class="c1"># test/benchmark_helper.rb</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">"test_helper"</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">"minitest/benchmark"</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'fileutils'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'stop_watch'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'gruff'</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BenchmarkHelper</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Minitest</span><span class="o">::</span><span class="no">Benchmark</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">bench_range</span>
+<span class="w">    </span><span class="o">[</span><span class="mi">20_000</span><span class="p">,</span><span class="w"> </span><span class="mi">40_000</span><span class="p">,</span><span class="w"> </span><span class="mi">60_000</span><span class="p">,</span><span class="w"> </span><span class="mi">80_000</span><span class="p">,</span><span class="w"> </span><span class="mi">100_000</span><span class="o">]</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">benchmark</span><span class="w"> </span><span class="n">lang</span>
+<span class="w">    </span><span class="n">assert_performance_constant</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">n</span><span class="o">|</span>
+<span class="w">      </span><span class="nb">send</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="o">.</span><span class="n">mark</span>
+<span class="w">      </span><span class="n">n</span><span class="o">.</span><span class="n">times</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="k">yield</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="nb">send</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="o">.</span><span class="n">mark</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">graph_benchmarks</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">rust</span><span class="o">.</span><span class="n">time?</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ruby</span><span class="o">.</span><span class="n">time?</span>
+<span class="w">      </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Gruff</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span>
+<span class="w">      </span><span class="n">g</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph_title</span>
+<span class="w">      </span><span class="n">g</span><span class="o">.</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generate_benchmark_range_labels</span>
+
+<span class="w">      </span><span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="ss">:ruby</span><span class="p">,</span><span class="w"> </span><span class="n">graph_times</span><span class="p">(</span><span class="ss">:ruby</span><span class="p">))</span>
+<span class="w">      </span><span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="ss">:rust</span><span class="p">,</span><span class="w"> </span><span class="n">graph_times</span><span class="p">(</span><span class="ss">:rust</span><span class="p">))</span>
+
+<span class="w">      </span><span class="n">g</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="w"> </span><span class="n">output_file</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="kp">private</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">test_name</span>
+<span class="w">    </span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vi">@file</span><span class="p">,</span><span class="w"> </span><span class="s1">'.rb'</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">graph_title</span>
+<span class="w">    </span><span class="n">test_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_'</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:capitalize</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">output_file</span>
+<span class="w">    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span><span class="w"> </span><span class="n">__dir__</span><span class="p">),</span><span class="w"> </span><span class="s1">'doc'</span><span class="p">,</span><span class="w"> </span><span class="s1">'graph'</span><span class="p">)</span>
+
+<span class="w">    </span><span class="no">FileUtils</span><span class="o">.</span><span class="n">mkdir_p</span><span class="w"> </span><span class="n">path</span>
+
+<span class="w">    </span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s2">"</span><span class="si">#{</span><span class="n">test_name</span><span class="si">}</span><span class="s2">.png"</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">ranges_for_benchmarks</span>
+<span class="w">    </span><span class="n">instance_exec</span><span class="w"> </span><span class="k">do</span>
+<span class="w">      </span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">bench_range</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">defined?</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">bench_range</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="no">BenchmarkHelper</span><span class="o">.</span><span class="n">bench_range</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">generate_benchmark_range_labels</span>
+<span class="w">    </span><span class="n">ranges_for_benchmarks</span><span class="o">.</span>
+<span class="w">      </span><span class="n">each_with_object</span><span class="p">({})</span><span class="o">.</span>
+<span class="w">      </span><span class="n">with_index</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="p">(</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="nb">hash</span><span class="p">),</span><span class="w"> </span><span class="n">idx</span><span class="o">|</span>
+<span class="w">        </span><span class="nb">hash</span><span class="o">[</span><span class="w"> </span><span class="n">idx</span><span class="o">.</span><span class="n">succ</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">commafy</span><span class="w"> </span><span class="n">val</span>
+<span class="w">      </span><span class="k">end</span><span class="o">.</span><span class="n">merge</span><span class="p">({</span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="no">Languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Struct</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:ruby</span><span class="p">,</span><span class="w"> </span><span class="ss">:rust</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">      </span><span class="k">super</span><span class="p">(</span><span class="no">StopWatch</span><span class="o">::</span><span class="no">Timer</span><span class="o">.</span><span class="n">new</span><span class="p">,</span><span class="w"> </span><span class="no">StopWatch</span><span class="o">::</span><span class="no">Timer</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="no">TIMERS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="o">.</span>
+<span class="w">    </span><span class="n">tap</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="o">|</span>
+<span class="w">      </span><span class="n">t</span><span class="o">.</span><span class="n">default_proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">\</span>
+<span class="w">        </span><span class="o">-&gt;</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">){</span><span class="w"> </span><span class="nb">hash</span><span class="o">[</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Languages</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">timers</span>
+<span class="w">    </span><span class="no">TIMERS</span><span class="o">[</span><span class="vi">@file</span><span class="o">]</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">ruby</span>
+<span class="w">    </span><span class="n">timers</span><span class="o">.</span><span class="n">ruby</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">rust</span>
+<span class="w">    </span><span class="n">timers</span><span class="o">.</span><span class="n">rust</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">graph_times</span><span class="w"> </span><span class="n">lang</span>
+<span class="w">    </span><span class="nb">send</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">unshift</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">commafy</span><span class="w"> </span><span class="n">num</span>
+<span class="w">    </span><span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">chars</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span>
+<span class="w">      </span><span class="n">each_with_object</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span>
+<span class="w">      </span><span class="n">with_index</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="p">(</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">str</span><span class="p">),</span><span class="w"> </span><span class="n">idx</span><span class="o">|</span>
+<span class="w">        </span><span class="n">str</span><span class="o">.</span><span class="n">prepend</span><span class="p">((</span><span class="n">idx</span><span class="o">%</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">zero?</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">','</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end</span><span class="o">.</span><span class="n">chop</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre><p>And an example benchmark test:</p><pre class="code-block language-ruby"><code><span class="c1"># test/benches/absolute_benchmark.rb</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">"benchmark_helper"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AbsoluteBenchmark</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">BenchmarkHelper</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">setup</span>
+<span class="w">    </span><span class="vi">@file</span><span class="w"> </span><span class="o">||=</span><span class="w"> </span><span class="bp">__FILE__</span>
+<span class="w">    </span><span class="vi">@one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/hello"</span>
+<span class="w">    </span><span class="vi">@two</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"goodbye"</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">teardown</span>
+<span class="w">    </span><span class="k">super</span>
+<span class="w">    </span><span class="n">graph_benchmarks</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">bench_rust_absolute?</span>
+<span class="w">    </span><span class="n">benchmark</span><span class="w"> </span><span class="ss">:rust</span><span class="w"> </span><span class="k">do</span>
+<span class="w">      </span><span class="no">FasterPath</span><span class="o">.</span><span class="n">absolute?</span><span class="p">(</span><span class="vi">@one</span><span class="p">)</span>
+<span class="w">      </span><span class="no">FasterPath</span><span class="o">.</span><span class="n">absolute?</span><span class="p">(</span><span class="vi">@two</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">bench_ruby_absolute?</span>
+<span class="w">    </span><span class="n">one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Pathname</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@one</span><span class="p">)</span>
+<span class="w">    </span><span class="n">two</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Pathname</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@two</span><span class="p">)</span>
+<span class="w">    </span><span class="n">benchmark</span><span class="w"> </span><span class="ss">:ruby</span><span class="w"> </span><span class="k">do</span>
+<span class="w">      </span><span class="n">one</span><span class="o">.</span><span class="n">absolute?</span>
+<span class="w">      </span><span class="n">two</span><span class="o">.</span><span class="n">absolute?</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span></code></pre><p>And you&#8217;ll need a <code>Rakefile</code> task to properly load the right directories and benchmark files:</p><pre class="code-block language-ruby"><code><span class="c1"># Rakefile</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">"bundler/gem_tasks"</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">"rake/testtask"</span>
+
+<span class="no">Rake</span><span class="o">::</span><span class="no">TestTask</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">bench</span><span class="p">:</span><span class="w"> </span><span class="ss">:build_lib</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">t</span><span class="o">|</span>
+<span class="w">  </span><span class="n">t</span><span class="o">.</span><span class="n">libs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sx">%w[lib test]</span>
+<span class="w">  </span><span class="n">t</span><span class="o">.</span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'test/**/*_benchmark.rb'</span>
+<span class="k">end</span></code></pre><h2>The Helper</h2><p>All right, there&#8217;s a lot to cover here, so I&#8217;ll try to go from the top down. The first class method is <code>bench_range</code>. This method is what Minitest uses for the value to inject into each benchmark&#8217;s cycle. How you use those values is up to you. In our case, we&#8217;re simply going to run the same code that many times to present how long it takes to complete under that much work load.</p><p>The next method, <code>benchmark</code>, is simply for us to mark the time before and after the test is run. We piggyback on top of the <code>assert_performance_constant</code> method to pipe in the values from <code>bench_range</code> and execute our code snippets that many times with <strong>n.times yield</strong>. The <code>send(lang)</code> will take the symbol provided for a language and call our private method below, which produces the timer of that language. We then simply call the mark method on that timer, and it records the time.</p><p>The next method, <code>graph_benchmarks</code>, is run after each benchmark test in each file. Because of this, we check to make sure both benchmark tests have been run before we run the code to produce the output image of our graph. This method is the only place we&#8217;re using code for the <strong>gruff</strong> gem to produce our graph. The rest of the methods are mostly helper methods refactored out for this one method.</p><p><code>test_name</code>, <code>graph_title</code>, and <code>commafy</code> are string helpers, since this project doesn&#8217;t have access to Rails for methods like <code>titleize</code> or <code>to_s(:delimited)</code>.</p><p><code>output_file</code> is our helper method to make sure the directory for our graphs exists and to return the path for the graph to be written to.</p><p>You may have noticed <code>@file</code> being used in test name and a couple of other places. In Ruby, you can use the <code>__FILE__</code> method to get the name of the current file. Since the <code>BenchmarkHelper</code> class is a class that is inherited by each benchmark, we set the value of <code>@file</code> in those files from <code>__FILE__</code>, and further use that as a name and a hash key for benchmark results in the hash named <code>TIMERS</code>.</p><p><code>ranges_for_benchmarks</code> is our helper method to allow us to overwrite the <code>bench_range</code> method in individual benchmark files; sometimes the numbers provided as default don&#8217;t give us enough data for time values (it doesn&#8217;t take long enough). The method itself first checks and uses the <code>bench_range</code> in the current benchmark file if it&#8217;s there. Otherwise, that returns <code>nil</code> and it <strong>ors</strong> over to the default.</p><p><code>generate_benchmark_range_labels</code> and <code>graph_times</code> format the data for use in the gruff gem. The gruff gem requires that the labels be keyed by index value. The value for graph times are a simple array that corresponds to the values of their indexes. For this benchmark graph to make the most sense visually, it needs to start with zero, so we stick a zero in at the beginning of both of these. And we need to have the benchmark ranges be equidistant to each other. So for our suite, we have them incrementing at 20,000.</p><p>!Sign up for a free Codeship Account </p><h2>The Benchmark File</h2><p>The individual benchmark files include the benchmark helper from which we then inherit to each benchmark class.</p><p>When benchmarking, it&#8217;s very important to explicitly time only the specific code we&#8217;re interested in. Object creation in Ruby does use some time, so prepare those objects before you benchmark the code in question (when it&#8217;s feasible). In this case, <code>Pathname.new</code> takes a chunk of time and has nothing to do with our specific benchmark, so we prepare that beforehand. But even for objects as simple as strings, it&#8217;s better to instantiate them beforehand if they&#8217;re not part of what we&#8217;re benchmarking specifically.</p><p>Since each benchmark file has <code>@file = __FILE__</code> in its setup phase, the code from the helper creates a struct of Ruby and Rust timers specifically in the TIMERS hash. The helper method <code>timers</code> in the helper file points at <code>TIMERS[@file]</code>, from which our <code>ruby</code> and <code>rust</code> helper methods each point directly to their specific timer object in the struct for that file. So each file has its own entry in the TIMERS hash, which gets processed for graphs when both <code>rust.time? &amp;&amp; ruby.time?</code> pass.</p><p>The <code>time?</code> method is part of the <code>stop_watch</code> gem (out timer objects), which only returns true if <code>mark</code> has been called at least twice to start the timer and set a mark in seconds.</p><p>The <code>teardown</code> method gets run after each benchmark test is run. Since it checks both <code>rust.time?</code> and <code>ruby.time?</code>, it won&#8217;t graph the data until both are true, which means that both benchmark tests have run. So the first run results with <code>true &amp;&amp; false</code>, and the second with <code>true &amp;&amp; true</code>, which then graphs.</p><p>With the <code>Rakefile</code> given above, all you need to do to run your benchmarks is to run <code>rake bench</code> and your resulting images will be available in doc/graph.</p><h2>Summary</h2><p>ImageMagick has been around a long time, allowing us to manipulate images through code. <a href="http://gnuplot.sourceforge.net/">gnuplot</a>, which uses it, has been available for graphing data for quite some time as well, albeit the code is a little bit more involved and the results a little more retro. But <a href="https://github.com/topfunky/gruff">gruff</a> has brought us stunning presentation-worthy visuals with a simple way to implement it. Gruff should be a tool you keep handy for when you need to help persuade others. It gives you elegance in presenting your data.</p><p>In a world were numbers are all too common, it really takes seeing the difference to get the difference. I hope that this has helped, and I wish you all the best.</p> 
+</article>
+<footer class="source">Originally published on 2017-07-05 on the Codeship blog (<a href="https://blog.codeship.com/graphing-benchmark-results-in-ruby/">https://blog.codeship.com/graphing-benchmark-results-in-ruby/</a>), later hosted on the CloudBees Blog (<a href="https://www.cloudbees.com/blog/graphing-benchmark-results-in-ruby">https://www.cloudbees.com/blog/graphing-benchmark-results-in-ruby</a>). Archived here by the author.</footer>
+</div>
+</body>
+</html>

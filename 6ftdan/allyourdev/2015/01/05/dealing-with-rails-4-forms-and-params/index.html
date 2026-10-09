@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Dealing with Rails 4 forms and params | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.6" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2015/01/05/dealing-with-rails-4-forms-and-params/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-483 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-483" class="post-483 post type-post status-publish format-standard hentry category-howto category-programming category-technical tag-_tag tag-260 tag-article tag-attributes tag-blog tag-field tag-fields tag-fields_for tag-form tag-form_for tag-forms tag-hidden_field tag-hidden_field_tag tag-input tag-nested tag-parameters tag-params tag-post tag-rails tag-rails-4 tag-strong tag-strong-parameters">
+				<p class="date-author">January 5, 2015 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Dealing with Rails 4 forms and params</h1>			<p>In the learning stage of Rails developments one will come across different scenarios of handling parameters from Rails forms that are submitted.  Also since Rails 4 introduced Strong Parameters there are some additional things to keep in mind.</p>
+<h3>Form Params 101</h3>
+<pre class="code-block language-ruby"><code><span class="ss">Parameters</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"utf8"</span><span class="o">=&gt;</span><span class="s2">"✓"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"authenticity_token"</span><span class="o">=&gt;</span><span class="s2">"nqLr/ZukyXt5/sFNU9FGciBbSOSJ2MkE7Roo5WwfVEo="</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"profile"</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"first_name"</span><span class="o">=&gt;</span><span class="s2">"Daniel"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"last_name"</span><span class="o">=&gt;</span><span class="s2">"Clark"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"socials_attributes"</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"0"</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"kind"</span><span class="o">=&gt;</span><span class="s2">"twitter"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"username"</span><span class="o">=&gt;</span><span class="s2">"@6ftdan"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">"button"</span><span class="o">=&gt;</span><span class="s2">""</span>
+<span class="p">}</span></code></pre>
+<p>Submitted forms return a JSON response with data in it.  You can access it from your controller with the <strong>params</strong> Hash.  To access the first name here from <strong>params</strong> you would have to do <strong>params[&#8216;profile&#8217;][&#8216;first_name&#8217;]</strong> and you would get back <strong>&#8220;Daniel&#8221;</strong>.  With the introduction of Strong Parameters in Rails 4 you are asked to no longer directly use <strong>params</strong> for security reasons.  You will use a middle man method usually named after your model name such as <strong>profile_params</strong>.</p>
+<p>The Strong Params method will look a lot like:</p>
+<pre class="code-block language-ruby"><code><span class="k">def</span><span class="w"> </span><span class="nf">profile_params</span>
+<span class="w">  </span><span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:profile</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="w"> </span><span class="ss">:first_name</span><span class="p">,</span><span class="w"> </span><span class="ss">:last_name</span><span class="p">,</span>
+<span class="w">    </span><span class="ss">:socials_attributes</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">[</span><span class="ss">:id</span><span class="p">,</span><span class="ss">:kind</span><span class="p">,</span><span class="ss">:username</span><span class="p">,</span><span class="ss">:_destroy</span><span class="o">]</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+<p>Consider this strong params method as a <span style="color: #800000"><em>read-only</em></span> parameter access used to help protect you.  Also note that this will step into the parameters one level into the <strong>params</strong> Hash it calls.  In this example it returns the <strong>&#8220;profile&#8221;</strong> subset of the Hash.  So <strong>profile_params</strong> returns the same results as <strong>params[&#8216;profile&#8217;]</strong> unless additional fields exist that are not within the <strong>:permit</strong> method.  It will drop any items not in <strong>:permit</strong>.</p>
+<p>If you want to modify any of the parameters before your controller saves or updates the Object then you need to perform your work on the <strong>params</strong> Hash before the <strong>save</strong>/<strong>update</strong> methods are invoked.  Note: I said to work directly on <strong>params</strong> for modification or changes.  Again; that&#8217;s because <strong>profile_params</strong> is a <em><span style="color: #800000">read-only</span></em> method and it will be updated accordingly with any changes you commit to <strong>params</strong>.</p>
+<h3>Form to params</h3>
+<p>The <strong>form_for</strong> method will create the nested <strong>params</strong> before being submitted.  What I mean by that is the Object you give <strong>form_for</strong> will be the name of the Hash subset that the Strong Params method will have in <strong>require()</strong>.  For example <strong>form_for(:profile)</strong>. will have a <strong>params[&#8216;profile&#8217;]</strong> Hash in the results.  In this example case <strong>:profile</strong> is assigned to an existing <strong>Profile</strong> Object.  Each of the standard input fields will be nested within <strong>params[&#8216;profile&#8217;]</strong>.  For example:</p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="sx">%= form_for(@profile) do |f| %&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">text_field</span><span class="w"> </span><span class="ss">:first_name</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= f.submit %&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span></code></pre>
+<p>Will submit a result that you can access first_name through <strong>params[&#8216;profile&#8217;][&#8216;first_name&#8217;]</strong> or through the read only strong params method <strong>profile_params[&#8216;first_name&#8217;]</strong>.  If you wanted to change the value before it gets saved you need to change it directly on params.  For example <strong>params[&#8216;profile&#8217;][&#8216;first_name&#8217;] = params[&#8216;profile&#8217;][&#8216;first_name&#8217;].reverse</strong> will work.  But trying the same with <strong>profile_params</strong> will do nothing in the end.</p>
+<p>With <strong>form_for</strong> you assign it to an object like |<strong>f</strong>| and each item within it must then be called on <strong>f</strong> &#8230; such as <strong>f.text_field</strong>.  But there are times when you won&#8217;t want to do things in this way.  When dealing with custom situations in forms there are alternative methods with their counterpart postfixed <strong>_tag</strong>  method.</p>
+<h3>Dealing with _tag methods</h3>
+<p>One thing I&#8217;ve found when using <strong>_tag</strong> methods is that they don&#8217;t usually follow the same order of method parameters as their non <strong>_tag</strong> method counterparts.  So when using a <strong>_tag</strong> method it&#8217;s best to look up the online method usage reference.  My favorite online reference for these methods are <a href="http://apidock.com/rails/ActionView/Helpers/FormTagHelper/">apidock.com</a>.  Beyond the documentation there are tips and comments on how these methods may be used.</p>
+<p>The first thing you should know about <strong>_tag</strong> methods is that they aren&#8217;t nested for Strong Params on their own.  In other words you need to nest it yourself.  If I replace the <strong>f.text_field</strong> from the earlier example with <strong>text_field_tag</strong> I need to use the nested name representation of the parameter I&#8217;m setting.  For example:</p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="sx">%= form_for(@profile) do |f| %&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">text_field_tag</span><span class="w"> </span><span class="s1">'profile[first_name]'</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">first_name</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">  &lt;%= f.submit %&gt;</span>
+<span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span></code></pre>
+<p>This will be true for any <strong>_tag</strong> method that you want to pass the Strong Parameters requirement.  Also notice my use of <strong>f.object.first_name</strong>.  Any time you want to access the values from the Object you&#8217;ve piped into the form through |<strong>f</strong>| you can simply use <strong>f.object</strong>.  <strong>f.object</strong> is basically the same as accessing <strong>@profile</strong> directly.  There are times when this may come in handy for you.</p>
+<p>Another thing to keep in mind with <strong>_tag</strong> methods is they don&#8217;t understand how to get the value for the string <strong>&#8216;profile[first_name]&#8217;</strong> to show in the page&#8217;s input field.  This is why you need to specifically declare the <strong>value</strong> for it.</p>
+<h3>Nested Attributes</h3>
+<p>In the parameter example I gave at the beginning of this you may have noticed:</p>
+<pre class="code-block language-ruby"><code><span class="s2">"socials_attributes"</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"0"</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"kind"</span><span class="o">=&gt;</span><span class="s2">"twitter"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"username"</span><span class="o">=&gt;</span><span class="s2">"@6ftdan"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></code></pre>
+<p>When you have items of something belonging to another you use nested attributes.  In the example above this is a Social Network that belongs to the Profile.  So Profile <strong>has_many</strong> Social Networks and Social Networks <strong>belongs_to</strong> Profile.  Here are the models:</p>
+<pre class="code-block language-ruby"><code><span class="c1"># app/models/profile.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Profile</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">has_many</span><span class="w"> </span><span class="ss">:socials</span><span class="p">,</span><span class="w"> </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="ss">:sociable</span><span class="p">,</span><span class="w"> </span><span class="ss">dependent</span><span class="p">:</span><span class="w"> </span><span class="ss">:destroy</span>
+<span class="w">  </span><span class="n">accepts_nested_attributes_for</span><span class="w"> </span><span class="ss">:socials</span>
+<span class="k">end</span>
+
+<span class="c1"># app/models/social.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Social</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">enum</span><span class="w"> </span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="ss">:twitter</span><span class="p">,</span><span class="w"> </span><span class="ss">:google_plus</span><span class="p">,</span><span class="w"> </span><span class="ss">:facebook</span><span class="o">]</span>
+<span class="w">  </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:sociable</span><span class="p">,</span><span class="w"> </span><span class="ss">polymorphic</span><span class="p">:</span><span class="w"> </span><span class="kp">true</span>
+<span class="k">end</span></code></pre>
+<p><span style="color: #999999">You&#8217;ll notice the word <strong>polymorphic</strong>.  </span>Whenever you create an Object model that can <strong>belong to</strong> more than one other kind of Object model you will want to use <strong>polymorphic</strong>.<span style="color: #999999">  If you didn&#8217;t use it you would have to reference profile via a <strong>profile_id</strong> field in your Social model.  With <strong>polymorphic</strong> it keeps to pieces of information for you: the <strong>type</strong> and the <strong>id</strong>.  In this case the <strong>sociable_type</strong> will be <strong>&#8220;Profile&#8221;</strong> and the <strong>id</strong> will reference whatever the owners <strong>Profile id</strong> is for this &#8220;Social Network&#8221; Object.</span></p>
+<p>The form that would submit these parameters would look as follows:</p>
+<pre class="code-block language-ruby"><code><span class="o">&lt;</span><span class="sx">%= form_for(@profile) do |f| %&gt;</span>
+<span class="sx">  First Name:&lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">text_field</span><span class="w"> </span><span class="ss">:first_name</span><span class="w"> </span><span class="sx">%&gt;&lt;br /&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="sx">%= f.text_field :last_name %&gt;&lt;br /&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">fields_for</span><span class="w"> </span><span class="ss">:socials</span><span class="p">,</span><span class="w"> </span><span class="n">one_by_kind</span><span class="p">(</span><span class="vi">@profile</span><span class="o">.</span><span class="n">socials</span><span class="p">,</span>
+<span class="w">                             </span><span class="vi">@profile</span><span class="o">.</span><span class="n">socials</span><span class="o">.</span><span class="n">kinds</span><span class="o">[</span><span class="ss">:twitter</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">a</span><span class="o">|</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">    &lt;%= a.hidden_field :kind, {value: :twitter} %&gt;</span>
+<span class="w">    </span><span class="ss">Twitter</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="sx">%= a.text_field :username %&gt;&lt;br /&gt;</span>
+<span class="sx">  &lt;% end %&gt;</span>
+<span class="sx">  &lt;%=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">submit</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;% end %&gt;</span></code></pre>
+<p>The <strong>one_by_kind</strong> is my own method.  I&#8217;ve replicated <strong>first_or_create</strong> with a <strong>first</strong> or <strong>build</strong> syntax.  You can see my code for this method in a previous article <a href="../../../../2014/08/01/manual-polymorphic-creation-in-rails/">Manual Polymorphic Creation in Rails</a>.</p>
+<p>You&#8217;ll notice nested attributes are generally given through the <a href="http://apidock.com/rails/ActionView/Helpers/FormHelper/fields_for"><strong>fields_for</strong></a> method.  <strong>fields_for</strong> is for all of your <strong>belongs_to</strong>/<strong>has</strong> child Objects.   You can also replicate the nested fields by using <strong>_tag</strong> methods.  I won&#8217;t be covering that at this time though.</p>
+<h3>Things to Keep in Mind</h3>
+<ol>
+<li>Be careful about saving <strong>user_id</strong> from parameters.  Think that they may be compromised.  Before the <strong>save</strong>/<strong>update</strong> commands are committed assign them to the <strong>current_user</strong> in the controller.  Example:
+<pre class="code-block language-ruby"><code><span class="c1"># /app/models/card.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Card</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+<span class="w">  </span><span class="n">belongs_to</span><span class="w"> </span><span class="ss">:user</span>
+<span class="k">end</span>
+
+<span class="c1"># /app/controllers/cards_controller.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CardsController</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ApplicationController</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">create</span>
+<span class="w">    </span><span class="vi">@card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Card</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">card_params</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@card</span><span class="o">.</span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_user</span>
+<span class="w">    </span><span class="n">respond_to</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="vi">@card</span><span class="o">.</span><span class="n">save</span>
+<span class="w">        </span><span class="o">...</span></code></pre>
+</li>
+<li><strong>_tag</strong> methods are done differently then their counterpart methods.  For example:
+<pre class="code-block language-ruby"><code><span class="c1"># value is assigned in a options parameter</span>
+<span class="n">f</span><span class="o">.</span><span class="n">hidden_field</span><span class="p">(</span><span class="ss">:store</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s1">'EatMart'</span><span class="p">})</span>
+
+<span class="c1"># value is assigned by the second parameter given</span>
+<span class="n">hidden_field_tag</span><span class="p">(</span><span class="s1">'shopping[store]'</span><span class="p">,</span><span class="w"> </span><span class="s1">'EatMart'</span><span class="p">)</span></code></pre>
+</li>
+<li>The Strong Params method is read only.  Do any necessary modification on params and please still use the strong_params method to save with.</li>
+<li>Strong Parameters requires you to declare any field you want to allow in to be saved.  Sometimes this will slip your mind.</li>
+<li>If you&#8217;re using <strong>form_for</strong> or <strong>form_tag</strong> and the form is closing itself off prematurely (before your inputs) then you can put a tag for a submit button right before the <strong>&lt;% end %&gt;</strong>.  If you don&#8217;t want a submit button for the form simply make it invisible.
+<pre class="code-block language-ruby"><code><span class="w">  </span><span class="o">&lt;%=</span><span class="w"> </span><span class="n">submit_tag</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="ss">style</span><span class="p">:</span><span class="w"> </span><span class="s1">'width:0;height:0;display:none;'</span><span class="p">)</span><span class="w"> </span><span class="sx">%&gt;</span>
+<span class="sx">&lt;% end %&gt;</span></code></pre>
+</li>
+</ol>
+<p>There are still many things I haven&#8217;t covered here.  I&#8217;ve addressed what I&#8217;ve seen as some of the biggest issues when first learning to implement forms in Rails.  Things only get more technical when you delve into JavaScript submitted forms via AJAX.  It&#8217;s not hard, just a bit more to learn.  As always I hope what I&#8217;ve written has been both helpful to you, and enjoyable to read!</p>
+<p>Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Dealing+with+Rails+4+forms+and+params" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Dealing+with+Rails+4+forms+and+params" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/_tag/">#_tag</a><a href="../../../../../tag/101/">#101</a><a href="../../../../../tag/article/">#article</a><a href="../../../../../tag/attributes/">#attributes</a><a href="../../../../../tag/blog/">#blog</a><a href="../../../../../tag/field/">#field</a><a href="../../../../../tag/fields/">#fields</a><a href="../../../../../tag/fields_for/">#fields_for</a><a href="../../../../../tag/form/">#form</a><a href="../../../../../tag/form_for/">#form_for</a><a href="../../../../../tag/forms/">#forms</a><a href="../../../../../tag/hidden_field/">#hidden_field</a><a href="../../../../../tag/hidden_field_tag/">#hidden_field_tag</a><a href="../../../../../tag/input/">#input</a><a href="../../../../../tag/nested/">#nested</a><a href="../../../../../tag/parameters/">#parameters</a><a href="../../../../../tag/params/">#params</a><a href="../../../../../tag/post/">#post</a><a href="../../../../../tag/rails/">#rails</a><a href="../../../../../tag/rails-4/">#rails 4</a><a href="../../../../../tag/strong/">#strong</a><a href="../../../../../tag/strong-parameters/">#Strong Parameters</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../03/empiricism-like-this/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../../08/javascript-is-easy-with-jquery/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-6914"> 	
+		<div id="comment-6914" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/f2ce3b979fc35edcc6d590627f6e5a9a?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/f2ce3b979fc35edcc6d590627f6e5a9a?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Dan Shultz</span><br />January 8, 2015 - 4:23 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Good blog post, it covers and details strong parameters well. I wanted to add one critique because I think it affects the whole mental model of how forms and rails works.</p>
+<p>You mentioned that, &#8220;Submitted forms return a JSON response with data in it&#8230;&#8221; What happens in the case of forms, they are submitted normally via the browser with a content type usually of `application/x-www-form-urlencoded` and there is a rails middleware called `ActionDispatch::ParamsParser` which reads this content type and takes the appropriate action to populate the `params` for your controller. In the case of a content type of `application/json`, the middleware parses your request body as JSON and populates the `params` for your controller.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6915"> 	
+		<div id="comment-6915" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 8, 2015 - 7:58 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks for your input!  I also believe the params Object that is generated is an instance of <a href="http://api.rubyonrails.org/classes/ActiveSupport/HashWithIndifferentAccess.html" rel="nofollow">ActiveSupport::HashWithIndifferentAccess</a> thereby allowing you to access each params key by either a Symbol or a String.  So there is quite a bit being done with the data that is returned.</p>
+<p>params.class.ancestors<br />
+=&gt; [ActionController::Parameters,<br />
+ ActiveSupport::HashWithIndifferentAccess,<br />
+ Hash,<br />
+ HashRecursiveMerge,<br />
+ V8::Conversion::Hash,<br />
+ JSON::Ext::Generator::GeneratorMethods::Hash,<br />
+ Enumerable,<br />
+ Object,<br />
+ V8::Conversion::Object,<br />
+ ActiveSupport::Dependencies::Loadable,<br />
+ PP::ObjectMixin,<br />
+ JSON::Ext::Generator::GeneratorMethods::Object,<br />
+ Kernel,<br />
+ BasicObject]</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7138"> 	
+		<div id="comment-7138" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/fc612f5244d8ca4f643cb0c762610e80?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/fc612f5244d8ca4f643cb0c762610e80?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>avadh</span><br />December 3, 2015 - 3:53 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Hi Daniel, </p>
+<p>Great to find your blogpost. I am having issues with an API only app where I can not use  form_for in this case how should I test the API, Postman seems not to work with the Key Wrapping.</p>
+<p>Any thoughts suggestion would be helpful.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7139"> 	
+		<div id="comment-7139" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />December 3, 2015 - 5:44 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>You haven&#8217;t given me enough information to understand what you&#8217;re working with.  What test suite?  And postman is email server related.  When testing any server via GET/POST requests there is a command line tool called <strong>curl</strong>.  In Ruby one of the best tools like curl is <a href="https://github.com/typhoeus/typhoeus" rel="nofollow">typhoeus</a>.  Although in Rails itself there are plenty of ways to test with a simple get/post command in your integration/controller tests&#8230; you just need to inherit or include the right class/module.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-7202"> 	
+		<div id="comment-7202" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/b905f852bec7140a158d6b9402f2ca51?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/b905f852bec7140a158d6b9402f2ca51?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Larry Lawal</span><br />May 20, 2016 - 1:02 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>how do i find a record in rails using a value sent in a nested parameter request?</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7203"> 	
+		<div id="comment-7203" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />May 21, 2016 - 11:11 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Can you give an example?  In my JSON code at the top of this post accessing the Twitter username can be done in two ways.</p>
+<pre><code class="ruby">
+params["profile"]["socials_attributes"]["0"]["username"]
+
+# and strong params (the right way)
+profile_params["socials_attributes"]["0"]["username"]
+</code></pre>
+<p>It is recommended to handle multiple nested attributes with an each loop.</p>
+<pre><code class="ruby">
+profile_params["socials_attributes"].each do |_, value|
+  # here the underscore takes the "0" key and value gets the kind &amp; username hash
+  value["username"]
+end
+</code></pre>
+<p>This way you can create/handle each item as you choose.  To find a record of the Twitter username you should use a secure way of using where.  Either:</p>
+<pre><code class="ruby">
+Social.where(kind: value["kind"], username: value["username"])
+# or
+Social.where("kind = ?", value["kind"]).where("username = ?", value["username"])
+</code></pre>
+<p>Do not use string interpolation for <code>where</code> queries as that would allow for SQL injection attacks.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7209"> 	
+		<div id="comment-7209" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/757cf8ac9753ea214175853bb7f6d853?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/757cf8ac9753ea214175853bb7f6d853?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>MSCAU</span><br />July 12, 2016 - 4:05 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Outstanding! You have saved my day. The official Rails docs don&#8217;t explain this well at all so where did you learn this from?</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-7231"> 	
+		<div id="comment-7231" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 28, 2017 - 2:35 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Mostly trial and error and by picking through subtle hints in looking up online how methods worked.  Also examining the console log from `rails server` will give you insight into which parameters are having issues.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

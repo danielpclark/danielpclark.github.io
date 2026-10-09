@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /> 
+	<title>Rails Helper Methods | Daniel P. Clark</title>              
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="shortcut icon" href="../../../../../wp-content/themes/newsted/favicon.ico" />        
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Feed" href="../../../../../feed.xml" />
+<link rel="alternate" type="application/rss+xml" title="Daniel P. Clark &raquo; Comments Feed" href="../../../../../comments-feed.xml" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='../../../../../wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='kevinbatdorf-code-block-pro-style-inline-css' type='text/css'>
+.wp-block-kevinbatdorf-code-block-pro{box-sizing:border-box!important;direction:ltr!important;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;position:relative!important}.wp-block-kevinbatdorf-code-block-pro *{box-sizing:border-box!important}.wp-block-kevinbatdorf-code-block-pro pre,.wp-block-kevinbatdorf-code-block-pro pre *{font-size:inherit!important;line-height:inherit!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background-image:none!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;font-family:inherit!important;margin:0!important;overflow:auto!important;overflow-wrap:normal!important;padding:16px 0 16px 16px!important;text-align:left!important;white-space:pre!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled:not(.code-block-pro-editor) pre{padding:0!important}.wp-block-kevinbatdorf-code-block-pro.padding-bottom-disabled pre{padding-bottom:0!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code{--tw-shadow:0 0 #0000!important;--tw-shadow-colored:0 0 #0000!important;background:none!important;background-color:transparent!important;border:0!important;border-radius:0!important;border-style:none!important;border-width:0!important;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)!important;color:inherit!important;display:block!important;font-family:inherit!important;margin:0!important;overflow-wrap:normal!important;padding:0!important;text-align:left!important;white-space:pre!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line{display:inline-block!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code{counter-increment:step calc(var(--cbp-line-number-start, 1) - 1)!important;counter-reset:step!important}.wp-block-kevinbatdorf-code-block-pro pre code .line{position:relative!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre code .line:before{content:""!important;display:inline-block!important}.wp-block-kevinbatdorf-code-block-pro.cbp-has-line-numbers:not(.code-block-pro-editor) pre code .line:not(.cbp-line-number-disabled):before{color:var(--cbp-line-number-color,#999)!important;content:counter(step)!important;counter-increment:step!important;display:inline-block!important;margin-right:12px!important;opacity:.5!important;text-align:right!important;transition-duration:.5s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;width:var(--cbp-line-number-width,auto)!important}.wp-block-kevinbatdorf-code-block-pro pre .line.cbp-line-highlight .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro.cbp-highlight-hover pre .line.cbp-no-blur:hover .cbp-line-highlighter,.wp-block-kevinbatdorf-code-block-pro:not(.cbp-blur-enabled:not(.cbp-unblur-on-hover)) pre .line:hover .cbp-line-highlighter{background:var(--cbp-line-highlight-color,rgb(14 165 233/.2))!important;height:100%!important;left:-16px!important;min-width:calc(var(--cbp-block-width, 100%))!important;pointer-events:none!important;position:absolute!important;top:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor).padding-disabled pre .line.cbp-line-highlight:after{left:0!important;width:100%!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled pre .line:not(.cbp-no-blur){filter:blur(1px)!important;opacity:.4!important;transition-duration:.2s!important;transition-property:all!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important}.wp-block-kevinbatdorf-code-block-pro.cbp-blur-enabled.cbp-unblur-on-hover:hover pre .line:not(.cbp-no-blur){--tw-blur:blur(0)!important;filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)!important;opacity:1!important}.wp-block-kevinbatdorf-code-block-pro:not(.code-block-pro-editor) pre *{font-family:inherit!important}.cbp-see-more-simple-btn-hover{transition-property:none!important}.cbp-see-more-simple-btn-hover:hover{box-shadow:inset 0 0 100px 100px hsla(0,0%,100%,.1)!important}.code-block-pro-copy-button{background:none!important;background-color:transparent!important;border:0!important;border-style:none!important;border-width:0!important;cursor:pointer!important;left:auto!important;line-height:1!important;opacity:.1!important;padding:6px!important;position:absolute!important;right:0!important;top:0!important;transition-duration:.2s!important;transition-property:opacity!important;transition-timing-function:cubic-bezier(.4,0,.2,1)!important;z-index:10!important}.code-block-pro-copy-button:focus{opacity:.4!important}.wp-block-kevinbatdorf-code-block-pro.padding-disabled .code-block-pro-copy-button{padding:0!important}.wp-block-kevinbatdorf-code-block-pro:hover .code-block-pro-copy-button{opacity:.5!important}.wp-block-kevinbatdorf-code-block-pro .code-block-pro-copy-button:hover{opacity:.9!important}.code-block-pro-copy-button .without-check{display:block!important}.code-block-pro-copy-button .with-check,.code-block-pro-copy-button.copying .without-check{display:none!important}.code-block-pro-copy-button.copying .with-check{display:block!important}.cbp-footer-link:hover{text-decoration-line:underline!important}
+
+</style>
+<link rel='stylesheet' id='classic-theme-styles-css' href='../../../../../wp-includes/css/classic-themes.min.css' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='twttr_stylesheet-css' href='../../../../../wp-content/plugins/twitter-plugin/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_fonts-css' href='../../../../../assets/fonts/fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_bootstrap_css-css' href='../../../../../wp-content/themes/newsted/assets/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='newsted_style-css' href='../../../../../wp-content/themes/newsted/style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type='text/javascript' src='../../../../../wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<meta name="generator" content="WordPress 6.2.7" />
+<link rel="canonical" href="https://danielpclark.github.io/6ftdan/allyourdev/2015/01/28/rails-helper-methods/" />
+<style type="text/css">
+        a:hover, a:focus {color:;}
+        header nav li.current-menu-item a {border-color:;}
+        header nav .sub-menu li a:hover, #hero-text a {background-color:;}
+     </style>
+    <script type="text/javascript">
+jQuery(function(){
+  jQuery("a[href^='http']").not("a[href*='6ftdan.com']").each(
+    function(){ jQuery(this).attr('target','_blank') });
+
+  /*
+  var cheat_sheet = '<div style="z-index:3;background-color:#3462A5;border-bottom-right-radius:0.4em;border-top-left-radius:0.4em;position:absolute;top:1px;right:8px;width:142px;padding:1px 6px;cursor:pointer;"><a href="../../../../../6ftdan-rails-primer-and-cheat-sheet/"><span style="position:relative;left:0;top:0;width:34px;cursor:pointer;"><img src="../../../../../wp-content/uploads/2015/03/rails.png" width="32" height="40" style="cursor:pointer;"  /></span><span style="position:absolute;left:44px;top:6px;width:98px;font-weight:bold;color:white;font-family:Georgia;line-height:1.2em;cursor:pointer;">Primer&nbsp;and<br>Cheat&nbsp;Sheet</span></a></div>';
+  jQuery("body").prepend(cheat_sheet);
+  */
+  
+  jQuery("div.ngfb-content-buttons").hide();
+})
+</script>
+<meta name="description" content="A Ruby, Ruby on Rails, JavaScript, and Rust developer and blogger." />
+<meta name="keywords" content="rails, ruby, author, design, blog, rust, javascript, polymorphic, helpers, associations, linux, web, back end, front end, developer, programmer, testing, coding, development, northern va, front royal" />
+<meta name="geo.region" content="US-VA" />
+<meta name="geo.placename" content="Front Royal" />
+<meta name="geo.position" content="38.917741;-78.189885" />
+<meta name="ICBM" content="38.917741, -78.189885" />
+<meta name="twitter:site" content="@6ftdan">
+<meta name="twitter:creator" content="@6ftdan">
+<link rel="author" href="../../../../../about/">
+<meta name="article:publisher" content="Daniel P. Clark">		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.crayon-syntax-inline {
+  padding: 0 8px;
+  box-shadow: 0 -2px 0 #333, 0 +1px 0 #333;
+}		</style>
+		<link rel='stylesheet' id='code-highlight-css' href='../../../../../assets/css/code.css' type='text/css' media='all' />
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-642 single-format-standard">
+
+<header >
+	<div id="header-top">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-3">	
+											        <a id="site-name" href="../../../../../">Daniel P. Clark</a>
+					    						
+					</div>
+					<div class="col-md-9">			
+						<nav>			
+													</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</header><div class="container">
+	<div class="row">
+		<div id="main-holder" class="col-md-8">
+				<article id="post-642" class="post-642 post type-post status-publish format-standard has-post-thumbnail hentry category-howto category-programming category-rubyonrails category-technical tag-allyourdev tag-article tag-blod tag-code tag-danielpclark tag-helper tag-helper-methods tag-helper_method tag-how-to tag-howto tag-learn tag-post tag-rails tag-ruby-on-rails">
+		<img width="640" height="381" src="../../../../../wp-content/uploads/2015/01/505910585_0e5b6a4249_z.jpg" class="attachment-featured size-featured wp-post-image" alt="" decoding="async" srcset="../../../../../wp-content/uploads/2015/01/505910585_0e5b6a4249_z.jpg 640w, ../../../../../wp-content/uploads/2015/01/505910585_0e5b6a4249_z-300x179.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />		<p class="date-author">January 28, 2015 <span>by</span> Daniel P. Clark</p>	
+		<div id="post-content">			
+			<h1 id="post-title">Rails Helper Methods</h1>			<p>When I had started developing in Rails it was months before I even heard of &#8220;Helper Methods&#8221;.  I did see the folder in the app directory, but I didn&#8217;t see any use for it at the time.  I mean Rails is pretty much Model-View-Controller, so why would anyone need helper methods?</p>
+<p>Well once I found an example online of a helper method it just clicked.  A helper method is a method written for the view, it&#8217;s designed to be reusable anywhere within the website, and it cleans up the view code by separating out some logic.</p>
+<p>For example, I currently use Cloudinary for image hosting services.  Cloudinary has its own methods for displaying images within a website.  It is possible that I may one day want to change and not use Cloudinary any more.  So I wrote some helper methods that will call either Cloudinary&#8217;s image helper, or the standard image helper tag depending on if Cloudinary is defined:</p>
+<pre class="code-block language-ruby" title="/app/helpers/image_helper.rb"><code><span class="c1"># /app/helpers/image_helper.rb</span>
+<span class="k">module</span><span class="w"> </span><span class="nn">ImageHelper</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">ex_image_tag</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">keyword_arguments</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">defined?</span><span class="w"> </span><span class="no">Cloudinary</span>
+<span class="w">      </span><span class="n">cl_image_tag</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">keyword_arguments</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="n">image_tag</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">keyword_arguments</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">ex_image_path</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">keyword_arguments</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">defined?</span><span class="w"> </span><span class="no">Cloudinary</span>
+<span class="w">      </span><span class="n">cl_image_path</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">keyword_arguments</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="n">image_path</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">keyword_arguments</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="k">end</span></code></pre>
+<p>Now anywhere in my view I use <strong>ex_image_url</strong> and <strong>ex_image_path</strong> as my image helpers.  So in theory the code may work without much, if any, change when change is needed.</p>
+<p>Just today I wrote a helper method for <a href="http://en.gravatar.com/">Gravatar</a> images.  Gravatar is basically a Global Avatar per email address.  Many websites have Gravatar integrated so that when you use your email address on their site you automatically have a profile image associated with it.  It&#8217;s one central place to keep your professional image.  Here&#8217;s my helper method:</p>
+<pre class="code-block language-ruby" title="/app/helpers/image_helper.rb"><code><span class="c1"># /app/helpers/image_helper.rb</span>
+<span class="k">module</span><span class="w"> </span><span class="nn">ImageHelper</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">gravatar</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">border</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">"&lt;img src=</span><span class="se">\"</span><span class="s2">http://www.gravatar.com/avatar/</span><span class="si">#{</span>
+<span class="w">    </span><span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+<span class="w">      </span><span class="n">email</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">strip</span><span class="o">.</span><span class="n">downcase</span>
+<span class="w">    </span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span>
+<span class="w">    </span><span class="si">}</span><span class="s2">?d=blank&amp;s=</span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">&amp;r=g</span><span class="se">\"</span><span class="s2"> style=</span><span class="se">\"</span><span class="s2">height:</span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">px;width:</span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">px;border:</span><span class="si">#{</span><span class="n">border</span><span class="si">}</span><span class="s2">px</span><span class="se">\"</span><span class="s2">&gt;"</span><span class="o">.</span><span class="n">html_safe</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="k">end</span></code></pre>
+<p>For more details on how to modify this method for your own usage see my Coderwall Pro-Tip &#8220;<a href="https://t.co/20uCp9eWPn">Rails Gravatar Helper Method</a>&#8220;.</p>
+<p>Calling a helper method in your view is straight forward.  For an example of using my Gravatar code in the view I could do the following:</p>
+<pre class="code-block language-xhtml" title="/app/views/profile/show.html.erb"><code>Profile Picture:&lt;br /&gt;
+&lt;%= gravatar(profile.email, 72, 3) %&gt;</code></pre>
+<p>In the example above the helper method <strong>gravatar</strong> is called and renders out html in place in the view.  The example gets the email from the profile Object in the view with <strong>profile.email</strong>.  So now you have a Gravatar profile image as easy as that thanks to helper methods!</p>
+<p>Now there are times when you want to use your helper methods in your Controllers but you will find that the helper methods aren&#8217;t available within the scope of the Controllers.  There are a few techniques available on this StackOverflow answer &#8220;<a href="http://stackoverflow.com/a/11161692/1500195">Rails &#8211; How to use a Helper Inside a Controller</a>&#8220;.</p>
+<p>One answer that&#8217;s not given on any StackOverflow answer that I can see is to write the methods in the Controller rather than the Helper.  Consider where you will need to use the method.  If you need to use it in both the controller and the view then write it in the controller.  Then use the wonderful method named <strong>helper_method</strong>.</p>
+<pre class="code-block language-ruby" title="/app/controllers/application_controller.rb"><code><span class="c1"># /app/controllers/application_controller.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ApplicationController</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">notification_count</span>
+<span class="w">    </span><span class="n">current_user</span><span class="o">.</span><span class="n">emails</span><span class="o">.</span><span class="n">count</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="n">current_user</span><span class="o">.</span><span class="n">friend_requests</span><span class="o">.</span><span class="n">count</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="n">current_user</span><span class="o">.</span><span class="n">close_friends</span><span class="o">.</span><span class="n">updates</span><span class="o">.</span><span class="n">count</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="w">  </span><span class="n">helper_method</span><span class="w"> </span><span class="ss">:notification_count</span>
+
+<span class="k">end</span></code></pre>
+<p>Now please don&#8217;t be too hasty to place &#8220;everything&#8221; in the application controller.  The application controller will end up becoming way too cluttered and bloated if you do.  But if you &#8220;need&#8221; to have access to a method in both the controllers and the views then this is a good place for you; <a href="http://api.rubyonrails.org/classes/AbstractController/Helpers/ClassMethods.html#method-i-helper_method">helper_method</a> has your back.  It&#8217;s simple, beautiful, and convenient.</p>
+<p>Now with more experience comes more wisdom.  In my last code example you&#8217;ll notice I&#8217;ve called <strong>count</strong> on several different queries from the DB all relating to the <strong>current_user</strong>.  You could call this a code smell.  Honestly I wrote this method just for an example of using <strong>helper_method</strong> within your controller.  But when using query logic like this for your User then you should move this to a Model method.  You can&#8217;t call <strong>current_user</strong> from within models since it&#8217;s out of scope so you will need to change the code up a bit.</p>
+<pre class="code-block language-ruby" title="/app/models/user.rb"><code><span class="c1"># /app/models/user.rb</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">notification_count</span>
+<span class="w">    </span><span class="nb">self</span><span class="o">.</span><span class="n">emails</span><span class="o">.</span><span class="n">count</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="nb">self</span><span class="o">.</span><span class="n">friend_requests</span><span class="o">.</span><span class="n">count</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="nb">self</span><span class="o">.</span><span class="n">close_friends</span><span class="o">.</span><span class="n">updates</span><span class="o">.</span><span class="n">count</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="k">end</span></code></pre>
+<p>Now the method <strong>notification_count</strong> is a Class/Object instance method of <strong>User</strong>.  <strong>current_user</strong> is an instance of <strong>User</strong> so you can call <strong>current_user.notification_count</strong> and it will refer to all the related objects to <strong>self</strong>, a.k.a. <strong>current_user</strong> instance.  You can use this in both the view and your controllers now with <strong>current_user</strong>. <span style="color: #999999;">(current_user is a method available with the <strong>devise</strong> gem/library)</span></p>
+<p>So database model specific things should be in your models files, other than that helper methods are there to &#8220;help&#8221; you with you view.  And if any specific need should arise you can have your helper methods defined within controllers with <strong>helper_method</strong>.  It&#8217;s good practice to separate logic out of your view when you can.  It&#8217;s the pattern of &#8220;Separation of Concerns&#8221;.  What concerns the model, belongs with the model.  And the same is true for the rest of your project.</p>
+<p>As always I hope you found this both an enjoyable and an insightful read.  Please comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Brooke Novak's photostream" href="https://www.flickr.com/photos/brookenovak/">Brooke Novak</a> via the <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Generic License</a>.</span></p>
+<div class="twttr_buttons"><div class="twttr_twitter">
+					<a href="https://twitter.com/share?text=Rails+Helper+Methods" class="twitter-share-button" data-via="6ftdan" data-hashtags="" data-size="default" data-url="./" data-related="" target="_blank">Tweet</a>
+				</div><div class="twttr_followme">
+						<a href="https://twitter.com/6ftdan" class="twitter-follow-button" data-show-count="false" data-size="default"  data-show-screen-name="true"  target="_blank">Follow me</a>
+					</div><div class="twttr_mention">
+					<a href="https://twitter.com/intent/tweet?screen_name=6ftdan&text=Rails+Helper+Methods" class="twitter-mention-button" data-size="default"  data-related=""  target="_blank">Tweet to @6ftdan</a>
+				</div></div>					
+			<div id="post-tags" class="clearfix"><a href="../../../../../tag/allyourdev/">#allyourdev</a><a href="../../../../../tag/article/">#article</a><a href="../../../../../tag/blod/">#blod</a><a href="../../../../../tag/code/">#code</a><a href="../../../../../tag/danielpclark/">#danielpclark</a><a href="../../../../../tag/helper/">#helper</a><a href="../../../../../tag/helper-methods/">#helper methods</a><a href="../../../../../tag/helper_method/">#helper_method</a><a href="../../../../../tag/how-to/">#how-to</a><a href="../../../../../tag/howto/">#howto</a><a href="../../../../../tag/learn/">#learn</a><a href="../../../../../tag/post/">#post</a><a href="../../../../../tag/rails/">#rails</a><a href="../../../../../tag/ruby-on-rails/">#ruby on rails</a></div>					
+		</div>		
+		<div id="post-footer" class="clearfix">			
+			<div id="post-nav">
+				<a href="../../27/or/" rel="prev"><div id="post-nav-prev"><span>&laquo;</span> Previous Post</span></div></a> 	
+				<a href="../learning-by-teaching/" rel="next"><div id="post-nav-next">Next Post <span>&raquo;</span></div></a> 	
+			</div>	
+		</div>	
+	</article>	
+<div id="comments">
+			<h3 id="comments-title">Comments</h3>		
+		<ol class="comment-list">
+				
+		<li class="comment even thread-even depth-1" id="li-comment-6925"> 	
+		<div id="comment-6925" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/2fd017fbcb4fcdf8f936ffeb9c4ca32f?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/2fd017fbcb4fcdf8f936ffeb9c4ca32f?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Yoni</span><br />January 29, 2015 - 5:33 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I would emphasize the importance of keeping your controller slim, because it can bloat up fast. Enjoyed the post, cheers!</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6927"> 	
+		<div id="comment-6927" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 29, 2015 - 5:48 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>For sure.  I don&#8217;t generally like putting things directly into ApplicationControlller because it&#8217;s like throwing random things into the closet.  When you open it up it&#8217;s a mess with no organization.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-6928"> 	
+		<div id="comment-6928" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/94351fea6d8f022fea0256cf55c34df0?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/94351fea6d8f022fea0256cf55c34df0?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>Mikey</span><br />January 29, 2015 - 10:02 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Alright man, wicked article. Couple of things to watch out for with helpers: </p>
+<p>Firstly they are *all* included by default. You can change this, but either way if you end up with two methods in two separate helpers both called something like &#8220;format_nicely&#8221; or something like that, the one that is included last will be the one that gets used! You suddenly are required to check all current helper method names before you make a new one, or adopt some kind of naming convention to ensure you don&#8217;t stand on your own foot (yuck). </p>
+<p>Secondly &#8211; the examples you&#8217;ve given here are really good examples of when to use helpers. As a general rule, I think helpers should end with something like &#8220;_path&#8221; or &#8220;_tag&#8221; (or at least serve the purpose of &#8220;rendering something&#8221;) and represent reusable pieces of UI code. A common trap that some developers fall into is using them for &#8220;presentation logic&#8221; for their models (e.g. &#8220;def nicely_formatted_title&#8221; or &#8220;def dropdown_options_for_my_model&#8221;). These sorts of thing don&#8217;t really belong in helpers &#8211; they belong in presenters (either a home-grown presenter OR one cooked up using the draper gem).</p>
+<p>As someone who is currently trying to migrate a legacy app where developers liberally used helpers for such things as business logic and presentation logic, I can vouch that when they&#8217;re mis-used helpers are a total pain!</p>
+<p>M/ -Mikey</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6929"> 	
+		<div id="comment-6929" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 29, 2015 - 10:34 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Thanks Mikey!</p>
+<p>Yeah.  I had noticed that all helpers are included.  No matter what the helper file name it&#8217;s accessible everywhere in the projects views.  It&#8217;s good that we can separate logic into files that are named with the right intention of what they are for; but I wasn&#8217;t so sure it&#8217;s good that Rails automatically includes them all.  I would rather write an <strong>include ImageHelper</strong> in my main ApplicationHelper to have things globally.  I wasn&#8217;t entirely sure that it was the intent of the &#8220;Rails way&#8221; of doing things so I didn&#8217;t write about it.</p>
+<p>One excellent way to clean up both Helper and Controller files is to write methods within a module in your lib directory, then include it in the controller, then use <strong>helper_method</strong> to make it available within the view.</p>
+<pre><code class="ruby">
+# /lib/example.rb
+module Example
+  def hello_world
+    "hello world"
+  end
+end
+
+# /app/controllers/intro_controller.rb
+class IntroController &lt; ApplicationController
+  include Example
+  helper_method :hello_world
+end
+
+# /app/views/index.html.erb
+
+</code></pre>
+<p>You can better organize all the things you don&#8217;t think belong elsewhere into lib.  Just make sure the directory is in the include path and it&#8217;s smooth sailing.</p>
+<p>Out of curiosity, where do you keep your presenters at?  Do you follow any specific guidelines for them?  I&#8217;ve heard presenters talked about in a few conference talks I&#8217;ve watched, but as I understand it there isn&#8217;t a &#8220;set in stone&#8221; practice for how they&#8217;re implemented.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-even depth-1" id="li-comment-6930"> 	
+		<div id="comment-6930" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/d6d968e5de074e1aeef2ed6b9cc336f9?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d6d968e5de074e1aeef2ed6b9cc336f9?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="https://about.me/jeff_dickey" class="url" rel="ugc external nofollow">Jeff Dickey</a></span><br />January 30, 2015 - 1:27 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>Mikey in particular implied this, but people tend to forget one very basic, ugly fact about helpers:</p>
+<p>They are global, procedural code whose interaction with the outside world, and knowledge of/interference with <em>anything</em>&#8216;s state, can not be independently enforced. You are juggling the Swiss Army Ginsu Flamethrowers™, plural, while each is in full operation, and all safeties are <em>off</em>.</p>
+<p>My usual coping mechanism for this has been to have each helper function be a simple wrapper around an instance of a separately-defined class. Better would be the seemingly-moribund <a href="http://erector.github.io/erector/" rel="nofollow">Erector</a> or, more recently, Nick Sutterer&#8217;s <a href="https://leanpub.com/trailblazer" rel="nofollow">Trailblazer</a> (top-level Github repo <a href="https://github.com/apotonick/trailblazer" rel="nofollow">here</a>).</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-2" id="li-comment-6931"> 	
+		<div id="comment-6931" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />January 30, 2015 - 4:59 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I take it you don&#8217;t like helpers? 😉  Erector and Trailblazer look interesting.  Erector looks like an HTML builder tool, whereas Trailblazer looks like a fitness diet for Rails &#8230; P90x.</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment even depth-3" id="li-comment-6932"> 	
+		<div id="comment-6932" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/d6d968e5de074e1aeef2ed6b9cc336f9?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d6d968e5de074e1aeef2ed6b9cc336f9?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="https://about.me/jeff_dickey" class="url" rel="ugc external nofollow">Jeff Dickey</a></span><br />February 1, 2015 - 12:39 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I don&#8217;t like anything that depends on (and can trash) global app state. I&#8217;ve seen plenty of newbies (including myself not very many years ago) write view helper code that did truly stupid things, like db (well, Redis) access and direct network access using stuff like <a href="http://johnnunemaker.com/httparty/" rel="nofollow">HTTParty</a> (a fine tool, but for <em>view helper/template code</em>?!?)</p>
+<p>In my view, and feel free to persuade me otherwise, Rails helpers <em>ought</em> to be decorators; something that arranges and formats something in the passed-in locals to remove the temptation of embedded logic in your views. This reduces view testing to &#8220;did elements with the CSS we expect and content matching the <em>general pattern</em> we expect show up&#8221;? Since that&#8217;s redundant with the apparent consensus on feature specs, we can then eliminate the view specs as such.</p>
+<p>Anything that &#8220;knows&#8221; about <em>anything&#8217;s</em> state should get passed in from the controller (if you&#8217;re a pure Rails-Way shop) or your service-layer equivalent (if you&#8217;re not) where it can be thoroughly namespaced, isolated, and tested. I don&#8217;t like nasty surprises, especially self-inflicted ones. View logic has been an <em>appallingly</em> rich source of such surprises.</p>
+<p>Or maybe I&#8217;m profoundly misunderstanding something?</p>
+								
+			</div>			
+		</div>
+	<ul class="children">
+	
+		<li class="comment odd alt depth-4" id="li-comment-6933"> 	
+		<div id="comment-6933" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/1d4ca4f4362bf8b0b528e35361743e82?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span><a href="../../../../../" class="url" rel="ugc">Daniel P. Clark</a></span><br />February 1, 2015 - 6:23 pm</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>I&#8217;d have to agree with you about knowing state from within helpers as being taboo.  The way I see helpers is they should be used just like partials, but they should generally be smaller and simpler.  I feel there is an advantage in performance this way, but I still wouldn&#8217;t unload partials into the helpers.</p>
+<p>I like to keep helpers to mere image helpers, date/time formatters, or any special text formatting that needs to be repeated.  I wrote a non-breaking-space helper that will substitute all spaces for &amp;nbsp; &#8230; so things like that.</p>
+<p>I would never use state checking like <strong>user_signed_in?</strong> within helpers.  I use methods like that in the view for rendering, and methods like that in the controller for writing permissions.</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	
+		<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7243"> 	
+		<div id="comment-7243" class="comment">
+			<div class="comment-header">	
+				<div class="comment-author">
+					<img alt='' src='https://secure.gravatar.com/avatar/2a3cb6f253bbd6e6c2c60a963cd5616b?s=40&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/2a3cb6f253bbd6e6c2c60a963cd5616b?s=80&#038;d=identicon&#038;r=g 2x' class='avatar avatar-40 photo' height='40' width='40' loading='lazy' decoding='async'/> 
+					<p class="comment-author-name"><span>hoang dang</span><br />June 11, 2017 - 3:46 am</p>
+				</div>				
+			</div>
+			<div class="comment-body">			
+				<p>great job man</p>
+								
+			</div>			
+		</div>
+	</li><!-- #comment-## -->
+		</ol>
+		<div class="page-links"></div> 
+				
+		
+		
+</div>	
+		</div>
+	<div id="primary-sidebar" class="col-md-4">
+	<aside id="text-8" class="widget widget_text"><h4 class="widget-title">Daniel P. Clark</h4>			<div class="textwidget"><div style="height:200px;margin-left:40px;cursor:pointer;">
+  <table border="0">
+    <tr>
+      <td colspan="3"><a href="../../../../../about/" border="0"><img alt="About Me" width="200" height="143" border="0"src="../../../../../wp-content/uploads/2014/05/profile-e1399451093461.jpg" /></a></td>
+    </tr>
+    <tr>
+      <td colspan="3" onclick='window.open("http://twitter.com/6ftdan");'>
+        <div style="display:block;background-image:url('../../../../../wp-content/uploads/2014/05/twitter.png');background-repeat:no-repeat;background-position: 0 2px;"><img src="../../../../../wp-content/uploads/2014/05/twitter.png" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+            <td><a href="threema://add?id=65ANH8D4"><img style="width:20px;height:20px;margin-top:-3px;" alt="Threema: Seriously secure mobile messaging." src="../../../../../wp-content/uploads/2014/05/appicon128.png" /></a><a href="//github.com/danielpclark"><img  alt="GitHub" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/github.png" /></a><a href="//linkedin.com/in/danielpclark"><img alt="LinkedIn" style="height:20px;width:20px;margin-left:5px;margin-top:-3px;" src="../../../../../wp-content/uploads/2014/05/logo_in_nav_44x36.png" /></a><a type="application/rss+xml" href="//feeds.feedburner.com/DanielPClark"><img alt="RSS Feed" style="margin-top:-1px;width:22px;height:21px;"  src="../../../../../wp-content/uploads/2014/05/obseussed-rss-icon_thumb1-e1484139142493.png" /></a><a href="https://keybase.io/danielpclark"><img src="../../../../../wp-content/uploads/2017/08/icon-keybase-logo-48.png" style="width:20px;height:20px;margin-top:-4px;" /></a><a href="../../../../../Daniel%20P.%20Clark%206ftdan@gmail.com%20(0x79E57E78)%20pub.asc">PGP</a></td></tr><tr>
+            <td>
+              <a href="//stackoverflow.com/users/1500195/6ft-dan" target="_blank" rel="noopener">
+                      <div style="width:60px;height:58px;background-position:-146px;overflow:hidden;position:relative;right:0px;top:-46px;float:right;background-image:url('//stackoverflow.com/users/flair/1500195.png?theme=clean');"></div>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div></div>
+		</aside>
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">Recent Posts</h4>
+		<ul>
+											<li>
+					<a href="../../../../2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/">Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</a>
+									</li>
+											<li>
+					<a href="../../../../2019/02/04/rust-simplified-ep-1-pattern-matching/">Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</a>
+									</li>
+											<li>
+					<a href="../../../../2018/03/07/micro-backups-of-your-git-dev-work/">Micro Backups of Your Git Dev Work</a>
+									</li>
+											<li>
+					<a href="../../../../../danielpclark/2018/02/07/gods-provision/">God&#8217;s Provision</a>
+									</li>
+											<li>
+					<a href="../../../../2018/02/04/proxmox-a-vm-server-for-your-home/">ProxMox; A VM Server For Your Home</a>
+									</li>
+					</ul>
+
+		</aside><aside id="text-12" class="widget widget_text"><h4 class="widget-title">Ways to support my work</h4>			<div class="textwidget"><span style="font-weight:bold;">One time gift:</span><br /><a href="https://cash.me/$danielpclark">$danielpclark</a><br />
+<br />
+<span style="font-weight:bold;">Educational video series:</span><br /><a href="https://www.patreon.com/allyourdev">Patreon</a></div>
+		</aside><aside id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widget-title">My Favorite Ministries</h4><div class="textwidget custom-html-widget"><ul>
+ <li>
+<a href="http://rzim.org/let-my-people-think-broadcasts/">Let My People Think - Ravi Zacharias</a>
+ </li>
+ <li>
+<a href="https://www.truthforlife.org/broadcasts/latest-aired/">Truth for Life - Alistair Begg</a>
+ </li>
+ <li>
+<a href="http://www.ltw.org/listen">Leading the Way - Michael Youssef</a>
+ </li>
+ <li>
+<a href="http://www.roadtoreality.org/listen/">Road to Reality - K. P. Yohannan</a>
+ </li>
+</ul></div></aside><aside id="text-20" class="widget widget_text">			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/6ftdan" data-widget-id="465349192961888257">Tweets by @6ftdan</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+		</aside><aside id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">Looking&nbspfor&nbspwork?<br /><a href="http://join.hired.com/x/tdVY4z">HIRED</a><br /><br />
+Transfer Bitcoin Instantly and Securely<br />
+with <a href="https://campbx.com/main.php?r=zqX6YXO5DkE">CampBX</a></div></aside></div>	</div>
+</div>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="../../../../../" rel="home">Daniel P. Clark</a> / 6ftDan&trade; Copyright &copy; 2005-2019 ::: <a href="../../../../../resume/" rel="resume">(resume)</a></p>
+			</div>
+			<div class="col-md-6">
+				<nav></nav>
+			</div>
+		</div>
+	</div>
+</footer>
+		<style type="text/css">
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination,.pager {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+		<link rel='stylesheet' id='pgntn_stylesheet-css' href='../../../../../wp-content/plugins/pagination/css/nav-style.css' type='text/css' media='all' />
+<script type='text/javascript' src='../../../../../wp-content/themes/newsted/assets/js/newsted.js' id='newsted_script-js'></script>
+<script type='text/javascript' id='twttr_api_scripts_init-js-after'>
+!function(d,s,id) {
+					var js,fjs=d.getElementsByTagName(s)[0];
+					if (!d.getElementById(id)) {
+						js=d.createElement(s);
+						js.id=id;
+						js.src="https://platform.twitter.com/widgets.js";
+						fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs")
+</script>
+</body>
+</html>

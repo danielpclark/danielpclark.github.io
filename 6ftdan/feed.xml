@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Daniel P. Clark</title>
+	<atom:link href="https://danielpclark.github.io/6ftdan/feed.xml" rel="self" type="application/rss+xml" />
+	<link>https://6ftdan.com</link>
+	<description>6ft Dan™ “Sound Software Design”</description>
+	<lastBuildDate>Mon, 25 Feb 2019 18:13:11 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.2.7</generator>
+	<item>
+		<title>Rust Simplified &#8211; Ep 2 &#8211; Functions, Traits, and Type Information</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Mon, 25 Feb 2019 10:00:35 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[educational]]></category>
+		<category><![CDATA[rust]]></category>
+		<category><![CDATA[rust simplified]]></category>
+		<category><![CDATA[video series]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1670</guid>
+
+					<description><![CDATA[Rust Simplified is a series aimed at making Rust much more simple for others to learn. In this episode we cover functions, type information, traits, generics, ownerships, and different various usages of each of these.]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe width="720" height="405" src="https://www.youtube.com/embed/_NInmd3PsB4?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>Rust Simplified is a series aimed at making Rust much more simple for others to learn. In this episode we cover functions, type information, traits, generics, ownerships, and different various usages of each of these.</p>
+
+
+
+<p>Episode Timeline</p>
+
+
+
+<ul><li><a href="https://www.youtube.com/watch?v=_NInmd3PsB4&amp;t=108s">01:48</a> &#8211; Functions</li><li><a href="https://www.youtube.com/watch?v=_NInmd3PsB4&amp;t=339s">05:39</a> &#8211; Borrowing</li><li><a href="https://www.youtube.com/watch?v=_NInmd3PsB4&amp;t=646s">10:46</a> &#8211; Traits</li><li><a href="https://www.youtube.com/watch?v=_NInmd3PsB4&amp;t=1424s">23:44</a> &#8211; Derive traits for println!</li><li><a href="https://www.youtube.com/watch?v=_NInmd3PsB4&amp;t=1801s">30:01</a> &#8211; The Into trait and Generics</li><li><a href="https://www.youtube.com/watch?v=_NInmd3PsB4&amp;t=2562s">42:42</a> &#8211; Different ways to specify type information and Generics <br></li></ul>
+
+
+
+<p>Twitter: <a rel="noreferrer noopener" href="https://www.youtube.com/redirect?v=_NInmd3PsB4&amp;redir_token=dJLACyHfRI_fQDWsqAzI6jD2IZR8MTU1MTA1MDcxMEAxNTUwOTY0MzEw&amp;event=video_description&amp;q=http%3A%2F%2Ftwitter.com%2FAll_Your_Dev" target="_blank">http://twitter.com/All_Your_Dev</a></p>
+
+
+
+<p>Twitter: <a rel="noreferrer noopener" href="https://www.youtube.com/redirect?v=_NInmd3PsB4&amp;redir_token=dJLACyHfRI_fQDWsqAzI6jD2IZR8MTU1MTA1MDcxMEAxNTUwOTY0MzEw&amp;event=video_description&amp;q=http%3A%2F%2Ftwitter.com%2F6ftdan" target="_blank">http://twitter.com/6ftdan</a></p>
+
+
+
+<p>Website: <a rel="noreferrer noopener" href="https://www.youtube.com/redirect?v=_NInmd3PsB4&amp;redir_token=dJLACyHfRI_fQDWsqAzI6jD2IZR8MTU1MTA1MDcxMEAxNTUwOTY0MzEw&amp;event=video_description&amp;q=https%3A%2F%2F6ftdan.com%2Fallyourdev%2F" target="_blank">https://danielpclark.github.io/6ftdan/allyourdev/</a></p>
+
+
+
+<p>Rust Playground: <a rel="noreferrer noopener" href="https://www.youtube.com/redirect?v=_NInmd3PsB4&amp;redir_token=dJLACyHfRI_fQDWsqAzI6jD2IZR8MTU1MTA1MDcxMEAxNTUwOTY0MzEw&amp;event=video_description&amp;q=https%3A%2F%2Fplay.rust-lang.org%2F" target="_blank">https://play.rust-lang.org/</a></p>
+
+
+
+<p>Patreon: <a rel="noreferrer noopener" href="https://www.youtube.com/redirect?v=_NInmd3PsB4&amp;redir_token=dJLACyHfRI_fQDWsqAzI6jD2IZR8MTU1MTA1MDcxMEAxNTUwOTY0MzEw&amp;event=video_description&amp;q=https%3A%2F%2Fwww.patreon.com%2Fallyourdev" target="_blank">https://www.patreon.com/allyourdev</a></p>
+
+
+
+<p>Extra content such as Q&amp;As and Livestreams will be announced, and available as they&#8217;re made, on Patreon <a rel="noreferrer noopener" href="https://www.youtube.com/redirect?v=_NInmd3PsB4&amp;redir_token=dJLACyHfRI_fQDWsqAzI6jD2IZR8MTU1MTA1MDcxMEAxNTUwOTY0MzEw&amp;event=video_description&amp;q=https%3A%2F%2Fwww.patreon.com%2Fallyourdev" target="_blank">https://www.patreon.com/allyourdev</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2019/02/25/rust-simplified-ep-2-functions-traits-and-type-information/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Rust Simplified &#8211; Ep 1 &#8211; Pattern Matching</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2019/02/04/rust-simplified-ep-1-pattern-matching/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2019/02/04/rust-simplified-ep-1-pattern-matching/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Mon, 04 Feb 2019 13:23:05 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[educational]]></category>
+		<category><![CDATA[pattern matching]]></category>
+		<category><![CDATA[rust]]></category>
+		<category><![CDATA[rust simplified]]></category>
+		<category><![CDATA[series]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1653</guid>
+
+					<description><![CDATA[Rust Simplified is a series aimed at making Rust much more simple for others to learn.  In this episode we cover pattern matching; which is the basis for creating organized data structures and how to use those in simple conditional/destructuring ways.  This episode does cover a little bit into other areas, but the main focus here is on pattern matching and those other areas shall be covered in another video.]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" width="720" height="405" src="https://www.youtube.com/embed/W3PpmbIDJk8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>Rust Simplified is a series aimed at making Rust much more simple for others to learn. &nbsp;In this episode we cover pattern matching; which is the basis for creating organized data structures and how to use those in simple conditional/destructuring ways. &nbsp;This episode does cover a little bit into other areas, but the main focus here is on pattern matching and those other areas shall be covered in another video.</p>
+
+
+
+<p><br>Extra content such as Q&amp;As and Livestreams will be announced, and available as they&#8217;re made, on Patreon <a href="https://www.youtube.com/redirect?redir_token=BTHP0fTeML_ipGa-KDvCU8l0JOp8MTU0OTM3MTY2N0AxNTQ5Mjg1MjY3&amp;event=video_description&amp;v=W3PpmbIDJk8&amp;q=https%3A%2F%2Fwww.patreon.com%2Fallyourdev">https://www.patreon.com/allyourdev</a> <br><br>Episode Timeline</p>
+
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=W3PpmbIDJk8&amp;t=134s">02:14</a> &#8211; Structuring &amp; Destructuring Assignment</li>
+<li><a href="https://www.youtube.com/watch?v=W3PpmbIDJk8&amp;t=373s">06:13</a> &#8211; Named Struct / Named Tuple</li>
+<li><a href="https://www.youtube.com/watch?v=W3PpmbIDJk8&amp;t=533s">08:53</a> &#8211; Enums</li>
+<li><a href="https://www.youtube.com/watch?v=W3PpmbIDJk8&amp;t=648s">10:48</a> &#8211; Derive Debug Formatter</li>
+<li><a href="https://www.youtube.com/watch?v=W3PpmbIDJk8&amp;t=740s">12:20</a> &#8211; Logic Switching With Match</li>
+<li><a href="https://www.youtube.com/watch?v=W3PpmbIDJk8&amp;t=1618s">26:58</a> &#8211; If Let</li>
+</ul>
+<p>Twitter: <a href="https://www.youtube.com/redirect?redir_token=BTHP0fTeML_ipGa-KDvCU8l0JOp8MTU0OTM3MTY2N0AxNTQ5Mjg1MjY3&amp;event=video_description&amp;v=W3PpmbIDJk8&amp;q=http%3A%2F%2Ftwitter.com%2FAll_Your_Dev">http://twitter.com/All_Your_Dev</a>&nbsp;</p>
+<p>Twitter:&nbsp;<a href="https://www.youtube.com/redirect?redir_token=BTHP0fTeML_ipGa-KDvCU8l0JOp8MTU0OTM3MTY2N0AxNTQ5Mjg1MjY3&amp;event=video_description&amp;v=W3PpmbIDJk8&amp;q=http%3A%2F%2Ftwitter.com%2F6ftdan">http://twitter.com/6ftdan</a></p>
+<p>Website: <a href="https://www.youtube.com/redirect?redir_token=BTHP0fTeML_ipGa-KDvCU8l0JOp8MTU0OTM3MTY2N0AxNTQ5Mjg1MjY3&amp;event=video_description&amp;v=W3PpmbIDJk8&amp;q=https%3A%2F%2F6ftdan.com%2Fallyourdev%2F">https://danielpclark.github.io/6ftdan/allyourdev/</a></p>
+<p>Rust Playground: <a href="https://www.youtube.com/redirect?redir_token=BTHP0fTeML_ipGa-KDvCU8l0JOp8MTU0OTM3MTY2N0AxNTQ5Mjg1MjY3&amp;event=video_description&amp;v=W3PpmbIDJk8&amp;q=https%3A%2F%2Fplay.rust-lang.org%2F">https://play.rust-lang.org/</a></p>
+<p>Patreon: <a href="https://www.youtube.com/redirect?redir_token=BTHP0fTeML_ipGa-KDvCU8l0JOp8MTU0OTM3MTY2N0AxNTQ5Mjg1MjY3&amp;event=video_description&amp;v=W3PpmbIDJk8&amp;q=https%3A%2F%2Fwww.patreon.com%2Fallyourdev">https://www.patreon.com/allyourdev</a></p>
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2019/02/04/rust-simplified-ep-1-pattern-matching/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Micro Backups of Your Git Dev Work</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2018/03/07/micro-backups-of-your-git-dev-work/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2018/03/07/micro-backups-of-your-git-dev-work/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Thu, 08 Mar 2018 00:12:37 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[backups]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[logs]]></category>
+		<category><![CDATA[micro]]></category>
+		<category><![CDATA[project]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1622</guid>
+
+					<description><![CDATA[When writing software there are many times where we try out changes to see what occurs.  Sometimes this will bring us to bugs in projects that we depend on and depending on the issue we may simply work around it.  When this happens it&#8217;s very likely that the non-working code isn&#8217;t committed to a software...<p><a href="https://danielpclark.github.io/6ftdan/allyourdev/2018/03/07/micro-backups-of-your-git-dev-work/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p>When writing software there are many times where we try out changes to see what occurs.  Sometimes this will bring us to bugs in projects that we depend on and depending on the issue we may simply work around it.  When this happens it&#8217;s very likely that the non-working code isn&#8217;t committed to a software versioning system such as git, but is rather discarded for a working change.  Because who doesn&#8217;t want to write good code, keep up a fair reputation for quality, and not break things for others.  The only problem with this is that so much useful information from those errors can be lost when really it could be of benefit to reference later and fix them.</p>
+<p>This blog post is written to illustrate a simple way to keep incremental backups of your project states with the logs for record.</p>
+<h3>Wrapping a Command in Fish Shell</h3>
+<p>Now you can choose whichever shell you&#8217;d like to implement this in.  I prefer the Fish shell as it is a pleasure to work with.  You can take what you learn from this and make it your own.</p>
+<pre class="lang:sh decode:true ">function rake
+  set -l PROJECT (basename (pwd))
+  set -l TIMESTAMP (date +%s)
+  set -l ROOT "/mnt/raid/snapshots/"
+  set -l BASENAME $ROOT$PROJECT'-'$TIMESTAMP
+
+  bash -c "set -o pipefail; rake $argv |&amp; tee $BASENAME.log"
+
+  set -l STATUS $status
+
+  bash -c "set +o pipefail"
+
+  for file in (git ls-files) (git ls-files --exclude-standard --others)
+    if echo $file | grep assets &gt; /dev/null
+      continue
+    end
+                                              
+    tar --no-recursion -uf $BASENAME.tar $file
+  end
+
+  gzip $BASENAME.tar
+
+  if test "$STATUS" -ne "0" 
+    false
+  end
+end</pre>
+<p>What this script does is creates both a log of your rake commands output and a gzipped backup of your projects current folder minus any files listed in your <strong>.gitignore</strong> file.  The log and the gzip files will have the same name and be stored in the same place with the name of your project folder and a timestamp.</p>
+<p>Be sure to be generous with your list of files to ignore in your <strong>.gitignore</strong> file as this script will grab uncommitted files that aren&#8217;t blacklisted there.  Anything not in the <strong>.gitignore</strong> you can put in the grep line I have listed above in the for loop. That skips any file or file with folder with <strong>assets</strong> in the name.</p>
+<p>The only thing left to do is set up a cron job to delete archives that are beyond a certain age.  3 to 7 days should be a good number for this.  That&#8217;s the amount of time you&#8217;re most likely going to wish you had that info available to find.</p>
+<h3>Summary</h3>
+<p>Backups are important, but failures can contain valuable data.  Keep a cache of your recent work and enable yourself to help other projects when their systems have bugs with data that&#8217;s readily available.  Don&#8217;t do what I did when I submitted an Github issue which I don&#8217;t have the proof of anymore.  “Keep it secret, keep it safe” — Gandalf</p>
+<p><a href="https://danielpclark.github.io/6ftdan/wp-content/uploads/2018/03/8854d484387e340ef38ad272e80071b7f04a29fd.gif"><img decoding="async" loading="lazy" class=" wp-image-1623 aligncenter" src="https://danielpclark.github.io/6ftdan/wp-content/uploads/2018/03/8854d484387e340ef38ad272e80071b7f04a29fd-300x123.gif" alt="" width="460" height="189" /></a></p>
+<p><span style="font-size: 8pt">Feature image by <a class="owner-name truncate" title="Go to Ian's photostream" href="https://www.flickr.com/photos/iancvt55/">Ian</a> via the <a href="https://creativecommons.org/licenses/by-nc/2.0/" rel="license">Creative Commons Attribution-NonCommercial 2.0 Generic License</a>.</span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2018/03/07/micro-backups-of-your-git-dev-work/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>God&#8217;s Provision</title>
+		<link>https://danielpclark.github.io/6ftdan/danielpclark/2018/02/07/gods-provision/</link>
+					<comments>https://danielpclark.github.io/6ftdan/danielpclark/2018/02/07/gods-provision/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Thu, 08 Feb 2018 03:46:16 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[love]]></category>
+		<category><![CDATA[scripture]]></category>
+		<category><![CDATA[spiritual]]></category>
+		<category><![CDATA[testimony]]></category>
+		<category><![CDATA[truth]]></category>
+		<category><![CDATA[bible]]></category>
+		<category><![CDATA[christ]]></category>
+		<category><![CDATA[giving]]></category>
+		<category><![CDATA[God]]></category>
+		<category><![CDATA[jesus]]></category>
+		<category><![CDATA[providence]]></category>
+		<category><![CDATA[providing]]></category>
+		<category><![CDATA[receiving]]></category>
+		<category><![CDATA[salvation]]></category>
+		<category><![CDATA[spirit]]></category>
+		<category><![CDATA[word]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1597</guid>
+
+					<description><![CDATA[Trust in the Lord with all your heart, And lean not on your own understanding; In all your ways acknowledge Him, And He shall direct your paths. Proverbs 3:5-6 The Bible&#8217;s fairly clear on the kinds of provisions God provides, and no it won&#8217;t be a Lamborghini.  It largely comes down to simple things. “Therefore I say to...<p><a href="https://danielpclark.github.io/6ftdan/danielpclark/2018/02/07/gods-provision/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<blockquote><p><span id="en-NKJV-16461" class="text Prov-3-5">Trust in the <span class="small-caps">Lord</span> with all your heart,</span><br />
+<span class="text Prov-3-5">And lean not on your own understanding;</span><br />
+<span id="en-NKJV-16462" class="text Prov-3-6">In all your ways acknowledge Him,</span><br />
+<span class="text Prov-3-6">And He shall direct your paths.</span></p>
+<p style="text-align: right;">Proverbs 3:5-6</p>
+</blockquote>
+<p>The Bible&#8217;s fairly clear on the kinds of provisions God provides, and no it won&#8217;t be a Lamborghini.  It largely comes down to simple things.</p>
+<blockquote><p><span class="text Matt-6-25"><span class="woj">“Therefore I say to you, do not worry about your life, what you will eat or what you will drink; nor about your body, what you will put on. Is not life more than food and the body more than clothing?</span> </span><span id="en-NKJV-23309" class="text Matt-6-26"><sup class="versenum"> </sup><span class="woj">Look at the birds of the air, for they neither sow nor reap nor gather into barns; yet your heavenly Father feeds them. Are you not of more value than they?</span> </span><span id="en-NKJV-23310" class="text Matt-6-27"><sup class="versenum"> </sup><span class="woj">Which of you by worrying can add one cubit to his stature?</span></span></p>
+<p><span id="en-NKJV-23311" class="text Matt-6-28"><span class="woj">“So why do you worry about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin;</span> </span><span id="en-NKJV-23312" class="text Matt-6-29"><sup class="versenum"> </sup><span class="woj">and yet I say to you that even Solomon in all his glory was not arrayed like one of these.</span> </span><span id="en-NKJV-23313" class="text Matt-6-30"><sup class="versenum"> </sup><span class="woj">Now if God so clothes the grass of the field, which today is, and tomorrow is thrown into the oven, <i>will He</i> not much more <i>clothe</i> you, O you of little faith?</span></span></p>
+<p><span id="en-NKJV-23314" class="text Matt-6-31"><span class="woj">“Therefore do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’</span> </span><span id="en-NKJV-23315" class="text Matt-6-32"><sup class="versenum"> </sup><span class="woj">For after all these things the Gentiles seek. For your heavenly Father knows that you need all these things.</span> </span><span id="en-NKJV-23316" class="text Matt-6-33"><sup class="versenum"> </sup><span class="woj">But seek first the kingdom of God and His righteousness, and all these things shall be added to you.</span></span><span id="en-NKJV-23317" class="text Matt-6-34"><sup class="versenum"> </sup><span class="woj">Therefore do not worry about tomorrow, for tomorrow will worry about its own things. Sufficient for the day <i>is</i> its own trouble.</span></span></p>
+<p style="text-align: right;">Matthew 6:25-34</p>
+</blockquote>
+<p>The Word is fairly clear about the importance of putting Christ first.  As the last two verses above indicate to “seek first the kingdom of God” and “all these things shall be added to you” if you look at the context of the scripture the “these things” seem to clearly indicate food, drink, and clothing as to what will be provided.  Clearly not a name it &#8211; claim it gospel here.</p>
+<p>Jesus gives a parable to illustrate to what lengths he will go to to go after one of His own who has wandered off on their own.</p>
+<blockquote><p><span id="en-NKJV-25593" class="text Luke-15-4"><span class="woj">“What man of you, having a hundred sheep, if he loses one of them, does not leave the ninety-nine in the wilderness, and go after the one which is lost until he finds it?</span> </span><span id="en-NKJV-25594" class="text Luke-15-5"><sup class="versenum"> </sup><span class="woj">And when he has found <i>it,</i> he lays <i>it</i> on his shoulders, rejoicing.</span> </span><span id="en-NKJV-25595" class="text Luke-15-6"><sup class="versenum"> </sup><span class="woj">And when he comes home, he calls together <i>his</i> friends and neighbors, saying to them, ‘Rejoice with me, for I have found my sheep which was lost!’</span> </span><span id="en-NKJV-25596" class="text Luke-15-7"><sup class="versenum"> </sup><span class="woj">I say to you that likewise there will be more joy in heaven over one sinner who repents than over ninety-nine just persons who need no repentance.</span></span></p>
+<p style="text-align: right;">Luke 15:4-7</p>
+</blockquote>
+<p>That same chapter goes on to illustrate the same point twice more with <a href="https://www.biblegateway.com/passage/?search=Luke+15%3A8-10&amp;version=NKJV">The Parable of the Lost Coin</a> and <a href="https://www.biblegateway.com/passage/?search=Luke+15%3A11-32&amp;version=NKJV">The Parable of the Prodigal Son</a>.</p>
+<p>One scripture often used incorrectly by the name it &#8211; claim it ideology is:</p>
+<blockquote><p>Therefore I say to you, whatever things you ask when you pray, believe that you receive <i>them,</i> and you will have <i>them.</i></p>
+<p style="text-align: right;">Mark 11:24</p>
+<p>And whatever things you ask in prayer, believing, you will receive.</p>
+<p style="text-align: right;">Matthew 21:22</p>
+</blockquote>
+<p>These two verses are the same thing being said once as recorded by two different people and the context is right after the fig tree which Jesus cursed had withered.  Taking these scriptures without context may lead anyone to believe that they can claim a Lamborghini and it will be theirs.  But that&#8217;s not so.  What Jesus said before that was:</p>
+<blockquote><p><span id="en-NKJV-24663" class="text Mark-11-22">So Jesus answered and said to them, <span class="woj">“Have faith in God.</span> </span><span id="en-NKJV-24664" class="text Mark-11-23"><sup class="versenum"> </sup><span class="woj">For assuredly, I say to you, whoever says to this mountain, ‘Be removed and be cast into the sea,’ and does not doubt in his heart, but believes that those things he says will be done, he will have whatever he says.</span></span></p>
+<p style="text-align: right;">Mark 11:22,23</p>
+<p>So Jesus answered and said to them, <span class="woj">“Assuredly, I say to you, if you have faith and do not doubt, you will not only do what was done to the fig tree, but also if you say to this mountain, ‘Be removed and be cast into the sea,’ it will be done.</span></p>
+<p style="text-align: right;">Matthew 21:21</p>
+</blockquote>
+<p>Our self centered nature and our big eyes will emphasize the parts where what we say will be done; only to miss the point that Jesus was making to “Have faith in God”.  For more relevance in the “what can be done by faith” it&#8217;s best to further examine scripture.  We can find a parallel to these passages in James 4:2b,3 and 1 John 5:14,15.</p>
+<blockquote><p><span id="en-NKJV-30340" class="text Jas-4-2">Yet you do not have because you do not ask. </span><span id="en-NKJV-30341" class="text Jas-4-3"><sup class="versenum"> </sup>You ask and do not receive, because you ask amiss, that you may spend <i>it</i> on your pleasures.</span></p>
+<p style="text-align: right;">James 4:2b,3</p>
+<p><span class="text 1John-5-14">Now this is the confidence that we have in Him, that if we ask anything according to His will, He hears us. </span><span id="en-NKJV-30640" class="text 1John-5-15"><sup class="versenum"> </sup>And if we know that He hears us, whatever we ask, we know that we have the petitions that we have asked of Him.</span></p>
+<p style="text-align: right;">1 John 5:14,15</p>
+</blockquote>
+<p>From these verses we can see that we do not receive things we ask for when we ask for our own pleasure, and that he “hears us” when we pray in accord with His will.  An example of God hearing our prayer when we humble ourselves is given in this parable.</p>
+<blockquote><p><span id="en-NKJV-25699" class="text Luke-18-10"><span class="woj">“Two men went up to the temple to pray, one a Pharisee and the other a tax collector.</span> </span><span id="en-NKJV-25700" class="text Luke-18-11"><sup class="versenum"> </sup><span class="woj">The Pharisee stood and prayed thus with himself, ‘God, I thank You that I am not like other men—extortioners, unjust, adulterers, or even as this tax collector.</span> </span><span id="en-NKJV-25701" class="text Luke-18-12"><sup class="versenum"> </sup><span class="woj">I fast twice a week; I give tithes of all that I possess.’</span> </span><span id="en-NKJV-25702" class="text Luke-18-13"><sup class="versenum"> </sup><span class="woj">And the tax collector, standing afar off, would not so much as raise <i>his</i> eyes to heaven, but beat his breast, saying, ‘God, be merciful to me a sinner!’</span></span><span id="en-NKJV-25703" class="text Luke-18-14"><sup class="versenum"> </sup><span class="woj">I tell you, this man went down to his house justified <i>rather</i> than the other; for everyone who exalts himself will be humbled, and he who humbles himself will be exalted.”</span></span></p>
+<p style="text-align: right;">Luke 18:9-14</p>
+</blockquote>
+<p>God resists the proud.</p>
+<blockquote><p><span class="text 1Pet-5-5">Likewise you younger people, submit yourselves to <i>your</i> elders. Yes, all of <i>you</i> be submissive to one another, and be clothed with humility, for</span></p>
+<div class="poetry top-1">
+<p class="line"><span class="text 1Pet-5-5"><span class="oblique">“God resists the proud,</span></span><br />
+<span class="text 1Pet-5-5"><span class="oblique">But gives grace to the humble.”</span></span></p>
+</div>
+<p class="first-line-none top-1"><span id="en-NKJV-30472" class="text 1Pet-5-6">Therefore humble yourselves under the mighty hand of God, that He may exalt you in due time, </span><span id="en-NKJV-30473" class="text 1Pet-5-7"><sup class="versenum"> </sup>casting all your care upon Him, for He cares for you.</span></p>
+<p style="text-align: right;">1 Peter 5:5-7</p>
+</blockquote>
+<p>It comes down to us to search the scripture to know His will and learn what we may ask for that is in accordance to His will.  Here are a couple of things he gives us promises on which I pray for consistently.</p>
+<blockquote><p><sup class="versenum"> </sup>If any of you lacks wisdom, let him ask of God, who gives to all liberally and without reproach, and it will be given to him.</p>
+<p style="text-align: right;">James 1:5</p>
+<p>For God has not given us a spirit of fear, but of power and of love and of a sound mind.</p>
+<p style="text-align: right;">2 Timothy 1:7</p>
+</blockquote>
+<p>To know what to pray for its best to know what the Lord wants.</p>
+<blockquote><p>The Lord is not slack concerning <i>His</i> promise, as some count slackness, but is longsuffering toward us, not willing that any should perish but that all should come to repentance.</p>
+<p style="text-align: right;">2 Peter 3:9</p>
+<p>And this is the will of Him who sent Me, that everyone who sees the Son and believes in Him may have everlasting life; and I will raise him up at the last day.”</p>
+<p style="text-align: right;">John 6:40</p>
+</blockquote>
+<p>Jesus most important commandment to us is to love:</p>
+<blockquote><p><span class="text Matt-22-34">But when the Pharisees heard that He had silenced the Sadducees, they gathered together. </span><span id="en-NKJV-23908" class="text Matt-22-35"><sup class="versenum"> </sup>Then one of them, a lawyer, asked <i>Him a question,</i> testing Him, and saying, </span><span id="en-NKJV-23909" class="text Matt-22-36"><sup class="versenum"> </sup>“Teacher, which <i>is</i> the great commandment in the law?”</span></p>
+<p><span id="en-NKJV-23910" class="text Matt-22-37"><sup class="versenum"> </sup>Jesus said to him, <span class="woj">“‘You shall love the <span class="small-caps">Lord</span> your God with all your heart, with all your soul, and with all your mind.’</span> </span><span id="en-NKJV-23911" class="text Matt-22-38"><sup class="versenum"> </sup><span class="woj">This is <i>the</i> first and great commandment.</span></span><span id="en-NKJV-23912" class="text Matt-22-39"><sup class="versenum"> </sup><span class="woj">And <i>the</i> second <i>is</i> like it: ‘You shall love your neighbor as yourself.’</span> </span><span id="en-NKJV-23913" class="text Matt-22-40"><sup class="versenum"> </sup><span class="woj">On these two commandments hang all the Law and the Prophets.”</span></span></p>
+<p style="text-align: right;">Matthew 22:34-40</p>
+</blockquote>
+<p>The law God gave in the Old Testament is encompassed by the first two which are to love.  The rich man asked Jesus about how he may have eternal life and Jesus mentions the law… which love fulfills.</p>
+<blockquote><p><span class="text Matt-19-16">Now behold, one came and said to Him, “Good Teacher, what good thing shall I do that I may have eternal life?”</span></p>
+<p><span id="en-NKJV-23780" class="text Matt-19-17">So He said to him, <span class="woj">“Why do you call Me good?</span> <span class="woj">No one <i>is</i> good but One, <i>that is,</i>God.</span><span class="woj"> But if you want to enter into life, keep the commandments.”</span></span></p>
+<p><span id="en-NKJV-23781" class="text Matt-19-18">He said to Him, “Which ones?”</span></p>
+<p><span class="text Matt-19-18">Jesus said, <span class="woj">“‘You shall not murder,’ ‘You shall not commit adultery,’ ‘You shall not steal,’ ‘You shall not bear false witness,’</span> </span><span id="en-NKJV-23782" class="text Matt-19-19"><sup class="versenum"> </sup><span class="woj">‘Honor your father and <i>your</i> mother,’<span style="font-size: 10px;"> </span></span><span class="woj">and, ‘You shall love your neighbor as yourself.’ ”</span></span></p>
+<p><span id="en-NKJV-23783" class="text Matt-19-20">The young man said to Him, “All these things I have kept from my youth. What do I still lack?”</span></p>
+<p><span id="en-NKJV-23784" class="text Matt-19-21">Jesus said to him, <span class="woj">“If you want to be perfect, go, sell what you have and give to the poor, and you will have treasure in heaven; and come, follow Me.”</span></span></p>
+<p><span id="en-NKJV-23785" class="text Matt-19-22">But when the young man heard that saying, he went away sorrowful, for he had great possessions.</span></p>
+<p style="text-align: right;">Matthew 19:16-22</p>
+</blockquote>
+<p>Jesus desires what&#8217;s best for us all in the big picture.  There is a reward for giving.</p>
+<blockquote><p>Give, and it will be given to you: good measure, pressed down, shaken together, and running over will be put into your bosom. For with the same measure that you use, it will be measured back to you.”</p>
+<p style="text-align: right;">Luke 6:38</p>
+</blockquote>
+<p>You may have seen a pattern here.  The overriding theme is selfless love.  You put others before yourself as the act of love.  It is an act of sacrifice.</p>
+<blockquote><p><span class="text Matt-16-24">Then Jesus said to His disciples, <span class="woj">“If anyone desires to come after Me, let him deny himself, and take up his cross, and follow Me.</span> </span><span id="en-NKJV-23698" class="text Matt-16-25"><sup class="versenum"> </sup><span class="woj">For whoever desires to save his life will lose it, but whoever loses his life for My sake will find it.</span> </span><span id="en-NKJV-23699" class="text Matt-16-26"><sup class="versenum"> </sup><span class="woj">For what profit is it to a man if he gains the whole world, and loses his own soul? Or what will a man give in exchange for his soul?</span> </span><span id="en-NKJV-23700" class="text Matt-16-27"><sup class="versenum"> </sup><span class="woj">For the Son of Man will come in the glory of His Father with His angels, and then He will reward each according to his works.</span></span></p>
+<p style="text-align: right;">Matthew 16:24-27</p>
+</blockquote>
+<p>You may have noticed this message applies to those who are in Christ.  From the parable of the lost sheep speaking of finding His sheep which was lost, seeking His will, and having faith in God.  And that God&#8217;s will is for all will believe in the Son of God and attain everlasting life.  The promises made available to those who are in Christ can be available to those who seek Him on His terms.</p>
+<blockquote><p>For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.</p>
+<p style="text-align: right;">John 3:16</p>
+</blockquote>
+<p>Learn about <a href="https://danielpclark.github.io/salvation/">Salvation</a> and how to be a part of those who are in Christ.</p>
+<h3>Summary</h3>
+<blockquote><p><span class="text John-14-12"><span class="woj">“Most assuredly, I say to you, he who believes in Me, the works that I do he will do also; and greater <i>works</i> than these he will do, because I go to My Father.</span> </span><span id="en-NKJV-26682" class="text John-14-13"><sup class="versenum"> </sup><span class="woj">And whatever you ask in My name, that I will do, that the Father may be glorified in the Son.</span> </span><span id="en-NKJV-26683" class="text John-14-14"><sup class="versenum"> </sup><span class="woj">If you ask</span><span class="woj"> anything in My name, I will do <i>it.</i></span></span></p>
+<p style="text-align: right;">John 14:12-14</p>
+</blockquote>
+<p>Asking in some ones name has a meaning often overlooked.  It&#8217;s to ask on a persons behalf.  To truly be asking on their behalf you would need to be asking something that was of their will.  Otherwise you aren&#8217;t really asking by their name, but rather your own and misrepresenting their name in the process <em>(using His name in vain)</em>.  It&#8217;s as being an ambassador or an envoy for the person when you do something in their name.  You are extending their will through yourself in the service you perform.</p>
+<p>But all this doesn&#8217;t strictly limit what we may pray about.  We should pray often on many matters; keeping in mind to be humble and not seeking our own pleasure beyond what God offers.</p>
+<blockquote><p><span id="en-NKJV-29638" class="text 1Thess-5-16">Rejoice always, </span><span id="en-NKJV-29639" class="text 1Thess-5-17">pray without ceasing, </span><span id="en-NKJV-29640" class="text 1Thess-5-18">in everything give thanks; for this is the will of God in Christ Jesus for you.<br />
+</span></p>
+<p style="text-align: right;">1 Thessalonians 5:16-18</p>
+</blockquote>
+<p>My testimony on God&#8217;s provision:  One month I was without work and only had half of a months worth of rent.  So I went to my church and I asked them for help.  They agreed to pay my rent for me on the condition that I got a job.  I agreed and later at Bible study I prayed a prayer in faith, without any doubt, thanking God for the job He&#8217;d provided me (this is me without knowing anything of it of course).  I prayed this prayer in confidence because the church, also known as the body of Christ, asked me to get a job so I knew it was God&#8217;s will.  And whatever we pray in His name according to His will we will have.</p>
+<blockquote><p><span id="en-NKJV-23747" class="text Matt-18-19"><span class="woj">“Again I say</span><span class="woj"> to you that if two of you agree on earth concerning anything that they ask, it will be done for them by My Father in heaven.</span> </span><span id="en-NKJV-23748" class="text Matt-18-20"><span class="woj">For where two or three are gathered together in My name, I am there in the midst of them.”</span></span></p>
+<p style="text-align: right;">Matthew 18:19,20</p>
+</blockquote>
+<p>About two days later I got a call from my friend Casey <em>(whom I had not spoken to at all about this and wasn&#8217;t aware that I was looking for work)</em>.  He told me that I had helped him out in the past with getting work and so he put in a word for me where he worked and they already had an interview ready for me that Friday.  I showed up, was hired, and all this because God made it so.  I knew what God would do because He is faithful to His promises and He came through.</p>
+<p>Now this job wasn&#8217;t what most would consider a dream job and the pay was not amazing, but it was exactly what my soul needed in an amazing friendly/family community kind of way.  It was a very healing workplace and helped in removing persistent fear I had developed in door to door sales.  So God knew what I needed more than I did, and He provided.</p>
+<p>And with that I pray God bless you and may you go with peace of heart and mind.</p>
+<blockquote><p><span id="en-NKJV-29449" class="text Phil-4-6">Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God; </span><span id="en-NKJV-29450" class="text Phil-4-7"><sup class="versenum"> </sup>and the peace of God, which surpasses all understanding, will guard your hearts and minds through Christ Jesus.</span></p>
+<p style="text-align: right;">Philippians 4:6,7</p>
+</blockquote>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Koen van Seijen's photostream" href="https://www.flickr.com/photos/50363017@N05/" data-track="attributionNameClick" data-rapid_p="64">Koen van Seijen</a> via the <a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="license">Creative Commons Attribution-ShareAlike 2.0 Generic License</a></span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/danielpclark/2018/02/07/gods-provision/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>ProxMox; A VM Server For Your Home</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2018/02/04/proxmox-a-vm-server-for-your-home/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2018/02/04/proxmox-a-vm-server-for-your-home/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Sun, 04 Feb 2018 22:01:25 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[container]]></category>
+		<category><![CDATA[CT]]></category>
+		<category><![CDATA[hardware]]></category>
+		<category><![CDATA[mac]]></category>
+		<category><![CDATA[network]]></category>
+		<category><![CDATA[proxmox]]></category>
+		<category><![CDATA[server]]></category>
+		<category><![CDATA[virtual machine]]></category>
+		<category><![CDATA[VM]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1589</guid>
+
+					<description><![CDATA[Some months ago a friend gave me his old Hackintosh computer to work with.  So I have wiped the computer clean and installed ProxMox onto it.  ProxMox is a headless Linux distribution which lets you install as many operating systems as you want in the space available.  It can run Windows, Mac, Linux, and other...<p><a href="https://danielpclark.github.io/6ftdan/allyourdev/2018/02/04/proxmox-a-vm-server-for-your-home/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p>Some months ago a friend gave me his old Hackintosh computer to work with.  So I have wiped the computer clean and installed <a href="https://www.proxmox.com/en/">ProxMox</a> onto it.  ProxMox is a headless Linux distribution which lets you install as many operating systems as you want in the space available.  It can run Windows, Mac, Linux, and other operating systems simultaneously.  You can see the OSes boot in a window through your browser when on your ProxMox IP address.  The full desktop is viewable right there in your browser.</p>
+<p>There is a limitation of the desktop resolution being 1024&#215;768 in that window.  But if you set up VNC on the operating system you can boot that OS into whatever screen size works for you and simply VNC into it.  Of course most server distros you&#8217;ll load onto ProxMox won&#8217;t be desktop oriented but rather command line accessible and may have headless web applications to access so the resolution size isn&#8217;t a big concern.</p>
+<p>One awesome thing I&#8217;ve found is that it&#8217;s fairly trivial to take any VM image available online and convert it and use it within ProxMox.  More on that later.</p>
+<h2>CT vs VM</h2>
+<p>CT is a container virtual machine that shares the same kernel as the ProxMox system host.  It&#8217;s faster to install, start up, and more durable.  <em>During a motherboard overclock experiment I had to reset my motherboards BIOS which <del>caused all of my VMs to be come unusable/lost</del> (UPDATE: just a BIOS setting to change to get VM working again) but my CTs all still work.</em>  There are lots of templates available for containers to download including many popular frameworks and CMS systems.  A great deal of which come from <a href="https://www.turnkeylinux.org/">TurnKeyLinux.org</a>.  Unlike the typical Docker container or a Heroku instance these containers will persist changes.  So make backups of desired states along the way.</p>
+<p>VM images will allow you to run completely different operating systems, such as Windows or Macintosh, in a more contained environment.  Windows is a simple install but Mac will take a great deal of effort.  I like installing different Linux distros as VMs as well, such as Kali Linux for evaluating my own systems network security.  Be sure to backup your VMs so you won&#8217;t lose them when the BIOS is reset or perhaps hard drive order gets re-arranged.  <del>I may write a post on a backup solution whenever I work out a good system for myself on this… I have some ideas.</del> Done… see below.</p>
+<h2>Converting a Virtual Machine Image</h2>
+<p>I&#8217;m a big fan of <a href="https://bitnami.com/">Bitnami</a> for getting VMs, frameworks, and full system framework installs.    If you click on their “application” section you may click on any system you want to install and on the right they will have a link for VMs.  Click that and at the bottom they will give you two options to download one OVA image and one VMDK.  Download the VMDK, rename it to an <strong>iso</strong> extension and upload it via your ProxMox template upload page.  You can then shell into your ProxMox server and locate the file at <strong>/var/lib/vz/template/iso</strong> and rename it back.</p>
+<p>Next you&#8217;ll want to convert the vmdk file to a raw disk image with the following command</p>
+<pre class="lang:sh decode:true">qemu-img convert -f vmdk -O raw some-bitnami-image.vmdk some-bitnami-image.raw</pre>
+<p>Now you have the raw drive image for your virtual machine.  Install a normal VM in ProxMox for linux and set the disk space to the same size as the raw image.  Once ProxMox has finished creating it you can then go back to your shell and use the <strong>dd</strong> command to overwrite the provisioned VM drive with the raw VM image you converted earlier.  The command would look something like this:</p>
+<pre class="lang:sh decode:true">dd if=some-bitnami-image.raw of=/dev/mapper/pve-vm--107--disk--1 bs=1M</pre>
+<p><em>Be sure to match the disk name for the VM you provisioned.</em></p>
+<p>Once this is done the VM will be good to start up and you&#8217;re good to go.</p>
+<h2>Installing CT Tips</h2>
+<p>When installing a container I highly recommend you copy your public SSH key into the SSH key input.  This will allow you to shell in from your main computer without needing to remember a password as your systems SSH key will verify itself.  When you have a lot of VMs this makes working with them a lot quicker to get around.  Also when needing to copy files securely between systems a quick <strong>scp</strong> command works with no hassle.</p>
+<h2>Adding Hard Drive Space</h2>
+<p>You can grow the size of the “drive” that you will put all of your VMs and CTs on by adding additional drives.  The first thing you need to do is format the drives to the <strong>Linux LVM</strong> partition type with <strong>fdisk</strong>.</p>
+<p>Run “<strong>fdisk -l</strong>” to get a list of the drives in the system and be sure to write down or remember the space available for the drives you are adding.</p>
+<p>In fdisk you can press <strong>m</strong> for a menu and <strong>l</strong> will list the partition types you can format to.  Find the one that says <strong>Linux LVM</strong> and remember that number (for me it&#8217;s 31).  My instructions will assume the entire drive(s) you use are blank.  In fdisk continue by pressing <strong>n</strong> to create a new partition.  The partition number and first sector defaults are fine so just hit enter for each of them.  Next you need to tell it how big you want to make the partition.  You may use the full size but from a recent upgrade experience I had I would recommend leaving some space available on the end.  Set the size with +455G for 455 Gigs as your size (for me I gave 10 Gigs of free space at the end) and hit enter.  Finally change the partition type with <strong>t</strong> and then enter the number for Linux LVM type and hit enter.  Then put <strong>w</strong> to write the changes to disk and to exit.  Do this for every drive you&#8217;re going to add.</p>
+<p>If you have four drives you&#8217;re adding the next steps will look like this:</p>
+<pre class="lang:sh decode:true ">pvcreate /dev/sdb1
+pvcreate /dev/sdc1
+pvcreate /dev/sdd1
+pvcreate /dev/sde1
+vgextend pve /dev/sdb1
+vgextend pve /dev/sdc1
+vgextend pve /dev/sdd1
+vgextend pve /dev/sde1
+lvextend pve/data /dev/sdb1
+lvextend pve/data /dev/sdc1
+lvextend pve/data /dev/sdd1
+lvextend pve/data /dev/sde1</pre>
+<p>The last line is adding the drives to the logical volume for our data.  If you wanted to grow the root partition or swap you could try to swap out “pve/data” with “pve/root” or “pve/swap”.</p>
+<p>You can look at the logical volumes with <strong>lvdisplay</strong>, physical volumes with <strong>pvdisplay</strong>, and you can do a quick scan of physical volumes with <strong>pvscan</strong>.</p>
+<h2>Creating Remote System Backup</h2>
+<p>My VM Server has plenty of room for installs but very little room for system backups.  So I looked in to how I may remotely backup each of my VMs and CTs and found a tool called <strong>sshfs</strong>.  So you can use <strong>ssh</strong> for a remote secure file system mount point to mount locally.</p>
+<p>On the ProxMox system you&#8217;ll want to make sure you get these installed:</p>
+<pre class="lang:sh decode:true">apt-get update; apt-get install sshfs fuse autofs</pre>
+<p>It&#8217;s likely your system will only have to install <strong>sshfs</strong>.</p>
+<p>On the “other computer” where you will be backing up your files to you should create an account from which the ProxMox will <strong>ssh</strong> into.</p>
+<pre class="lang:sh decode:true">sudo useradd -D sshfs
+sudo passwd sshfs
+su - sshfs
+ssh-keygen -t rsa</pre>
+<p>This will get you as far as having the <strong>sshfs</strong> user and rsa keys useful for <strong>ssh</strong>&#8216;ing in/out.  Next you should run <strong>cat</strong> on your ProxMox system to get your public key.</p>
+<pre class="lang:sh decode:true ">cat .ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAAXAQABAAABAQDMYwThLs/6tJTBSqw4iWzaO2XO2lmJMXsscmdxUkNTAzQFTW1E7OMR4TNz7kUTdI9rXKLsaVxiaBpK51ES7iMpbAGCjPrJPiyPhOhSTNrKBJXhxVzL7EHaD60AhbyLrNdpIgf/NqNtclogVeQCHoOxKbId8ez9Azgz1gF4/bbP8Y2+GbhCOLWtCkyDZHU7N64B4B8+J3QE688TTiv6zS0JQh1X8SMMlrlBSSLYcsUMjwpcg56qvW/snNdMTrG2AVOJ7ms15nKbcK6Vgu2TKxbjmmF14nvliCQdSyiKwlWRCVSQY9tqPZi0zEjvxZ3DnlOeQ3q/b77q4UZtyiv50A9F root@proxmox</pre>
+<p>Copy the text it spits out that looks like what I have above back to the “other computer” into a file in <strong>~/.ssh/authorized_keys </strong>.  This will allow ProxMox to <strong>ssh</strong> in as the user <strong>sshfs</strong> without needing to enter a password and making mounting a simple thing.</p>
+<p>The last thing you will need to do on the “other computer” is create a directory where the backups will go.  Make sure you do it with the <strong>sshfs</strong> user or at least change the directory&#8217;s ownership to that user.  In my case I created a folder at <strong>/mnt/raid/proxmox_backup</strong> .</p>
+<p>Now on the ProxMox system you will need to do the following.  Add this line to the end of your <strong>/etc/auto.master</strong> file:</p>
+<pre class="lang:sh decode:true">/mnt /etc/auto.sshfs --timeout=30,--ghost
+</pre>
+<p><em>Be sure to leave a blank line after it.</em> Then make a mount point where you&#8217;ll mount the remote directory.</p>
+<pre class="lang:sh decode:true ">mkdir /mnt/backups</pre>
+<p>And add the following line to <strong>/etc/auto.sshfs</strong></p>
+<pre class="lang:sh decode:true">backups -fstype=fuse,rw,nodev,nonempty,noatime,allow_other,max_read=65536,IdentityFile=/root/.ssh/id_rsa :sshfs\#sshfs@192.168.1.10\:/mnt/raid/proxmox_backup
+</pre>
+<p><em>Be sure to leave a blank line after it.</em>  The first piece of the line needs to be the local backup directory.  The last part <strong>:sshfs\#sshfs@192.168.1.10\:/mnt/raid/proxmox_backup</strong> is the sshfs instruction, remote username, the IP address of the “other computer”, and lastly the directory on the “other computer” to mount.  <em>The <strong>IdentityFile</strong> field is mandatory.</em></p>
+<p>Then on your ProxMox system run:</p>
+<pre class="lang:ruby decode:true">/etc/init.d/autofs restart
+ls /mnt/backups
+df -h</pre>
+<p><strong>ls</strong> will query the directory and the system will auto-mount it.  The <strong>df -h</strong> command will show all mounted paths.  The last one should look like:</p>
+<pre class="lang:sh decode:true ">Filesystem                                   Size  Used Avail Use% Mounted on
+sshfs@192.168.1.10:/mnt/raid/proxmox_backup  1.4T  231G  1.2T  17% /mnt/backups</pre>
+<p>Woah!  Do you see that?  We get the size and usage of the remote drive on the system.  That&#8217;s pretty cool.  In my setup the raid folder is a btrfs file system which works great for me.</p>
+<p>Now on the ProxMox web interface you need to go click on <strong>Datacenter</strong> then click on <strong>Storage</strong> then <strong>Add</strong> then <strong>Directory</strong> and give it a name <strong>SystemBackup</strong> and the directory <strong>/mnt/backups</strong> then under the drop down <strong>Content</strong> select <strong>VZDump Backup File</strong>.  And there you have it!  Now you can individually go to each of your VMs/CTs and backup to the “other computer”.  If you&#8217;d like you may schedule backups as well.</p>
+<h2>Hardware</h2>
+<p>Depending on what you want to do may determine your hardware requirements, but this is what I recommend.  Where two core CPUs is an option I would recommend a four core minimum.  The more core the better.  As for speed I started out with a i5-3570k Inetl Processor and the speed was acceptable, but I&#8217;ve overclocked it from 3.4GHz to about 4.3GHz (1.225 Volts) and that runs so much better!</p>
+<p>I started out with 8GB at the system default speed of 1333MHz but found that major OS full desktop VMs like to have about 6GB of RAM so that will limit running multiple OSes.  I&#8217;ve since upgraded to 16GBs of RAM running at their Profile1 setting of 1600MHz (these need to run in normal mode as setting the BIOS to turbo mode the RAM causes system failures for me).  Now I can fully run the majority of major OSes on my system along with multiple Linux server CTs/VMs.  It&#8217;s feels nice having these contained systems and the many options they provide.</p>
+<p>I recommend the first drive be a SSD of around 120GB (40GB becomes the ProxMox main host and acts as your CT/VM image installer storage).  Then you can add as many drives as you want to the pool of varying sizes, whatever large drives you can scrounge up.</p>
+<p>One last tip I&#8217;ll recommend for your system is you&#8217;ll probably want a really fast NiC installed as copying large files between systems will be a frequent thing once you implement a backup system.</p>
+<h2>Summary</h2>
+<p>ProxMox is pretty fantastic with many options for configuring system startup in VMs, system CPU and memory utilization, networking defaults and firewalls, and multiple node spawning/sharing if you have more than one computer running ProxMox.  It&#8217;s been a good experience as my first time trying a VM server.  Although finding out specifics for drive pool addition took some digging online.  It&#8217;s still well worth getting set up.</p>
+<div style="font-size: 8px">Image by <a class="owner-name truncate" title="Go to Michael Kappel's photostream" href="https://www.flickr.com/photos/m-i-k-e/">Michael Kappel</a> via the <a href="https://creativecommons.org/licenses/by-nc/2.0/" rel="license">Creative Commons Attribution-NonCommercial 2.0 Generic License</a></div>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2018/02/04/proxmox-a-vm-server-for-your-home/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Elixir Envy ᐅ Ruby</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Thu, 03 Aug 2017 05:13:30 +0000</pubDate>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[elixir]]></category>
+		<category><![CDATA[envy]]></category>
+		<category><![CDATA[monad]]></category>
+		<category><![CDATA[operator]]></category>
+		<category><![CDATA[pipe]]></category>
+		<category><![CDATA[pipe operator]]></category>
+		<category><![CDATA[proc]]></category>
+		<category><![CDATA[ruby]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1560</guid>
+
+					<description><![CDATA[When a Rubyist learns about Elixir&#8217;s pipe operator and how it behaves similarly to Linux/Unix command line piping he, or she, very likely envies that feature and wishes to have it in Ruby.  How can I say that or how could I know that?  Well it&#8217;s a reasonable deduction when I see others, as well...<p><a href="https://danielpclark.github.io/6ftdan/allyourdev/2017/08/03/elixir-envy-ᐅ-ruby/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p>When a Rubyist learns about Elixir&#8217;s pipe operator and how it behaves similarly to Linux/Unix command line piping he, or she, very likely envies that feature and wishes to have it in Ruby.  How can I say that or how could I know that?  Well it&#8217;s a reasonable deduction when I see others, as well as myself implementing this behavior in Ruby as a gem.</p>
+<p>Surprisingly just one implementation doesn&#8217;t seem to cut it.  Maybe, like myself, an implementation wasn&#8217;t discovered before building the gem.  Or maybe the implementation wasn&#8217;t what was desired.  Who knows.  This post is just a brief mention and overview of those projects.  We&#8217;ll start from the most recent to the oldest Ruby gems of Elixir&#8217;s pipe operator.</p>
+<h3>pipe_envy</h3>
+<p><strong><a href="https://github.com/hopsoft/pipe_envy">pipe_envy</a></strong> by <a href="https://github.com/hopsoft">hopsoft</a> on Github is a monkey patch to redefine the standard pipe operator to behave more like Elixir/Linux.  This can have unwanted side effect on Ruby objects such as Array and Integer as the methods been re-purposed.  Consider this project more of a “for fun” project to play around with.  Here&#8217;s an example usage from the Github repo:</p>
+<pre class="lang:ruby decode:true ">magic = (1..100) \
+  | :to_a \
+  | [:select!, -&gt; (i) { i.even? }] \
+  | [:map, -&gt; (i) { i ** 10 }] \
+  | :sum \
+  | Math.method(:sqrt) \
+  | :to_s \
+  | :chars \
+  | :reverse \
+  | [:[], 3] \
+  | :to_i
+
+# =&gt; 7</pre>
+<p><em>Notice that methods which require arguments are piped as Arrays.</em></p>
+<h3>elixirize</h3>
+<p><a href="https://github.com/danielpclark/elixirize"><strong>elixirize</strong></a> by me <a href="https://github.com/danielpclark">danielpclark</a> on Github is an implementation that was intended to stay true to the spec Elixir had for it&#8217;s pipe operator <strong>|&gt;</strong> but as that&#8217;s not valid Ruby code I took the Unicode character <strong>ᐅ</strong> which closely resembles it as the new pipe operator for Ruby.  The Github README teaches how to type this character across different operating systems and text editors.</p>
+<p>The Elixir documentation clearly states that what&#8217;s on the left of the pipe operator gets passed into the method on the right as its first parameter.  That&#8217;s not complicated to do… to implement it with Procs I wrote it as:</p>
+<pre class="lang:ruby decode:true ">def ᐅ other, *args, &amp;block
+  other.call(self, *args, &amp;block)
+end</pre>
+<p>I chose to use Proc format as that is easier to create and pass around within limited scopes.  When using the gem you can write code in this manner:</p>
+<pre class="lang:ruby decode:true ">def add a, b
+  a + b
+end
+
+subtract = -&gt;a, b{ a - b }
+
+add(4, 5).ᐅ subtract, 15
+# =&gt; -6</pre>
+<p>And if you want to use regular methods as a Proc you can use the <strong>method</strong> method.</p>
+<pre class="lang:ruby decode:true ">def divide a, b
+  a / b
+end
+
+add(40, 60).ᐅ method(:divide), 20
+# =&gt; 5</pre>
+<p>I actually prefer the clarity this provides as it&#8217;s reads a little bit more like English.  You can of course chain the methods with the pipe operator.  I&#8217;ve aliased the tilde (<strong>~</strong>) to <strong>to_proc</strong> on <strong>Symbol</strong> to allow shorthand use of method calls directly on the object to be called from the left side of the pipe operator.</p>
+<pre class="lang:ruby decode:true">s = "a b c d"
+val = s.
+  ᐅ(~:split, " ").
+  ᐅ(~:join, "-").
+  ᐅ ~:capitalize
+
+val
+# =&gt; "A-b-c-d"</pre>
+<h3>piped_ruby</h3>
+<p><a href="https://github.com/tiagopog/piped_ruby"><strong>piped_ruby</strong></a> by <a href="https://github.com/tiagopog">tiagopog</a> on Github has simply implemented a shovel operator on Proc to continue passing the value forward with an <strong>unwrap</strong> method to return the value.</p>
+<pre class="lang:ruby decode:true ">-&gt; { 'Pipe' }
+  .&gt;&gt; { |e| "#{e} things"  }
+  .&gt;&gt; { |e| "#{e} in Ruby!" }
+  .unwrap #=&gt; "Pipe things in Ruby!"</pre>
+<p>I kind of like this in its own respect.  I might feel more inclined to use <strong>do</strong> and <strong>end</strong> rather that curly braces with naming the input for the context.  I think that this can be used in such a way where it is quite readable and easy to understand the flow of the code.</p>
+<h3>chainable_methods</h3>
+<p><a href="https://github.com/akitaonrails/chainable_methods"><strong>chainable_methods</strong></a> by <a href="https://github.com/akitaonrails">akitaonrails</a> on Github was the first well known gem of this kind to publish the Elixir pipe operator but he wasn&#8217;t the first to publish code for the idea.  <strong>piped_ruby</strong> above took its inspiration from this gem and uses the same kind of behavior of wrapping all results in an object and returning a result when <strong>unwrap</strong> is called.  Although where <strong>piped_ruby</strong> uses a <strong>Proc</strong> object <strong>chainable_methods</strong> uses it&#8217;s own object wrapper.</p>
+<p>The implementation is a bit elaborate underneath but it&#8217;s super simple to use.  There is a <strong>CM</strong> method globally available on Object which wraps the first item and method calls work as if it&#8217;s the inner object but returning the wrapped chainable method object until you finally call unwrap.  He&#8217;s also added a <strong>chain</strong> method to insert additional transformations within the method call chain.</p>
+<pre class="lang:ruby decode:true ">include Nokogiri
+CM("hello http:///www.google.com world")
+  .URI.extract.first
+  .URI.parse
+  .chain { |uri| open(uri).read }
+  .HTML.parse
+  .css("h1")
+  .first.text.strip
+  .unwrap</pre>
+<p>This doesn&#8217;t look like or behave like Elixir&#8217;s pipe operator since it clearly lacks the “passing the object from the left as the first parameter on the right” rule and it uses standard method call behavior.  But it does allow continuous method chaining without hand written variable assignments.</p>
+<p>The author has also given a conference presentation on this gem.</p>
+<p><iframe loading="lazy" title="GORUCO 2016 - Pipe Operator for Ruby by Fabio Akita" width="720" height="405" src="https://www.youtube.com/embed/ThB2cpPsb1o?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+<h3>pipeable.rb</h3>
+<p><a href="https://gist.github.com/pcreux/2f87847e5e4aad37db02"><strong>pipeable.rb</strong></a> by <a href="https://gist.github.com/pcreux">pcreux</a> on Github Gist published a working pipeline implementation that is more transformation focused than becoming part of the core of Rubys operators.  It works by letting you define your transformations as Procs from which you can put in any point in a method pipe chain.  Here are some example transformations (excerpts from the gist).</p>
+<pre class="lang:ruby decode:true ">Reverse = -&gt;(string) { string.reverse }
+Leet    = -&gt;(string) { string.gsub(/[aeiost]/,'a'=&gt;'4','e'=&gt;'3','i'=&gt;'1','o'=&gt;'0','s'=&gt;'5','t'=&gt;'7') }
+Mooify  = -&gt;(string) { "Cow said: " + string }
+Say     = -&gt;(string) { system %|say "#{string}"|; string }
+
+TweetTo = Struct.new(:recipient) do
+  def call(input)
+    puts %|Tweeting "#{input}" to #{@recipient}!|
+    input
+  end
+end</pre>
+<p>And a few ways to use them.</p>
+<pre class="lang:ruby decode:true "># We make the first element pipable and we can then just pipe through!
+result = pipable("moo") | Reverse | Leet | Mooify | :downcase | TweetTo.new('@pcreux') | { delete: 'o' }
+puts result
+# =&gt; cw said: 00m
+
+# Pipe without defining any `|` method
+puts pipe("moo", Mooify, :upcase)
+# =&gt; COW SAID: MOO
+
+# Multi-Multiplexing... let me tell you...
+p Pipeline.new(Mooify, [:downcase, :upcase], Reverse, [:reverse, Leet]).call("moo")
+# =&gt; [["cow said: moo", "00m :d145 w0c"], ["COW SAID: MOO", "OOM :DIAS WOC"]]</pre>
+<h3>Blog: Elixir Pipes in Ruby</h3>
+<p>The <a href="http://blog.molawson.com/elixir-pipes-in-ruby/">Elixir Pipes in Ruby</a> blog by <a href="http://blog.molawson.com/">Mo Lawson</a> describes implementing Elixir&#8217;s pipe operator in Ruby in a similar way to what chainable_methods ended up implementing it — namely to wrap it in an object.</p>
+<h3>Monads</h3>
+<p>Whether your going for more aesthetic code or an implementation design, your choice of how you to go about getting this behavior may vary from others.  Before we were envious of Elixir we still had design patterns which allow us to implement the same kind of behavior.  The chief pattern in my mind that fits the bill of passing the value from the left as the first parameter on the right is monads which keeps a common protocol on how methods get called (much like Proc).</p>
+<p>When I first watched a presentation of what monads are it seemed very complex because the examples are a bit elaborate.  It takes time and hands on experience to get comfortable with them as well as being a bit more seasoned as a developer.  But you don&#8217;t need to take my word on that.  Here&#8217;s the conference talk which first introduced me to monads by Tom Stuart.  It really is a well made and given presentation.</p>
+<p><iframe loading="lazy" title="Tom Stuart - Refactoring Ruby with Monads" width="720" height="405" src="https://www.youtube.com/embed/J1jYlPtkrqQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+<h3>Summary</h3>
+<p>Piping is a common thing many of us do on the command line day to day so it&#8217;s nice to be able to work with what&#8217;s familiar to us in the same way we expect it to behave.  For this reason pipes are a very desirable thing to have in a language.  But they don&#8217;t make a language better, it&#8217;s simply a tool which developers would enjoy having as an option.</p>
+<p>Perhaps the best Ruby implementation is yet to come?  Or maybe one of these will suit you better than any other.  What it should come down to is what benefit it provides you in helping your code have more clarity, more modularity, or easier to work with code base.  Choose the values you wish to prioritize and write great code.</p>
+<p>I hope you enjoyed this blog post! I look forward to your feedback. Remeber to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank" rel="noopener noreferrer">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank" rel="noopener noreferrer">@6ftdan</a> .</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px">Image by <a class="owner-name truncate" title="Go to Phoebe's photostream" href="https://www.flickr.com/photos/85597613@N08/">Phoebe</a> via the <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Generic License</a> </span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2017/08/03/elixir-envy-%e1%90%85-ruby/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Leveling up with Git</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/05/25/leveling-up-with-git/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2017/05/25/leveling-up-with-git/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Fri, 26 May 2017 02:58:10 +0000</pubDate>
+				<category><![CDATA[howto]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[bitbucket]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[fork]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[github]]></category>
+		<category><![CDATA[gitlab]]></category>
+		<category><![CDATA[PR]]></category>
+		<category><![CDATA[pull request]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1532</guid>
+
+					<description><![CDATA[This past weekend I got to spend 4 days at the Ruby for Good event.  This is an event where programmers get together and volunteer their efforts in charitable programming for many needs in our communities.  The team I joined up with consisted of 10 developers and most of the team grouped together in about...<p><a href="https://danielpclark.github.io/6ftdan/allyourdev/2017/05/25/leveling-up-with-git/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p>This past weekend I got to spend 4 days at the <a href="http://rubyforgood.com">Ruby for Good</a> event.  This is an event where programmers get together and volunteer their efforts in charitable programming for many needs in our communities.  The team I joined up with consisted of 10 developers and most of the team grouped together in about 2 persons per domain to be implemented.  Each <em>pull request</em> on Github needed to be reviewed before being merged in and this process has lead to me leveling up my <span class="lang:sh decode:true crayon-inline">git</span>  skills.</p>
+<p><em>I&#8217;ll be using greater than and less than symbols as wrapper around text you would substitute with your own naming — eg: <span class="lang:sh decode:true crayon-inline">&lt;some_name_here&gt;</span></em></p>
+<h3>git Basics</h3>
+<p>For a quick review I&#8217;ll go over some basics with using git.  When using a site such as Github they&#8217;ll typically display the first few steps to get your project set up and linked with them.  These are most of the thing&#8217;s you&#8217;ll be doing after that.</p>
+<ul>
+<li><strong>git add .</strong>  — add all the changes made in the current directory with subdirectories <em>(anything listed in the <span class="lang:sh decode:true crayon-inline ">.gitignore</span>  file will be ignored)</em></li>
+<li><strong>git add &lt;specific/file/to.add&gt;</strong> — add just one file to be committed <em>(can be done multiple times for multiple files)</em></li>
+<li><strong>git commit -m &lt;quoted_description&gt;</strong> — create a git commit which can be submitted to your public or private code repository with a quick message</li>
+<li><strong>git commit</strong> — create a git commit which can be submitted to your public or private code repository and open your default command line text editor to fill out a potentially long description and the changes made</li>
+<li><strong>git push &lt;remote_source&gt; &lt;branch_name&gt;</strong> — push the code up to the remote repository into the branch name given</li>
+<li><strong>git pull &lt;remote_source&gt; &lt;branch_name&gt;</strong> — fetches and merges remote&#8217;s branch locally</li>
+<li><strong>git fetch &lt;remote_source&gt;</strong> — make the remote code available locally without merging in the code</li>
+<li><strong>git merge &lt;remote_source&gt;/&lt;branch_name&gt;</strong> — merge the fetched branch in locally</li>
+<li><strong>git branch</strong> — list branches on current machine</li>
+<li><strong>git checkout &lt;branch_name&gt;</strong> — switch the code over to what&#8217;s in chosen branch</li>
+<li><strong>git checkout -b &lt;branch_name&gt;</strong> — checkout branch if it exists, otherwise create it and switch to it</li>
+<li><strong>git branch -D &lt;branch_name&gt;</strong> — delete a branch locally</li>
+<li><strong>git push &lt;remote_source&gt; :&lt;deleted_branch_name&gt;</strong> — delete the branch on the remote repository</li>
+</ul>
+<p>These are all the commands I would use for my own personal repository.  When you are the only one committing to a repository you won&#8217;t need to do much else.</p>
+<h3>Working with a Team</h3>
+<p>When working with a team and having some one review your code there are some additional steps to take with how you manage your code submissions.  I&#8217;ll do my best to illustrate how this works.</p>
+<p>The code you&#8217;ll be working with should be in 3 locations.  The main project repository will be know as the upstream repository.  You will then need to fork it which will create a copy of the code under your account on Github.  Once you have that you can clone it to your personal computer to work on.  Once you&#8217;ve cloned the fork to you personal computer this is when you add the upstream to you&#8217;re git&#8217;s config by typing:</p>
+<pre class="lang:sh decode:true">git remote add upstream https://github.com/&lt;ORIGINAL_OWNER&gt;/&lt;ORIGINAL_REPOSITORY&gt;.git</pre>
+<p>Or if you use ssh keys instead of passwords for Github then you&#8217;d type:</p>
+<pre class="lang:sh decode:true">git remote add upstream git@github.com:&lt;ORIGINAL_OWNER&gt;/&lt;ORIGINAL_REPOSITORY&gt;.git</pre>
+<p>Now you have two repositories you can pull from locally; origin (your fork), and upstream (the original repository).</p>
+<p>If the original repository (upstream) has been updated since you created your fork then you will want to update your fork as well.  To do that you would take these steps.</p>
+<pre class="lang:sh decode:true">git checkout master
+git fetch upstream
+git merge upstream/master
+git push origin/master</pre>
+<p>Let&#8217;s say you&#8217;ve already started work on a feature branch before doing this.  This would mean that your feature is not caught up with the code in the master branch.  After doing the above you will need to update the changes from the master branch to your feature branch by typing:</p>
+<pre class="lang:sh decode:true">git checkout &lt;feature_branch&gt;
+git merge origin/master</pre>
+<p>During both of the times you run the <span class="lang:sh decode:true crayon-inline ">git merge</span>  command a CLI text editor will open up for a new commit message.  Using the default “merge from master” is okay.  If there are any problems merging the code in you will see a list of which files have code conflicts.  You will need to manually edit these to remedy a fix.  The merge will likely have pasted two blocks in the part of the code where there is a conflict with the previous version of the code and the update.  Simply remove the one that doesn&#8217;t belong.</p>
+<p>Once your feature branch is ready to be published and for you to request a <em>pull request</em> you can type:</p>
+<pre class="lang:sh decode:true ">git push origin &lt;feature_branch&gt;</pre>
+<p>Then visit the original repository on Github in your browser and you will see a highlighted line near the top of the page of your fork/branch name with a button to create a “New Pull Request”.  Go ahead and submit that there and enter in the comment section <span class="lang:sh decode:true crayon-inline">Fixes #34</span>  if your PR will fix or complete the issue from Github&#8217;s tracker numbered 34.  This will automatically close that issue once the Github PR is accepted.</p>
+<h3>Added Complexity</h3>
+<p>Some times your PR can&#8217;t be reviewed and accepted within a reasonable time frame.  Also you may need to continue work and need to work on top of your previous work.  And if the project is active enough where the master branch is changed while you&#8217;re coding you will begin to dance between branches a lot to merge changes into your feature branches.</p>
+<p>To start work on an additional branch on top of your previous branch you need to simply checkout the new branch while being in the previous one.  This will create you new feature branch with code based on whatever branch environment you did the checkout from.</p>
+<pre class="lang:sh decode:true ">git checkout &lt;feature_branch&gt;
+git checkout -b &lt;second_feature_branch&gt;</pre>
+<p>Now you can write all your new code for the second feature and submit it for a PR as well.  This second PR will show all of the git history from the previous PR so your pull request will look a bit more cluttered and have somewhat unrelated details in it.  But there&#8217; not much you can do about that.  It is what it is.</p>
+<p>Now when the team makes changes to the upstream master branch you have upwards of double the work of merging in updates.  Updating them will look like.</p>
+<pre class="lang:sh decode:true ">git checkout master
+git fetch upstream
+git merge upstream/master
+git push origin/master
+git checkout &lt;feature_branch&gt;
+git merge origin/master
+git push origin &lt;feature_branch&gt;
+git checkout &lt;second_feature_branch&gt;
+git merge origin/&lt;feature_branch&gt;
+git push origin/&lt;second_feature_branch&gt;</pre>
+<p>Each merge along the way you&#8217;ll need to very and fix any conflicts.  The commit messages for the second feature branch will have the commit merges from both the previous branches in it as well as its owns.  So it looks pretty bad.  But this can be considered somewhat necessary in most cases as the history of git commits is important to many people.</p>
+<h3>History Cleanup (generally taboo)</h3>
+<p>If your commit messages don&#8217;t have any useful information in it then that is a practice you need to learn.  Let&#8217;s assume that the git history isn&#8217;t important in these two feature branches (generally not a good assumption).  So in this case we&#8217;re going to go ahead and clean up our git history.</p>
+<p>Now there is a git feature called <span class="lang:sh decode:true crayon-inline ">rebase</span>  which is kinda nice for cleaning up multiple commits in one branch into a more legible git history.  But you can&#8217;t do this on any branches that have already merged the other branches commits in already… for example you may <span class="lang:sh decode:true crayon-inline ">git rebase -i HEAD~2</span> on <span class="lang:sh decode:true crayon-inline ">&lt;second_feature_branch&gt;</span>  to merge two commits into one (if you choose to), but you can&#8217;t do it in <span class="lang:sh decode:true crayon-inline ">&lt;feature_branch&gt;</span>  when <span class="lang:sh decode:true crayon-inline ">&lt;second_feature_branch&gt;</span>  already has that specific commit update merged into it.  To do something like that you&#8217;ll need to do something more elaborate.</p>
+<p>A way you can create two clean histories is to use <span class="lang:sh decode:true crayon-inline ">git diff</span>  to take the differences between two branches and export that to a patch file.  You can then take that patch file and apply it to a brand new clean branch.  This is what that would look like.</p>
+<pre class="lang:sh decode:true ">git diff origin/&lt;feature_branch&gt; origin/&lt;second_feature_branch&gt; &gt; ../second_feature_branch.patch
+git diff origin/master origin/&lt;feature_branch&gt; &gt; ../feature_branch.patch
+git checkout master
+git checkout -b clean_feature
+git apply ../feature_branch.patch
+git checkout -b second_clean_feature
+git apply ../second_feature_branch.patch</pre>
+<p>Now you have some identical branches of code.  The clean branches don&#8217;t have any of the previous commit history whereas the original feature branches still do.  There are some times where this may be a good idea, but generally we keep a history of the commits to code for reference to have extra insight into what&#8217;s going on and why.  <em>Note: patches work with text only files and not binary files.</em></p>
+<p>The above patch solution is what I do whenever I get an unfixable conflict where git stops cooperating anymore with merges.  So it&#8217;s a good one to have in your back pocket.</p>
+<p>Sometimes during a fix you just need to pull one file from one branch to another.  This is very simple to do.  I&#8217;ll demonstrate a branch to branch file update on the local machine.</p>
+<pre class="lang:sh decode:true ">git checkout &lt;some_branch&gt;
+git checkout &lt;some_other_branch&gt; &lt;path/to/file/on/other/branch&gt;</pre>
+<p>You will have now copied the file from the <span class="lang:sh decode:true crayon-inline ">&lt;some_other_branch&gt;</span>  into <span class="lang:sh decode:true crayon-inline ">&lt;some_branch&gt;</span>  and viola!</p>
+<h3>TDD and git commits</h3>
+<p>To make your git commit history valuable it&#8217;s probably best to add committing as the last step in the Red, Green, Refactor practice.  That way each small increment is documented in the code history along with any thoughts you had on why you implemented it that way.</p>
+<p>The steps would go</p>
+<ul>
+<li><em>red</em> — you write a test and run it to get a failing result</li>
+<li><em>green</em> — you write the code that makes it pass</li>
+<li><em>refactor</em> — you both consider and re-implement the code to be more manageable and easy to work with in the future without changing the codes behavior</li>
+<li><em>commit</em> — you document the what and why</li>
+</ul>
+<p>With a git commit history like this you will likely get a level of admiration and respect from your team as you have shown yourself to be thoughtful by leaving evidence of a well thought out process.  This is not super common in the developer community, yet this is the ideal we should strive to achieve.</p>
+<h3>Summary</h3>
+<p><em>git</em> is a very powerful code management system and has many features that are to be discovered and taken advantage of as you go along.  I quite enjoy using it and even when situations get difficult and it pushes me to learn how to use it better.  I hope you will see it in the same light when you come into difficult situations.  It is at these times that we learn and are all made better for it.</p>
+<p>I hope you enjoyed this blog post.  Feel free to share any git tips and tricks you have.  I look forward to your feedback and input.  Remeber to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank" rel="noopener noreferrer">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank" rel="noopener noreferrer">@6ftdan</a></p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Zach Stern's photostream" href="https://www.flickr.com/photos/zachstern/">Zach Stern</a> via the <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivs 2.0 Generic License</a></span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2017/05/25/leveling-up-with-git/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Don&#8217;t Use Objects as Hash Keys in Ruby*</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Sat, 13 May 2017 19:52:24 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[Ruby]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[hash]]></category>
+		<category><![CDATA[method]]></category>
+		<category><![CDATA[object]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[ruby]]></category>
+		<category><![CDATA[string]]></category>
+		<category><![CDATA[symbol]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1518</guid>
+
+					<description><![CDATA[Hashes have been optimized for symbols and strings in Ruby which technically are objects but this article is for revealing how much of a difference this makes when using other objects as hash keys.  There are some cases where this makes a big difference but many times you won&#8217;t notice much of a difference. I...<p><a href="https://danielpclark.github.io/6ftdan/allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p><em>Hashes have been optimized for symbols and strings in Ruby which technically are objects but this article is for revealing how much of a difference this makes when using other objects as hash keys.  There are some cases where this makes a big difference but many times you won&#8217;t notice much of a difference.</em></p>
+<p>I wrote a little experiment to see how different kinds of keys would perform for a hash.  It&#8217;s been very common for me to use the <strong>self</strong> reference as a key in a hash and now I know that&#8217;s not good for performance.  Here&#8217;s the code.</p>
+<pre class="lang:ruby decode:true">A = Object.new
+
+def a
+  :result
+end
+
+def value_of
+  [1]
+end
+
+hash_of = {
+  a: [1],
+  "a" =&gt; [1],
+  result: [1],
+  A =&gt; [1]
+}
+
+require "benchmark/ips"
+Benchmark.ips do |x|
+  x.report("Method Call") do
+    value_of()
+  end
+
+  x.report("Hash w/ Symbol key") do
+    hash_of[:a]
+  end
+
+  x.report("Hash w/ String key") do
+    hash_of["a"]
+  end
+
+  x.report("Hash w/ Method key") do
+    hash_of[a]
+  end
+
+  x.report("Hash w/ Constant key") do
+    hash_of[A]
+  end
+
+  x.compare!
+end</pre>
+<p>The first part of the code is setting up objects and methods to act as keys for the hash, then there&#8217;s the hash, and finally the benchmark.  Here are the results.</p>
+<pre class="lang:diff decode:true ">Warming up --------------------------------------
+         Method Call   144.797k i/100ms
+  Hash w/ Symbol key   164.880k i/100ms
+  Hash w/ String key   156.820k i/100ms
+  Hash w/ Method key   141.293k i/100ms
+Hash w/ Constant key    92.234k i/100ms
+Calculating -------------------------------------
+         Method Call      5.511M (± 2.7%) i/s -     27.656M in   5.021800s
+  Hash w/ Symbol key      7.581M (± 2.7%) i/s -     37.922M in   5.006266s
+  Hash w/ String key      6.620M (± 2.9%) i/s -     33.089M in   5.002952s
+  Hash w/ Method key      4.542M (± 5.0%) i/s -     22.748M in   5.022166s
+Hash w/ Constant key      1.837M (± 1.0%) i/s -      9.223M in   5.022241s
+
+Comparison:
+  Hash w/ Symbol key:  7580536.5 i/s
+  Hash w/ String key:  6619759.4 i/s - 1.15x  slower
+         Method Call:  5511494.2 i/s - 1.38x  slower
+  Hash w/ Method key:  4541697.4 i/s - 1.67x  slower
+Hash w/ Constant key:  1836695.9 i/s - 4.13x  slower</pre>
+<p>So any time you index a hash with an object as a key you are having your code look up the result 313% slower than it would with a Symbol type object.</p>
+<h3>Summary</h3>
+<p>I had always heard that symbols were that faster than strings in hash lookups, but I wasn&#8217;t aware that <span style="text-decoration: line-through">hashes were faster than method calls</span> <i>(see comment section below)</i> or how slow objects were for keys.  It&#8217;s okay to use objects as hash keys if you really want to.  Just know that you pay a small price for doing so.</p>
+<p><em>Where you really need to be more concerned with this is when you implement some code that will be used a lot in your code base.  So when you implement something like a raw type which may be called thousands of times in one run this is where that difference really matters.  Generally you don&#8217;t have to worry about this performance loss as Ruby itself is fast and in most cases the code written doesn&#8217;t get called that much.</em></p>
+<p><em>One example of where it would make a big difference is the Pathname class in Ruby&#8217;s standard library.  In older versions of Rails this was called many thousands of times per request because of the asset pipeline.  I wrote the gem FasterPath to implement this heavily used code in Rust just to improve performance.  The more times the code is called in a small time frame, the more you should keep performance in mind.</em></p>
+<p>Hopefully you found this information useful!  I know this is a short post.  Let me know if you like posts like this and I&#8217;ll write more.  Please feel free to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank" rel="noopener noreferrer">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank" rel="noopener noreferrer">@6ftdan</a></p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px">Image by Levan Gokadze via the <a href="https://creativecommons.org/licenses/by-sa/2.0/" rel="license">Creative Commons Attribution-ShareAlike 2.0 Generic License</a></span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2017/05/13/dont-use-objects-as-hash-keys-in-ruby/feed/</wfw:commentRss>
+			<slash:comments>8</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>“Naming Things is Hard”</title>
+		<link>https://danielpclark.github.io/6ftdan/danielpclark/2017/04/14/naming-things-is-hard/</link>
+					<comments>https://danielpclark.github.io/6ftdan/danielpclark/2017/04/14/naming-things-is-hard/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Fri, 14 Apr 2017 19:09:19 +0000</pubDate>
+				<category><![CDATA[informational]]></category>
+		<category><![CDATA[life]]></category>
+		<category><![CDATA[category]]></category>
+		<category><![CDATA[context]]></category>
+		<category><![CDATA[domain]]></category>
+		<category><![CDATA[meaning]]></category>
+		<category><![CDATA[naming]]></category>
+		<category><![CDATA[naming things]]></category>
+		<category><![CDATA[understanding]]></category>
+		<category><![CDATA[words]]></category>
+		<category><![CDATA[worldview]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1505</guid>
+
+					<description><![CDATA[I&#8217;ve lost count of the times I&#8217;ve heard that “Naming things is hard.”  This is said very often in the world of software development.  So I wanted to take the time to address it. First of all this statement “Naming things is hard.” is a misnomer (a wrong or inaccurate name or designation, or use of a name...<p><a href="https://danielpclark.github.io/6ftdan/danielpclark/2017/04/14/naming-things-is-hard/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p>I&#8217;ve lost count of the times I&#8217;ve heard that “Naming things is hard.”  This is said very often in the world of software development.  So I wanted to take the time to address it.</p>
+<p>First of all this statement “Naming things is hard.” is a misnomer <em>(a wrong or inaccurate name or designation, or use of a name or term)</em> which makes it ironic.</p>
+<p>Those who say this phrase aren&#8217;t being literal about it but have a meaning other than what is stated here.  What is more likely intended to be said is that coming up with a name that has meaning for this situation or purpose takes a lot of consideration.  It is meant to express the perceived difficulty of the one saying it when they put a lot of thought into producing a meaningful name.</p>
+<p>If we think about the phrase on it&#8217;s own in a literal sense then we can identify that it&#8217;s simply not true.  The act of naming something is simple, I can call a rock a paper weight and have given it a name.  I can likewise throw together some random sounds and call it by that.  The difficulty is not in the name, but in providing and conveying meaning.</p>
+<p>This comes from a broader truth about communication being difficult, or if we&#8217;re to use the misnomer &#8220;Communication is hard&#8221;.  When we communicate with others we work with the vocabulary that is common between us.  If we fail to do this one thing the communication breaks down and proper meaning isn&#8217;t conveyed.  This is true with any form of knowledge which is to be communicated.</p>
+<p>Words can have different meanings in different contexts and anyone on the receiving end of the communication needs to have an understanding, or it be reasonably within their grasp of understanding, the same meaning and context of the one communicating.  It&#8217;s a worldview — the lens by which a person sees and perceives all things; and a person is capable of grasping multiple worldviews.  A persons own worldview tends to determine the meaning and the weight-of-that-meaning in all they hear and see.  When worldviews differ it takes a higher level of maturity to truly seek to understand the worldview of others communicating with you to see things as they see it.</p>
+<p>Lets bring our focus back in a bit away from the broader picture.  The word <strong>anxious</strong> has two polar opposite emotions it can entail within the same context.  So when I&#8217;d spoken to being anxious, and I&#8217;ve always said it as a very good thing, it surprised me to see in others a show of concern with the use of that word. <em> “What we have here is a failure to communicate.”</em>  When even the same words we use to communicate with have very different meanings then meaningful communication becomes difficult indeed.</p>
+<p>So how can we get better at communicating meaning and intent when naming things?  The simple answer is to read more.  Glean from lots of other books, blogs, or the like to absorb knowledge of contexts and the scope of smaller to greater meanings.  Writers become good writers after much reading <em>(and admittedly much practice)</em>.  Beyond reading you should endeavor to communicate with more people with a focus on where they&#8217;re coming from (seeing things from their point of view).  And if something&#8217;s not clear; ask questions.</p>
+<p>In any area of research things have been named and classified into categories, domains, classifications, etc.  In programming one of the first things you learn is syntax.  It&#8217;s how you make sense of the small parts of code written together.  As you mature as a developer you learn of patterns which entail larger pieces of code and how it may work together.  Patterns are specific disciplines in code design that are applicable in many other instances.  When a pattern is given a name and that name is shared amongst a community you have successfully conveyed meaning and the idea of it is more easily communicated simply by its name.  When a name invokes the fully formed idea in a persons mind it carries the most meaning.</p>
+<h3 style="text-align: right;">Ideas are powerful!</h3>
+<p>When you learn and come to understand a new “concept” you become able to recognize it in places where you may have not realized such a thing was before.  Playing in the game of chess there are many moves that can be made.  Think of this as the basics.  Then there are specific situations given a name as to convey the situation or a strategy.  Kind of like a pattern.</p>
+<p>In chess when you line up a Bishop so that it threatens two pieces, one of them being a King, you could be in one of three possible patterns.  Your Bishop could be <strong>forking</strong> the two pieces (a direct threat in two different directions), you could be <strong>pinning</strong> a piece (threatening a piece with the King directly behind it), or you could be using a <strong>skewer</strong> (the King is in check and once he moves out of the way you can take the piece behind him).  Just knowing these names and the meaning they convey in a chess game will help you be a better chess player.   Since now your mind has a frame of reference for opportunities to look for and to take advantage of.  I&#8217;ve played chess for many years without ever knowing about the term <strong>skewer</strong>, and once I learned about it my mind was able to better strategize about how I may create such a situation.</p>
+<p>If you haven&#8217;t previously been exposed to an idea then it&#8217;s more likely to “go over your head”.  Two Mormons visited me not that long ago and at one point the older of them subtly suggested that they were late for their next meeting.  The younger one furrowed his brows and said “I don&#8217;t think so” then checked his schedule and said “Nope, we&#8217;re free the rest of the day.”  To which the more experienced one answered “What do I know, I&#8217;m the amateur here.”  I caught the hint but the younger lad did not.  It&#8217;s likely he&#8217;s not privy to that lingo yet.</p>
+<p>Life is a long adventure with endless amounts of things we can learn about and be all the better for it.  You can&#8217;t knowingly apply something to your life if you have no idea about it.  To become better at naming with meaning you need to better understand the language you use, both the spoken language and the programming language (or whatever subject domain you wish to give names in).</p>
+<p>When naming things — keeping things simple at first is my recommended approach.  You only know what you know so how might you explain it to a young child?  That should be a better approach if you haven&#8217;t yet attained a higher understanding in the domain of language.  Sometimes it&#8217;s helpful to just give a non-meaningful name for now and as you build your application around it and use it it may start to hold a meaning you can give a name to.  At that point you can refactor the name.</p>
+<p>I&#8217;ve always wanted to name something “flibbertigibbet”.  This may perhaps be a delightful name for a logger object.  The next random thing that comes to my mind is &#8220;Green Eggs and Ham&#8221;.  Imagine if Dr. Seuss was naming your methods… what might your program look like?  Have fun with it if it&#8217;s your own work.  Maybe tone it down a bit if you&#8217;re working with others ?.</p>
+<h2>Summary</h2>
+<p>In summary I believe naming things is easy.  Conveying meaning may take a little more thought, but this is a learned skill by practice.  So make this a topic of conversation and discuss specific naming scenarios.  Try talking to your rubber ducky if you&#8217;d like.  You&#8217;ll be practicing conveying meaning in the process and you&#8217;ll be the better for it.</p>
+<p>Read a bunch!  I mean it.  The more you expand your vocabulary the more you&#8217;ll gain understanding in conveying meaning.</p>
+<p>Learn foreign languages.  When you learn foreign languages it&#8217;s similar to upgrading from studying syntax to identifying patterns.  Admittedly this is a much longer path to improve yourself.  But you may end up inventing a language and become the next J. R. R. Tolkien.</p>
+<p>Anyways I hope you found this enjoyable!  Please feel free to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a></p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px;">Image by <a class="owner-name truncate" title="Go to Jack Dorsey's photostream" href="https://www.flickr.com/photos/jackdorsey/" data-track="attributionNameClick" data-rapid_p="35">Jack Dorsey</a> via the <a href="https://creativecommons.org/licenses/by/2.0/" rel="license">Creative Commons Attribution 2.0 Generic License</a></span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/danielpclark/2017/04/14/naming-things-is-hard/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Installing the Adafruit 2.8&#8243; TFT Display on the Raspberry Pi</title>
+		<link>https://danielpclark.github.io/6ftdan/allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/</link>
+					<comments>https://danielpclark.github.io/6ftdan/allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/</comments>
+		
+		<dc:creator><![CDATA[Daniel P. Clark]]></dc:creator>
+		<pubDate>Sun, 12 Mar 2017 18:32:39 +0000</pubDate>
+				<category><![CDATA[howto]]></category>
+		<category><![CDATA[informational]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[technical]]></category>
+		<category><![CDATA[technology]]></category>
+		<category><![CDATA[display]]></category>
+		<category><![CDATA[HD]]></category>
+		<category><![CDATA[how-to]]></category>
+		<category><![CDATA[Raspberry Pi]]></category>
+		<category><![CDATA[RPI]]></category>
+		<category><![CDATA[TFT]]></category>
+		<category><![CDATA[video]]></category>
+		<guid isPermaLink="false">https://6ftdan.com/?p=1489</guid>
+
+					<description><![CDATA[One thing I&#8217;ve learned over and over from working on the Raspberry Pi is that it&#8217;s most likely going to take a chunk of time to get things set up just the way you want.  And this display is no different. I&#8217;ve written in the past about How to Play HD Video on a Raspberry...<p><a href="https://danielpclark.github.io/6ftdan/allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/">Continue Reading &#187;</a></p>]]></description>
+										<content:encoded><![CDATA[<p>One thing I&#8217;ve learned over and over from working on the Raspberry Pi is that it&#8217;s most likely going to take a chunk of time to get things set up just the way you want.  And this <a href="https://www.adafruit.com/product/1601">display</a> is no different.</p>
+<p>I&#8217;ve written in the past about <a href="https://danielpclark.github.io/6ftdan/allyourdev/2015/07/25/play-hd-youtube-from-the-raspberry-pi-command-line/">How to Play HD Video on a Raspberry Pi</a> <del>&#8212;</del> so this is a continuation from a Raspbian Linux distribution image already in that state.  I was feeling lazy and didn&#8217;t want to write this post, but if I ever have to do this again I don&#8217;t want to have to google so many steps again.  So hopefully you&#8217;ll find this useful as well.</p>
+<p>First of all, it&#8217;s not plug and play&#8230; No, you need to update the Linux kernel, modify boot configurations, change terminal font sizes, and deal with other issues that come up along the way like the mirrors for the packages you need to install <strong>not working</strong>.  Yes, it&#8217;s a mess.</p>
+<h3>Starting Out</h3>
+<p>First I tried the instructions from here: <a href="https://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi/software-installation">Adafruit: Detailed Installation</a> before realizing the available <a href="https://cdn-learn.adafruit.com/downloads/pdf/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi.pdf">manual</a> has an auto-configure option.  But I couldn&#8217;t get these working at first because the Debian package mirrors wouldn&#8217;t work so I had to modify my apt sources list to use some working mirrors. The download of the <strong>adafruit-pitft-helper</strong> package was still unavailable to me via apt but you can get it from <a href="https://github.com/adafruit/Adafruit-PiTFT-Helper/blob/master/adafruit-pitft-helper">Github</a>.</p>
+<h3>The Details</h3>
+<p>You can have the screen plugged in if you want but you won&#8217;t see anything on it for some time so use an external screen for now.</p>
+<p>First Adafruit has a script for downloading and installing the kernel.  This also adds them to your apt sources list.</p>
+<pre class="lang:sh decode:true">curl -SLs https://apt.adafruit.com/add-pin | sudo bash</pre>
+<p>Next you need to install the boot loader and install helper:</p>
+<pre class="lang:sh decode:true">sudo apt-get install raspberrypi-bootloader adafruit-pitft-helper</pre>
+<p>If the helper script doesn&#8217;t get retrieved then you&#8217;ll need to grab it from Github:</p>
+<pre class="lang:sh decode:true">curl -SLs https://raw.githubusercontent.com/adafruit/Adafruit-PiTFT-Helper/master/adafruit-pitft-helper &gt; adafruit-pitft-helper.sh
+bash adafruit-pitft-helper.sh</pre>
+<p>You need to run this script <strong>adafruit-pitft-helper</strong> specifically to enable the console on your display.  The manual instructions on their website do not tell you how to do this, only for enabling the display for the graphical interface X11.  This script does the heavy lifting.</p>
+<p><strong>BEFORE REBOOTING</strong> you need to set your console font with:</p>
+<pre class="lang:sh decode:true">sudo dpkg-reconfigure console-setup</pre>
+<p>Then choose:</p>
+<ul>
+<li>UTF8</li>
+<li>Guess optimal character set</li>
+<li>&lt;OK&gt;</li>
+<li>VGA</li>
+<li>8&#215;8</li>
+</ul>
+<p>If you accidentally rebooted and the fonts are too big to run the ncurses menu system then you can temporarily set your console font with:</p>
+<pre class="lang:sh decode:true">setfont /usr/share/consolefonts/Uni1-VGA8.psf.gz</pre>
+<p>At this point the terminal is all set for your display.  Following this I will show you how to enable high definition video playback on your TFT display from the command line.  I won&#8217;t go into setting up the touchscreen for the X11 desktop, you can refer to the <a href="https://cdn-learn.adafruit.com/downloads/pdf/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi.pdf">manual</a> for that.  <em>Personally I don&#8217;t think the Raspberry Pi makes a good desktop system as it&#8217;s slow, I much prefer the console.</em></p>
+<h3>Playing High Def Video</h3>
+<p><div id="attachment_1498" style="width: 310px" class="wp-caption alignright"><a href="https://danielpclark.github.io/6ftdan/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN.jpg"><img aria-describedby="caption-attachment-1498" decoding="async" loading="lazy" class="wp-image-1498 size-medium" src="https://danielpclark.github.io/6ftdan/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN-300x225.jpg" alt="https://www.youtube.com/watch?v=0vrdgDdPApQ" width="300" height="225" srcset="https://danielpclark.github.io/6ftdan/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN-300x225.jpg 300w, https://6ftdan.com/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN-768x576.jpg 768w, https://6ftdan.com/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN-1024x768.jpg 1024w, https://6ftdan.com/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN-800x600.jpg 800w, https://danielpclark.github.io/6ftdan/wp-content/uploads/2017/03/C6vUGRbXAAEgPEN.jpg 2048w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-1498" class="wp-caption-text"><a href="https://www.youtube.com/watch?v=0vrdgDdPApQ">4K UHD Beautiful Footage Demo</a></p></div></p>
+<p>If you try the omxplayer from the previous blog post you&#8217;ll find the video doesn&#8217;t show up on the display.  The reason is that it&#8217;s rendering on frame buffer 0 when the TFT is using frame buffer 1.  To get around this you need to use frame buffer copying with the <a href="https://github.com/notro/fbtft">fbcp</a> program.  The instructions they provide are close but don&#8217;t follow the second modprobe command (as it messed up my display).</p>
+<p>Before I get to the modified instructions on installing fbcp I had to change my apt sources list as I couldn&#8217;t install <strong>cmake</strong> because the mirror wouldn&#8217;t respond.</p>
+<p>So I commented out the raspbian mirror in <strong>/etc/apt/sources.list</strong> and added the following:</p>
+<pre class="lang:sh decode:true">deb http://rpi.rutgers.edu/raspbian/raspbian/ wheezy main contrib non-free rpi
+deb http://rpi.rutgers.edu/raspberrypi.collabora.com wheezy rpi
+deb http://rpi.rutgers.edu/archive.raspberrypi.org/debian/ wheezy main</pre>
+<p>And for the SSH keys</p>
+<pre class="lang:sh decode:true">wget http://rpi.rutgers.edu/raspbian/raspbian.public.key -O - | sudo apt-key add -</pre>
+<p>After you have these run <strong>sudo apt-get update</strong> .  Now you should be able to install <strong>cmake</strong> .</p>
+<p><strong>Installing fbcp</strong></p>
+<pre class="lang:sh decode:true">sudo apt-get install cmake
+git clone https://github.com/tasanakorn/rpi-fbcp
+cd rpi-fbcp/
+mkdir build
+cd build/
+cmake ..
+make
+sudo install fbcp /usr/local/bin/fbcp
+sudo modprobe fbtft dma</pre>
+<p>Now that you have it installed you&#8217;re ready to play some HD video.  One problem with fbcp is it changes the console resolution and makes it a bit unusable as a console, so you want to toggle it on and off around your video playback.  This is simple enough so lets write a bash command to do that for us for omxplayer.</p>
+<p>Edit your <strong>.bashrc</strong> file in your home directory and put this in it.</p>
+<pre class="lang:sh decode:true">omx() {
+  fbcp &amp;
+  omxplayer $1
+  killall fbcp
+  sleep 0.1
+  clear
+}</pre>
+<p>Run <strong>source ~/.bashrc</strong> to load it into the current console.</p>
+<p>Now when you want to play a video you type <strong>omx myvideo.mp4</strong> and it switches to frame buffer copying, plays the video given as the first parameter with <strong>omxplayer</strong> <em>(taking advantage of GPU high speed graphics)</em>, after <strong>omxplayer</strong> exits <strong>fbcp</strong> is closed out with the <strong>killall</strong> command, we then clear the display of any visual artifacts left behind and we&#8217;re back to where we need to be with a nice looking display!</p>
+<h3>Summary!</h3>
+<p>That&#8217;s it!  It&#8217;s a bit of a hassle especially when additional problems come up, but it&#8217;s doable!</p>
+<p>As always I hope you found this educational and enjoyable!  Please feel free to comment, share, subscribe to my <a href="http://feeds.feedburner.com/DanielPClark" target="_blank">RSS Feed</a>, and follow me on twitter <a href="https://twitter.com/6ftdan" target="_blank">@6ftdan</a>!</p>
+<p>God Bless!<br />
+-Daniel P. Clark</p>
+<p><span style="font-size: 8px">Image by <a class="owner-name truncate" title="Go to Paul Keeling's photostream" href="https://www.flickr.com/photos/62265426@N06/">Paul Keeling</a> via the <a href="https://creativecommons.org/licenses/by-nc/2.0/" rel="license">Creative Commons Attribution-NonCommercial 2.0 Generic License</a></span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://6ftdan.com/allyourdev/2017/03/12/installing-the-adafruit-2-8-tft-display-on-the-raspberry-pi/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
