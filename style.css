@@ -21,14 +21,6 @@ body {
     margin-left: 160px;
     line-height: 150%;
     background-color: #eed;
-    font-family: Georgia, 'Times New Roman', serif;
-    color: #111;
-}
-
-.contact {
-    padding-left: 28px;
-    margin-bottom: 20px;
-    font-size: 16px;
 }
 
 .title {
@@ -60,10 +52,8 @@ body {
 
 .ref-url {
     line-height: 100%;
-    margin-top: 2px;
-    margin-bottom: 6px;
+    margin-bottom: -22px;
     padding-left: 30px;
-    font-size: 16px;
 }
 
 .pad-right {
@@ -95,12 +85,20 @@ ol {
     padding-left: 56px;
 }
 
+body > p, li {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .email {
     padding-left: 28px;
 }
 
 a {
     color: #000;
+}
+
+b {
+    -webkit-text-stroke: 0.4px #eed; /* Thins out the bold text */
 }
 
 footer {
@@ -152,8 +150,7 @@ footer {
     /* Reduce padding for general text and lists */
     body > p,
     .ref-url,
-    .email,
-    .contact {
+    .email {
         padding-left: 15px;
     }
 
@@ -172,100 +169,85 @@ footer {
 }
 
 @media print {
+    /* Define overall page margins for printing */
     @page {
-        margin: 12mm 14mm 12mm 14mm;
+        margin: 20mm 15mm 20mm 15mm; /* Top Right Bottom Left margins */
+        /* You can also use individual properties: */
+        /* margin-top: 20mm; */
+        /* margin-right: 15mm; */
+        /* margin-bottom: 20mm; */
+        /* margin-left: 15mm; */
     }
 
     body {
-        margin: 0;
+        /* You might still keep this for specific body content,
+           but @page handles the actual print page margins */
+        margin: 10mm;
         font-size: 10pt;
-        line-height: 125%;
-        background-color: #fff;
-        color: #000;
     }
 
     .left-col {
         display: none;
     }
 
+    b {
+        -webkit-text-stroke: initial; /* Reset or remove this property for print */
+        /* Or simply: -webkit-text-stroke: none; */
+        font-weight: bold; /* Ensure it's explicitly bold for print */
+    }
+
     #title-block-header, footer {
-        background-color: transparent;
         margin: 0;
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #title-block-header {
-        margin-bottom: 4pt;
-    }
-
-    .title {
-        font-size: 22pt;
-        margin: 0;
-    }
-
-    .contact {
-        padding-left: 0;
-        margin-bottom: 6pt;
-        font-size: 10pt;
-    }
-
-    .h2 {
-        font-size: 14pt;
-        padding-top: 8pt;
-        padding-bottom: 2pt;
-        border-bottom: 1px solid #999;
-    }
-
-    .h3 {
-        font-size: 12pt;
-        padding-top: 6pt;
-    }
-
-    .h4 {
-        font-size: 10pt;
-    }
-
-    .section-header {
-        padding-bottom: 2pt;
-    }
-
-    .timeframe, .jobtitle {
         padding-top: 0;
     }
 
+    /* Adjust specific font sizes for headings and other elements */
+    .title {
+        font-size: 24pt; /* Adjust as needed */
+    }
+
+    .h2 {
+        font-size: 16pt; /* Adjust as needed */
+    }
+
+    .h3 {
+        font-size: 14pt; /* Adjust as needed */
+    }
+
+    .h4 {
+        font-size: 12pt; /* Adjust as needed */
+    }
+
+    /* Ensure specific text elements also inherit or are adjusted */
     body > p, li, .ref-url, .email, .pad-right, .timeframe, .jobtitle {
-        font-size: 10pt;
+        font-size: 10pt; /* Or inherit from body if not already doing so */
     }
 
-    body > p {
-        padding-left: 0;
-        margin: 4pt 0;
+    /* List padding might need adjustment if font size changes */
+    ol {
+        padding-left: 20pt; /* Adjust to look good with new font size */
     }
 
-    .ref-url {
-        padding-left: 0;
-        margin: 0 0 2pt 0;
+    .page-break {
+        page-break-before: always;
     }
 
-    ul, ol {
-        margin: 3pt 0;
-        padding-left: 16pt;
-    }
-
-    li {
-        margin-bottom: 1pt;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    .h2, .h3, .h4, .section-header, .jobtitle, .timeframe {
+    .h2, .h3, .h4, .section-header, .jobtitle {
         page-break-after: avoid;
     }
 
-    .section-header + p, .section-header + ul {
-        page-break-before: avoid;
+    .printable-section {
+        page-break-inside: avoid;
+    }
+
+    img {
+        page-break-inside: avoid;
+        page-break-after: avoid;
     }
 
     li {
