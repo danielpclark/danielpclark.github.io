@@ -124,7 +124,7 @@ Designed, developed, and actively maintain Rutie, a library that enables seamles
 <div class="section-header">
 <div class="h3">Author of FasterPath</div>
 <div class="h4 ref-url">
-GitHub: <a href="https://www.github.com/danielpclark/rutie">danielpclark/faster_path</a>
+GitHub: <a href="https://www.github.com/danielpclark/faster_path">danielpclark/faster_path</a>
 </div>
 </div>
 
