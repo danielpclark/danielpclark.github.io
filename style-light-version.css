@@ -1,0 +1,274 @@
+/* Base styles - these apply to all screen sizes unless overridden */
+.left-col {
+    width: 1px;
+    padding-left: 2px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 144px;
+    height: 100%;
+    background-color: #987838; /* Combined with other rule for clarity */
+}
+
+/* Combined background-color rule */
+#title-block-header, footer {
+    background-color: #987838;
+}
+
+body {
+    margin-top: 18px;
+    margin-right: 128px;
+    margin-left: 160px;
+    line-height: 150%;
+    background-color: #eed;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #111;
+}
+
+.contact {
+    padding-left: 28px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.title {
+    font-size: 44px;
+    text-transform: uppercase;
+}
+
+#title-block-header {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    padding-left: 50px;
+    margin-bottom: 20px;
+}
+
+.h2 {
+    font-size: 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.h3 {
+    font-size: 24px;
+    padding-top: 8px;
+}
+
+.h4 {
+    font-size: 18px;
+}
+
+.ref-url {
+    line-height: 100%;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.pad-right {
+    padding-left: 28px;
+}
+
+.timeframe {
+    font-style: italic;
+    font-weight: bold;
+    padding-top: 8px;
+    color: #580000;
+}
+
+.jobtitle {
+    font-weight: bolder;
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
+.section-header {
+    padding-bottom: 8px;
+}
+
+body > p {
+    padding-left: 28px;
+}
+
+ol {
+    padding-left: 56px;
+}
+
+.email {
+    padding-left: 28px;
+}
+
+a {
+    color: #000;
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 84px;
+    padding-bottom: 84px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .left-col {
+        /* Hide the left column/vertical bar on smaller screens */
+        display: none;
+    }
+
+    body {
+        /* Adjust body margins to be more suitable for mobile */
+        margin-top: 10px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    #title-block-header {
+        /* Adjust padding for header on mobile */
+        padding-top: 20px;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .title {
+        /* Reduce font size for title on mobile */
+        font-size: 32px;
+    }
+
+    .h2 {
+        font-size: 24px;
+    }
+
+    .h3 {
+        font-size: 20px;
+    }
+
+    .h4 {
+        font-size: 16px;
+    }
+
+    /* Reduce padding for general text and lists */
+    body > p,
+    .ref-url,
+    .email,
+    .contact {
+        padding-left: 15px;
+    }
+
+    ol {
+        padding-left: 30px;
+    }
+
+    .pad-right {
+        padding-left: 15px;
+    }
+
+    footer {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+@media print {
+    @page {
+        margin: 12mm 14mm 12mm 14mm;
+    }
+
+    body {
+        margin: 0;
+        font-size: 10pt;
+        line-height: 125%;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .left-col {
+        display: none;
+    }
+
+    #title-block-header, footer {
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+    }
+
+    #title-block-header {
+        margin-bottom: 4pt;
+    }
+
+    .title {
+        font-size: 22pt;
+        margin: 0;
+    }
+
+    .contact {
+        padding-left: 0;
+        margin-bottom: 6pt;
+        font-size: 10pt;
+    }
+
+    .h2 {
+        font-size: 14pt;
+        padding-top: 8pt;
+        padding-bottom: 2pt;
+        border-bottom: 1px solid #999;
+    }
+
+    .h3 {
+        font-size: 12pt;
+        padding-top: 6pt;
+    }
+
+    .h4 {
+        font-size: 10pt;
+    }
+
+    .section-header {
+        padding-bottom: 2pt;
+    }
+
+    .timeframe, .jobtitle {
+        padding-top: 0;
+    }
+
+    body > p, li, .ref-url, .email, .pad-right, .timeframe, .jobtitle {
+        font-size: 10pt;
+    }
+
+    body > p {
+        padding-left: 0;
+        margin: 4pt 0;
+    }
+
+    .ref-url {
+        padding-left: 0;
+        margin: 0 0 2pt 0;
+    }
+
+    ul, ol {
+        margin: 3pt 0;
+        padding-left: 16pt;
+    }
+
+    li {
+        margin-bottom: 1pt;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .h2, .h3, .h4, .section-header, .jobtitle, .timeframe {
+        page-break-after: avoid;
+    }
+
+    .section-header + p, .section-header + ul {
+        page-break-before: avoid;
+    }
+
+    li {
+        page-break-inside: avoid;
+    }
+}
